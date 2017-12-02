@@ -6,7 +6,7 @@ class Game extends hxd.App {
 
 	public static var inst : Game;
 	public var event : hxd.WaitEvent;
-	public var modelCache : CustomCache;
+	public var modelCache : h3d.prim.ModelCache;
 	public var renderer : CustomRenderer;
 
 	public var entities : Array<ent.Entity>;
@@ -14,9 +14,11 @@ class Game extends hxd.App {
 	public var hero : ent.Player;
 
 	override function init() {
-		modelCache = new CustomCache();
-		renderer = new CustomRenderer();
+		renderer     = new CustomRenderer();
+		modelCache   = new CustomCache(renderer.hasMRT);
 		s3d.renderer = renderer;
+
+		initTestScene();
 
 		event = new hxd.WaitEvent();
 
@@ -105,5 +107,15 @@ class Game extends hxd.App {
 		inst = new Game();
 		hxd.res.Resource.LIVE_UPDATE = true;
 		hxd.Res.initLocal();
+	}
+
+	function initTestScene() {
+		s3d.lightSystem.ambientLight.set(0.5, 0.5, 0.5);
+		var obj = modelCache.loadModel(hxd.Res.Map.test);
+		s3d.addChild(obj);
+		s3d.camera.follow = {
+			pos    : obj.getObjectByName("Camera002"),
+			target : obj.getObjectByName("Camera002.Target"),
+		};
 	}
 }
