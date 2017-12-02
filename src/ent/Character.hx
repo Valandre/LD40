@@ -64,7 +64,7 @@ class Character extends ent.Entity {
 
 	function updateAngle(dt : Float) {
 		if( rotation == targetRotation ) return false;
-		rotation = hxd.Math.angleMove(rotation, targetRotation, (0.05 + Math.abs(hxd.Math.angle(rotation - targetRotation))) * 0.2 * dt);
+		rotation = hxd.Math.angleMove(rotation, targetRotation, (0.05 + Math.abs(hxd.Math.angle(rotation - targetRotation))) * 0.15 * dt);
 		return true;
 	}
 

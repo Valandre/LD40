@@ -45,6 +45,32 @@ class Game extends hxd.App {
 			engine.fullScreen = !engine.fullScreen;
 	}
 
+	public function getMousePicker( ?x, ?y ) {
+		if( s3d == null ) return null;
+		if( x == null )
+			x = s2d.mouseX;
+		if( y == null )
+			y = s2d.mouseY;
+		var camera = s3d.camera;
+		var p = new h2d.col.Point( -1 + 2 * x / s2d.width, 1 - 2 * y / s2d.height);
+		var pn = camera.unproject(p.x, p.y, 0);
+		var pf = camera.unproject(p.x, p.y, 1);
+		var pMin = pn;
+		var pMax = pf;
+		var dir = pMax.sub(pMin);
+		dir.normalize();
+		dir.scale3(0.01); // 10cm precious
+		while( pMin.sub(pMax).dot3(dir) < 0 ) {
+			var z = world.getZ(pMin.x, pMin.y);
+			var dz = pMin.z - z;
+			if( dz < 0)	return pMin;
+			pMin.x += dir.x;
+			pMin.y += dir.y;
+			pMin.z += dir.z;
+		}
+		return null;
+	}
+
 	override function update(dt:Float) {
 		updateKeys(dt);
 
