@@ -41,7 +41,7 @@ class Game extends hxd.App {
 		var cam = s3d.camera;
 		cam.target.x = x;
 		cam.target.y = y;
-		cam.target.z = z;
+		cam.target.z = z + 1.5;
 
 		var p = world.getCameraFramePos(hero.x, hero.y);
 		cam.pos.x = p.x;
@@ -56,7 +56,7 @@ class Game extends hxd.App {
 		var cam = s3d.camera;
 		cam.target.x += (hero.x - cam.target.x) * 0.05 * dt;
 		cam.target.y += (hero.y - cam.target.y) * 0.05 * dt;
-		cam.target.z += (hero.z - cam.target.z) * 0.05 * dt;
+		cam.target.z += (hero.z + 1.5 - cam.target.z) * 0.05 * dt;
 
 		var p = world.getCameraFramePos(hero.x, hero.y);
 		tmp.x = p.x - hero.x;

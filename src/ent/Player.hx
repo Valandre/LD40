@@ -31,15 +31,15 @@ class Player extends Character
 		if(model == null) return;
 
 		obj = game.modelCache.loadModel(model);
-		obj.setScale(0.012);
+		obj.setScale(0.01);
 		for(m in obj.getMeshes()) {
 			m.material.mainPass.enableLights = true;
 			m.material.shadows = true;
 		}
 		game.world.addChild(obj);
 
-		var lamp = obj.getObjectByName("Lampe");
-		lamp.follow = obj.getObjectByName("B_lamp");
+		//var lamp = obj.getObjectByName("Lampe");
+		//lamp.follow = obj.getObjectByName("B_lamp");
 	}
 
 	function get_moveSpeed() {
@@ -58,7 +58,7 @@ class Player extends Character
 		canMove = true;
 		acc = 0;
 		targetPos = null;
-		play("idle01", {smooth : 0.2});
+		//play("idle01", {smooth : 0.2});
 		setJob(Stand, null);
 	}
 
