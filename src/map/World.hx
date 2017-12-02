@@ -11,7 +11,7 @@ class World
 	}
 
 	function init() {
-
+		root = new h3d.scene.Object(game.s3d);
 	}
 
 	public function addChild(o : h3d.scene.Object) {

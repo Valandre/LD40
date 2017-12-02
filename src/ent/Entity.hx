@@ -1,8 +1,4 @@
 package ent;
-enum EntityKind {
-	EPlayer;
-	EFoe;
-}
 
 typedef PlayOptions = {
 	@:optional var speed : Float;
@@ -15,8 +11,7 @@ enum AnimationCommand {
 	ASingle( a : h3d.anim.Animation );
 }
 
-class Entity implements hxbit.NetworkSerializable {
-	public var ekind : EntityKind;
+class Entity {
 	public var x(default, set) : Float;
 	public var y(default, set) : Float;
 	public var z(default, set) : Float;
@@ -30,10 +25,9 @@ class Entity implements hxbit.NetworkSerializable {
 	var currentAnim(default,set) : { opts : PlayOptions, name : String };
 	var cachedAnims = new Map<String,AnimationCommand>();
 
-	public function new(ekind, x = 0., y = 0., z = 0.) {
+	public function new(x = 0., y = 0., z = 0.) {
 		game = Game.inst;
 		game.entities.push(this);
-		this.ekind = ekind;
 		this.x = x;
 		this.y = y;
 		this.z = z;
@@ -82,7 +76,7 @@ class Entity implements hxbit.NetworkSerializable {
 		var a = cachedAnims.get(anim);
 		if( a == null ) {
 			a = getAnim(anim);
-			if( a == null ) throw "Can't find anim " + anim +" for " + ekind;
+			if( a == null ) throw "Can't find anim " + anim;
 			cachedAnims.set(anim, a);
 		}
 

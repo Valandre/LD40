@@ -17,7 +17,9 @@ class Game extends hxd.App {
 		s3d.renderer = renderer;
 
 		event = new hxd.WaitEvent();
+
 		entities = [];
+		world = new map.World();
 	}
 
 	override function update(dt:Float) {
