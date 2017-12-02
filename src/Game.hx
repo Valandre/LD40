@@ -25,13 +25,20 @@ class Game extends hxd.App {
 		world = new map.World();
 		hero = new ent.Player();
 
-		initCamera();
+		event.wait(0, initCamera);
 	}
 
 	function initCamera() {
 		if(hero == null) return;
-		s3d.camera.target.x = hero.x;
-		s3d.camera.target.y = hero.y;
+		var cam = s3d.camera;
+		cam.target.x = hero.x;
+		cam.target.y = hero.y;
+		cam.target.z = hero.z;
+
+		var p = world.getCameraFramePos(hero.x, hero.y);
+		cam.pos.x = p.x;
+		cam.pos.y = p.y;
+		cam.pos.z = p.z;
 	}
 
 	function cameraUpdate(dt : Float) {
