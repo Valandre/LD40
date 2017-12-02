@@ -49,7 +49,7 @@ class World
 		}
 
 					//start, phone, park, river, shop, accident, graveyard, tombstone
-		stepFrames = [0, 800, 2000, 3000, 4000, 5000, 6000, m.currentAnimation.frameCount - 1];
+		stepFrames = [0, 100, 2000, 3000, 4000, 5000, 6000, m.currentAnimation.frameCount - 1];
 		step = Start;
 		gotoStep(0);
 	}
