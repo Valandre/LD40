@@ -18,10 +18,13 @@ class DepthColor extends hxsl.Shader {
 		var projectedPosition : Vec4;
 
 		function fragment() {
-			var q = (projectedPosition.z - camera.zNear) 
-			      / (camera.zFar - camera.zNear);
+			var q = (projectedPosition.z - camera.zNear) / (camera.zFar - camera.zNear);
+
+			var offset = abs((pixelColor.r - 0.5) * 2.0);
+			q += offset;
 			q = clamp(q, 0.0, 1.0);
 			pixelColor.rgb = depthColor.currentMap.get(vec2(q, 0.5)).rgb;
+			//pixelColor.rgb = vec3(offset);
 		}
 	};
 

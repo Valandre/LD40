@@ -34,10 +34,20 @@ class CompositingShader extends h3d.shader.ScreenShader {
 			var normal = unpackNormal(normalTexture.get(input.uv));
 
 			var fogIntensity = clamp((dist - zNear) / (zFar - zNear), 0.0, 1.0);
-			output.color = mix(
+			var color = mix(
 				colorTexture.get(input.uv), 
 				depthColor.currentMap.get(vec2(fogIntensity, 0.5)),
 				fogIntensity);
+
+			{
+				var uv = input.uv; 
+				uv *=  1.0 - uv.yx;
+				var vig = uv.x*uv.y * 15.0; // multiply with sth for intensity
+				vig = pow(vig, 0.10); // change pow for modifying the extend of the  vignette
+				color *= vig;
+			}
+			
+			output.color = color;
 		}
 	};
 }
