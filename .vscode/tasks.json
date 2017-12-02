@@ -1,0 +1,18 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "haxe --connect 6000 -debug LD40.hxml",
+            "presentation": {
+                "reveal": "never"
+            },
+            "problemMatcher": "$haxe",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+{
+    "haxe.displayConfigurations": [ // one or more configurations for the haxe completion server 
+        ["LD40.hxml"]
+    ],
+    "haxe.displayPort": 6000
+}
