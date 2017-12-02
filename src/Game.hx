@@ -11,6 +11,7 @@ class Game extends hxd.App {
 
 	public var entities : Array<ent.Entity>;
 	public var world : map.World;
+	public var hero : ent.Player;
 
 	override function init() {
 		modelCache = new CustomCache();
@@ -19,9 +20,24 @@ class Game extends hxd.App {
 
 		event = new hxd.WaitEvent();
 
+		//
 		entities = [];
 		world = new map.World();
-		new ent.Player();
+		hero = new ent.Player();
+
+		initCamera();
+	}
+
+	function initCamera() {
+		if(hero == null) return;
+		s3d.camera.target.x = hero.x;
+		s3d.camera.target.y = hero.y;
+	}
+
+	function cameraUpdate(dt : Float) {
+		if(hero == null) return;
+		s3d.camera.target.x += (hero.x - s3d.camera.target.x) * 0.15 * dt;
+		s3d.camera.target.y += (hero.y - s3d.camera.target.y) * 0.15 * dt;
 	}
 
 	function updateKeys(dt : Float) {
@@ -31,6 +47,8 @@ class Game extends hxd.App {
 
 	override function update(dt:Float) {
 		updateKeys(dt);
+
+		cameraUpdate(dt);
 		event.update(dt);
 		for(e in entities)
 			e.update(dt);

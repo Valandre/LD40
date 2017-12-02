@@ -17,7 +17,17 @@ class World
 		var m = game.modelCache.loadModel(res);
 		//m.playAnimation(game.modelCache.loadAnimation(res));
 		root.addChild(m);
-		game.s3d.camera.follow = { target : m.getObjectByName("Camera001.Target"), pos : m.getObjectByName("Camera001") };
+
+		//game.s3d.camera.follow = { target : m.getObjectByName("Camera001.Target"), pos : m.getObjectByName("Camera001") };
+
+		var p = m.getObjectByName("Camera001").localToGlobal();
+		game.s3d.camera.pos.x = p.x;
+		game.s3d.camera.pos.y = p.y;
+		game.s3d.camera.pos.z = p.z;
+		var t = m.getObjectByName("Camera001.Target").localToGlobal();
+		game.s3d.camera.target.x = t.x;
+		game.s3d.camera.target.y = t.y;
+		game.s3d.camera.target.z = t.z;
 	}
 
 	public function addChild(o : h3d.scene.Object) {
