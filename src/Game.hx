@@ -63,7 +63,7 @@ class Game extends hxd.App {
 		tmp.y = p.y - hero.y;
 		var d = hxd.Math.distanceSq(tmp.x, tmp.y);
 
-		var r = 20;
+		var r = 10;
 		if(d < r * r) {
 			tmp.normalize();
 			tmp.scale(r);
@@ -71,7 +71,7 @@ class Game extends hxd.App {
 			p.y = hero.y + tmp.y;
 		}
 		else {
-			var r = 35;
+			var r = 25;
 			if(d > r * r) {
 				tmp.normalize();
 				tmp.scale(r);
