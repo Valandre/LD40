@@ -1,0 +1,10 @@
+-lib heaps
+-lib hscript
+-lib hxbit
+-lib hlsdl
+-cp src
+-hl LD40.hl
+-main Game
+-D native-trace
+-D windowSize=1366x768
+-dce full
