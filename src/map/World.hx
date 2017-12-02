@@ -4,9 +4,9 @@ class World
 {
 	var game : Game;
 	var root : h3d.scene.Object;
-
-	var curStep = 0;
 	var stepFrames = [];
+
+	public var curStep = 0;
 
 	var cam : {
 		obj :  h3d.scene.Object,
@@ -61,10 +61,9 @@ class World
 	}
 
 	function getStepFromFrame(f : Float) {
-		var index = stepFrames.length;
+		var index = stepFrames.length - 1;
 		while(index >= 0) {
-			var s = stepFrames[index];
-			if(s <= f) return index;
+			if(stepFrames[index] <= f) return index;
 			index--;
 		}
 		return 0;

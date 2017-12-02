@@ -8,7 +8,7 @@ class Player extends Character
 	var usingPad = false;
 
 	var deadZone = 0.3;
-	var moveSpeed = 0.15;
+	var moveSpeed(get, never) : Float;
 	var axisSpeed = 1.;
 	var acc = 0.;
 	var targetPos : h2d.col.Point;
@@ -37,6 +37,16 @@ class Player extends Character
 		var m = new h3d.scene.Mesh(c, obj);
 		m.material.mainPass.enableLights = true;
 		m.material.shadows = true;
+	}
+
+	function get_moveSpeed() {
+		return switch(game.world.curStep) {
+			case 0,1 : 0.1;
+			case 2,3 : 0.12;
+			case 4,5 : 0.15;
+			case 6,7 : 0.18;
+			default : 0.15;
+		}
 	}
 
 	function stand() {
