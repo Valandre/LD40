@@ -46,6 +46,10 @@
 				{
 					"id": "SaoBlur",
 					"value": 2
+				},
+				{
+					"id": "EnableBloom",
+					"value": true
 				}
 			],
 			"separators": [],

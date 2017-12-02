@@ -1,11 +1,11 @@
 package pass;
 
-class CompositingShader extends h3d.shader.ScreenShader {
+class FogShader extends h3d.shader.ScreenShader {
 	static var SRC = {
-		@param var colorTexture  : Sampler2D;
-		@param var depthTexture	 : Sampler2D;
-		@param var normalTexture : Sampler2D;
-
+		@param var colorTexture    : Sampler2D;
+		@param var depthTexture	   : Sampler2D;
+		@param var normalTexture   : Sampler2D;
+		
 		@param var cameraInverseViewProj : Mat4;
 		@param var cameraPosition : Vec3;
 		@param var zNear : Float;
@@ -38,30 +38,21 @@ class CompositingShader extends h3d.shader.ScreenShader {
 				colorTexture.get(input.uv), 
 				depthColor.currentMap.get(vec2(fogIntensity, 0.5)),
 				fogIntensity);
-
-			{
-				var uv = input.uv; 
-				uv *=  1.0 - uv.yx;
-				var vig = uv.x*uv.y * 15.0; // multiply with sth for intensity
-				vig = pow(vig, 0.10); // change pow for modifying the extend of the  vignette
-				color *= vig;
-			}
-			
 			output.color = color;
 		}
 	};
 }
 
-class Compositing extends h3d.pass.ScreenFx<CompositingShader> {
+class Fog extends h3d.pass.ScreenFx<FogShader> {
 	public function new() {
-		super(new CompositingShader());
+		super(new FogShader());
 	}
 
 	public function apply(
-		color   : h3d.mat.Texture,
-		depth	: h3d.mat.Texture, 
-		normal  : h3d.mat.Texture,
-		camera	: h3d.Camera)
+		color    : h3d.mat.Texture,
+		depth	 : h3d.mat.Texture, 
+		normal   : h3d.mat.Texture,
+		camera	 : h3d.Camera)
 	{
 		camera.update();
 		shader.colorTexture  = color;

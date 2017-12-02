@@ -140,6 +140,7 @@ class Game extends hxd.App {
 			return Data.renderConfig.get(k).value;
 		}
 
+		renderer.enableBloom             = getValue(EnableBloom);
 		renderer.enableFXAA              = getValue(EnableFxaa);
 		renderer.enableSao               = getValue(EnableSao);
 		renderer.sao.shader.bias         = getValue(SaoBias);

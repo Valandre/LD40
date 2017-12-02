@@ -14,6 +14,16 @@ class CustomCache extends h3d.prim.ModelCache {
 			m.mainPass.enableLights = true;
 			m.shadows = true;
 			m.textureShader.priority = 12;
+
+			if (m.texture != null) {
+				var name = haxe.io.Path.withoutExtension(m.texture.name);
+				name += "_emi.png";
+				if (hxd.Res.loader.exists(name)) {
+					m.mainPass.addShader(
+						new shader.EmissiveMap(hxd.Res.load(name).toTexture())
+					);
+				}
+			}
 		}
 		return obj;
 	}
