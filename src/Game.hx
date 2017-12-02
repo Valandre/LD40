@@ -110,12 +110,18 @@ class Game extends hxd.App {
 	}
 
 	function initTestScene() {
-		s3d.lightSystem.ambientLight.set(0.5, 0.5, 0.5);
+		//renderer.enableSao = true;
+		//renderer.enableFXAA = true;
+		renderer.depthColorMap = hxd.Res.Gradients.test.toTexture();
+
+		s3d.lightSystem.ambientLight.set(1.0, 1.0, 1.0);
 		var obj = modelCache.loadModel(hxd.Res.Map.test);
 		s3d.addChild(obj);
 		s3d.camera.follow = {
 			pos    : obj.getObjectByName("Camera002"),
 			target : obj.getObjectByName("Camera002.Target"),
 		};
+
+		//new h3d.scene.CameraController(s3d).loadFromCamera();
 	}
 }
