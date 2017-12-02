@@ -20,7 +20,7 @@ class DepthColor extends hxsl.Shader {
 		function fragment() {
 			var q = (projectedPosition.z - camera.zNear) 
 			      / (camera.zFar - camera.zNear);
-			q = saturate(q);
+			q = clamp(q, 0.0, 1.0);
 			pixelColor.rgb = depthColor.currentMap.get(vec2(q, 0.5)).rgb;
 		}
 	};
