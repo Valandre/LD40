@@ -40,8 +40,7 @@ class Player extends Character
 	}
 
 	function get_moveSpeed() {
-		return 0.2;
-
+		//return 0.2;
 		return switch(game.world.curStep) {
 			case 0,1 : 0.1;
 			case 2,3 : 0.12;
