@@ -3,6 +3,7 @@ package map;
 enum StepKind {
 	Start;
 	Phone;
+	Park;
 	River;
 	Shop;
 	Graveyard;
@@ -47,7 +48,7 @@ class World
 			locked : false,
 		}
 
-					//start, phone, river, shop, accident, graveyard, tombstone
+					//start, phone, park, river, shop, accident, graveyard, tombstone
 		stepFrames = [0, 800, 2000, 3000, 4000, 5000, 6000, m.currentAnimation.frameCount - 1];
 		step = Start;
 		gotoStep(0);

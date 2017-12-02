@@ -8,6 +8,8 @@ class Player extends Character
 	var usingPad = false;
 
 	var deadZone = 0.3;
+	var walkRef : Float;
+	var runRef : Float;
 	var moveSpeed(get, never) : Float;
 	var axisSpeed = 1.;
 	var acc = 0.;
@@ -16,6 +18,8 @@ class Player extends Character
 
 	public function new(x = 0., y = 0., z = 0.) {
 		super(EPlayer, x, y, z);
+		walkRef = 0.05;
+		runRef = 0.14;
 		stand();
 		hxd.Pad.wait(function(pad) {
 			this.pad = pad;
@@ -46,9 +50,9 @@ class Player extends Character
 		//return 0.2;
 		return switch(game.world.curStep) {
 			case 0,1 : 0.05;
-			case 2,3 : 0.12;
-			case 4,5 : 0.15;
-			case 6,7 : 0.18;
+			case 2,3 : 0.08;
+			case 4: 0.12;
+			case 5,6,7 : 0.15;
 			default : 0.15;
 		}
 	}
@@ -66,16 +70,15 @@ class Player extends Character
 		if(job == Move) return;
 		canMove = true;
 
-		play("walk", {smooth : 0.2});
-
 		setJob(Move, function(dt) {
+			play(moveSpeed > 0.1 ? "run" : "walk", {smooth : 0.2});
 			var a = new h3d.Vector(targetPos.x - x, targetPos.y - y);
 			a.normalize();
 			acc = hxd.Math.min(1, acc + 0.05 * dt);
 			var sp = moveSpeed * axisSpeed * acc * dt;
 			moveTo(a.x * sp, a.y * sp);
 			//trace(x, y);
-			if(obj != null) obj.currentAnimation.speed = (sp / moveSpeed / dt);
+			if(obj != null) obj.currentAnimation.speed = acc * moveSpeed / (moveSpeed > 0.1 ? runRef : walkRef);
 		});
 
 		if(hxd.Math.distance(targetPos.x - x, targetPos.y - y) < 0.2) {
