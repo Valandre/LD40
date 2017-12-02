@@ -72,6 +72,7 @@ class Game extends hxd.App {
 		if(K.isPressed(K.NUMBER_5)) world.gotoStep(4);
 		if(K.isPressed(K.NUMBER_6)) world.gotoStep(5);
 		if(K.isPressed(K.NUMBER_7)) world.gotoStep(6);
+		if(K.isPressed(K.NUMBER_8)) world.gotoStep(7);
 	}
 
 	public function getMousePicker( ?x, ?y ) {
