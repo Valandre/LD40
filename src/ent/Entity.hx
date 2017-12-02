@@ -28,7 +28,6 @@ class Entity implements hxbit.NetworkSerializable {
 	var obj : h3d.scene.Object;
 
 	var currentAnim(default,set) : { opts : PlayOptions, name : String };
-	var currentAnimEnd : h3d.anim.Animation;
 	var cachedAnims = new Map<String,AnimationCommand>();
 
 	public function new(ekind, x = 0., y = 0., z = 0.) {
@@ -107,10 +106,6 @@ class Entity implements hxbit.NetworkSerializable {
 	}
 
 	function playImpl( a : AnimationCommand ) {
-		if( currentAnimEnd != null ) {
-			waitAnimEnd(function() playImpl(a));
-			return;
-		}
 		if( obj == null ) return;
 
 		inline function playAnimation(a, loop) {
@@ -130,7 +125,6 @@ class Entity implements hxbit.NetworkSerializable {
 			};
 		}
 
-		obj.currentAnimation.onEvent = onAnimEvent;
 		obj.currentAnimation.speed = opts.speed;
 
 		if( prev != null && opts.smooth != 0 ) {
@@ -139,25 +133,6 @@ class Entity implements hxbit.NetworkSerializable {
 			obj.switchToAnimation(sm);
 			sm.onAnimEnd = function() obj.switchToAnimation(cur);
 		}
-	}
-
-	function onAnimEvent( e : String ) {
-		//trace("Event : " + currentAnim.name, e);
-	}
-
-	function waitAnimEnd( f ) {
-		if( currentAnimEnd == null ) {
-			f();
-			return;
-		}
-		var cur = obj.currentAnimation;
-		if( cur == null ) throw "No current anim";
-		obj.playAnimation(currentAnimEnd);
-		obj.currentAnimation.speed = cur.speed;
-		obj.currentAnimation.onAnimEnd = f;
-		obj.currentAnimation.loop = false;
-		obj.switchToAnimation(new h3d.anim.SmoothTarget(obj.currentAnimation, 0.5));
-		currentAnimEnd = null;
 	}
 
 	function set_x(v : Float) {
