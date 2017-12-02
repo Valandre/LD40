@@ -30,15 +30,15 @@ class Game extends hxd.App {
 		world = new map.World();
 		hero = new ent.Player();
 
-		event.wait(0, initCamera);
+		event.wait(0, initCamera.bind(hero.x, hero.y, hero.z));
 	}
 
-	function initCamera() {
+	public function initCamera(x, y, z) {
 		if(hero == null) return;
 		var cam = s3d.camera;
-		cam.target.x = hero.x;
-		cam.target.y = hero.y;
-		cam.target.z = hero.z;
+		cam.target.x = x;
+		cam.target.y = y;
+		cam.target.z = z;
 
 		var p = world.getCameraFramePos(hero.x, hero.y);
 		cam.pos.x = p.x;
@@ -63,6 +63,15 @@ class Game extends hxd.App {
 	function updateKeys(dt : Float) {
 		if(K.isDown(K.CTRL) && K.isPressed("F".code))
 			engine.fullScreen = !engine.fullScreen;
+
+		 //DEBUG
+		if(K.isPressed(K.NUMBER_1)) world.gotoStep(0);
+		if(K.isPressed(K.NUMBER_2)) world.gotoStep(1);
+		if(K.isPressed(K.NUMBER_3)) world.gotoStep(2);
+		if(K.isPressed(K.NUMBER_4)) world.gotoStep(3);
+		if(K.isPressed(K.NUMBER_5)) world.gotoStep(4);
+		if(K.isPressed(K.NUMBER_6)) world.gotoStep(5);
+		if(K.isPressed(K.NUMBER_7)) world.gotoStep(6);
 	}
 
 	public function getMousePicker( ?x, ?y ) {

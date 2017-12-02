@@ -5,6 +5,8 @@ class World
 	var game : Game;
 	var root : h3d.scene.Object;
 
+	var curStep = 0;
+
 	var cam : {
 		obj :  h3d.scene.Object,
 		target : h3d.scene.Object,
@@ -31,15 +33,35 @@ class World
 			pos : m.getObjectByName("Camera001"),
 		}
 
-		//game.s3d.camera.follow = { target : m.getObjectByName("Camera001.Target"), pos : m.getObjectByName("Camera001") };
-		var p = cam.pos.localToGlobal();
-		game.s3d.camera.pos.x = p.x;
-		game.s3d.camera.pos.y = p.y;
-		game.s3d.camera.pos.z = p.z;
+		gotoStep(0);
 	}
 
 	public function addChild(o : h3d.scene.Object) {
 		root.addChild(o);
+	}
+
+
+	public function gotoStep(v : Int) {
+		var frame = switch(v) {
+			case 1 : 100;	//phone box
+			case 2 : 200;	//park
+			case 3 : 300;	//river
+			case 4 : 400;	//car shop
+			case 5 : 500; 	//accident
+			case 6 : 600;	//graveyard
+			default : 0;
+		}
+
+		var anim = cam.obj.currentAnimation;
+		anim.setFrame(frame);
+		anim.sync();
+		if(game.hero != null) {
+			var p = cam.target.localToGlobal();
+			game.hero.x = p.x;
+			game.hero.y = p.y;
+			game.hero.z = 0;
+			game.initCamera(game.hero.x, game.hero.y, game.hero.z);
+		}
 	}
 
 
