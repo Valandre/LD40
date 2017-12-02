@@ -40,6 +40,8 @@ class Player extends Character
 	}
 
 	function get_moveSpeed() {
+		return 0.2;
+
 		return switch(game.world.curStep) {
 			case 0,1 : 0.1;
 			case 2,3 : 0.12;
@@ -70,6 +72,7 @@ class Player extends Character
 			acc = hxd.Math.min(1, acc + 0.05 * dt);
 			var sp = moveSpeed * axisSpeed * acc * dt;
 			moveTo(a.x * sp, a.y * sp);
+			//trace(x, y);
 			//if(obj != null) obj.currentAnimation.speed = (body.velocity.length / moveSpeed) * 1.5;
 		});
 

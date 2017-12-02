@@ -1,9 +1,20 @@
 package map;
 
+enum StepKind {
+	Start;
+	Phone;
+	River;
+	Shop;
+	Graveyard;
+	Tombstone;
+}
+
 class World
 {
 	var game : Game;
 	var root : h3d.scene.Object;
+
+	var step(default, set) : StepKind;
 	var stepFrames = [];
 
 	public var curStep = 0;
@@ -12,6 +23,7 @@ class World
 		obj :  h3d.scene.Object,
 		target : h3d.scene.Object,
 		pos : h3d.scene.Object,
+		locked : Bool,
 	};
 
 	public function new() {
@@ -32,10 +44,12 @@ class World
 			obj : m,
 			target : m.getObjectByName("Camera001.Target"),
 			pos : m.getObjectByName("Camera001"),
+			locked : false,
 		}
 
 					//start, phone, river, shop, accident, graveyard, tombstone
-		stepFrames = [0, 80, 200, 300, 400, 500, 600, m.currentAnimation.frameCount - 1];
+		stepFrames = [0, 800, 2000, 3000, 4000, 5000, 6000, m.currentAnimation.frameCount - 1];
+		step = Start;
 		gotoStep(0);
 	}
 
@@ -43,6 +57,21 @@ class World
 		root.addChild(o);
 	}
 
+	function set_step(k : StepKind) {
+		if(step == k) return step;
+		switch(k) {
+			case Start:
+			default:
+		}
+		return step = k;
+	}
+
+	function stepUpdate(dt : Float) {
+		switch (curStep) {
+			case 0:
+			default:
+		}
+	}
 
 	public function gotoStep(v : Int) {
 		curStep = v;
@@ -96,5 +125,9 @@ class World
 
 	public function getZ(x : Float, y:Float) {
 		return 0.;
+	}
+
+	public function update(dt: Float) {
+		stepUpdate(dt);
 	}
 }

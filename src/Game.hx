@@ -51,14 +51,30 @@ class Game extends hxd.App {
 		if(hero == null) return;
 
 		var cam = s3d.camera;
-		cam.target.x += (hero.x - cam.target.x) * 0.15 * dt;
-		cam.target.y += (hero.y - cam.target.y) * 0.15 * dt;
-		cam.target.z += (hero.z - cam.target.z) * 0.15 * dt;
+		cam.target.x += (hero.x - cam.target.x) * 0.05 * dt;
+		cam.target.y += (hero.y - cam.target.y) * 0.05 * dt;
+		cam.target.z += (hero.z - cam.target.z) * 0.05 * dt;
 
 		var p = world.getCameraFramePos(hero.x, hero.y);
-		cam.pos.x += (p.x - cam.pos.x) * 0.01 * dt;
-		cam.pos.y += (p.y - cam.pos.y) * 0.01 * dt;
-		cam.pos.z += (p.z - cam.pos.z) * 0.01 * dt;
+		var n = new h2d.col.Point(p.x - hero.x, p.y - hero.y);
+		var d = hxd.Math.distance(n.x, n.y);
+
+		if(d < 20) {
+			n.normalize();
+			n.scale(20);
+			p.x = hero.x + n.x;
+			p.y = hero.y + n.y;
+		}
+		else if(d > 35) {
+			n.normalize();
+			n.scale(35);
+			p.x = hero.x + n.x;
+			p.y = hero.y + n.y;
+		}
+
+		cam.pos.x += (p.x - cam.pos.x) * 0.05 * dt;
+		cam.pos.y += (p.y - cam.pos.y) * 0.05 * dt;
+		cam.pos.z += (p.z - cam.pos.z) * 0.05 * dt;
 	}
 
 	function updateKeys(dt : Float) {
@@ -106,6 +122,7 @@ class Game extends hxd.App {
 		updateKeys(dt);
 
 		cameraUpdate(dt);
+		world.update(dt);
 		event.update(dt);
 		for(e in entities)
 			e.update(dt);
