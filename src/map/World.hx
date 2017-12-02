@@ -12,6 +12,12 @@ class World
 
 	function init() {
 		root = new h3d.scene.Object(game.s3d);
+
+		var res = hxd.Res.Map.Map01;
+		var m = game.modelCache.loadModel(res);
+		//m.playAnimation(game.modelCache.loadAnimation(res));
+		root.addChild(m);
+		game.s3d.camera.follow = { target : m.getObjectByName("Camera001.Target"), pos : m.getObjectByName("Camera001") };
 	}
 
 	public function addChild(o : h3d.scene.Object) {

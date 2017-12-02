@@ -1,4 +1,5 @@
 import hxd.Res;
+import hxd.Key in K;
 
 
 class Game extends hxd.App {
@@ -20,9 +21,16 @@ class Game extends hxd.App {
 
 		entities = [];
 		world = new map.World();
+		new ent.Player();
+	}
+
+	function updateKeys(dt : Float) {
+		if(K.isDown(K.CTRL) && K.isPressed("F".code))
+			engine.fullScreen = !engine.fullScreen;
 	}
 
 	override function update(dt:Float) {
+		updateKeys(dt);
 		event.update(dt);
 		for(e in entities)
 			e.update(dt);
