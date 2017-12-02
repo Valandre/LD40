@@ -9,7 +9,6 @@ class BloomExtractShader extends h3d.shader.ScreenShader {
 			var color = texture.get(input.uv).rgb;
 			var lum   = color.rgb.dot(vec3(0.2126, 0.7152, 0.0722));
 
-			//var q = (lum > brightness) ? 1.0 : 0.0;
 			var q = smoothstep(brightness, 1.0, lum);
 			output.color.rgb = mix(vec3(0), color, q);
 			output.color.a = 1.0;

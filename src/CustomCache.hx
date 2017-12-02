@@ -13,9 +13,9 @@ class CustomCache extends h3d.prim.ModelCache {
 			m.mainPass.addShader(new shader.DepthColor());
 			m.mainPass.enableLights = true;
 			m.shadows = true;
-			m.textureShader.priority = 12;
-
+			
 			if (m.texture != null) {
+				m.textureShader.priority = 12;
 				var name = haxe.io.Path.withoutExtension(m.texture.name);
 				name += "_emi.png";
 				if (hxd.Res.loader.exists(name)) {

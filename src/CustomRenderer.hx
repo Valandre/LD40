@@ -106,13 +106,16 @@ class CustomRenderer extends h3d.scene.Renderer {
 			outputTexture = fogTarget;
 		}
 
+		var bloomTexture = allocTarget("bloom", 1, false);
 		if (enableBloom) {
 			var bloomTexture = allocTarget("bloom", 1, false);
 			h3d.pass.Copy.run(emissiveTexture, bloomTexture, None);
 			bloomExtract.apply(outputTexture, bloomTexture);
-			saoBlur.apply(bloomTexture, allocTarget("saoBlurTmp", 1, false));
+			bloomBlur.apply(bloomTexture, allocTarget("blurBloom", 1, false));
 			h3d.pass.Copy.run(bloomTexture, outputTexture, Add);
 		}
+
+		h3d.pass.Copy.run(emissiveTexture, outputTexture, Add);
 		
 		if (enableFXAA) {
 			fxaa.apply(outputTexture);
