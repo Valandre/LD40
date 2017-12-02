@@ -4,7 +4,10 @@
 	},
 	"chars": {
 		"main_character": {
-			"model.FBX": "c019de95bcf0dfede8aee40e652cbc7e0cc3fd78"
+			"model.FBX": "c019de95bcf0dfede8aee40e652cbc7e0cc3fd78",
+			"Anim_run.FBX": "c9ec0d9d5d21019c7aca26244d966354936f2619",
+			"Anim_walk.FBX": "79ff4d99d1dc15bc11169bac5f599267fd8a1195",
+			"Anim_idle01.FBX": "82dda85ff78f484027b37280b2ea4dc3efa04e08"
 		}
 	}
 }

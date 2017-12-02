@@ -20,7 +20,7 @@ class Game extends hxd.App {
 		renderer.depthColorMap = hxd.Res.Gradients.test.toTexture();
 		loadRenderConfig(renderer);
 
-		s3d.camera.fovY = 60;
+		s3d.camera.fovY = 36;
 
 		s3d.lightSystem.ambientLight.set(0.5, 0.5, 0.5);
 		var dir = new h3d.scene.DirLight(new h3d.Vector( -0.3, -0.2, -1), s3d);
@@ -127,6 +127,16 @@ class Game extends hxd.App {
 	}
 
 	override function update(dt:Float) {
+		/////
+		//DEBUG ONLY
+		var speed = 1.;
+		if( K.isDown(K.SHIFT) )
+			speed *= K.isDown(K.CTRL) ? 0.1 : 5;
+		hxd.Timer.deltaT *= speed;
+		hxd.Timer.tmod *= speed;
+		dt *= speed;
+		/////////
+
 		updateKeys(dt);
 
 		cameraUpdate(dt);
@@ -134,13 +144,6 @@ class Game extends hxd.App {
 		event.update(dt);
 		for(e in entities)
 			e.update(dt);
-
-		/*
-		if(hero != null && Math.random() < 0.01) {
-			var d = 10 + Math.random() * 6;
-			var a = hxd.Math.srand(Math.PI);
-			new ent.Foe(hero.x + d * Math.cos(a), hero.y + d * Math.sin(a));
-		}*/
 	}
 
 	function loadRenderConfig(renderer : CustomRenderer) {

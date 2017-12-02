@@ -27,23 +27,19 @@ class Player extends Character
 	}
 
 	override function init() {
-		//obj = game.modelCache.loadModel(getModel());
+		model = getModel();
+		if(model == null) return;
 
-		obj = new h3d.scene.Object();
-		obj.x = x;
-		obj.y = y;
-		obj.z = z;
+		obj = game.modelCache.loadModel(model);
+		obj.setScale(0.012);
+		for(m in obj.getMeshes()) {
+			m.material.mainPass.enableLights = true;
+			m.material.shadows = true;
+		}
 		game.world.addChild(obj);
 
-		var c = new h3d.prim.Cube(0.9, 0.9, 2);
-		c.addNormals();
-		c.addUVs();
-		c.translate( -0.5, -0.5, 0);
-
-		var m = new h3d.scene.Mesh(c, obj);
-		m.material.mainPass.enableLights = true;
-		m.material.shadows = true;
-
+		var lamp = obj.getObjectByName("Lampe");
+		lamp.follow = obj.getObjectByName("B_lamp");
 	}
 
 	function get_moveSpeed() {
@@ -62,7 +58,7 @@ class Player extends Character
 		canMove = true;
 		acc = 0;
 		targetPos = null;
-		//play("stance_loop", {smooth : 0.2});
+		play("idle01", {smooth : 0.2});
 		setJob(Stand, null);
 	}
 
@@ -70,7 +66,7 @@ class Player extends Character
 		if(job == Move) return;
 		canMove = true;
 
-		//play("run_loop", {smooth : 0.2});
+		play("walk", {smooth : 0.2});
 
 		setJob(Move, function(dt) {
 			var a = new h3d.Vector(targetPos.x - x, targetPos.y - y);
@@ -79,7 +75,7 @@ class Player extends Character
 			var sp = moveSpeed * axisSpeed * acc * dt;
 			moveTo(a.x * sp, a.y * sp);
 			//trace(x, y);
-			//if(obj != null) obj.currentAnimation.speed = (body.velocity.length / moveSpeed) * 1.5;
+			if(obj != null) obj.currentAnimation.speed = (sp / moveSpeed / dt) * 1.5;
 		});
 
 		if(hxd.Math.distance(targetPos.x - x, targetPos.y - y) < 0.2) {
