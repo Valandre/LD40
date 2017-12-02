@@ -75,7 +75,7 @@ class Player extends Character
 			var sp = moveSpeed * axisSpeed * acc * dt;
 			moveTo(a.x * sp, a.y * sp);
 			//trace(x, y);
-			if(obj != null) obj.currentAnimation.speed = (sp / moveSpeed / dt) * 1.5;
+			if(obj != null) obj.currentAnimation.speed = (sp / moveSpeed / dt);
 		});
 
 		if(hxd.Math.distance(targetPos.x - x, targetPos.y - y) < 0.2) {
