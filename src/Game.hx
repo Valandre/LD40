@@ -15,10 +15,14 @@ class Game extends hxd.App {
 
 	override function init() {
 		renderer     = new CustomRenderer();
-		modelCache   = new CustomCache(renderer.hasMRT);
+		modelCache   = new CustomCache();
 		s3d.renderer = renderer;
 
-		initTestScene();
+		//renderer.enableSao = true;
+		renderer.enableFXAA = true;
+		renderer.depthColorMap = hxd.Res.Gradients.test.toTexture();
+
+		//initTestScene();
 
 		event = new hxd.WaitEvent();
 
@@ -111,7 +115,7 @@ class Game extends hxd.App {
 
 	function initTestScene() {
 		//renderer.enableSao = true;
-		//renderer.enableFXAA = true;
+		renderer.enableFXAA = true;
 		renderer.depthColorMap = hxd.Res.Gradients.test.toTexture();
 
 		s3d.lightSystem.ambientLight.set(1.0, 1.0, 1.0);
