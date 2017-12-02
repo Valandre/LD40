@@ -1,0 +1,57 @@
+{
+	"sheets": [
+		{
+			"name": "renderConfig",
+			"columns": [
+				{
+					"typeStr": "0",
+					"name": "id"
+				},
+				{
+					"typeStr": "16",
+					"name": "value",
+					"opt": true,
+					"display": null
+				}
+			],
+			"lines": [
+				{
+					"id": "DepthColorNear",
+					"value": 0
+				},
+				{
+					"id": "DepthColorFar",
+					"value": 500
+				},
+				{
+					"id": "EnableFxaa",
+					"value": true
+				},
+				{
+					"id": "EnableSao",
+					"value": false
+				},
+				{
+					"id": "SaoBias",
+					"value": 0.01
+				},
+				{
+					"id": "SaoIntensity",
+					"value": 0.5
+				},
+				{
+					"id": "SaoRadius",
+					"value": 3
+				},
+				{
+					"id": "SaoBlur",
+					"value": 2
+				}
+			],
+			"separators": [],
+			"props": {}
+		}
+	],
+	"customTypes": [],
+	"compress": false
+}

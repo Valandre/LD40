@@ -8,9 +8,14 @@ class CustomRenderer extends h3d.scene.Renderer {
 	public var fxaa        : h3d.pass.FXAA;
 
 	public var depthColorMap(default, set) : h3d.mat.Texture;
+	public var depthColorNear : Float;
+	public var depthColorFar  : Float;
 
-	var depthColorMapId : Int;
-	var depthColorMax   : Int;
+	var depthColorMapId  : Int;
+	var depthColorNearId : Int;
+	var depthColorFarId  : Int;
+	var depthColorMax    : Int;
+
 	var out : h3d.mat.Texture;
 
 	public function new() {
@@ -24,8 +29,12 @@ class CustomRenderer extends h3d.scene.Renderer {
 			[Value("output.color"), PackFloat(Value("output.depth")), PackNormal(Value("output.normal"))], null, true,
 			[engine.backgroundColor, 0xFF0000, 0x808080]);
 
-		depthColorMap   = h3d.mat.Texture.fromColor(0xFFFFFF);
-		depthColorMapId = hxsl.Globals.allocID("depthColor.currentMap");
+		depthColorMap    = h3d.mat.Texture.fromColor(0xFFFFFF);
+		depthColorNear   = 0.0;
+		depthColorFar    = 1000.0; 
+		depthColorMapId  = hxsl.Globals.allocID("depthColor.currentMap");
+		depthColorNearId = hxsl.Globals.allocID("depthColor.near");
+		depthColorFarId  = hxsl.Globals.allocID("depthColor.far");
 
 		sao = new h3d.pass.ScalableAO();
 		saoBlur = new h3d.pass.Blur(3, 3, 2);
@@ -46,7 +55,9 @@ class CustomRenderer extends h3d.scene.Renderer {
 	}
 
 	override function render() {
-		ctx.setGlobalID(depthColorMapId, depthColorMap);
+		ctx.setGlobalID(depthColorMapId,  depthColorMap);
+		ctx.setGlobalID(depthColorNearId, depthColorNear);
+		ctx.setGlobalID(depthColorFarId,  depthColorFar);
 
 		super.render();
 

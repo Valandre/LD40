@@ -14,15 +14,12 @@ class Game extends hxd.App {
 	public var hero : ent.Player;
 
 	override function init() {
-		renderer     = new CustomRenderer();
 		modelCache   = new CustomCache();
+		renderer     = new CustomRenderer();
 		s3d.renderer = renderer;
 
-		//renderer.enableSao = true;
-		renderer.enableFXAA = true;
 		renderer.depthColorMap = hxd.Res.Gradients.test.toTexture();
-
-		//initTestScene();
+		loadRenderConfig(renderer);
 
 		event = new hxd.WaitEvent();
 
@@ -107,25 +104,33 @@ class Game extends hxd.App {
 		}
 	}
 
-	static function main() {
-		inst = new Game();
-		hxd.res.Resource.LIVE_UPDATE = true;
-		hxd.Res.initLocal();
+	function loadRenderConfig(renderer : CustomRenderer) {
+		inline function getValue(k : Data.RenderConfigKind) {
+			return Data.renderConfig.get(k).value;
+		}
+
+		renderer.enableFXAA              = getValue(EnableFxaa);
+		renderer.depthColorNear          = getValue(DepthColorNear);
+		renderer.depthColorFar           = getValue(DepthColorFar);
+		renderer.enableSao               = getValue(EnableSao);
+		renderer.sao.shader.bias         = getValue(SaoBias);
+		renderer.sao.shader.intensity    = getValue(SaoIntensity);
+		renderer.sao.shader.sampleRadius = getValue(SaoRadius);
+		renderer.saoBlur.sigma           = getValue(SaoBlur);
 	}
 
-	function initTestScene() {
-		//renderer.enableSao = true;
-		renderer.enableFXAA = true;
-		renderer.depthColorMap = hxd.Res.Gradients.test.toTexture();
+	public function onCdbReload() {
+		loadRenderConfig(Std.instance(s3d.renderer, CustomRenderer));
+	}
 
-		s3d.lightSystem.ambientLight.set(1.0, 1.0, 1.0);
-		var obj = modelCache.loadModel(hxd.Res.Map.test);
-		s3d.addChild(obj);
-		s3d.camera.follow = {
-			pos    : obj.getObjectByName("Camera002"),
-			target : obj.getObjectByName("Camera002.Target"),
-		};
-
-		//new h3d.scene.CameraController(s3d).loadFromCamera();
+	static function main() {
+		hxd.res.Resource.LIVE_UPDATE = true;
+		hxd.Res.initLocal();
+		Data.load(hxd.Res.data.entry.getBytes().toString());
+		inst = new Game();
+		hxd.Res.data.watch(function() {
+			Data.load(hxd.Res.data.entry.getBytes().toString());
+			inst.onCdbReload();
+		});
 	}
 }
