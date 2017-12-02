@@ -49,7 +49,7 @@
 				},
 				{
 					"id": "EnableBloom",
-					"value": true
+					"value": false
 				}
 			],
 			"separators": [],
