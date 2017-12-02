@@ -29,7 +29,7 @@
 				},
 				{
 					"id": "EnableSao",
-					"value": false
+					"value": true
 				},
 				{
 					"id": "SaoBias",

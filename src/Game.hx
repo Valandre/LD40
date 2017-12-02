@@ -1,7 +1,6 @@
 import hxd.Res;
 import hxd.Key in K;
 
-
 class Game extends hxd.App {
 
 	public static var inst : Game;
@@ -20,6 +19,10 @@ class Game extends hxd.App {
 
 		renderer.depthColorMap = hxd.Res.Gradients.test.toTexture();
 		loadRenderConfig(renderer);
+
+		s3d.lightSystem.ambientLight.set(0.5, 0.5, 0.5);
+		var dir = new h3d.scene.DirLight(new h3d.Vector( -0.3, -0.2, -1), s3d);
+		dir.color.set(0.5, 0.5, 0.5);
 
 		event = new hxd.WaitEvent();
 

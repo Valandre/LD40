@@ -12,7 +12,7 @@ class CustomCache extends h3d.prim.ModelCache {
 			//m.color = new h3d.Vector(1.0, 0.0, 0.0, 1.0);
 			m.mainPass.enableLights = true;
 			m.shadows = true;
-			m.receiveShadows = false;
+			m.receiveShadows = true;
 			m.mainPass.addShader(new shader.DepthColor());
 		}
 		return obj;
