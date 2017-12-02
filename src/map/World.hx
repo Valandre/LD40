@@ -6,6 +6,7 @@ class World
 	var root : h3d.scene.Object;
 
 	var curStep = 0;
+	var stepFrames = [];
 
 	var cam : {
 		obj :  h3d.scene.Object,
@@ -33,6 +34,8 @@ class World
 			pos : m.getObjectByName("Camera001"),
 		}
 
+					//start, phone, river, shop, accident, graveyard, tombstone
+		stepFrames = [0, 80, 200, 300, 400, 500, 600, m.currentAnimation.frameCount - 1];
 		gotoStep(0);
 	}
 
@@ -42,18 +45,9 @@ class World
 
 
 	public function gotoStep(v : Int) {
+		curStep = v;
+		var frame = stepFrames[v];
 		var anim = cam.obj.currentAnimation;
-		var frame = switch(v) {
-			case 1 : 100;	//phone box
-			case 2 : 200;	//park
-			case 3 : 300;	//river
-			case 4 : 400;	//car shop
-			case 5 : 500; 	//accident
-			case 6 : 600;	//graveyard
-			case 7 : anim.frameCount - 1;	//tombstone
-			default : 0; 	//start
-		}
-
 		anim.setFrame(frame);
 		anim.sync();
 
@@ -64,6 +58,16 @@ class World
 			game.hero.z = 0;
 			game.initCamera(game.hero.x, game.hero.y, game.hero.z);
 		}
+	}
+
+	function getStepFromFrame(f : Float) {
+		var index = stepFrames.length;
+		while(index >= 0) {
+			var s = stepFrames[index];
+			if(s <= f) return index;
+			index--;
+		}
+		return 0;
 	}
 
 
@@ -87,6 +91,7 @@ class World
 
 		anim.setFrame(frame);
 		anim.sync();
+		curStep = getStepFromFrame(frame);
 		return cam.pos.localToGlobal();
 	}
 

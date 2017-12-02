@@ -109,11 +109,12 @@ class Game extends hxd.App {
 		for(e in entities)
 			e.update(dt);
 
+		/*
 		if(hero != null && Math.random() < 0.01) {
 			var d = 10 + Math.random() * 6;
 			var a = hxd.Math.srand(Math.PI);
 			new ent.Foe(hero.x + d * Math.cos(a), hero.y + d * Math.sin(a));
-		}
+		}*/
 	}
 
 	function loadRenderConfig(renderer : CustomRenderer) {
