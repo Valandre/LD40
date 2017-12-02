@@ -42,6 +42,7 @@ class World
 
 
 	public function gotoStep(v : Int) {
+		var anim = cam.obj.currentAnimation;
 		var frame = switch(v) {
 			case 1 : 100;	//phone box
 			case 2 : 200;	//park
@@ -49,12 +50,13 @@ class World
 			case 4 : 400;	//car shop
 			case 5 : 500; 	//accident
 			case 6 : 600;	//graveyard
-			default : 0;
+			case 7 : anim.frameCount - 1;	//tombstone
+			default : 0; 	//start
 		}
 
-		var anim = cam.obj.currentAnimation;
 		anim.setFrame(frame);
 		anim.sync();
+
 		if(game.hero != null) {
 			var p = cam.target.localToGlobal();
 			game.hero.x = p.x;
