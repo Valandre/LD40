@@ -36,8 +36,16 @@ class Game extends hxd.App {
 
 	function cameraUpdate(dt : Float) {
 		if(hero == null) return;
-		s3d.camera.target.x += (hero.x - s3d.camera.target.x) * 0.15 * dt;
-		s3d.camera.target.y += (hero.y - s3d.camera.target.y) * 0.15 * dt;
+
+		var cam = s3d.camera;
+		cam.target.x += (hero.x - cam.target.x) * 0.15 * dt;
+		cam.target.y += (hero.y - cam.target.y) * 0.15 * dt;
+		cam.target.z += (hero.z - cam.target.z) * 0.15 * dt;
+
+		var p = world.getCameraFramePos(hero.x, hero.y);
+		cam.pos.x += (p.x - cam.pos.x) * 0.01 * dt;
+		cam.pos.y += (p.y - cam.pos.y) * 0.01 * dt;
+		cam.pos.z += (p.z - cam.pos.z) * 0.01 * dt;
 	}
 
 	function updateKeys(dt : Float) {
