@@ -20,6 +20,8 @@ class Game extends hxd.App {
 		renderer.depthColorMap = hxd.Res.Gradients.test.toTexture();
 		loadRenderConfig(renderer);
 
+		s3d.camera.fovY = 60;
+
 		s3d.lightSystem.ambientLight.set(0.5, 0.5, 0.5);
 		var dir = new h3d.scene.DirLight(new h3d.Vector( -0.3, -0.2, -1), s3d);
 		dir.color.set(0.5, 0.5, 0.5);
@@ -47,6 +49,7 @@ class Game extends hxd.App {
 		cam.pos.z = p.z;
 	}
 
+	var tmp = new h2d.col.Point();
 	function cameraUpdate(dt : Float) {
 		if(hero == null) return;
 
@@ -56,20 +59,25 @@ class Game extends hxd.App {
 		cam.target.z += (hero.z - cam.target.z) * 0.05 * dt;
 
 		var p = world.getCameraFramePos(hero.x, hero.y);
-		var n = new h2d.col.Point(p.x - hero.x, p.y - hero.y);
-		var d = hxd.Math.distance(n.x, n.y);
+		tmp.x = p.x - hero.x;
+		tmp.y = p.y - hero.y;
+		var d = hxd.Math.distanceSq(tmp.x, tmp.y);
 
-		if(d < 20) {
-			n.normalize();
-			n.scale(20);
-			p.x = hero.x + n.x;
-			p.y = hero.y + n.y;
+		var r = 20;
+		if(d < r * r) {
+			tmp.normalize();
+			tmp.scale(r);
+			p.x = hero.x + tmp.x;
+			p.y = hero.y + tmp.y;
 		}
-		else if(d > 35) {
-			n.normalize();
-			n.scale(35);
-			p.x = hero.x + n.x;
-			p.y = hero.y + n.y;
+		else {
+			var r = 35;
+			if(d > r * r) {
+				tmp.normalize();
+				tmp.scale(r);
+				p.x = hero.x + tmp.x;
+				p.y = hero.y + tmp.y;
+			}
 		}
 
 		cam.pos.x += (p.x - cam.pos.x) * 0.05 * dt;

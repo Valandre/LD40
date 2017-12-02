@@ -1,5 +1,10 @@
 {
 	"Map": {
-		"Map01.FBX": "e5a91a5a6a5fc643b384aef3aa4946ab9ce23157"
+		"Map01.FBX": "402d91679ae10731b2841a4a3caa4a45a366d03b"
+	},
+	"chars": {
+		"main_character": {
+			"model.FBX": "c019de95bcf0dfede8aee40e652cbc7e0cc3fd78"
+		}
 	}
 }

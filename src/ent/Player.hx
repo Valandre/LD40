@@ -22,7 +22,13 @@ class Player extends Character
 		});
 	}
 
+	override function getModel():hxd.res.Model {
+		return hxd.Res.chars.main_character.model;
+	}
+
 	override function init() {
+		//obj = game.modelCache.loadModel(getModel());
+
 		obj = new h3d.scene.Object();
 		obj.x = x;
 		obj.y = y;
@@ -37,6 +43,7 @@ class Player extends Character
 		var m = new h3d.scene.Mesh(c, obj);
 		m.material.mainPass.enableLights = true;
 		m.material.shadows = true;
+
 	}
 
 	function get_moveSpeed() {
