@@ -26,7 +26,6 @@ class Game extends hxd.App {
 
 		event = new hxd.WaitEvent();
 
-		//
 		entities = [];
 		world = new map.World();
 		hero = new ent.Player();
@@ -113,13 +112,14 @@ class Game extends hxd.App {
 		}
 
 		renderer.enableFXAA              = getValue(EnableFxaa);
-		renderer.depthColorNear          = getValue(DepthColorNear);
-		renderer.depthColorFar           = getValue(DepthColorFar);
 		renderer.enableSao               = getValue(EnableSao);
 		renderer.sao.shader.bias         = getValue(SaoBias);
 		renderer.sao.shader.intensity    = getValue(SaoIntensity);
 		renderer.sao.shader.sampleRadius = getValue(SaoRadius);
 		renderer.saoBlur.sigma           = getValue(SaoBlur);
+
+		s3d.camera.zNear = getValue(CameraNear);
+		s3d.camera.zFar  = getValue(CameraFar);
 	}
 
 	public function onCdbReload() {

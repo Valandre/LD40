@@ -6,6 +6,7 @@ class CustomRenderer extends h3d.scene.Renderer {
 	public var enableEdges : Bool;
 	public var enableFXAA  : Bool;
 	public var fxaa        : h3d.pass.FXAA;
+	public var compositing : pass.Compositing;
 
 	public var depthColorMap(default, set) : h3d.mat.Texture;
 	public var depthColorNear : Float;
@@ -40,6 +41,7 @@ class CustomRenderer extends h3d.scene.Renderer {
 		saoBlur = new h3d.pass.Blur(3, 3, 2);
 		sao.shader.sampleRadius	= 0.2;
 
+		compositing = new pass.Compositing();
 		fxaa = new h3d.pass.FXAA();
 	}
 
@@ -59,6 +61,8 @@ class CustomRenderer extends h3d.scene.Renderer {
 		ctx.setGlobalID(depthColorNearId, depthColorNear);
 		ctx.setGlobalID(depthColorFarId,  depthColorFar);
 
+		compositing.setGlobals(ctx);
+
 		super.render();
 
 		var outputTexture : h3d.mat.Texture;
@@ -70,7 +74,7 @@ class CustomRenderer extends h3d.scene.Renderer {
 		normalTexture = def.getTexture(2);
 
 		if (enableSao) {
-			var saoTarget = allocTarget("sao",0,false);
+			var saoTarget = allocTarget("sao", 0, false);
 			setTarget(saoTarget);
 			sao.apply(depthTexture, normalTexture, ctx.camera);
 			resetTarget();
@@ -78,8 +82,15 @@ class CustomRenderer extends h3d.scene.Renderer {
 			h3d.pass.Copy.run(saoTarget, outputTexture, Multiply);
 		}
 
-		if (enableFXAA) fxaa.apply(outputTexture);
-		else h3d.pass.Copy.run(outputTexture, null, None);
+		if (enableFXAA) {
+			var tmp = allocTarget("fxaaTmp", 0, false);
+			setTarget(tmp);
+			compositing.apply(outputTexture, depthTexture, normalTexture, ctx.camera);
+			resetTarget();
+			fxaa.apply(tmp);
+		} else {
+			compositing.apply(outputTexture, depthTexture, normalTexture, ctx.camera);
+		}
 	}
 
 }

@@ -3,10 +3,13 @@ package shader;
 class DepthColor extends hxsl.Shader {
 
 	static var SRC = {
+		@global var camera : {
+			var zNear : Float;
+			var zFar : Float;
+		};
+
 		@global var depthColor : {
 			var currentMap      : Sampler2D;
-			var near            : Float;
-			var far             : Float;
 			var transitionMap   : Sampler2D;
 			var transitionRatio : Float;
 		};
@@ -15,15 +18,16 @@ class DepthColor extends hxsl.Shader {
 		var projectedPosition : Vec4;
 
 		function fragment() {
-			var q = (projectedPosition.z - depthColor.near) 
-			      / (depthColor.far - depthColor.near);
+			var q = (projectedPosition.z - camera.zNear) 
+			      / (camera.zFar - camera.zNear);
 			q = saturate(q);
-			pixelColor.rgb = depthColor.currentMap.get(vec2(q, 0)).rgb;
+			pixelColor.rgb = depthColor.currentMap.get(vec2(q, 0.5)).rgb;
 		}
 	};
 
 	public function new() {
 		super();
+		priority = 11;
 	}
 
 }

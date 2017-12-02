@@ -16,11 +16,11 @@
 			],
 			"lines": [
 				{
-					"id": "DepthColorNear",
-					"value": 0
+					"id": "CameraNear",
+					"value": 0.2
 				},
 				{
-					"id": "DepthColorFar",
+					"id": "CameraFar",
 					"value": 500
 				},
 				{
@@ -37,7 +37,7 @@
 				},
 				{
 					"id": "SaoIntensity",
-					"value": 0.5
+					"value": 1
 				},
 				{
 					"id": "SaoRadius",
