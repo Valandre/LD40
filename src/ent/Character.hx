@@ -12,6 +12,7 @@ enum JobKind {
 	Stand;
 	Move;
 	Dead;
+	Spawn;
 }
 
 class Character extends ent.Entity {
@@ -19,6 +20,7 @@ class Character extends ent.Entity {
 	var job : JobKind;
 	var currentJobFunc : Float -> Void;
 	var currentJobOnStop : Void -> Void;
+	var speedRot = 0.15;
 
 	public function new(kind, x, y, z) {
 		this.kind = kind;
@@ -62,9 +64,15 @@ class Character extends ent.Entity {
 		});
 	}
 
+	function moveTo(dx : Float, dy : Float) {
+		targetRotation = hxd.Math.atan2(dy, dx);
+		x += dx;
+		y += dy;
+	}
+
 	function updateAngle(dt : Float) {
 		if( rotation == targetRotation ) return false;
-		rotation = hxd.Math.angleMove(rotation, targetRotation, (0.05 + Math.abs(hxd.Math.angle(rotation - targetRotation))) * 0.15 * dt);
+		rotation = hxd.Math.angleMove(rotation, targetRotation, (0.05 + Math.abs(hxd.Math.angle(rotation - targetRotation))) * speedRot * dt);
 		return true;
 	}
 

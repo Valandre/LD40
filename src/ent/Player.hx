@@ -29,7 +29,7 @@ class Player extends Character
 		obj.z = z;
 		game.world.addChild(obj);
 
-		var c = new h3d.prim.Cube(1, 1, 2);
+		var c = new h3d.prim.Cube(0.9, 0.9, 2);
 		c.addNormals();
 		c.addUVs();
 		c.translate( -0.5, -0.5, 0);
@@ -67,12 +67,6 @@ class Player extends Character
 			stand();
 			return;
 		}
-	}
-
-	function moveTo(dx : Float, dy : Float) {
-		targetRotation = hxd.Math.atan2(dy, dx);
-		x += dx;
-		y += dy;
 	}
 
 	function getCameraAng() {
