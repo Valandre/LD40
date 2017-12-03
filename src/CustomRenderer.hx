@@ -56,7 +56,7 @@ class CustomRenderer extends h3d.scene.Renderer {
 		fxaa = new h3d.pass.FXAA();
 		
 		bloomExtract = new pass.BloomExtract();
-		bloomBlur = new h3d.pass.Blur(3, 3, 2);
+		bloomBlur = new h3d.pass.Blur(4, 5, 3);
 	}
 
 	function set_depthColorMap(v : h3d.mat.Texture) {
@@ -106,16 +106,14 @@ class CustomRenderer extends h3d.scene.Renderer {
 			outputTexture = fogTarget;
 		}
 
-		var bloomTexture = allocTarget("bloom", 1, false);
-		if (enableBloom) {
-			var bloomTexture = allocTarget("bloom", 1, false);
-			h3d.pass.Copy.run(emissiveTexture, bloomTexture, None);
-			bloomExtract.apply(outputTexture, bloomTexture);
-			bloomBlur.apply(bloomTexture, allocTarget("blurBloom", 1, false));
-			h3d.pass.Copy.run(bloomTexture, outputTexture, Add);
-		}
-
 		h3d.pass.Copy.run(emissiveTexture, outputTexture, Add);
+
+		if (enableBloom) {
+			var bloomTarget = allocTarget("bloom", 1, false);
+			h3d.pass.Copy.run(emissiveTexture, bloomTarget, None);
+			bloomBlur.apply(bloomTarget, allocTarget("emissiveBlur", 1, false));
+			h3d.pass.Copy.run(bloomTarget, outputTexture, Add);
+		}
 		
 		if (enableFXAA) {
 			fxaa.apply(outputTexture);

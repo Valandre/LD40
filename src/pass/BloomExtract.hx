@@ -25,7 +25,7 @@ class BloomExtract extends h3d.pass.ScreenFx<BloomExtractShader> {
 	public function apply(from : h3d.mat.Texture, to : h3d.mat.Texture) {
 		engine.pushTarget(to);
 		shader.texture = from;
-		pass.setBlendMode(Add);
+		pass.setBlendMode(None);
 		render();
 		shader.texture = null;
 		engine.popTarget();
