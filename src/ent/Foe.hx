@@ -57,7 +57,7 @@ class Foe extends Character
 		obj.x = x;
 		obj.y = y;
 		obj.z = z;
-		obj.scaleZ *= 0.9 + hxd.Math.random(0.3);
+		obj.scaleZ *= 0.9 + hxd.Math.random(0.25);
 		game.world.addChild(obj);
 
 		rotation = targetRotation = pl != null ? hxd.Math.atan2(pl.y - y, pl.x - x) : hxd.Math.srand(Math.PI);
