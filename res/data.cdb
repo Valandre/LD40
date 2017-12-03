@@ -17,11 +17,11 @@
 			"lines": [
 				{
 					"id": "CameraNear",
-					"value": 0.2
+					"value": 0.1
 				},
 				{
 					"id": "CameraFar",
-					"value": 430
+					"value": 650
 				},
 				{
 					"id": "EnableFxaa",
