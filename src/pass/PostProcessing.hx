@@ -51,7 +51,7 @@ class PostProcessingShader extends h3d.shader.ScreenShader {
 			if (uv.y < 0.0 || uv.y > 1.0) color *= 0.0;
 
 			// scanlines
-			var s = sin(time * 10 + uv.y * tsize.y);
+			var s = sin(time * -10.0 + uv.y * tsize.y);
 			color *= vec3(0.96 + 0.04 * s);
 
 			// vignette
