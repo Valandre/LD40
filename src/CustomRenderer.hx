@@ -7,10 +7,7 @@ class CustomRenderer extends h3d.scene.Renderer {
 	public var fxaa         : h3d.pass.FXAA;
 	public var fog          : pass.Fog;
 	public var all          : h3d.pass.MRT;
-
-	public var enableBloom  : Bool;
-	public var bloomExtract : pass.BloomExtract;
-	public var bloomBlur    : h3d.pass.Blur;
+	public var emissive     : pass.Emissive;
 
 	public var depthColorMap(default, set) : h3d.mat.Texture;
 	public var depthColorNear : Float;
@@ -55,9 +52,12 @@ class CustomRenderer extends h3d.scene.Renderer {
 
 		fog  = new pass.Fog();
 		fxaa = new h3d.pass.FXAA();
-		
-		bloomExtract = new pass.BloomExtract();
-		bloomBlur = new h3d.pass.Blur(4, 5, 3);
+
+		emissive = new pass.Emissive();
+		emissive.reduceSize   = 1;
+		emissive.blur.passes  = 5;
+		emissive.blur.quality = 4;
+		emissive.blur.sigma   = 2;
 	}
 
 	function set_depthColorMap(v : h3d.mat.Texture) {
@@ -74,25 +74,31 @@ class CustomRenderer extends h3d.scene.Renderer {
 
 		shadow.draw(get("shadow"));
 
-		all.setContext(this.ctx);
+		all.setContext(ctx);
 		all.draw(get("default"));
 
-		var colorTex    = all.getTexture(0);
-		var depthTex    = all.getTexture(1);
-		var normalTex   = all.getTexture(2);
+		var colorTex  = all.getTexture(0);
+		var depthTex  = all.getTexture(1);
+		var normalTex = all.getTexture(2);
 
 		setTarget(colorTex);
 		draw("alpha");
 		draw("additive");
 		resetTarget();
 
+		emissive.setContext(ctx);
+		//emissive.drawInto(get("emissive"), emissiveTex);
+		//h3d.pass.Copy.run(emissiveTex, colorTex, Add);
+		emissive.draw(get("emissive"));
+		h3d.pass.Copy.run(emissive.getTexture(), colorTex, Add);
+		
 		if (enableSao) {
-			// apply soa
-			var saoTarget = allocTarget("sao", 0, false);
+			// apply sao
+			var saoTarget = allocTarget("sao", 1, false);
 			setTarget(saoTarget);
 			sao.apply(depthTex, normalTex, ctx.camera);
 			resetTarget();
-			saoBlur.apply(saoTarget, allocTarget("saoBlurTmp", 0, false));
+			saoBlur.apply(saoTarget, allocTarget("saoBlurTmp", 1, false));
 			h3d.pass.Copy.run(saoTarget, colorTex, Multiply);
 		}
 
@@ -105,8 +111,10 @@ class CustomRenderer extends h3d.scene.Renderer {
 			colorTex = fogTarget;
 		}
 
-		h3d.pass.Copy.run(colorTex, null, None);
+		//h3d.pass.Copy.run(emissiveTex, null, None);
 		//h3d.pass.Copy.run(additiveTex, null, Add);
+		h3d.pass.Copy.run(colorTex, null, None);
+		//h3d.pass.Copy.run(emissive.getTexture(0), null, None);
 
 		/*h3d.pass.Copy.run(emissiveTexture, outputTexture, Add);
 

@@ -23,6 +23,7 @@ class CustomCache extends h3d.prim.ModelCache {
 					name += "_emi.png";
 					if (hxd.Res.loader.exists(name)) {
 						var p = new h3d.mat.Pass("emissive", m.mainPass);
+						p.depth(false, LessEqual);
 						p.addShader(new shader.EmissiveMap(hxd.Res.load(name).toTexture()));
 						m.addPass(p);
 					}
