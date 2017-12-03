@@ -18,14 +18,18 @@ class Player extends Character
 	var lampPower = 1.;
 	var lampDist = 10.;
 	var lampArc = Math.PI * 0.25;
+	var lampBattery = 60.;
 
 	var tmp = new h2d.col.Point();
 	var lampLight : h3d.scene.PointLight;
 	var spotLight : scene.SpotLight;
+	var matLight : h3d.mat.Material;
+
+	var spotColor = new h3d.Vector(1, 1, 0.6);
 
 	public function new(x = 0., y = 0., z = 0.) {
 		super(EPlayer, x, y, z);
-		walkRef = 0.05;
+		walkRef = 0.04;
 		runRef = 0.14;
 		ray = 0.4;
 		stand();
@@ -50,6 +54,8 @@ class Player extends Character
 		}
 		game.world.addChild(obj);
 
+		matLight = obj.getMaterialByName("Mat_light");
+
 		var lamp = obj.getObjectByName("Lampe");
 		lamp.follow = obj.getObjectByName("B_lamp");
 
@@ -62,11 +68,11 @@ class Player extends Character
 
 		spotLight = new scene.SpotLight(obj);
 		spotLight.setPos(-20, 0, 0);
-		spotLight.color.set(1.0, 1.0, 0.6);
+		spotLight.color.setColor(spotColor.toColor());
 
 		spotLight.direction.set(-1, 0, 0);
 		spotLight.follow = obj.getObjectByName("B_lamp");
-		spotLight.params.set(1.0, 0.22, 0.20);
+		spotLight.params.set(1.0, 0.22, 0.20, 0);
 		spotLight.setAngle(Math.PI / 8, Math.PI / 8);
 		game.world.addChild(spotLight);
 	}
@@ -99,9 +105,9 @@ class Player extends Character
 			acc = hxd.Math.min(1, acc + 0.05 * dt);
 			var sp = moveSpeed * axisSpeed * acc * dt;
 			if(canMove) {
-				play(moveSpeed > 0.1 ? "run" : "walk", {smooth : 0.2});
+				play(moveSpeed > 0.08 ? "run" : "walk", {smooth : 0.2});
 				moveTo(a.x * sp, a.y * sp);
-				if(obj != null) obj.currentAnimation.speed = acc * moveSpeed / (moveSpeed > 0.1 ? runRef : walkRef);
+				if(obj != null) obj.currentAnimation.speed = acc * moveSpeed / (moveSpeed > 0.08 ? runRef : walkRef);
 			}
 			else {
 				targetRotation = hxd.Math.atan2(a.y, a.x);
@@ -229,7 +235,28 @@ class Player extends Character
 		else stand();
 	}
 
+	var lightCoef = 1.;
+	function updateBattery(dt : Float) {
+		if(!lampActive) return;
+		lampBattery -= dt / 60;
+		lampActive = lampBattery > 0;
+
+		var min = 10;
+		if(lampBattery < min) {
+			var v = lampBattery <= 0 ? 0 : hxd.Math.max(0, lightCoef);
+			matLight.color.w = v;
+			lampLight.color.set(v * spotColor.x, v * spotColor.y, v * spotColor.z);
+			spotLight.color.set(v * spotColor.x, v * spotColor.y, v * spotColor.z);
+
+			if(Math.random() < 0.1)
+				lightCoef = Math.max(lampBattery / min, lightCoef - 0.25);
+			else lightCoef += 0.015 * dt;
+		}
+
+	}
+
 	override public function update(dt:Float) {
+		updateBattery(dt);
 		checkHurt();
 		if(!game.world.cam.locked && job != Dead) {
 			updateKeys(dt);

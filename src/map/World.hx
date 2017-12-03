@@ -44,17 +44,20 @@ class World
 		m.getObjectByName("Landscape").lightCameraCenter = true;
 		root.addChild(m);
 
-		for (m in m.getMeshes())
-		for (o in m) if (o.name.indexOf("Conelight") == 0) {
-			// spawn cone light
-			var l = new scene.SpotLight();
-			l.direction.set(-1, 0, 0);
-			l.color.setColor(0xf7cf78);
-			l.color.scale3(1.5);
-			l.params.set(1.0, 0.014, 0.0007);
-			l.setAngle(Math.PI / 16, Math.PI / 24);
-			l.follow = o;
-			addChild(l);
+		for (m in m.getMeshes()) {
+			if(m.name == "Road") m.visible = false;
+			if(m.name.substr(0, 4) == "Trap") m.visible = false;
+			for (o in m) if (o.name.indexOf("Conelight") == 0) {
+				// spawn cone light
+				var l = new scene.SpotLight();
+				l.direction.set(-1, 0, 0);
+				l.color.setColor(0xf7cf78);
+				l.color.scale3(1.5);
+				l.params.set(1.0, 0.014, 0.0007);
+				l.setAngle(Math.PI / 16, Math.PI / 24);
+				l.follow = o;
+				addChild(l);
+			}
 		}
 
 		cam = {
@@ -85,7 +88,7 @@ class World
 
 
 		//start, phone, park, river, shop, accident, graveyard, tombstone
-		stepFrames = [0, 1100, 1800, 2850, 3800, 4990, 5100, m.currentAnimation.frameCount - 1];
+		stepFrames = [0, 1100, 1950, 2850, 3800, 4990, 5100, m.currentAnimation.frameCount - 1];
 
 		game.event.wait(0, function() {
 			step = Start;
@@ -123,9 +126,19 @@ class World
 
 	function stepUpdate(dt : Float) {
 		if(step == null) return;
+		if(!Game.PREFS.mobSpawn) return;
+
+		inline function setFrontSpawn(dmax) {
+			var da = hxd.Math.min(hxd.Math.random(Math.PI), hxd.Math.random(Math.PI)) * (hxd.Math.random() < 0.5 ? -1 : 1);
+			var a = game.hero.targetRotation + da;
+			var d = (0.2 + 0.8 * (1 - Math.abs(da) / Math.PI)) * dmax;
+			var p = cam.target.localToGlobal();
+			new ent.Foe(p.x + d * Math.cos(a), p.y + d * Math.sin(a), 0);
+		}
+
 		switch (step) {
 			case Phone:
-				if(Game.PREFS.mobSpawn && Math.random() < 0.01) {
+				if(Math.random() < 0.01) {
 					var p = cam.target.localToGlobal();
 					var d = 12 + hxd.Math.random(8);
 					var a = hxd.Math.srand(Math.PI);
@@ -133,7 +146,7 @@ class World
 				}
 
 			case Park:
-				if(Game.PREFS.mobSpawn && Math.random() < 0.015) {
+				if(Math.random() < 0.015) {
 					var p = cam.target.localToGlobal();
 					var d = 10 + hxd.Math.random(8);
 					var a = hxd.Math.srand(Math.PI);
@@ -141,36 +154,16 @@ class World
 				}
 
 			case River:
-				if(Game.PREFS.mobSpawn && Math.random() < 0.025) {
-					var p = cam.target.localToGlobal();
-					var d = 8 + hxd.Math.random(8);
-					var a = hxd.Math.srand(Math.PI);
-					new ent.Foe(p.x + d * Math.cos(a), p.y + d * Math.sin(a), 0);
-				}
+				if(Math.random() < 0.025) setFrontSpawn(16);
 
 			case Shop:
-				if(Game.PREFS.mobSpawn && Math.random() < 0.05) {
-					var p = cam.target.localToGlobal();
-					var d = 8 + hxd.Math.random(8);
-					var a = hxd.Math.srand(Math.PI);
-					new ent.Foe(p.x + d * Math.cos(a), p.y + d * Math.sin(a), 0);
-				}
+				if(Math.random() < 0.05) setFrontSpawn(20);
 
 			case Accident:
-				if(Game.PREFS.mobSpawn && Math.random() < 0.1) {
-					var p = cam.target.localToGlobal();
-					var d = 6 + hxd.Math.random(8);
-					var a = hxd.Math.srand(Math.PI);
-					new ent.Foe(p.x + d * Math.cos(a), p.y + d * Math.sin(a), 0);
-				}
+				if(Math.random() < 0.1) setFrontSpawn(24);
 
 			case Forest:
-				if(Game.PREFS.mobSpawn && Math.random() < 0.2) {
-					var p = cam.target.localToGlobal();
-					var d = 6 + hxd.Math.random(8);
-					var a = hxd.Math.srand(Math.PI);
-					new ent.Foe(p.x + d * Math.cos(a), p.y + d * Math.sin(a), 0);
-				}
+				if(Math.random() < 0.2) setFrontSpawn(30);
 			default:
 		}
 	}
