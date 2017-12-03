@@ -6,6 +6,7 @@ class CustomRenderer extends h3d.scene.Renderer {
 	public var enableFXAA   : Bool;
 	public var fxaa         : h3d.pass.FXAA;
 	public var fog          : pass.Fog;
+	public var all          : h3d.pass.MRT;
 
 	public var enableBloom  : Bool;
 	public var bloomExtract : pass.BloomExtract;
@@ -29,17 +30,17 @@ class CustomRenderer extends h3d.scene.Renderer {
 		if (!engine.driver.hasFeature(MultipleRenderTargets))
 			throw "engine must have MRT";
 
-		def = new h3d.pass.MRT([
+		all = new h3d.pass.MRT([
 			Value("output.color"), 
 			PackFloat(Value("output.depth")), 
-			PackNormal(Value("output.normal")), 
-			Value("output.emissive")
+			PackNormal(Value("output.normal"))
 		], null, true, [
 			engine.backgroundColor, 
 			0xFF0000, 
 			0x808080, 
-			0
 		]);
+
+		setPass("all", all);
 
 		depthColorMap    = h3d.mat.Texture.fromColor(0xFFFFFF);
 		depthColorNear   = 0.0;
@@ -62,11 +63,7 @@ class CustomRenderer extends h3d.scene.Renderer {
 	function set_depthColorMap(v : h3d.mat.Texture) {
 		var pixels = v.capturePixels();
 		depthColorMax = pixels.getPixel(pixels.width - 1, 0);
-
-		var def = Std.instance(def, h3d.pass.MRT);
-		if (def != null) def.clearColors[0] = depthColorMax;
-		else h3d.Engine.getCurrent().backgroundColor = depthColorMax;
-
+		all.clearColors[0] = depthColorMax;
 		return depthColorMap = v;
 	}
 
@@ -75,38 +72,46 @@ class CustomRenderer extends h3d.scene.Renderer {
 		ctx.setGlobalID(depthColorNearId, depthColorNear);
 		ctx.setGlobalID(depthColorFarId,  depthColorFar);
 
-		super.render();
+		shadow.draw(get("shadow"));
 
-		var outputTexture   = def.getTexture(0);
-		var depthTexture    = def.getTexture(1);
-		var normalTexture   = def.getTexture(2);
-		var emissiveTexture = def.getTexture(3);
+		all.setContext(this.ctx);
+		all.draw(get("default"));
+
+		var colorTex    = all.getTexture(0);
+		var depthTex    = all.getTexture(1);
+		var normalTex   = all.getTexture(2);
+		var additiveTex = allocTarget("additive", 0, true);
+		
+		setTarget(additiveTex);
+		clear(0);
+		draw("additive");
+		resetTarget();
+
+		this.ctx.engine.pushTargets([colorTex, depthTex, normalTex]);
 
 		if (enableSao) {
 			// apply soa
 			var saoTarget = allocTarget("sao", 0, false);
 			setTarget(saoTarget);
-			sao.apply(depthTexture, normalTexture, ctx.camera);
+			sao.apply(depthTex, normalTex, ctx.camera);
 			resetTarget();
 			saoBlur.apply(saoTarget, allocTarget("saoBlurTmp", 0, false));
-			h3d.pass.Copy.run(saoTarget, outputTexture, Multiply);
+			h3d.pass.Copy.run(saoTarget, colorTex, Multiply);
 		}
 
 		{	// apply fog
 			var fogTarget = allocTarget("fog", 0, false);
 			fog.setGlobals(ctx);
 			setTarget(fogTarget);
-			fog.apply(
-				outputTexture, 
-				depthTexture, 
-				normalTexture, 
-				ctx.camera
-			);
+			fog.apply(colorTex, depthTex, normalTex, ctx.camera);
 			resetTarget();
-			outputTexture = fogTarget;
+			colorTex = fogTarget;
 		}
 
-		h3d.pass.Copy.run(emissiveTexture, outputTexture, Add);
+		h3d.pass.Copy.run(colorTex, null, None);
+		h3d.pass.Copy.run(additiveTex, null, Add);
+
+		/*h3d.pass.Copy.run(emissiveTexture, outputTexture, Add);
 
 		if (enableBloom) {
 			var bloomTarget = allocTarget("bloom", 1, false);
@@ -120,6 +125,8 @@ class CustomRenderer extends h3d.scene.Renderer {
 		} else {
 			h3d.pass.Copy.run(outputTexture, null, None);
 		}
+
+		h3d.pass.Copy.run(additiveTexture, null, None);*/
 	}
 
 }

@@ -8,20 +8,25 @@ class CustomCache extends h3d.prim.ModelCache {
 	override function loadModel(res : hxd.res.Model) {
 		var obj = super.loadModel(res);
 		for (m in obj.getMaterials()) {
-			//m.texture = null;
-			//m.color = new h3d.Vector(1.0, 0.0, 0.0, 1.0);
-			m.mainPass.addShader(new shader.DepthColor());
-			m.mainPass.enableLights = true;
-			m.shadows = true;
-			
-			if (m.texture != null) {
-				m.textureShader.priority = 12;
-				var name = haxe.io.Path.withoutExtension(m.texture.name);
-				name += "_emi.png";
-				if (hxd.Res.loader.exists(name)) {
-					m.mainPass.addShader(
-						new shader.EmissiveMap(hxd.Res.load(name).toTexture())
-					);
+			if (m.blendMode == Add) {
+				m.mainPass.setPassName("additive");
+				m.mainPass.enableLights = false;
+				m.shadows = false;
+			} else {
+				m.mainPass.addShader(new shader.DepthColor());
+				m.mainPass.enableLights = true;
+				m.shadows = true;
+				
+				if (m.texture != null) {
+					m.textureShader.priority = 12;
+					var name = haxe.io.Path.withoutExtension(m.texture.name);
+					name += "_emi.png";
+					if (hxd.Res.loader.exists(name)) {
+						var p = new h3d.mat.Pass("emissive", m.mainPass);
+						p.addShader(new shader.EmissiveMap(hxd.Res.load(name).toTexture()));
+						m.addPass(p);
+					}
+					
 				}
 			}
 		}
