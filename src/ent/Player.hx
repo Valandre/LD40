@@ -19,6 +19,8 @@ class Player extends Character
 	var lampArc = Math.PI * 0.25;
 
 	var tmp = new h2d.col.Point();
+	var lampLight : h3d.scene.PointLight;
+	var spotLight : scene.SpotLight;
 
 	public function new(x = 0., y = 0., z = 0.) {
 		super(EPlayer, x, y, z);
@@ -49,6 +51,23 @@ class Player extends Character
 
 		var lamp = obj.getObjectByName("Lampe");
 		lamp.follow = obj.getObjectByName("B_lamp");
+
+		lampLight = new h3d.scene.PointLight(obj);
+		lampLight.setPos(-20, 0, 0);
+		lampLight.color.set(1.0, 1.0, 0.6);
+		lampLight.follow = obj.getObjectByName("B_lamp");
+		lampLight.params.set(1.0, 0.7, 1.8);
+		game.world.addChild(lampLight);
+
+		spotLight = new scene.SpotLight(obj);
+		spotLight.setPos(-20, 0, 0);
+		spotLight.color.set(1.0, 1.0, 0.6);
+		spotLight.color.scale3(4);
+
+		spotLight.direction.set(-1, 0, 0);
+		spotLight.follow = obj.getObjectByName("B_lamp");
+		spotLight.params.set(1.0, 0.014, 0.0007);
+		game.world.addChild(spotLight);
 	}
 
 	override function get_moveSpeed() {

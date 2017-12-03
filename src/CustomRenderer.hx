@@ -87,8 +87,6 @@ class CustomRenderer extends h3d.scene.Renderer {
 		resetTarget();
 
 		emissive.setContext(ctx);
-		//emissive.drawInto(get("emissive"), emissiveTex);
-		//h3d.pass.Copy.run(emissiveTex, colorTex, Add);
 		emissive.draw(get("emissive"));
 		h3d.pass.Copy.run(emissive.getTexture(), colorTex, Add);
 		
@@ -111,27 +109,13 @@ class CustomRenderer extends h3d.scene.Renderer {
 			colorTex = fogTarget;
 		}
 
-		//h3d.pass.Copy.run(emissiveTex, null, None);
-		//h3d.pass.Copy.run(additiveTex, null, Add);
+
 		h3d.pass.Copy.run(colorTex, null, None);
-		//h3d.pass.Copy.run(emissive.getTexture(0), null, None);
-
-		/*h3d.pass.Copy.run(emissiveTexture, outputTexture, Add);
-
-		if (enableBloom) {
-			var bloomTarget = allocTarget("bloom", 1, false);
-			h3d.pass.Copy.run(emissiveTexture, bloomTarget, None);
-			bloomBlur.apply(bloomTarget, allocTarget("emissiveBlur", 1, false));
-			h3d.pass.Copy.run(bloomTarget, outputTexture, Add);
-		}
-		
 		if (enableFXAA) {
-			fxaa.apply(outputTexture);
+			fxaa.apply(colorTex);
 		} else {
-			h3d.pass.Copy.run(outputTexture, null, None);
+			h3d.pass.Copy.run(colorTex, null, None);
 		}
-
-		h3d.pass.Copy.run(additiveTexture, null, None);*/
 	}
 
 }
