@@ -145,6 +145,17 @@ class Game extends hxd.App {
 		if(K.isPressed(K.NUMBER_6)) setStep(5);
 		if(K.isPressed(K.NUMBER_7)) setStep(6);
 		if(K.isPressed(K.NUMBER_8)) setStep(7);
+		/*
+		if(hero != null) {
+			@:privateAccess {
+				//trace(hero.pad.isPressed(hxd.Pad.DEFAULT_CONFIG.A));
+				if(hero.pad.isPressed(hxd.Pad.DEFAULT_CONFIG.LB))
+					setStep(hxd.Math.imax(0 , world.stepId - 1));
+				else if(hero.pad.isPressed(hxd.Pad.DEFAULT_CONFIG.RB))
+					setStep(hxd.Math.imin(world.allSteps.length - 1, world.stepId + 1));
+			}
+		}*/
+
 
 		if(K.isPressed(K.BACKSPACE)) {
 			setStep(0);
@@ -197,8 +208,9 @@ class Game extends hxd.App {
 	override function update(dt:Float) {
 		/////
 		//DEBUG ONLY
+
 		var speed = pause ? 0 : 1.;
-		if( K.isDown(K.SHIFT) )
+		if( K.isDown(K.SHIFT) || (hero != null && @:privateAccess hero.pad.isDown(hxd.Pad.DEFAULT_CONFIG.RB)))
 			speed *= K.isDown(K.CTRL) ? 0.1 : 5;
 		hxd.Timer.deltaT *= speed;
 		hxd.Timer.tmod *= speed;
