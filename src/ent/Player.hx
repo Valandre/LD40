@@ -75,7 +75,7 @@ class Player extends Character
 		//return 0.2;
 		return switch(game.world.step) {
 			case Start, Phone : 0.05;
-			case Park, River : 0.08;
+			case Park, River : 0.095;
 			case Shop: 0.12;
 			case Accident, Forest, Tombstone : 0.15;
 			default : 0.15;
@@ -140,16 +140,19 @@ class Player extends Character
 		var da = lampArc * 0.5;
 
 		for(e in game.foes) {
-			if(e.job == Dead) continue;
+			if(!e.canBeHit()) continue;
 
 			//for(m in e.obj.getMeshes())
 				//m.material.color.r = 0;
 
 			tmp.x = e.x - x;
 			tmp.y = e.y - y;
-			if(hxd.Math.distanceSq(tmp.x, tmp.y) > lampDist * lampDist) continue;
+			var d2 = hxd.Math.distanceSq(tmp.x, tmp.y);
+			if(d2 > lampDist * lampDist) continue;
 			if(Math.abs(hxd.Math.angle(rotation - hxd.Math.atan2(tmp.y, tmp.x))) > da) continue;
-			e.hit(lampPower * dt);
+
+			var d = 1 - hxd.Math.min(1, Math.sqrt(d2) / lampDist * 0.5);
+			e.hit(lampPower * d * dt);
 			//for(m in e.obj.getMeshes())
 				//m.material.color.r = 1;
 
@@ -174,10 +177,10 @@ class Player extends Character
 
 	function checkHurt() {
 		for(e in game.foes) {
-			if(e.job == Dead) continue;
+			if(e.job == Dead || e.job == Spawn) continue;
 			tmp.x = e.x - x;
 			tmp.y = e.y - y;
-			var r = 1 + ray + e.ray;
+			var r = ray + e.ray;
 			if(hxd.Math.distanceSq(tmp.x, tmp.y) > r * r) continue;
 			e.attack();
 		}

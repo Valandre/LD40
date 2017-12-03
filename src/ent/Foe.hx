@@ -35,8 +35,8 @@ class Foe extends Character
 
 	override function get_moveSpeed() {
 		return switch(game.world.step) {
-			case Phone, River : 0.02;
-			case Park: 0.04;
+			case Phone, Park : 0.02;
+			case River: 0.04;
 			case Shop : 0.06;
 			case Accident, Forest, Tombstone : 0.1;
 			default : 0.;
@@ -64,12 +64,17 @@ class Foe extends Character
 		rotation = targetRotation = pl != null ? hxd.Math.atan2(pl.y - y, pl.x - x) : hxd.Math.srand(Math.PI);
 	}
 
+	public function canBeHit() {
+		return job != Dead && (job != Spawn || obj.currentAnimation.frame > obj.currentAnimation.frameCount * 0.5);
+	}
+
 	function spawn() {
 		if(job == Spawn) return;
 		speedRot = 0.;
 		acc = 0;
 		targetPos = null;
 		play("shadows_spawn", {smooth : 0.2, loop : false, onEnd : stand});
+		setJob(Spawn, null);
 	}
 
 	function stand() {
@@ -110,19 +115,18 @@ class Foe extends Character
 		if(job == Attack) return;
 		targetPos = new h2d.col.Point(pl.x, pl.y);
 		play("shadows_grab", {loop : false});
+
 		setJob(Attack, function(dt) {
 			if(obj.currentAnimation.frame < obj.currentAnimation.frameCount * 0.15) return;
 			@:privateAccess pl.dead();
 			targetPos.x = pl.x;
 			targetPos.y = pl.y;
 			targetRotation = hxd.Math.atan2(pl.y - y, pl.x - x);
-			/*
-			var a = new h3d.Vector(targetPos.x - x, targetPos.y - y);
-			if(hxd.Math.distanceSq(a.x, a.y) > 0.1) {
-				a.normalize();
-				var sp = 0.25 * dt;
-				moveTo(a.x * sp, a.y * sp);
-			}*/
+
+			for(m in obj.getMeshes()) {
+				m.material.blendMode = Alpha;
+				m.material.color.w -= 0.01 * dt;
+			}
 		});
 	}
 
@@ -134,6 +138,7 @@ class Foe extends Character
 	}
 
 	public function hit(v:Float) {
+		if(!canBeHit()) return;
 		hitTime += v;
 		if(hitTime > 10) {
 			dead();
@@ -143,8 +148,8 @@ class Foe extends Character
 
 	function hitShake() {
 		for(m in obj.getMeshes()) {
-			m.x = x + hxd.Math.srand(hitTime * 0.03);
-			m.y = y + hxd.Math.srand(hitTime * 0.03);
+			m.x = x + hxd.Math.srand(hitTime * 0.02);
+			m.y = y + hxd.Math.srand(hitTime * 0.02);
 			m.scaleX = m.scaleY = scaleRef * (1 + hitTime * 0.04);
 			/*
 			m.material.mainPass.setPassName("alpha");
@@ -160,6 +165,6 @@ class Foe extends Character
 
 		if(hitTime != 0)
 			hitTime = Math.max(0, hitTime - dt * 0.5);
-		if(job != Spawn) hitShake();
+		if(canBeHit()) hitShake();
 	}
 }

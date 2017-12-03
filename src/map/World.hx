@@ -140,8 +140,16 @@ class World
 					new ent.Foe(p.x + d * Math.cos(a), p.y + d * Math.sin(a), 0);
 				}
 
-			case River, Shop:
+			case River:
 				if(Game.PREFS.mobSpawn && Math.random() < 0.025) {
+					var p = cam.target.localToGlobal();
+					var d = 8 + hxd.Math.random(8);
+					var a = hxd.Math.srand(Math.PI);
+					new ent.Foe(p.x + d * Math.cos(a), p.y + d * Math.sin(a), 0);
+				}
+
+			case Shop:
+				if(Game.PREFS.mobSpawn && Math.random() < 0.05) {
 					var p = cam.target.localToGlobal();
 					var d = 8 + hxd.Math.random(8);
 					var a = hxd.Math.srand(Math.PI);
