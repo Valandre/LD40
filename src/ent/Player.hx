@@ -4,6 +4,7 @@ import hxd.Key in K;
 
 class Player extends Character
 {
+	static var PAD = hxd.Pad.DEFAULT_CONFIG;
 	var pad : hxd.Pad;
 	var usingPad = false;
 
@@ -13,12 +14,11 @@ class Player extends Character
 	var axisSpeed = 1.;
 	var acc = 0.;
 	var targetPos : h2d.col.Point;
-	var canMove = true;
 
 	var lampActive = true;
 	var lampPower = 1.;
-	var lampDist = 6.;
-	var lampArc = Math.PI * 0.2;
+	var lampDist = 8.;
+	var lampArc = Math.PI * 0.25;
 
 	var tmp = new h2d.col.Point();
 
@@ -65,7 +65,6 @@ class Player extends Character
 
 	function stand() {
 		if(job == Stand) return;
-		canMove = true;
 		acc = 0;
 		targetPos = null;
 		play("idle01", {smooth : 0.2});
@@ -74,16 +73,21 @@ class Player extends Character
 
 	function move() {
 		if(job == Move) return;
-		canMove = true;
 
 		setJob(Move, function(dt) {
-			play(moveSpeed > 0.1 ? "run" : "walk", {smooth : 0.2});
 			var a = new h3d.Vector(targetPos.x - x, targetPos.y - y);
 			a.normalize();
 			acc = hxd.Math.min(1, acc + 0.05 * dt);
 			var sp = moveSpeed * axisSpeed * acc * dt;
-			moveTo(a.x * sp, a.y * sp);
-			if(obj != null) obj.currentAnimation.speed = acc * moveSpeed / (moveSpeed > 0.1 ? runRef : walkRef);
+			if(canMove) {
+				play(moveSpeed > 0.1 ? "run" : "walk", {smooth : 0.2});
+				moveTo(a.x * sp, a.y * sp);
+				if(obj != null) obj.currentAnimation.speed = acc * moveSpeed / (moveSpeed > 0.1 ? runRef : walkRef);
+			}
+			else {
+				targetRotation = hxd.Math.atan2(a.y, a.x);
+				play("idle01");
+			}
 		});
 
 		if(hxd.Math.distance(targetPos.x - x, targetPos.y - y) < 0.2) {
@@ -134,6 +138,7 @@ class Player extends Character
 	}
 
 
+	var oldMousePos = new h2d.col.Point();
 	function updateKeys(dt : Float) {
 		usingPad = false;
 		if(pad != null) {
@@ -151,15 +156,23 @@ class Player extends Character
 				targetPos = new h2d.col.Point(x + Math.cos(a), y + Math.sin(a));
 			}
 			else targetPos = null;
+
+			canMove = !pad.isDown(PAD.A);
 		}
 
 		if(!usingPad) {
 			axisSpeed = 1;
-			if(K.isDown(K.MOUSE_LEFT) ) {
+			//if(K.isDown(K.MOUSE_LEFT) || K.isDown(K.MOUSE_RIGHT)) {
+			if(K.isDown(K.MOUSE_LEFT) || oldMousePos.x != game.s2d.mouseX || oldMousePos.y != game.s2d.mouseY) {
+				oldMousePos.x = game.s2d.mouseX;
+				oldMousePos.y = game.s2d.mouseY;
 				var pos = game.getMousePicker();
 				if(pos != null)
 					targetPos = new h2d.col.Point(pos.x, pos.y);
 			}
+			//}
+
+			canMove = K.isDown(K.MOUSE_LEFT);// !K.isDown(K.SPACE);
 		}
 
 		if(targetPos != null )

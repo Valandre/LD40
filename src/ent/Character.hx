@@ -22,7 +22,7 @@ class Character extends ent.Entity {
 	var currentJobOnStop : Void -> Void;
 	var speedRot = 0.15;
 	var moveSpeed(get, never) : Float;
-
+	var canMove = true;
 
 	public function new(kind, x, y, z) {
 		this.kind = kind;
@@ -74,7 +74,6 @@ class Character extends ent.Entity {
 		targetRotation = hxd.Math.atan2(dy, dx);
 		x += dx;
 		y += dy;
-
 		//trace(x, y);
 	}
 
