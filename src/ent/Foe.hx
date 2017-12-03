@@ -79,9 +79,8 @@ class Foe extends Character
 		play("shadows_idle", {smooth : 0.2});
 		setJob(Stand, function(dt) {
 			targetRotation = hxd.Math.atan2(pl.y - y, pl.x - x);
-			if(!isStatic && Math.random() < 0.01 && hxd.Math.distanceSq(pl.x - x, pl.y - y) < 16 * 16) {
+			if(!isStatic && Math.random() < 0.01 /*&& hxd.Math.distanceSq(pl.x - x, pl.y - y) < 16 * 16*/)
 				move();
-			}
 		});
 	}
 
@@ -109,6 +108,7 @@ class Foe extends Character
 	public function attack() {
 		if(job == Attack) return;
 		targetPos = new h2d.col.Point(pl.x, pl.y);
+		play("shadows_idle");
 		setJob(Move, function(dt) {
 			targetPos.x = pl.x;
 			targetPos.y = pl.y;
@@ -117,7 +117,6 @@ class Foe extends Character
 				a.normalize();
 				var sp = 0.25 * dt;
 				moveTo(a.x * sp, a.y * sp);
-				//if(obj != null) obj.currentAnimation.speed = (body.velocity.length / moveSpeed) * 1.5;
 			}
 		});
 	}

@@ -130,6 +130,7 @@ class Game extends hxd.App {
 
 		inline function setStep(v : Int) {
 			@:privateAccess world.stepId = -1;
+			world.respawn();
 			world.gotoStep(v);
 		}
 		if(K.isPressed(K.NUMBER_1)) setStep(0);
