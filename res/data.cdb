@@ -21,7 +21,7 @@
 				},
 				{
 					"id": "CameraFar",
-					"value": 750
+					"value": 430
 				},
 				{
 					"id": "EnableFxaa",

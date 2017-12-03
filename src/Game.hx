@@ -22,10 +22,10 @@ class Game extends hxd.App {
 
 		s3d.camera.fovY = 36;
 
-		s3d.lightSystem.ambientLight.set(0.5, 0.5, 0.5);
+		s3d.lightSystem.ambientLight.set(0.9,0.9,0.9);
 		var dir = new h3d.scene.DirLight(new h3d.Vector( -0.3, -0.2, -1), s3d);
-		dir.color.set(0.5, 0.5, 0.5);
-		//dir.color.set(0.5, 0.5, 0.5);
+		dir.color.set(0, 0, 0);
+		dir.color.set(0.1,0.1,0.1);
 
 		event = new hxd.WaitEvent();
 

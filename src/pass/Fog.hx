@@ -33,7 +33,7 @@ class FogShader extends h3d.shader.ScreenShader {
 			var dist   = getDist(input.uv);
 			var normal = unpackNormal(normalTexture.get(input.uv));
 
-			var fogIntensity = clamp((dist - zNear) / (zFar - zNear), 0.0, 1.0);
+			var fogIntensity = saturate((dist - zNear) / (zFar - zNear));
 			var color = mix(
 				colorTexture.get(input.uv), 
 				depthColor.currentMap.get(vec2(fogIntensity, 0.5)),
