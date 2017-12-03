@@ -100,6 +100,10 @@ class Player extends Character
 		if(job == Move) return;
 
 		setJob(Move, function(dt) {
+			if(targetPos == null) {
+				stand();
+				return;
+			}
 			var a = new h3d.Vector(targetPos.x - x, targetPos.y - y);
 			a.normalize();
 			acc = hxd.Math.min(1, acc + 0.05 * dt);
