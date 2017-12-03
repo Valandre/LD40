@@ -135,6 +135,18 @@ class Game extends hxd.App {
 			}
 		}
 
+		if (K.isDown(K.RIGHT)) {
+			renderer.post.shader.bugPower += 0.01;
+			if (renderer.post.shader.bugPower > 1.0)
+				renderer.post.shader.bugPower = 1.0;
+		}
+
+		if (K.isDown(K.LEFT)) {
+			renderer.post.shader.bugPower -= 0.01;
+			if (renderer.post.shader.bugPower < 0.0) 
+				renderer.post.shader.bugPower = 0.0;
+		}
+
 		if(K.isPressed(K.F2)) {
 			PREFS.disableStart = !PREFS.disableStart;
 			hxd.Save.save(PREFS, "prefs");
