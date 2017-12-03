@@ -87,7 +87,7 @@ class CustomRenderer extends h3d.scene.Renderer {
 		draw("additive");
 		resetTarget();
 
-		this.ctx.engine.pushTargets([colorTex, depthTex, normalTex]);
+		//this.ctx.engine.pushTargets([colorTex, depthTex, normalTex]);
 
 		if (enableSao) {
 			// apply soa
