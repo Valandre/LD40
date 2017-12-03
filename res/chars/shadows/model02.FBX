@@ -12,9 +12,9 @@ FBXHeaderExtension:  {
 		Month: 12
 		Day: 3
 		Hour: 10
-		Minute: 13
-		Second: 38
-		Millisecond: 703
+		Minute: 47
+		Second: 42
+		Millisecond: 176
 	}
 	Creator: "FBX SDK/FBX Plugins version 2017.0.1"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -30,19 +30,19 @@ FBXHeaderExtension:  {
 			Comment: ""
 		}
 		Properties70:  {
-			P: "DocumentUrl", "KString", "Url", "", "F:\Projects\LD40\trunk\res\chars\shadows\model03.FBX"
-			P: "SrcDocumentUrl", "KString", "Url", "", "F:\Projects\LD40\trunk\res\chars\shadows\model03.FBX"
+			P: "DocumentUrl", "KString", "Url", "", "F:\Projects\LD40\trunk\res\chars\shadows\model02.FBX"
+			P: "SrcDocumentUrl", "KString", "Url", "", "F:\Projects\LD40\trunk\res\chars\shadows\model02.FBX"
 			P: "Original", "Compound", "", ""
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2017"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "03/12/2017 09:13:38.702"
-			P: "Original|FileName", "KString", "", "", "F:\Projects\LD40\trunk\res\chars\shadows\model03.FBX"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "03/12/2017 09:47:42.175"
+			P: "Original|FileName", "KString", "", "", "F:\Projects\LD40\trunk\res\chars\shadows\model02.FBX"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2017"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "03/12/2017 09:13:38.702"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "03/12/2017 09:47:42.175"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "C:\Users\Shiro-Philemon\Documents\3dsMax"
 			P: "Original|ApplicationNativeFile", "KString", "", "", "F:\Projects\LD40\trunk\gfx\Philemon\Character_rig.max"
 		}
@@ -79,7 +79,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 2706187920, "", "Scene" {
+	Document: 2846851456, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -315,292 +315,292 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	NodeAttribute: 2752243600, "NodeAttribute::", "Null" {
+	NodeAttribute: 2492547728, "NodeAttribute::", "Null" {
 		TypeFlags: "Null"
 	}
-	NodeAttribute: 611816224, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492298304, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",989.409240722656
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611816608, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492309440, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",105.702786445618
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611825824, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492301952, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",128.090301513672
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611822368, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492307712, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",233.926982879639
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611817184, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492308096, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",75.3616247177124
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611816800, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492298688, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",75.3616247177124
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611820832, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492306560, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",188.868127822876
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611813728, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492308288, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",262.626598358154
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611814304, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492302144, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",259.55400466919
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611814880, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492310400, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",45.5582389831543
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611823136, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492306752, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",68.6763181686401
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611814688, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492302336, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",43.8251185417175
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611819680, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492306944, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",43.8251185417175
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611824864, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492302528, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",51.2034850120545
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611825248, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492302720, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",51.2034850120545
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611821216, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492307328, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",34.8506407737732
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611822752, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492305024, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",34.8506407737732
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611814496, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492299648, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",58.6000528335571
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611823520, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492299840, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",58.6000528335571
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611814112, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492302912, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",52.2699112892151
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611820064, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492303296, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",52.2699112892151
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611816992, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492301184, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",129.582818984985
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611819296, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492305792, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",188.868127822876
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611821024, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492307904, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",262.626571655273
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611817568, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492300992, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",259.554058074951
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611817760, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492303104, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",146.762638092041
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611817952, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492307136, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",34.8506674766541
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611818144, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492305600, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",34.8506674766541
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611818336, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492300416, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",68.6763381958008
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611818528, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492303488, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",43.8252420425415
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611818720, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492301376, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",43.8252420425415
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611818912, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492308480, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",51.2035784721375
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611819104, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492305216, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",51.2035784721375
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611819488, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492303680, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",52.2699046134949
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611823904, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492308672, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",52.2699046134949
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611819872, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492308864, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",58.6000595092773
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611820256, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492304448, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",58.6000595092773
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611820448, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492301568, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",1202.47846984863
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611820640, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492298880, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",129.582805633545
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611821408, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492304064, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
-			P: "Size", "double", "Number", "",419.296779632568
+			P: "Size", "double", "Number", "",419.296913146973
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611821600, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492300032, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",427.299339294434
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611821792, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492301760, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
-			P: "Size", "double", "Number", "",135.646883010864
+			P: "Size", "double", "Number", "",135.646923065186
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611821984, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492310208, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
-			P: "Size", "double", "Number", "",135.646883010864
+			P: "Size", "double", "Number", "",135.646923065186
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611822176, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492304256, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
 			P: "Size", "double", "Number", "",415.307022094727
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611822560, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492307520, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
-			P: "Size", "double", "Number", "",426.178058624268
+			P: "Size", "double", "Number", "",426.178165435791
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611823328, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492310016, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
-			P: "Size", "double", "Number", "",135.646949768066
+			P: "Size", "double", "Number", "",135.646976470947
 		}
 		TypeFlags: "Skeleton"
 	}
-	NodeAttribute: 611824288, "NodeAttribute::", "LimbNode" {
+	NodeAttribute: 2492309632, "NodeAttribute::", "LimbNode" {
 		Properties70:  {
-			P: "Size", "double", "Number", "",135.646949768066
+			P: "Size", "double", "Number", "",135.646976470947
 		}
 		TypeFlags: "Skeleton"
 	}
-	Geometry: 2709298432, "Geometry::", "Mesh" {
+	Geometry: 2543287664, "Geometry::", "Mesh" {
 		Vertices: *3282 {
 			a: 92.4885482788086,-4.71455907821655,137.574691772461,88.9400787353516,-3.76998043060303,137.73811340332,90.2769317626953,-0.0993624329566956,138.081604003906,82.0988388061523,-5.05587148666382,142.622161865234,84.3353652954102,-6.92159700393677,138.965301513672,95.2364196777344,-5.45810031890869,137.223815917969,97.4418258666992,-5.18981647491455,136.463195800781,99.6742248535156,-5.25960779190063,138.643173217773,98.2790985107422,-5.45699167251587,141.026123046875,97.4314117431641,-0.532984733581543,136.843521118164,98.6239929199219,-1.83532381057739,135.748840332031,100.4052734375,-6.05877780914307,133.600387573242,102.336479187012,-6.17011642456055,135.151214599609,88.4124069213867,-7.01751852035522,138.374862670898,90.9298629760742,-8.03936004638672,140.302688598633,103.195892333984,-2.83024311065674,134.580841064453,100.980186462402,-2.96884918212891,132.956146240234,100.898292541504,-1.58867383003235,138.002258300781,100.114868164063,-0.38946121931076,139.978134155273,95.9434356689453,-7.20385456085205,136.905639648438,98.6785507202148,-8.1449670791626,134.71940612793,98.9147567749023,-6.83844232559204,139.461837768555,100.804664611816,-7.91698837280273,136.677612304688,87.8897323608398,-13.4861946105957,138.822525024414,88.6318817138672,-11.5038928985596,136.905578613281,84.3819198608398,-5.48904705047607,138.672180175781,87.005500793457,-11.0397758483887,141.933776855469,90.0807113647461,-7.36192321777344,144.229965209961,92.6923675537109,-8.17105579376221,142.872802734375,83.622917175293,-9.74679470062256,139.485244750977,84.5598831176758,-12.270170211792,136.754028320313,85.7803039550781,-8.50219249725342,138.017272949219,86.6078643798828,-10.8716068267822,135.589279174805,90.3784255981445,-1.43926739692688,147.252304077148,87.6410598754883,-6.5261378288269,146.749237060547,86.033088684082,0.660465657711029,149.284545898438,87.6601181030273,-8.49129390716553,138.088531494141,88.1652908325195,-14.378023147583,137.724548339844,89.079216003418,-12.5048398971558,135.816284179688,88.5276184082031,-16.2699699401855,135.812683105469,
 89.9604797363281,-13.714635848999,133.897476196289,89.522575378418,-13.0083675384521,134.921783447266,88.3551940917969,-15.2444248199463,136.815322875977,88.5159606933594,-17.8018569946289,134.301025390625,89.5168533325195,-15.6843185424805,133.134124755859,96.5107040405273,-9.60203838348389,140.408676147461,99.4866714477539,-11.2248783111572,137.505767822266,96.4353790283203,-4.97434902191162,142.733093261719,100.452125549316,-8.87417602539063,132.050354003906,102.515502929688,-8.96872997283936,133.965469360352,104.252799987793,-10.0183029174805,131.013031005859,102.220108032227,-9.71284103393555,129.137313842773,95.0001220703125,4.54525518417358,143.751159667969,98.3274612426758,4.56795263290405,141.419372558594,100.646781921387,4.18152379989624,137.093765258789,102.097930908203,4.05374908447266,135.394683837891,98.9944686889648,3.91906642913818,135.095474243164,100.462760925293,3.89657163619995,133.892623901367,97.9689178466797,6.93401861190796,138.969970703125,96.7506942749023,6.57923364639282,137.294799804688,94.9058151245117,6.88502359390259,138.464111328125,96.4214172363281,7.35486888885498,140.261840820313,101.358627319336,6.72777462005615,135.391876220703,99.9991149902344,6.08343029022217,134.056762695313,98.1028900146484,6.08943271636963,135.796432495117,99.3929290771484,6.73614311218262,137.515609741211,103.502639770508,2.50315523147583,134.097473144531,101.111618041992,2.37786316871643,132.383285522461,98.4240341186523,2.88817882537842,135.160110473633,100.710655212402,3.08975577354431,137.535690307617,107.508041381836,1.14579057693481,128.559295654297,105.083847045898,1.38546824455261,126.906547546387,103.638092041016,1.52338290214539,129.562576293945,105.838394165039,1.68406510353088,131.010787963867,101.008316040039,-0.228695571422577,137.776229858398,103.333534240723,-0.942972302436829,134.474792480469,98.599006652832,-0.0500917434692383,135.226104736328,100.881149291992,-0.574375689029694,132.571594238281,105.56575012207,-1.57029175758362,131.269317626953,107.165351867676,-1.99424028396606,128.737640380859,
@@ -930,7 +930,7 @@ Objects:  {
 			}
 		}
 	}
-	Model: 2845004848, "Model::Root", "Null" {
+	Model: 2846233088, "Model::Root", "Null" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -948,7 +948,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2844987312, "Model::Bip01", "LimbNode" {
+	Model: 2846226512, "Model::Bip01", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -967,7 +967,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2845007040, "Model::B_pelvis", "LimbNode" {
+	Model: 2846219936, "Model::B_pelvis", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -987,7 +987,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2845018000, "Model::B_spine", "LimbNode" {
+	Model: 2846217744, "Model::B_spine", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1008,7 +1008,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2845020192, "Model::B_chest", "LimbNode" {
+	Model: 2846228704, "Model::B_chest", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1029,7 +1029,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2845009232, "Model::B_neck", "LimbNode" {
+	Model: 2846204592, "Model::B_neck", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1050,7 +1050,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847340320, "Model::B_head", "LimbNode" {
+	Model: 2846235280, "Model::B_head", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1070,7 +1070,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847335936, "Model::B_shoulder_L", "LimbNode" {
+	Model: 2846248432, "Model::B_shoulder_L", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1091,7 +1091,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847316208, "Model::B_arm_L", "LimbNode" {
+	Model: 2846237472, "Model::B_arm_L", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1112,7 +1112,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847320592, "Model::B_forearm_L", "LimbNode" {
+	Model: 2846246240, "Model::B_forearm_L", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1133,7 +1133,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847333744, "Model::B_hand_L", "LimbNode" {
+	Model: 2846255008, "Model::B_hand_L", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1154,7 +1154,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847314016, "Model::B_thumb_01_L", "LimbNode" {
+	Model: 2846239664, "Model::B_thumb_01_L", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1175,7 +1175,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847318400, "Model::B_thumb_02_L", "LimbNode" {
+	Model: 2846257200, "Model::B_thumb_02_L", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1195,7 +1195,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847329360, "Model::B_thumb_03_L", "LimbNode" {
+	Model: 2846250624, "Model::B_thumb_03_L", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1216,7 +1216,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847349088, "Model::B_ring_01_L", "LimbNode" {
+	Model: 2846241856, "Model::B_ring_01_L", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1237,7 +1237,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847346896, "Model::B_ring_02_L", "LimbNode" {
+	Model: 2846244048, "Model::B_ring_02_L", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1257,7 +1257,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847331552, "Model::B_pinky_01_L", "LimbNode" {
+	Model: 2846252816, "Model::B_pinky_01_L", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1278,7 +1278,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847342512, "Model::B_pinky_02_L", "LimbNode" {
+	Model: 2649108112, "Model::B_pinky_02_L", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1298,7 +1298,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847327168, "Model::B_middle_01_L", "LimbNode" {
+	Model: 2649112496, "Model::B_middle_01_L", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1319,7 +1319,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847322784, "Model::B_middle_02_L", "LimbNode" {
+	Model: 2649090576, "Model::B_middle_02_L", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1339,7 +1339,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847338128, "Model::B_index_01_L", "LimbNode" {
+	Model: 2649099344, "Model::B_index_01_L", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1360,7 +1360,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847353472, "Model::B_index_02_L", "LimbNode" {
+	Model: 2649101536, "Model::B_index_02_L", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1380,14 +1380,14 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847344704, "Model::B_twist_L", "LimbNode" {
+	Model: 2649084000, "Model::B_twist_L", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
 			P: "Lcl Translation", "Lcl Translation", "", "A",18.5118141174316,1.52587890625e-05,1.9073486328125e-06
-			P: "Lcl Rotation", "Lcl Rotation", "", "A",-2.53428078705919,0.106855348215199,0.0113961867822586
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-2.53428078453633,0.106848097522211,0.0113978950112947
 			P: "Lcl Scaling", "Lcl Scaling", "", "A",1.00000023841858,1.00000011920929,0.99999988079071
 			P: "mr displacement use global settings", "Bool", "", "AU",1
 			P: "mr displacement view dependent", "Bool", "", "AU",1
@@ -1401,7 +1401,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847351280, "Model::B_shoulder_R", "LimbNode" {
+	Model: 2649110304, "Model::B_shoulder_R", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1422,7 +1422,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847324976, "Model::B_arm_R", "LimbNode" {
+	Model: 2649103728, "Model::B_arm_R", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1443,7 +1443,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847375392, "Model::B_forearm_R", "LimbNode" {
+	Model: 2649114688, "Model::B_forearm_R", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1464,7 +1464,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847362240, "Model::B_hand_R", "LimbNode" {
+	Model: 2649105920, "Model::B_hand_R", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1485,7 +1485,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847373200, "Model::B_pinky_01_R", "LimbNode" {
+	Model: 2649092768, "Model::B_pinky_01_R", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1506,7 +1506,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847355664, "Model::B_pinky_02_R", "LimbNode" {
+	Model: 2649086192, "Model::B_pinky_02_R", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1527,7 +1527,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847364432, "Model::B_thumb_01_R", "LimbNode" {
+	Model: 2649094960, "Model::B_thumb_01_R", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1548,7 +1548,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847366624, "Model::B_thumb_02_R", "LimbNode" {
+	Model: 2649088384, "Model::B_thumb_02_R", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1569,7 +1569,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847357856, "Model::B_thumb_03_R", "LimbNode" {
+	Model: 2649116880, "Model::B_thumb_03_R", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1590,7 +1590,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847360048, "Model::B_ring_01_R", "LimbNode" {
+	Model: 2649097152, "Model::B_ring_01_R", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1611,7 +1611,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847368816, "Model::B_ring_02_R", "LimbNode" {
+	Model: 2649147568, "Model::B_ring_02_R", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1632,7 +1632,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2847371008, "Model::B_index_01_R", "LimbNode" {
+	Model: 2649132224, "Model::B_index_01_R", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1653,7 +1653,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2848460432, "Model::B_index_02_R", "LimbNode" {
+	Model: 2649134416, "Model::B_index_02_R", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1674,7 +1674,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2848469200, "Model::B_middle_01_R", "LimbNode" {
+	Model: 2649119072, "Model::B_middle_01_R", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1695,7 +1695,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2848471392, "Model::B_middle_02_R", "LimbNode" {
+	Model: 2649125648, "Model::B_middle_02_R", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1716,7 +1716,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2848462624, "Model::B_lamp", "LimbNode" {
+	Model: 2649136608, "Model::B_lamp", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1737,14 +1737,14 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2848456048, "Model::B_twist_R", "LimbNode" {
+	Model: 2649149760, "Model::B_twist_R", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
 			P: "Lcl Translation", "Lcl Translation", "", "A",18.5117950439453,3.0517578125e-05,1.52587890625e-05
-			P: "Lcl Rotation", "Lcl Rotation", "", "A",2.48485255033195,-0.104505817827263,0.0109027101263081
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",2.4848573722113,-0.104482772193663,0.010919786282054
 			P: "Lcl Scaling", "Lcl Scaling", "", "A",0.999999642372131,0.999999761581421,0.999999821186066
 			P: "mr displacement use global settings", "Bool", "", "AU",1
 			P: "mr displacement view dependent", "Bool", "", "AU",1
@@ -1758,14 +1758,14 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2848451664, "Model::B_leg_01_L", "LimbNode" {
+	Model: 2649127840, "Model::B_leg_01_L", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
 			P: "Lcl Translation", "Lcl Translation", "", "A",-4.97151184082031,-0.0812587738037109,-11.1356506347656
-			P: "Lcl Rotation", "Lcl Rotation", "", "A",-0.000399793444578023,0.00788001977902259,173.997692672562
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-0.000399793400958004,0.00787980695641229,173.997693251914
 			P: "Lcl Scaling", "Lcl Scaling", "", "A",1.00000083446503,1.00000047683716,1
 			P: "mr displacement use global settings", "Bool", "", "AU",1
 			P: "mr displacement view dependent", "Bool", "", "AU",1
@@ -1779,14 +1779,14 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2848453856, "Model::B_leg_02_L", "LimbNode" {
+	Model: 2649130032, "Model::B_leg_02_L", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
-			P: "Lcl Translation", "Lcl Translation", "", "A",59.8994979858398,8.82148742675781e-05,0
-			P: "Lcl Rotation", "Lcl Rotation", "", "A",-5.51265591655462e-05,-5.00257940093704e-09,-5.68778342342241
+			P: "Lcl Translation", "Lcl Translation", "", "A",59.8995056152344,8.72611999511719e-05,0
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-5.46415139533969e-05,-0,-5.68778163795856
 			P: "mr displacement use global settings", "Bool", "", "AU",1
 			P: "mr displacement view dependent", "Bool", "", "AU",1
 			P: "mr displacement method", "Integer", "", "AU",6,6,6
@@ -1799,14 +1799,14 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2848458240, "Model::B_foot_L", "LimbNode" {
+	Model: 2649145376, "Model::B_foot_L", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
-			P: "Lcl Translation", "Lcl Translation", "", "A",61.0427169799805,1.76429748535156e-05,-1.52587890625e-05
-			P: "Lcl Rotation", "Lcl Rotation", "", "A",-0.00681817634609939,-0.00395466899872923,68.5832405388603
+			P: "Lcl Translation", "Lcl Translation", "", "A",61.0427169799805,1.52587890625e-05,-1.62124633789063e-05
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-0.00681812798782593,-0.00395422096231215,68.5832386066
 			P: "mr displacement use global settings", "Bool", "", "AU",1
 			P: "mr displacement view dependent", "Bool", "", "AU",1
 			P: "mr displacement method", "Integer", "", "AU",6,6,6
@@ -1819,14 +1819,14 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2848442896, "Model::B_toe_L", "LimbNode" {
+	Model: 2649121264, "Model::B_toe_L", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
-			P: "Lcl Translation", "Lcl Translation", "", "A",19.3781204223633,9.5367431640625e-07,0
-			P: "Lcl Rotation", "Lcl Rotation", "", "A",-2.81197852760247e-05,3.23640177410322e-05,26.9921886500747
+			P: "Lcl Translation", "Lcl Translation", "", "A",19.3781204223633,0,0
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-2.81309361274403e-05,3.24059816841043e-05,26.9921885931464
 			P: "mr displacement use global settings", "Bool", "", "AU",1
 			P: "mr displacement view dependent", "Bool", "", "AU",1
 			P: "mr displacement method", "Integer", "", "AU",6,6,6
@@ -1839,14 +1839,14 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2848464816, "Model::B_leg_01_R", "LimbNode" {
+	Model: 2649138800, "Model::B_leg_01_R", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
 			P: "Lcl Translation", "Lcl Translation", "", "A",-4.97151184082031,-0.081263542175293,11.1359958648682
-			P: "Lcl Rotation", "Lcl Rotation", "", "A",-2.74066512993984e-08,-2.67925056529143e-05,173.777252423913
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-2.40849931720393e-07,-1.65461177969094e-07,173.777252423913
 			P: "Lcl Scaling", "Lcl Scaling", "", "A",1.00000047683716,1.00000023841858,1.00000035762787
 			P: "mr displacement use global settings", "Bool", "", "AU",1
 			P: "mr displacement view dependent", "Bool", "", "AU",1
@@ -1860,14 +1860,14 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2848467008, "Model::B_leg_02_R", "LimbNode" {
+	Model: 2649140992, "Model::B_leg_02_R", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
-			P: "Lcl Translation", "Lcl Translation", "", "A",59.3295364379883,8.72611999511719e-05,-1.52587890625e-05
-			P: "Lcl Rotation", "Lcl Rotation", "", "A",9.15284864292649e-07,2.7382450289703e-07,-5.33681970701061
+			P: "Lcl Translation", "Lcl Translation", "", "A",59.3295288085938,8.7738037109375e-05,-9.5367431640625e-07
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",1.1005834026134e-06,2.92772229406129e-07,-5.3368190717317
 			P: "mr displacement use global settings", "Bool", "", "AU",1
 			P: "mr displacement view dependent", "Bool", "", "AU",1
 			P: "mr displacement method", "Integer", "", "AU",6,6,6
@@ -1880,14 +1880,14 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2848473584, "Model::B_foot_R", "LimbNode" {
+	Model: 2649143184, "Model::B_foot_R", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
-			P: "Lcl Translation", "Lcl Translation", "", "A",60.8825454711914,1.71661376953125e-05,-1.43051147460938e-05
-			P: "Lcl Rotation", "Lcl Rotation", "", "A",1.0911785696657e-05,4.59248870257361e-05,68.4527312999564
+			P: "Lcl Translation", "Lcl Translation", "", "A",60.8825531005859,1.43051147460938e-05,-9.5367431640625e-07
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-1.32609897695685e-05,3.3620134876304e-05,68.4527224385803
 			P: "mr displacement use global settings", "Bool", "", "AU",1
 			P: "mr displacement view dependent", "Bool", "", "AU",1
 			P: "mr displacement method", "Integer", "", "AU",6,6,6
@@ -1900,14 +1900,14 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2848445088, "Model::B_toe_R", "LimbNode" {
+	Model: 2649151952, "Model::B_toe_R", "LimbNode" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
-			P: "Lcl Translation", "Lcl Translation", "", "A",19.3781318664551,9.5367431640625e-07,0
-			P: "Lcl Rotation", "Lcl Rotation", "", "A",-2.1049243763263e-05,4.28549508729979e-05,26.9921794638974
+			P: "Lcl Translation", "Lcl Translation", "", "A",19.3781337738037,9.5367431640625e-07,0
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-2.11560397813674e-05,4.280569789539e-05,26.9921855500635
 			P: "mr displacement use global settings", "Bool", "", "AU",1
 			P: "mr displacement view dependent", "Bool", "", "AU",1
 			P: "mr displacement method", "Integer", "", "AU",6,6,6
@@ -1920,7 +1920,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2848447280, "Model::shadow03", "Mesh" {
+	Model: 2649162912, "Model::shadow03", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -1939,7 +1939,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 2697601488, "Material::mat_shadow", "" {
+	Material: 2749876240, "Material::mat_shadow", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -1961,18 +1961,18 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Deformer: 611824480, "Deformer::", "Skin" {
+	Deformer: 2492300608, "Deformer::", "Skin" {
 		Version: 101
 		Link_DeformAcuracy: 50
 	}
-	Deformer: 1767112032, "SubDeformer::", "Cluster" {
+	Deformer: 2747252544, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
-		Indexes: *85 {
-			a: 0,1,2,3,4,5,6,7,8,9,10,13,14,17,18,19,21,25,26,27,28,29,31,33,34,35,36,45,47,52,53,54,56,58,59,60,61,64,65,68,69,74,76,82,83,114,115,116,117,118,119,120,121,122,124,125,126,131,132,133,138,145,146,147,148,149,150,151,155,168,169,170,172,173,174,175,176,177,178,312,313,402,403,404,405
+		Indexes: *79 {
+			a: 0,1,2,3,4,5,6,7,8,9,10,13,14,17,18,19,21,25,26,27,28,29,31,33,34,35,36,45,47,52,53,54,56,58,59,60,61,64,65,68,69,74,76,82,83,114,115,116,117,118,119,120,121,122,124,125,126,131,132,133,138,145,146,147,148,149,150,151,155,168,169,170,172,173,174,175,176,177,178
 		} 
-		Weights: *85 {
-			a: 0.700307369232178,0.629872977733612,0.877096712589264,0.570688962936401,0.246974989771843,0.439095854759216,0.224798887968063,0.217766553163528,0.474601864814758,0.359796077013016,0.187928184866905,0.282590478658676,0.501142621040344,0.208412826061249,0.465218156576157,0.261641174554825,0.237879067659378,0.406501322984695,0.151790648698807,0.543388903141022,0.710070312023163,0.122795917093754,0.123640924692154,0.78875470161438,0.636322617530823,0.535001873970032,0.151101350784302,0.375374972820282,0.784375846385956,0.984531939029694,0.876994907855988,0.195660606026649,0.180981129407883,0.72601991891861,0.661055326461792,0.944143116474152,0.911638677120209,0.293756902217865,0.352918475866318,0.248732283711433,0.244542106986046,0.203707545995712,0.193897753953934,0.417948514223099,0.477814704179764,0.786491513252258,0.525987982749939,0.511591017246246,0.555087566375732,0.521247863769531,0.81209409236908,0.975892126560211,0.90591037273407,0.948371469974518,0.360951751470566,0.543734073638916,0.626919031143188,0.980334222316742,0.98423033952713,0.979297935962677,0.805018723011017,0.930723905563354,0.903115034103394,0.898533403873444,0.805336713790894,0.533704936504364,0.640131831169128,0.368349581956863,0.00723451422527432,0.372025072574615,0.35014209151268,0.392940878868103,0.357611179351807,0.388212084770203,0.353384077548981,0.38992315530777,0.564077734947205,0.195863515138626,0.281491160392761,0.0532975420355797,0.064859464764595,0.0969017893075943,0.0991543382406235,0.131335631012917,0.12280996888876
+		Weights: *79 {
+			a: 0.700307369232178,0.629872977733612,0.877096712589264,0.570688962936401,0.246974989771843,0.439095854759216,0.224798887968063,0.217766553163528,0.474601864814758,0.359796077013016,0.187928184866905,0.282590478658676,0.501142621040344,0.208412826061249,0.465218156576157,0.261641174554825,0.237879067659378,0.406501322984695,0.151790648698807,0.543388903141022,0.710070312023163,0.122795917093754,0.123640924692154,0.78875470161438,0.636322617530823,0.535001873970032,0.151101350784302,0.375374972820282,0.784375846385956,0.984531939029694,0.876994907855988,0.195660606026649,0.180981129407883,0.72601991891861,0.661055326461792,0.944143116474152,0.911638677120209,0.293756902217865,0.352918475866318,0.248732283711433,0.244542106986046,0.203707545995712,0.193897753953934,0.417948514223099,0.477814704179764,0.786491513252258,0.525987982749939,0.511591017246246,0.555087566375732,0.521247863769531,0.81209409236908,0.975892126560211,0.90591037273407,0.948371469974518,0.360951751470566,0.543734073638916,0.626919031143188,0.980334222316742,0.98423033952713,0.979297935962677,0.805018723011017,0.930723905563354,0.903115034103394,0.898533403873444,0.805336713790894,0.533704936504364,0.640131831169128,0.368349581956863,0.00723451422527432,0.372025072574615,0.35014209151268,0.392940878868103,0.357611179351807,0.388212084770203,0.353384077548981,0.38992315530777,0.564077734947205,0.195863515138626,0.281491160392761
 		} 
 		Transform: *16 {
 			a: 0.763835138314846,0.609022521009892,-0.213649609852567,0,-0.322549053575305,0.0734862320001817,-0.943696680000257,0,-0.559031207289561,0.789741039915318,0.252571573576673,0,22.9415006115264,-169.538202400216,-15.4824723404913,1
@@ -1981,7 +1981,7 @@ Objects:  {
 			a: 0.763836741447449,-0.322549730539322,-0.559032380580902,0,0.609022784401676,0.0734862637817155,0.789741381464758,0,-0.213649186952662,-0.9436948120388,0.252571073634293,0,82.4212493896484,5.24777507781982,150.626800537109,1
 		} 
 	}
-	Deformer: 1767114288, "SubDeformer::", "Cluster" {
+	Deformer: 2747259312, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *31 {
@@ -1997,7 +1997,7 @@ Objects:  {
 			a: 0.62428480386734,-0.362433105707169,-0.692035138607025,0,0.330914121917653,0.925146966620103,-0.186001004094229,0,0.70764751000263,-0.11288666035125,0.697489799238812,0,96.3625335693359,-7.12210369110107,140.093154907227,1
 		} 
 	}
-	Deformer: 1260406624, "SubDeformer::", "Cluster" {
+	Deformer: 2747254800, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *39 {
@@ -2013,7 +2013,7 @@ Objects:  {
 			a: 0.200136825442314,-0.7754807472229,-0.598811209201813,0,0.897253838187878,-0.100428822941864,0.429942107783355,0,-0.393549468324643,-0.623332486894668,0.675703118516634,0,83.3540496826172,-0.545666694641113,147.811828613281,1
 		} 
 	}
-	Deformer: 2455026400, "SubDeformer::", "Cluster" {
+	Deformer: 2747255552, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *31 {
@@ -2029,14 +2029,14 @@ Objects:  {
 			a: 0.280559241771698,-0.622215390205383,-0.73084568977356,0,0.89725423808135,-0.10042802395446,0.429941416117925,0,-0.340913030306101,-0.776377236622093,0.53010857060491,0,85.3175735473633,-8.15383529663086,141.936950683594,1
 		} 
 	}
-	Deformer: 2483625024, "SubDeformer::", "Cluster" {
+	Deformer: 2747263072, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
-		Indexes: *61 {
-			a: 2,3,33,34,35,52,114,115,116,117,118,120,131,132,133,145,146,147,148,149,150,168,169,170,171,172,173,175,176,312,313,314,315,316,317,318,319,368,370,372,373,374,375,376,377,378,379,380,381,382,383,385,397,398,399,400,401,402,403,404,405
+		Indexes: *49 {
+			a: 2,3,33,34,35,52,114,115,116,117,118,120,131,132,133,145,146,147,148,149,150,168,169,170,171,172,173,175,176,312,313,314,315,316,317,318,319,374,377,381,397,398,399,400,401,402,403,404,405
 		} 
-		Weights: *61 {
-			a: 0.00967037118971348,0.116625599563122,0.176438748836517,0.0732160061597824,0.389120429754257,0.0154680646955967,0.187422424554825,0.392074912786484,0.400338441133499,0.37360468506813,0.396073639392853,0.0241078473627567,0.0123607330024242,0.0110272616147995,0.0178855005651712,0.06709373742342,0.0913344919681549,0.0914882346987724,0.0652217864990234,0.381797224283218,0.113768555223942,0.501561164855957,0.51420795917511,0.487750828266144,0.489733874797821,0.510291874408722,0.49113741517067,0.488732039928436,0.117768302559853,0.672177135944366,0.664405405521393,0.244047462940216,0.240643039345741,0.254856884479523,0.233311742544174,0.23209585249424,0.236074775457382,0.0406480841338634,0.0134298792108893,0.0389171838760376,0.0126899341121316,0.000715434493031353,0.0427041538059711,0.0153821120038629,0.00273240194655955,0.0400396138429642,0.0164684560149908,0.0390425845980644,0.000874484423547983,0.0176152847707272,0.039091520011425,0.0128241581842303,0.499566435813904,0.481029897928238,0.48492968082428,0.479875952005386,0.483132481575012,0.646354794502258,0.649087607860565,0.630674481391907,0.632361590862274
+		Weights: *49 {
+			a: 0.00967037118971348,0.116625599563122,0.176438748836517,0.0732160061597824,0.389120429754257,0.0154680646955967,0.187422424554825,0.392074912786484,0.400338441133499,0.37360468506813,0.396073639392853,0.0241078473627567,0.0123607330024242,0.0110272616147995,0.0178855005651712,0.06709373742342,0.0913344919681549,0.0914882346987724,0.0652217864990234,0.381797224283218,0.113768555223942,0.501561164855957,0.51420795917511,0.487750828266144,0.5,0.510291874408722,0.49113741517067,0.488732039928436,0.117768302559853,0.75,0.75,0.25,0.25,0.25,0.25,0.25,0.25,0.000424341385951266,0.00148336146958172,0.000456538109574467,0.5,0.5,0.5,0.5,0.5,0.75,0.75,0.75,0.75
 		} 
 		Transform: *16 {
 			a: 0.810595917833546,0.572941912634996,-0.121118160224268,0,-0.233784833938655,0.126980589936844,-0.963961905104252,0,-0.536913357629986,0.809699057078506,0.236875812172164,0,33.8573235261333,-169.85658224548,-20.604045093309,1
@@ -2045,7 +2045,7 @@ Objects:  {
 			a: 0.810598313808441,-0.233785524964333,-0.536914944648743,0,0.572942446326085,0.12698070821831,0.809699811307097,0,-0.121117880003452,-0.963959674867337,0.236875264132684,0,67.3778381347656,9.62239265441895,160.591934204102,1
 		} 
 	}
-	Deformer: 2756953872, "SubDeformer::", "Cluster" {
+	Deformer: 2747248784, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *44 {
@@ -2061,7 +2061,7 @@ Objects:  {
 			a: 0.667675256729126,-0.292920291423798,-0.68440455198288,0,0.243540793929731,0.954693608542425,-0.171014303725092,0,0.703490210023614,-0.052498408733196,0.708763339407905,0,98.3387680053711,-2.758056640625,138.79443359375,1
 		} 
 	}
-	Deformer: 2756957632, "SubDeformer::", "Cluster" {
+	Deformer: 2747249536, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *45 {
@@ -2077,7 +2077,7 @@ Objects:  {
 			a: 0.664706408977509,-0.176357939839363,-0.725992619991302,0,0.0902099350909964,0.983574679083791,-0.156335035574204,0,0.741639082020928,0.0384251632782134,0.669697810894545,0,99.3691329956055,1.63645386695862,137.768814086914,1
 		} 
 	}
-	Deformer: 2756958384, "SubDeformer::", "Cluster" {
+	Deformer: 2747260064, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *20 {
@@ -2093,7 +2093,7 @@ Objects:  {
 			a: 0.536900281906128,-0.279547214508057,-0.795985817909241,0,0.243537794122746,0.954694020014491,-0.171016292778689,0,0.80773017152362,-0.102033952490477,0.580655903158035,0,103.928161621094,-5.21021413803101,133.064987182617,1
 		} 
 	}
-	Deformer: 2756959136, "SubDeformer::", "Cluster" {
+	Deformer: 2747260816, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *20 {
@@ -2109,7 +2109,7 @@ Objects:  {
 			a: 0.559527337551117,-0.351081520318985,-0.75078147649765,0,0.330912119450419,0.92514725518096,-0.186003160812951,0,0.759886094541466,-0.144368912250175,0.633822644027342,0,101.024147033691,-9.82843494415283,134.925643920898,1
 		} 
 	}
-	Deformer: 2756967408, "SubDeformer::", "Cluster" {
+	Deformer: 2747256304, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *20 {
@@ -2125,14 +2125,14 @@ Objects:  {
 			a: 0.212467312812805,-0.755406141281128,-0.619854331016541,0,0.897253943467044,-0.100428359595264,0.429941875922903,0,-0.38703137088025,-0.647514808847575,0.656452859111979,0,87.0740814208984,-12.0493602752686,137.361328125,1
 		} 
 	}
-	Deformer: 2756962144, "SubDeformer::", "Cluster" {
+	Deformer: 2747251040, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
-		Indexes: *56 {
-			a: 35,114,115,116,117,118,145,146,168,169,170,171,172,173,175,312,313,314,315,316,317,318,319,329,330,331,332,333,334,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,397,398,399,400,401,402,403,404,405
+		Indexes: *50 {
+			a: 35,114,115,116,117,118,145,146,168,169,170,171,172,173,175,312,313,314,315,316,317,318,319,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,397,398,399,400,401,402,403,404,405
 		} 
-		Weights: *56 {
-			a: 0.0758776888251305,0.0260860603302717,0.0819371044635773,0.0880705788731575,0.0713077336549759,0.0826785564422607,0.00218235002830625,0.00555052794516087,0.126413762569427,0.135649934411049,0.119308292865753,0.510266125202179,0.132096946239471,0.120650507509708,0.121344782412052,0.274525344371796,0.270735114812851,0.627723574638367,0.627072930335999,0.627039194107056,0.645946741104126,0.655163645744324,0.632350742816925,0.013742970302701,0.0166734308004379,0.0100633837282658,0.00975954812020063,0.0171697530895472,0.0125287864357233,0.470898985862732,0.237429842352867,0.361253410577774,0.251847982406616,0.494541317224503,0.384634494781494,0.252182751893997,0.506212890148163,0.38678640127182,0.273572623729706,0.517000019550323,0.408883094787598,0.514962732791901,0.286445796489716,0.419842720031738,0.477592289447784,0.233248978853226,0.363411843776703,0.500433564186096,0.518970131874084,0.51507031917572,0.520124077796936,0.516867518424988,0.256743431091309,0.251758068799973,0.237989857792854,0.244828462600708
+		Weights: *50 {
+			a: 0.0758776888251305,0.0260860603302717,0.0819371044635773,0.0880705788731575,0.0713077336549759,0.0826785564422607,0.00218235002830625,0.00555052794516087,0.126413762569427,0.135649934411049,0.119308292865753,0.5,0.132096946239471,0.120650507509708,0.121344782412052,0.25,0.25,0.75,0.75,0.75,0.75,0.75,0.75,0.800000011920929,0.149999961256981,0.5,0.149999976158142,0.800000011920929,0.5,0.149575650691986,0.800000011920929,0.5,0.148516610264778,0.800000011920929,0.5,0.800000011920929,0.149543449282646,0.5,0.800000011920929,0.149999991059303,0.5,0.5,0.5,0.5,0.5,0.5,0.25,0.25,0.25,0.25
 		} 
 		Transform: *16 {
 			a: 0.810208992551348,0.567187281075886,-0.147845225426943,0,-0.235607935969447,0.0841860276082691,-0.968195985974904,0,-0.53670092350276,0.819274422925265,0.20184263148972,0,52.3786294685759,-170.594793751882,-13.1364450858742,1
@@ -2141,7 +2141,7 @@ Objects:  {
 			a: 0.810210943222046,-0.235608503222466,-0.536702215671539,0,0.567187689951145,0.0841860882964844,0.819275013525677,0,-0.147844911134364,-0.968193927762929,0.201842202408287,0,52.3793716430664,13.9839324951172,170.527267456055,1
 		} 
 	}
-	Deformer: 2756954624, "SubDeformer::", "Cluster" {
+	Deformer: 2747257808, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *34 {
@@ -2157,7 +2157,7 @@ Objects:  {
 			a: 0.568361222743988,-0.0729050263762474,-0.819543898105621,0,-0.0737362208440138,0.987544457144349,-0.138986774959272,0,0.819469010254911,0.139424787349063,0.555906330244418,0,98.8767242431641,5.76464033126831,137.645004272461,1
 		} 
 	}
-	Deformer: 2756965152, "SubDeformer::", "Cluster" {
+	Deformer: 2747253296, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *20 {
@@ -2173,7 +2173,7 @@ Objects:  {
 			a: 0.576954603195191,-0.0714335218071938,-0.81364768743515,0,-0.0737385374284535,0.987544044867079,-0.138988335385415,0,0.813441484025664,0.140187172643857,0.564500768916642,0,101.706398010254,5.40167284011841,133.56477355957,1
 		} 
 	}
-	Deformer: 2756952368, "SubDeformer::", "Cluster" {
+	Deformer: 2747261568, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *20 {
@@ -2189,14 +2189,14 @@ Objects:  {
 			a: 0.584635257720947,-0.179381251335144,-0.791218042373657,0,0.0902074057593402,0.983574625814499,-0.156336699393964,0,0.80626613374856,0.0200262262804874,0.591214120904911,0,104.231315612793,0.346436262130737,132.458343505859,1
 		} 
 	}
-	Deformer: 2756953120, "SubDeformer::", "Cluster" {
+	Deformer: 2747257056, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *97 {
 			a: 179,180,184,185,195,196,203,204,207,208,211,212,217,218,219,220,223,224,228,229,457,458,463,473,474,475,476,477,478,479,480,481,482,483,484,485,486,487,488,489,490,699,700,704,705,715,716,723,724,727,728,731,732,737,738,739,740,743,744,748,749,970,973,978,979,999,1010,1011,1016,1020,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1090,1091,1092,1093
 		} 
 		Weights: *97 {
-			a: 0.0278940629214048,0.0362241342663765,0.0495347157120705,0.0787355080246925,0.413931965827942,0.354218393564224,0.0762407332658768,0.0989273488521576,0.401936888694763,0.376689970493317,0.00200997688807547,0.01214331202209,0.0112475696951151,0.0125487111508846,0.0396705567836761,0.0547928102314472,0.0595405027270317,0.0505617335438728,0.40762534737587,0.349358886480331,0.0515424124896526,0.0554803498089314,0.0247761327773333,0.2572261095047,0.255188435316086,0.266727775335312,0.143604084849358,0.201688900589943,0.2528475522995,0.3052117228508,0.244006648659706,0.263377666473389,0.307946622371674,0.301332145929337,0.199255138635635,0.446280062198639,0.302301466464996,0.364918529987335,0.424884557723999,0.267894923686981,0.43607297539711,0.0278444215655327,0.0363010838627815,0.0495384968817234,0.0787288695573807,0.413927584886551,0.354196190834045,0.076263315975666,0.0989500805735588,0.40191438794136,0.376671493053436,0.0021825130097568,0.0121417231857777,0.0112437512725592,0.0125904977321625,0.0397349148988724,0.0547783300280571,0.0595782063901424,0.0505627989768982,0.407617270946503,0.349376171827316,0.0504507794976234,0.0629715472459793,0.411117970943451,0.350294172763824,0.0167063921689987,0.0515676662325859,0.0554649494588375,0.0247825253754854,0.284125834703445,0.257240027189255,0.255188167095184,0.137466177344322,0.266734957695007,0.14360399544239,0.201676562428474,0.252874255180359,0.274771600961685,0.207695484161377,0.305257230997086,0.243962377309799,0.263397186994553,0.308023184537888,0.30139097571373,0.199187338352203,0.446258544921875,0.302351027727127,0.418970942497253,0.255977720022202,0.364913672208786,0.424852758646011,0.267904669046402,0.436066150665283,0.0396705567836761,0.0362241342663765,0.0397349148988724,0.0504507794976234
+			a: 0.0278940629214048,0.0362241342663765,0.0495347157120705,0.0787355080246925,0.413931965827942,0.354218393564224,0.0762407332658768,0.0989273488521576,0.401936888694763,0.376689970493317,0.00200997688807547,0.01214331202209,0.0112475696951151,0.0125487111508846,0.0396705567836761,0.0547928102314472,0.0595405027270317,0.0505617335438728,0.40762534737587,0.349358886480331,0.0515424124896526,0.0554803498089314,0.0247761327773333,0.2572261095047,0.255188435316086,0.266727775335312,0.143604084849358,0.201688900589943,0.2528475522995,0.3052117228508,0.244006648659706,0.263377666473389,0.307946622371674,0.301332145929337,0.199255138635635,0.446280062198639,0.302301466464996,0.364918529987335,0.424884557723999,0.267894923686981,0.43607297539711,0.0278444215655327,0.0362241342663765,0.0495384968817234,0.0787288695573807,0.413927584886551,0.354196190834045,0.076263315975666,0.0989500805735588,0.40191438794136,0.376671493053436,0.0021825130097568,0.0121417231857777,0.0112437512725592,0.0125904977321625,0.0397349148988724,0.0547783300280571,0.0595782063901424,0.0505627989768982,0.407617270946503,0.349376171827316,0.0504507794976234,0.0629715472459793,0.411117970943451,0.350294172763824,0.0167063921689987,0.0515424124896526,0.0554649494588375,0.0247825253754854,0.284125834703445,0.2572261095047,0.255188435316086,0.137466177344322,0.266734957695007,0.14360399544239,0.201676562428474,0.2528475522995,0.274771600961685,0.207695484161377,0.305257230997086,0.243962377309799,0.263397186994553,0.308023184537888,0.30139097571373,0.199187338352203,0.446258544921875,0.302351027727127,0.418970942497253,0.255977720022202,0.364913672208786,0.424852758646011,0.267904669046402,0.436066150665283,0.0396705567836761,0.0362241342663765,0.0397349148988724,0.0504507794976234
 		} 
 		Transform: *16 {
 			a: -1.0199815894849e-07,-2.46638382031237e-07,-0.999999999999929,0,0.315521773187854,0.948918149007146,-2.66222373391951e-07,0,0.948918032742784,-0.31552181184658,-1.89681331922316e-08,0,-146.080773302871,55.908910823311,-2.0958311477077e-06,1
@@ -2205,15 +2205,15 @@ Objects:  {
 			a: -1.01998217881015e-07,0.315521955490112,0.948918581008911,0,-2.466384640962e-07,0.948918464744432,-0.3155219168314,0,-1,-2.6622237339197e-07,-1.89681331922329e-08,0,-3.20652179652825e-06,-6.96130657196045,156.259246826172,1
 		} 
 	}
-	Deformer: 2756966656, "SubDeformer::", "Cluster" {
+	Deformer: 2747250288, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
-		Indexes: *186 {
-			a: 179,180,181,182,195,196,207,208,219,220,221,228,229,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,311,393,394,395,396,448,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,482,483,485,486,487,488,489,490,699,700,701,702,715,716,727,728,739,740,741,748,749,798,799,800,801,802,803,804,805,806,807,808,809,810,811,812,813,814,815,816,817,818,819,820,821,822,823,824,825,826,827,828,832,914,915,916,917,918,919,920,970,971,978,979,980,981,982,983,984,988,997,998,999,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1039,1040,1042,1043,1044,1045,1046,1047,1048,1049,1090,1091,1092,1093
+		Indexes: *158 {
+			a: 179,180,181,182,195,196,207,208,219,220,221,228,229,278,279,280,281,282,283,289,290,292,296,298,301,304,305,306,307,311,393,394,395,396,448,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,482,483,485,486,487,488,489,490,699,700,701,702,715,716,727,728,739,740,741,748,749,798,799,800,801,802,803,804,810,811,813,817,819,822,825,826,827,828,832,914,915,916,917,918,919,920,970,971,978,979,980,981,982,983,984,988,997,998,999,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1039,1040,1042,1043,1044,1045,1046,1047,1048,1049,1090,1091,1092,1093
 		} 
-		Weights: *186 {
-			a: 0.807676017284393,0.663613975048065,0.947514235973358,0.695548057556152,0.327863931655884,0.379850924015045,0.33893221616745,0.337884694337845,0.851032733917236,0.921013951301575,0.890171349048615,0.315250664949417,0.392330020666122,0.824793636798859,0.650200128555298,0.553786396980286,0.647564470767975,0.912921547889709,0.886194109916687,0.116817064583302,0.155534654855728,0.124874226748943,0.112967289984226,0.188605308532715,0.32434931397438,0.304980337619781,0.178637698292732,0.687232613563538,0.253041952848434,0.145416587591171,0.162325695157051,0.378208845853806,0.173496723175049,0.652911484241486,0.0491663180291653,0.0816512778401375,0.443675518035889,0.145416587591171,0.223841786384583,0.550737023353577,0.646419167518616,0.661616325378418,0.696383953094482,0.408135861158371,0.86563116312027,0.838825464248657,0.767006933689117,0.955399870872498,0.8724684715271,0.69023060798645,0.928320646286011,0.333842307329178,0.538093328475952,0.923269689083099,0.996342957019806,0.975050330162048,0.990388512611389,0.899905264377594,0.934167981147766,0.872572541236877,0.876232147216797,0.910565972328186,0.954453825950623,0.983857750892639,0.935943245887756,0.521856307983398,0.565495848655701,0.668736815452576,0.84871107339859,0.740745425224304,0.546532571315765,0.169493407011032,0.157086580991745,0.165904939174652,0.470600336790085,0.650732815265656,0.563369035720825,0.492111653089523,0.684997379779816,0.502788066864014,0.807705640792847,0.6635502576828,0.947502315044403,0.743373394012451,0.327855199575424,0.379910796880722,0.338948041200638,0.337910801172256,0.8509840965271,0.921027481555939,0.929787278175354,0.315234571695328,0.392260998487473,1,0.908169865608215,0.688294947147369,0.617208003997803,0.64755254983902,0.912900686264038,0.886194050312042,0.11688207089901,0.155529469251633,0.124870449304581,0.113008745014668,0.18869386613369,0.32453191280365,0.305035412311554,0.178633525967598,0.687268376350403,0.272708296775818,0.156087264418602,0.162323087453842,0.378217220306396,0.173514232039452,0.601938962936401,
-0.0491505898535252,0.0816405639052391,0.486414611339569,0.156087264418602,0.228628426790237,0.555115580558777,0.66193038225174,0.679365396499634,0.696423292160034,0.408835560083389,0.927381575107574,0.867578208446503,0.815940380096436,0.955920577049255,0.906420826911926,1,1,0.908657431602478,0.965475261211395,0.322235971689224,0.371880859136581,0.960163533687592,0.957282602787018,0.771332204341888,0.690272033214569,0.392064034938812,0.0936285406351089,0.873880445957184,0.954601645469666,0.98329359292984,0.690215408802032,0.928333759307861,0.333919882774353,0.54499214887619,0.92326295375824,0.996501266956329,0.975043952465057,0.990390002727509,0.899895310401917,0.934146463871002,0.150341525673866,0.872583031654358,0.876254916191101,0.910545587539673,0.980968594551086,0.983855664730072,0.935927271842957,0.521853744983673,0.565492033958435,0.862533807754517,0.668735146522522,0.848710656166077,0.740750133991241,0.546524465084076,0.703129470348358,0.0400538146495819,0.169567719101906,0.157171815633774,0.165998801589012,0.470505237579346,0.650672554969788,0.525788962841034,0.697801828384399,0.563276171684265,0.492032259702682,0.684982240200043,0.502721011638641,0.851032733917236,0.663613975048065,0.8509840965271,0.908657431602478
+		Weights: *158 {
+			a: 0.807676017284393,0.663613975048065,0.947514235973358,0.695548057556152,0.327863931655884,0.379850924015045,0.33893221616745,0.337884694337845,0.851032733917236,0.921013951301575,0.890171349048615,0.315250664949417,0.392330020666122,0.824793636798859,0.650200128555298,0.553786396980286,0.647564470767975,0.912921547889709,0.886194109916687,0.350000023841858,0.350000023841858,0.687232613563538,0.378208845853806,0.652911484241486,0.443675518035889,0.550737023353577,0.646419167518616,0.661616325378418,0.696383953094482,0.408135861158371,0.86563116312027,0.838825464248657,0.767006933689117,0.955399870872498,0.8724684715271,0.69023060798645,0.928320646286011,0.333842307329178,0.538093328475952,0.923269689083099,0.996342957019806,0.975050330162048,0.990388512611389,0.899905264377594,0.934167981147766,0.872572541236877,0.876232147216797,0.910565972328186,0.954453825950623,0.983857750892639,0.935943245887756,0.521856307983398,0.565495848655701,0.668736815452576,0.84871107339859,0.740745425224304,0.546532571315765,0.169493407011032,0.157086580991745,0.165904939174652,0.470600336790085,0.650732815265656,0.563369035720825,0.492111653089523,0.684997379779816,0.502788066864014,0.807705640792847,0.663613975048065,0.947514235973358,0.695548057556152,0.327855199575424,0.379910796880722,0.338948041200638,0.337910801172256,0.8509840965271,0.921027481555939,0.929787278175354,0.315234571695328,0.392260998487473,1,0.824793636798859,0.650200128555298,0.553786396980286,0.647564470767975,0.912900686264038,0.886194050312042,0.350000023841858,0.350000023841858,0.687232613563538,0.378208845853806,0.652911484241486,0.443675518035889,0.555115580558777,0.66193038225174,0.679365396499634,0.696423292160034,0.408835560083389,0.86563116312027,0.838825464248657,0.767006933689117,0.955399870872498,0.906420826911926,1,1,0.908657431602478,0.965475261211395,0.322235971689224,0.371880859136581,0.960163533687592,0.957282602787018,0.771332204341888,0.690272033214569,0.392064034938812,0.0936285406351089,0.873880445957184,0.954601645469666,
+0.98329359292984,0.69023060798645,0.928333759307861,0.333842307329178,0.538093328475952,0.923269689083099,0.996501266956329,0.975043952465057,0.990390002727509,0.899895310401917,0.934146463871002,0.150341525673866,0.872583031654358,0.876254916191101,0.910545587539673,0.980968594551086,0.983855664730072,0.935927271842957,0.521856307983398,0.565495848655701,0.862533807754517,0.668735146522522,0.848710656166077,0.740750133991241,0.546532571315765,0.703129470348358,0.0400538146495819,0.169567719101906,0.157171815633774,0.165998801589012,0.470505237579346,0.650672554969788,0.525788962841034,0.697801828384399,0.563276171684265,0.492032259702682,0.684982240200043,0.502721011638641,0.851032733917236,0.663613975048065,0.8509840965271,0.908657431602478
 		} 
 		Transform: *16 {
 			a: -7.97999227181735e-08,6.86310550995838e-07,-0.999999880790247,0,0.114466738219798,0.993426818436937,6.72665132575784e-07,0,0.99342657467053,-0.114466766307521,-1.57835214844524e-07,0,-172.345888170723,21.0539668296446,7.87103262286305e-06,1
@@ -2222,14 +2222,14 @@ Objects:  {
 			a: -7.9800003043236e-08,0.114466853439808,0.993427574634552,0,6.86310905009343e-07,0.993427330867511,-0.114466825351901,0,-1.00000011920929,6.7266529295198e-07,-1.57835252475449e-07,0,-2.03317358682398e-05,-1.18769454956055,173.623138427734,1
 		} 
 	}
-	Deformer: 2756965904, "SubDeformer::", "Cluster" {
+	Deformer: 2483637056, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
-		Indexes: *79 {
-			a: 179,180,181,182,219,220,221,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,305,306,329,330,331,332,333,334,393,394,395,396,448,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,804,970,971,980,981,983,998,1034,1090,1091,1093
+		Indexes: *73 {
+			a: 179,180,181,182,219,220,221,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,305,306,393,394,395,396,448,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,804,970,971,980,981,983,998,1034,1090,1091,1093
 		} 
-		Weights: *79 {
-			a: 0.164429932832718,0.300161927938461,0.0524857714772224,0.272654742002487,0.109296731650829,0.0241932105273008,0.109828621149063,0.175206378102303,0.343477606773376,0.404799699783325,0.284709513187408,0.0870784744620323,0.111091755330563,0.527708411216736,0.524854362010956,0.536280691623688,0.520309269428253,0.540058970451355,0.493814647197723,0.488678753376007,0.521094799041748,0.282867908477783,0.565664947032928,0.641184329986572,0.528883576393127,0.444216787815094,0.531561017036438,0.336761683225632,0.594077706336975,0.545725464820862,0.458979070186615,0.641184329986572,0.527852535247803,0.0175818093121052,0.027312234044075,0.0404893793165684,0.0649857074022293,0.049009270966053,0.0455207638442516,0.0788344964385033,0.0623510293662548,0.105937451124191,0.0456028021872044,0.153016537427902,0.0193109400570393,0.0014361054636538,0.25822702050209,0.0161990318447351,0.489453017711639,0.389950037002563,0.076730340719223,0.00365701573900878,0.00017351601854898,0.00961146783083677,0.100094705820084,0.0658320263028145,0.127427458763123,0.123767830431461,0.0894340425729752,0.0455462038516998,0.0161422453820705,0.0640567541122437,0.220917582511902,0.179315716028214,0.0645353943109512,0.00768482033163309,0.0575656816363335,0.200619861483574,0.00271410867571831,0.0408918000757694,0.0248251687735319,0.0351791717112064,0.0213587209582329,0.00368381687439978,0.0284609422087669,0.0220989529043436,0.109296731650829,0.300161927938461,0.0408918000757694
+		Weights: *73 {
+			a: 0.164429932832718,0.300161927938461,0.0524857714772224,0.272654742002487,0.109296731650829,0.0241932105273008,0.109828621149063,0.175206378102303,0.343477606773376,0.404799699783325,0.284709513187408,0.0870784744620323,0.111091755330563,0.100000001490116,0.100000001490116,0.100000001490116,0.100000001490116,0.500000059604645,0.649999976158142,0.649999976158142,0.500000059604645,0.282867908477783,0.500000059604645,0.500000059604645,0.500000059604645,0.444216787815094,0.500000059604645,0.336761683225632,0.100000001490116,0.100000001490116,0.458979070186615,0.500000059604645,0.500000059604645,0.0175818093121052,0.027312234044075,0.105937451124191,0.0456028021872044,0.153016537427902,0.0193109400570393,0.0014361054636538,0.25822702050209,0.0161990318447351,0.489453017711639,0.389950037002563,0.076730340719223,0.00365701573900878,0.00017351601854898,0.00961146783083677,0.100094705820084,0.0658320263028145,0.127427458763123,0.123767830431461,0.0894340425729752,0.0455462038516998,0.0161422453820705,0.0640567541122437,0.220917582511902,0.179315716028214,0.0645353943109512,0.00768482033163309,0.0575656816363335,0.200619861483574,0.00271410867571831,0.0408918000757694,0.0248251687735319,0.0351791717112064,0.0213587209582329,0.00368381687439978,0.0284609422087669,0.0220989529043436,0.109296731650829,0.300161927938461,0.0408918000757694
 		} 
 		Transform: *16 {
 			a: 0.699001992433635,0.320767988816939,0.639143249906703,0,0.634012573101404,0.135450853467869,-0.761367716989537,0,-0.330795512590933,0.937422049649697,-0.10869041090665,0,69.2498311733775,-188.336142381901,13.8636123229204,1
@@ -2238,14 +2238,14 @@ Objects:  {
 			a: 0.699001014232635,0.634011685848236,-0.330795049667358,0,0.320768266113317,0.135450970561944,0.937422860029002,0,0.639144208751983,-0.761368859196456,-0.108690573964443,0,3.14570808410645,-7.83956623077393,200.964950561523,1
 		} 
 	}
-	Deformer: 2756955376, "SubDeformer::", "Cluster" {
+	Deformer: 2483623520, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
-		Indexes: *56 {
-			a: 182,279,280,281,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,314,315,316,317,318,319,329,330,331,332,333,334,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,459,460
+		Indexes: *48 {
+			a: 182,279,280,281,284,285,286,287,288,291,292,293,294,295,296,297,298,299,300,301,302,303,329,330,331,332,333,334,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,459,460
 		} 
-		Weights: *56 {
-			a: 0.0317971706390381,0.00632228283211589,0.041413851082325,0.0677260234951973,0.355474531650543,0.319610983133316,0.338845103979111,0.366723477840424,0.271335691213608,0.181836098432541,0.20634101331234,0.300267487764359,0.0298994518816471,0.181293115019798,0.213399082422256,0.308790743350983,0.1775743663311,0.294942259788513,0.0103268651291728,0.356756001710892,0.372623264789581,0.0973454192280769,0.213399082422256,0.24830561876297,0.128228962421417,0.13228403031826,0.118103936314583,0.120741546154022,0.112740501761436,0.131574466824532,0.945767641067505,0.918340861797333,0.94092732667923,0.944719672203064,0.903995752334595,0.925120174884796,0.488452941179276,0.762570142745972,0.625316679477692,0.748152017593384,0.46654149889946,0.602675557136536,0.747101843357086,0.451082944869995,0.59783148765564,0.723694980144501,0.442960321903229,0.574648439884186,0.445994704961777,0.712679743766785,0.562542021274567,0.483316212892532,0.766751050949097,0.623763978481293,0.176704660058022,0.0719565898180008
+		Weights: *48 {
+			a: 0.0317971706390381,0.00632228283211589,0.041413851082325,0.0677260234951973,0.899999976158142,0.899999976158142,0.899999976158142,0.899999976158142,0.499999940395355,0.499999940395355,0.0298994518816471,0.499999940395355,0.499999940395355,0.499999940395355,0.1775743663311,0.499999940395355,0.0103268651291728,0.899999976158142,0.899999976158142,0.0973454192280769,0.499999940395355,0.499999940395355,1,1,1,1,1,1,0.199999988079071,0.850000023841858,0.5,0.850000023841858,0.199999988079071,0.5,0.850000023841858,0.199999988079071,0.5,0.850000023841858,0.199999988079071,0.5,0.199999988079071,0.850000023841858,0.5,0.199999988079071,0.850000023841858,0.5,0.176704660058022,0.0719565898180008
 		} 
 		Transform: *16 {
 			a: 0.809575207063463,0.567187854624613,0.151277093438781,0,0.125728985759037,0.0841836759670218,-0.988487233987539,0,-0.573392182659234,0.81927442901255,-0.0031589428233025,0,91.1338229875461,-170.594790545002,6.43783254205778,1
@@ -2254,7 +2254,7 @@ Objects:  {
 			a: 0.809576511383057,0.125729188323021,-0.573393106460571,0,0.567188113394643,0.0841837143744245,0.819274802792889,0,0.151276828753437,-0.988485504458786,-0.00315893729618768,0,22.0056400299072,9.26682567596436,192.039855957031,1
 		} 
 	}
-	Deformer: 2756956128, "SubDeformer::", "Cluster" {
+	Deformer: 2483625024, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *108 {
@@ -2270,7 +2270,7 @@ Objects:  {
 			a: -1.15571921812954e-07,0.0467752739787102,0.9989053606987,0,1.57303134811518e-07,0.998905360698701,-0.046775273978692,0,-1,1.51725059693485e-07,-1.22803328399149e-07,0,-8.45168688101694e-06,-7.19908285140991,141.160720825195,1
 		} 
 	}
-	Deformer: 2756956880, "SubDeformer::", "Cluster" {
+	Deformer: 2483627280, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *102 {
@@ -2286,7 +2286,7 @@ Objects:  {
 			a: 0.000137878509121953,0.0579352527856826,-0.998320996761322,0,6.35638656461669e-06,-0.998320638876362,-0.0579352311387726,0,-0.999999999999998,1.64230756789043e-06,-0.000138015089399944,0,11.1356439590454,-7.51280307769775,136.198455810547,1
 		} 
 	}
-	Deformer: 2756959888, "SubDeformer::", "Cluster" {
+	Deformer: 2483634800, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *103 {
@@ -2302,7 +2302,7 @@ Objects:  {
 			a: 1.31782144295881e-07,0.0617757700383664,-0.998090445995331,0,-1.42914846360498e-07,-0.998090384780607,-0.0617757662495636,0,-1.00000059604645,1.50782866570059e-07,-1.22701800868431e-07,0,-11.1360025405884,-7.51280355453491,136.198455810547,1
 		} 
 	}
-	Deformer: 2756961392, "SubDeformer::", "Cluster" {
+	Deformer: 2483631040, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *82 {
@@ -2318,7 +2318,7 @@ Objects:  {
 			a: 0.000136569709866299,0.156591147184372,-0.987664222717285,0,2.09468618622969e-05,-0.987663755715787,-0.156591070246273,0,-0.999999940395365,6.97130301067597e-07,-0.00013816490883622,0,11.1439027786255,-4.0425968170166,76.3995056152344,1
 		} 
 	}
-	Deformer: 2756962896, "SubDeformer::", "Cluster" {
+	Deformer: 2483631792, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *56 {
@@ -2334,7 +2334,7 @@ Objects:  {
 			a: 6.78963260634981e-07,-0.862285554409027,-0.506422996520996,0,-1.45628471049155e-07,-0.506423158887476,0.862285830869954,0,-0.999999940395356,-5.11710276340606e-07,-4.69415572490904e-07,0,11.1522397994995,5.51613426208496,16.1098098754883,1
 		} 
 	}
-	Deformer: 2756960640, "SubDeformer::", "Cluster" {
+	Deformer: 2483635552, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *22 {
@@ -2350,14 +2350,14 @@ Objects:  {
 			a: 1.02628962385265e-06,-0.998205065727234,-0.0598928406834602,0,9.04427656751428e-08,-0.0598928694050342,0.998205544417394,0,-0.999999940395357,-1.02986379089817e-06,2.88129663393955e-08,0,11.1522531509399,-11.1933403015137,6.29628372192383,1
 		} 
 	}
-	Deformer: 2756963648, "SubDeformer::", "Cluster" {
+	Deformer: 1767111280, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
-		Indexes: *72 {
-			a: 283,699,700,701,702,739,740,741,799,800,801,802,803,804,805,806,807,808,809,810,811,812,813,814,815,816,817,818,819,820,821,822,823,824,826,827,850,851,852,853,854,855,914,915,916,917,971,980,981,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1021,1022,1023,1024,1025,1026,1027,1028,1030,1031,1032,1033,1092
+		Indexes: *66 {
+			a: 283,699,700,701,702,739,740,741,799,800,801,802,803,804,805,806,807,808,809,810,811,812,813,814,815,816,817,818,819,820,821,822,823,824,826,827,914,915,916,917,971,980,981,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1021,1022,1023,1024,1025,1026,1027,1028,1030,1031,1032,1033,1092
 		} 
-		Weights: *72 {
-			a: 0.00271413172595203,0.16444993019104,0.300148665904999,0.0524976588785648,0.224818050861359,0.109281092882156,0.0241941697895527,0.0702127292752266,0.0918301120400429,0.305389672517776,0.341365039348602,0.284710139036179,0.0870993062853813,0.11109185218811,0.527688920497894,0.524848997592926,0.536271810531616,0.520303726196289,0.540026187896729,0.493734240531921,0.488633006811142,0.521089732646942,0.282843291759491,0.545957446098328,0.630447030067444,0.52887088060379,0.44417616724968,0.531562447547913,0.32995480298996,0.594095408916473,0.545706391334534,0.416214197874069,0.630447030067444,0.52306205034256,0.00169355981051922,0.00943339336663485,0.040511354804039,0.0649880319833755,0.0490130111575127,0.0455277264118195,0.0788292959332466,0.0623515844345093,0.0442291013896465,0.0167976096272469,0.103923663496971,0.0187973137944937,0.00969956908375025,0.00465728249400854,0.0213586762547493,0.258216917514801,0.016201339662075,0.489432096481323,0.383038580417633,0.076737068593502,0.0034987076651305,0.000173537511727773,0.0096100214868784,0.100104682147503,0.0658535584807396,0.12741693854332,0.123745076358318,0.089454397559166,0.0190313924103975,0.0161443222314119,0.0640727505087852,0.220906257629395,0.179319813847542,0.0645299479365349,0.00768535165116191,0.057573277503252,0.200601279735565,0.109281092882156
+		Weights: *66 {
+			a: 0.00271413172595203,0.16444993019104,0.300161927938461,0.0524857714772224,0.272654742002487,0.109281092882156,0.0241941697895527,0.0702127292752266,0.175206378102303,0.343477606773376,0.404799699783325,0.284709513187408,0.0870993062853813,0.11109185218811,0.100000001490116,0.100000001490116,0.100000001490116,0.100000001490116,0.500000059604645,0.649999976158142,0.649999976158142,0.500000059604645,0.282867908477783,0.500000059604645,0.500000059604645,0.500000059604645,0.444216787815094,0.500000059604645,0.336761683225632,0.100000001490116,0.100000001490116,0.458979070186615,0.500000059604645,0.500000059604645,0.00169355981051922,0.00943339336663485,0.105937451124191,0.0456028021872044,0.153016537427902,0.0193109400570393,0.00969956908375025,0.00465728249400854,0.0213586762547493,0.25822702050209,0.016201339662075,0.489453017711639,0.389950037002563,0.076730340719223,0.0034987076651305,0.000173537511727773,0.0096100214868784,0.100104682147503,0.0658535584807396,0.12741693854332,0.123745076358318,0.089454397559166,0.0190313924103975,0.0161443222314119,0.0640727505087852,0.220917582511902,0.179315716028214,0.0645299479365349,0.00768535165116191,0.057573277503252,0.200619861483574,0.109281092882156
 		} 
 		Transform: *16 {
 			a: -0.699002591859799,0.320767369799475,-0.639143294747796,0,0.634012846481037,-0.135449813889598,-0.761368015491188,0,-0.330794373724312,-0.937422669684796,-0.108690733514805,0,69.2493679756162,188.33634959984,13.8634488278266,1
@@ -2366,14 +2366,14 @@ Objects:  {
 			a: -0.699001312255859,0.634011685848236,-0.330793768167496,0,0.320767491931771,-0.135449865462165,-0.937423026608829,0,-0.639143881618627,-0.761368714590567,-0.108690833316245,0,-3.14604091644287,-7.8395791053772,200.964920043945,1
 		} 
 	}
-	Deformer: 2756964400, "SubDeformer::", "Cluster" {
+	Deformer: 1767114288, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *26 {
 			a: 304,305,306,307,311,393,394,395,396,448,825,826,827,828,832,914,915,916,917,918,982,983,984,988,997,998
 		} 
 		Weights: *26 {
-			a: 0.39469587802887,0.335999011993408,0.311071455478668,0.281746417284012,0.408135741949081,0.0284313932061195,0.11557175219059,0.079976499080658,0.0252892021089792,0.126095399260521,0.393179178237915,0.336376041173935,0.311201214790344,0.281695485115051,0.408703118562698,0.0283893179148436,0.115624092519283,0.0801359340548515,0.0252820868045092,0.0935791581869125,0.21047542989254,0.30604413151741,0.446132212877274,0.436505258083344,0.126119568943977,0.0169374197721481
+			a: 0.39469587802887,0.335999011993408,0.311071455478668,0.281746417284012,0.408135741949081,0.0284313932061195,0.11557175219059,0.079976499080658,0.0252892021089792,0.126095399260521,0.393179178237915,0.336376041173935,0.311201214790344,0.281695485115051,0.408703118562698,0.0284313932061195,0.11557175219059,0.079976499080658,0.0252892021089792,0.0935791581869125,0.21047542989254,0.30604413151741,0.446132212877274,0.436505258083344,0.126119568943977,0.0169374197721481
 		} 
 		Transform: *16 {
 			a: -5.53403497480913e-07,5.91673320311268e-06,-0.999999880755411,0,-0.0258528161442798,0.999665959096248,5.92906074990584e-06,0,0.999665723374965,0.025852822243652,-4.00254309674753e-07,0,-206.684300295628,-7.98361989076672,4.25576090239245e-05,1
@@ -2382,7 +2382,7 @@ Objects:  {
 			a: -5.53403538104226e-07,-0.0258528180420398,0.999665796756744,0,5.91673084690012e-06,0.999665561000641,0.025852811948318,0,-1.00000011920929,5.92906216371354e-06,-4.00254405116957e-07,0,-2.45852788793854e-05,2.63757824897766,206.821624755859,1
 		} 
 	}
-	Deformer: 2752749696, "SubDeformer::", "Cluster" {
+	Deformer: 1260406624, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *165 {
@@ -2398,14 +2398,14 @@ Objects:  {
 			a: -4.73151970942631e-07,-0.0196501333266496,0.999806940555573,0,5.68781151580017e-06,0.999806704095307,0.0196501286819684,0,-1.00000011920929,5.69601269062567e-06,-3.61294369835973e-07,0,-0.0559586770832539,2.07894825935364,217.572341918945,1
 		} 
 	}
-	Deformer: 2752756464, "SubDeformer::", "Cluster" {
+	Deformer: 2455026400, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
-		Indexes: *85 {
-			a: 520,521,522,523,524,525,526,527,528,529,530,533,534,537,538,539,541,545,546,547,548,549,551,553,554,555,556,565,567,572,573,574,576,578,579,580,581,584,585,588,589,594,596,602,603,634,635,636,637,638,639,640,641,642,644,645,646,651,652,653,658,665,666,667,668,669,670,671,675,688,689,690,692,693,694,695,696,697,698,833,834,926,927,928,929
+		Indexes: *79 {
+			a: 520,521,522,523,524,525,526,527,528,529,530,533,534,537,538,539,541,545,546,547,548,549,551,553,554,555,556,565,567,572,573,574,576,578,579,580,581,584,585,588,589,594,596,602,603,634,635,636,637,638,639,640,641,642,644,645,646,651,652,653,658,665,666,667,668,669,670,671,675,688,689,690,692,693,694,695,696,697,698
 		} 
-		Weights: *85 {
-			a: 0.70028167963028,0.629849433898926,0.877073109149933,0.570657134056091,0.246932715177536,0.439090132713318,0.224778473377228,0.217703923583031,0.474478185176849,0.359721153974533,0.187897905707359,0.282434821128845,0.501087665557861,0.208366364240646,0.465066403150558,0.261616498231888,0.237813755869865,0.406449466943741,0.151771873235703,0.543207705020905,0.710051536560059,0.122804574668407,0.123483717441559,0.788751006126404,0.63627701997757,0.535121440887451,0.150935113430023,0.375243306159973,0.78416234254837,0.984588742256165,0.876950025558472,0.195607468485832,0.180946215987206,0.725947439670563,0.661013007164001,0.944169461727142,0.911638021469116,0.293724983930588,0.352868497371674,0.248724400997162,0.244503378868103,0.203651815652847,0.19384203851223,0.417948424816132,0.477765738964081,0.786731660366058,0.52613365650177,0.511669874191284,0.55521023273468,0.521492302417755,0.811942875385284,0.975911796092987,0.905967831611633,0.948355138301849,0.360906690359116,0.543707549571991,0.626913487911224,0.980393409729004,0.984270393848419,0.979358017444611,0.805081248283386,0.930857241153717,0.903232932090759,0.898673713207245,0.805425882339478,0.53378427028656,0.640092551708221,0.368253111839294,0.00722868600860238,0.372120469808578,0.35022696852684,0.393058836460114,0.357723981142044,0.388307213783264,0.353390991687775,0.390050202608109,0.564055800437927,0.195819303393364,0.281417459249496,0.0532937496900558,0.0649423599243164,0.0969054624438286,0.0991909354925156,0.131373181939125,0.122838720679283
+		Weights: *79 {
+			a: 0.700307369232178,0.629872977733612,0.877096712589264,0.570688962936401,0.246974989771843,0.439095854759216,0.224798887968063,0.217766553163528,0.474601864814758,0.359796077013016,0.187928184866905,0.282590478658676,0.501142621040344,0.208412826061249,0.465218156576157,0.261641174554825,0.237879067659378,0.406501322984695,0.151790648698807,0.543388903141022,0.710070312023163,0.122795917093754,0.123640924692154,0.78875470161438,0.636322617530823,0.535001873970032,0.151101350784302,0.375374972820282,0.784375846385956,0.984531939029694,0.876994907855988,0.195660606026649,0.180981129407883,0.72601991891861,0.661055326461792,0.944143116474152,0.911638677120209,0.293756902217865,0.352918475866318,0.248732283711433,0.244542106986046,0.203707545995712,0.193897753953934,0.417948514223099,0.477814704179764,0.786491513252258,0.525987982749939,0.511591017246246,0.555087566375732,0.521247863769531,0.81209409236908,0.975892126560211,0.90591037273407,0.948371469974518,0.360951751470566,0.543734073638916,0.626919031143188,0.980334222316742,0.98423033952713,0.979297935962677,0.805018723011017,0.930723905563354,0.903115034103394,0.898533403873444,0.805336713790894,0.533704936504364,0.640131831169128,0.368349581956863,0.00723451422527432,0.372025072574615,0.35014209151268,0.392940878868103,0.357611179351807,0.388212084770203,0.353384077548981,0.38992315530777,0.564077734947205,0.195863515138626,0.281491160392761
 		} 
 		Transform: *16 {
 			a: -0.763824980728489,0.609029338098638,0.213668964295356,0,-0.322569711970468,-0.0734780699589541,-0.943689575600152,0,-0.559033346550523,-0.789738260333941,0.252578818288681,0,22.9425329398413,169.538466017351,-15.4819560524145,1
@@ -2414,14 +2414,14 @@ Objects:  {
 			a: -0.763826429843903,-0.322570323944092,-0.559034407138825,0,0.609027948744472,-0.0734779023363844,-0.789736458735769,0,0.213668857279832,-0.943689102955776,0.252578691785262,0,-82.4215393066406,5.24775791168213,150.62678527832,1
 		} 
 	}
-	Deformer: 2752761728, "SubDeformer::", "Cluster" {
+	Deformer: 2491674800, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *31 {
 			a: 520,525,526,527,528,531,532,539,540,541,542,548,565,566,567,568,569,570,571,643,644,645,646,647,648,649,650,684,685,686,687
 		} 
 		Weights: *31 {
-			a: 0.150754302740097,0.30045285820961,0.288038671016693,0.270975470542908,0.253393113613129,0.120690025389194,0.116959325969219,0.529924929141998,0.534301817417145,0.47003585100174,0.597494602203369,0.099534884095192,0.538797557353973,0.718102514743805,0.104413144290447,0.280648171901703,0.325789898633957,0.0163563750684261,0.0148672563955188,0.68055671453476,0.531827986240387,0.32390946149826,0.323369950056076,0.309406220912933,0.0156512651592493,0.0181028358638287,0.362575858831406,0.479818224906921,0.471990376710892,0.502053022384644,0.508736550807953
+			a: 0.150726184248924,0.300407290458679,0.288028717041016,0.270970612764359,0.253301382064819,0.120673395693302,0.116926364600658,0.529918372631073,0.534207820892334,0.47008290886879,0.499275952577591,0.0995198413729668,0.538880884647369,0.718283116817474,0.10425765812397,0.280763417482376,0.325892895460129,0.0163592454046011,0.0148910032585263,0.680413901805878,0.531840741634369,0.323902815580368,0.323325604200363,0.309495359659195,0.0156729873269796,0.0181122627109289,0.362589776515961,0.479798853397369,0.471993327140808,0.502067506313324,0.508753478527069
 		} 
 		Transform: *16 {
 			a: -0.624282747955037,0.330909653793126,-0.707650912400249,0,-0.362413531752916,-0.925154085786126,-0.112899589395572,0,-0.692044453811254,0.18598107526438,0.697484955560483,0,34.2119497141336,-0.756809603620709,-166.708009257074,1
@@ -2430,14 +2430,14 @@ Objects:  {
 			a: -0.624283969402313,-0.362414240837097,-0.69204580783844,0,0.330909573786887,-0.925153862105437,0.185981030298492,0,-0.707649925695791,-0.1128994319754,0.697483983030803,0,-96.3625030517578,-7.12250709533691,140.093154907227,1
 		} 
 	}
-	Deformer: 2752751952, "SubDeformer::", "Cluster" {
+	Deformer: 2491680816, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *39 {
 			a: 520,521,522,523,524,533,534,543,544,545,546,547,548,549,550,551,552,553,554,556,557,558,561,562,606,610,611,642,645,646,667,668,669,670,671,694,696,697,698
 		} 
 		Weights: *39 {
-			a: 0.148964032530785,0.309322953224182,0.113257199525833,0.312725931406021,0.368397533893585,0.325415045022964,0.278816342353821,0.0475067533552647,0.0822594836354256,0.378521472215652,0.320230096578598,0.31415119767189,0.190413638949394,0.301488608121872,0.0642014145851135,0.288282513618469,0.0701523274183273,0.0348378121852875,0.290520071983337,0.280105948448181,0.0120701789855957,0.0254761502146721,0.00224516121670604,0.000847644929308444,0.000231934056500904,0.0212020538747311,0.0268722176551819,0.0419142544269562,0.132383063435555,0.049716591835022,0.00996026396751404,0.129474028944969,0.0845219418406487,0.246145650744438,0.3453468978405,0.382359236478806,0.318226128816605,0.284904956817627,0.379605799913406
+			a: 0.148966401815414,0.309325575828552,0.113232932984829,0.312685489654541,0.368310928344727,0.325425654649734,0.278795093297958,0.0474978871643543,0.0823216065764427,0.378466665744781,0.320231944322586,0.314205944538116,0.19040983915329,0.301484763622284,0.0642180889844894,0.288253277540207,0.0701734200119972,0.0348066091537476,0.290461391210556,0.280104637145996,0.0120337195694447,0.0254634004086256,0.00225109327584505,0.000825856113806367,0.000239384666201659,0.0211939346045256,0.0268892329186201,0.0418981499969959,0.132363125681877,0.0497553423047066,0.00997838750481606,0.129441484808922,0.0844977647066116,0.246099561452866,0.345376133918762,0.382358729839325,0.318153977394104,0.284904211759567,0.379646688699722
 		} 
 		Transform: *16 {
 			a: -0.200159981031818,0.897258138609537,0.393527851623421,0,-0.775442735060529,0.100422598996827,-0.623380579642566,0,-0.598852066959354,-0.429934471362842,0.675671733755035,0,71.4100720270232,138.394453381791,-67.410276552418,1
@@ -2446,14 +2446,14 @@ Objects:  {
 			a: -0.200160130858421,-0.775443315505981,-0.598852515220642,0,0.897257676202073,0.100422547243427,-0.429934249793486,0,0.393527926836689,-0.623380698786587,0.675671862893237,0,-83.3542098999023,-0.54572582244873,147.81184387207,1
 		} 
 	}
-	Deformer: 2752750448, "SubDeformer::", "Cluster" {
+	Deformer: 2491678560, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *31 {
 			a: 521,524,533,534,543,544,545,546,547,549,550,551,552,556,557,558,559,560,561,562,604,605,606,607,608,610,611,671,694,697,698
 		} 
 		Weights: *31 {
-			a: 0.0608275569975376,0.384669840335846,0.39215013384819,0.220096006989479,0.374409258365631,0.371958434581757,0.215029045939445,0.527998030185699,0.142641082406044,0.575706839561462,0.346489936113358,0.588233828544617,0.329200893640518,0.56895899772644,0.199116975069046,0.161662295460701,0.0402637682855129,0.0183744765818119,0.0820261016488075,0.0997099131345749,0.0439698696136475,0.08062893897295,0.0832383036613464,0.0408859960734844,0.0201185457408428,0.13913469016552,0.133421003818512,0.286399990320206,0.264249801635742,0.519275784492493,0.338976681232452
+			a: 0.0608014576137066,0.384714096784592,0.391983896493912,0.220062270760536,0.374246805906296,0.371918499469757,0.215031981468201,0.527977466583252,0.142405122518539,0.57571941614151,0.346641808748245,0.588105797767639,0.329176723957062,0.568794012069702,0.198844239115715,0.161479949951172,0.0403411388397217,0.018421771004796,0.0820959210395813,0.0995798036456108,0.0440059378743172,0.0807177498936653,0.0833149626851082,0.0409924201667309,0.020211098715663,0.139091774821281,0.133567944169044,0.286274313926697,0.264257222414017,0.519232273101807,0.338862180709839
 		} 
 		Transform: *16 {
 			a: -0.280578143498686,0.897257999949329,0.340887820711911,0,-0.622167637886575,0.100421620505932,-0.776416341716231,0,-0.730877541093069,-0.429935315590757,0.530068893464779,0,74.7270323233107,138.394552447892,-52.4828454223055,1
@@ -2462,14 +2462,14 @@ Objects:  {
 			a: -0.280578523874283,-0.622168481349945,-0.730878531932831,0,0.89725728579513,0.100421540577392,-0.429934973392514,0,0.340887863727628,-0.77641643969012,0.530068960352747,0,-85.3179550170898,-8.15353393554688,141.936569213867,1
 		} 
 	}
-	Deformer: 2752751200, "SubDeformer::", "Cluster" {
+	Deformer: 2491679312, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
-		Indexes: *61 {
-			a: 522,523,553,554,555,572,634,635,636,637,638,640,651,652,653,665,666,667,668,669,670,688,689,690,691,692,693,695,696,833,834,835,836,837,838,839,840,889,891,893,894,895,896,897,898,899,900,901,902,903,904,906,921,922,923,924,925,926,927,928,929
+		Indexes: *49 {
+			a: 522,523,553,554,555,572,634,635,636,637,638,640,651,652,653,665,666,667,668,669,670,688,689,690,691,692,693,695,696,833,834,835,836,837,838,839,840,895,898,902,921,922,923,924,925,926,927,928,929
 		} 
-		Weights: *61 {
-			a: 0.00966965034604073,0.116616949439049,0.176411181688309,0.0732029527425766,0.389039516448975,0.0154112484306097,0.187248319387436,0.391976624727249,0.400284945964813,0.373523771762848,0.395905673503876,0.0240882188081741,0.0122989313676953,0.0109897470101714,0.0178305469453335,0.0669893249869347,0.0912396088242531,0.09136613458395,0.0651000887155533,0.381693869829178,0.113761760294437,0.501497566699982,0.514151811599731,0.487671494483948,0.489737987518311,0.510216951370239,0.491074204444885,0.488646566867828,0.117718100547791,0.672176361083984,0.664353251457214,0.24404913187027,0.240645110607147,0.254857987165451,0.23331455886364,0.232099056243896,0.236077293753624,0.040645856410265,0.0134292934089899,0.0389175452291965,0.0126886870712042,0.0007154744816944,0.0427053570747375,0.0153819313272834,0.00273221731185913,0.0400405600667,0.0164683498442173,0.0390431731939316,0.000873672368470579,0.0176157597452402,0.0390912480652332,0.0128241060301661,0.49956750869751,0.48101207613945,0.484927117824554,0.479851126670837,0.483120411634445,0.646351039409637,0.649061262607574,0.630647897720337,0.632341682910919
+		Weights: *49 {
+			a: 0.00967037118971348,0.116625599563122,0.176438748836517,0.0732160061597824,0.389120429754257,0.0154680646955967,0.187422424554825,0.392074912786484,0.400338441133499,0.37360468506813,0.396073639392853,0.0241078473627567,0.0123607330024242,0.0110272616147995,0.0178855005651712,0.06709373742342,0.0913344919681549,0.0914882346987724,0.0652217864990234,0.381797224283218,0.113768555223942,0.501561164855957,0.51420795917511,0.487750828266144,0.5,0.510291874408722,0.49113741517067,0.488732039928436,0.117768302559853,0.75,0.75,0.25,0.25,0.25,0.25,0.25,0.25,0.000424341385951266,0.00148336146958172,0.000456538109574467,0.5,0.5,0.5,0.5,0.5,0.75,0.75,0.75,0.75
 		} 
 		Transform: *16 {
 			a: -0.809828933821498,0.573284419597798,0.124585801281638,0,-0.237389645730255,-0.126017350858308,-0.963206125395932,0,-0.536489828811719,-0.809609190513984,0.238144261811502,0,33.8754275601567,169.85614305528,-20.5813694591739,1
@@ -2478,14 +2478,14 @@ Objects:  {
 			a: -0.809830486774445,-0.237390100955963,-0.536490857601166,0,0.573283020881453,-0.126017043397434,-0.809607215205447,0,0.124585757512795,-0.963205787007314,0.238144178147886,0,-67.3781433105469,9.62236595153809,160.591949462891,1
 		} 
 	}
-	Deformer: 2752746688, "SubDeformer::", "Cluster" {
+	Deformer: 2491680064, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
-		Indexes: *43 {
-			a: 525,526,527,528,529,530,531,532,535,536,537,538,539,540,541,542,565,566,567,594,595,596,597,622,623,624,625,627,628,630,631,639,642,643,644,658,680,681,682,683,684,685,686
+		Indexes: *44 {
+			a: 525,526,527,528,529,530,531,532,535,536,537,538,539,540,541,542,565,566,567,594,595,596,597,622,623,624,625,627,628,630,631,639,642,643,644,658,679,680,681,682,683,684,685,686
 		} 
-		Weights: *43 {
-			a: 0.260457009077072,0.487182855606079,0.5113205909729,0.272128701210022,0.334912180900574,0.522035002708435,0.636110723018646,0.655719637870789,0.572416007518768,0.585829019546509,0.491000443696976,0.27484467625618,0.208458542823792,0.238340705633163,0.292150378227234,0.202220350503922,0.0859591215848923,0.0475894175469875,0.111424498260021,0.349750518798828,0.331385850906372,0.327399730682373,0.0702250450849533,0.0182543359696865,0.0195949096232653,0.348448425531387,0.349865525960922,0.0160137992352247,0.0177512336522341,0.331411957740784,0.332428365945816,0.103608459234238,0.00973060820251703,0.0617713108658791,0.10726535320282,0.0994397923350334,0.506889998912811,0.498187810182571,0.53148227930069,0.526574015617371,0.0905173197388649,0.0601258799433708,0.00673871161416173
+		Weights: *44 {
+			a: 0.260496914386749,0.487172424793243,0.511262834072113,0.272096753120422,0.334788918495178,0.521954774856567,0.636124610900879,0.655755221843719,0.572436630725861,0.585816502571106,0.490951657295227,0.274639338254929,0.208440482616425,0.238308250904083,0.292038053274155,0.333420485258102,0.0857441499829292,0.0472661629319191,0.11136656999588,0.349656522274017,0.331504344940186,0.327257037162781,0.255007952451706,0.0182579569518566,0.0196043681353331,0.348441034555435,0.349870711565018,0.0160212386399508,0.0177599340677261,0.33139979839325,0.332415550947189,0.103451408445835,0.00973039679229259,0.0616618804633617,0.107207588851452,0.0995019823312759,0.00817717704921961,0.506941556930542,0.498212367296219,0.531489610671997,0.526583611965179,0.0904609858989716,0.0601000040769577,0.00664340844377875
 		} 
 		Transform: *16 {
 			a: -0.667672264286362,0.243536033265478,-0.703494081801186,0,-0.29290090132542,-0.954699768972168,-0.0525114509595274,0,-0.684412304336436,0.170993664666656,0.708760106664816,0,28.5265138362235,-2.41746121676984,-167.697557231272,1
@@ -2494,14 +2494,14 @@ Objects:  {
 			a: -0.667674005031586,-0.292901664972305,-0.684414088726044,0,0.243535964654011,-0.954699500004365,0.170993616492568,0,-0.703492488805274,-0.0525113320523058,0.708758501744488,0,-98.3388214111328,-2.75850772857666,138.794387817383,1
 		} 
 	}
-	Deformer: 2752752704, "SubDeformer::", "Cluster" {
+	Deformer: 2491677056, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *45 {
 			a: 529,530,535,536,537,538,573,574,575,576,577,578,579,580,581,582,583,584,585,586,587,588,589,590,591,592,593,594,595,596,597,598,599,600,601,602,603,639,641,651,658,676,677,678,679
 		} 
 		Weights: *45 {
-			a: 0.305366724729538,0.290067195892334,0.226559683680534,0.206074565649033,0.3006332218647,0.260088860988617,0.0498374849557877,0.339512348175049,0.170439809560776,0.361816763877869,0.0991112217307091,0.0458733588457108,0.0635843649506569,0.000859345484059304,0.0041186404414475,0.0868748128414154,0.0709852650761604,0.153770357370377,0.126054659485817,0.724874675273895,0.642816781997681,0.468873828649521,0.4373699426651,0.0210182145237923,0.0226599145680666,0.309733211994171,0.311691701412201,0.446597665548325,0.526414752006531,0.478758245706558,0.712439715862274,0.268906116485596,0.0267960950732231,0.276232331991196,0.0198807921260595,0.315431714057922,0.264867514371872,0.0844486728310585,0.070841409265995,0.00730768358334899,0.0954789966344833,0.515227556228638,0.521445989608765,0.510328352451324,0.474193930625916
+			a: 0.305415093898773,0.290117114782333,0.226598680019379,0.206113740801811,0.300635516643524,0.260142505168915,0.0497933365404606,0.33943909406662,0.170478001236916,0.361709177494049,0.0991120412945747,0.0458145402371883,0.0635382384061813,0.000866305315867066,0.00411852216348052,0.0868685320019722,0.0710012838244438,0.153734788298607,0.126022592186928,0.643828392028809,0.642878413200378,0.46879830956459,0.437303960323334,0.0209985412657261,0.0226495731621981,0.309723943471909,0.311750739812851,0.446636021137238,0.526444375514984,0.478845208883286,0.570857107639313,0.268936663866043,0.0267850942909718,0.276266932487488,0.0198699720203876,0.31539386510849,0.264831572771072,0.0844545215368271,0.0708505809307098,0.00730500370264053,0.0954792872071266,0.515474200248718,0.521477699279785,0.510355293750763,0.470346033573151
 		} 
 		Transform: *16 {
 			a: -0.664703242976724,0.0902047684829971,-0.741642004079293,0,-0.176337670003058,-0.983579890916051,0.0384132419381444,0,-0.725997872382678,0.156312832861262,0.669696375366716,0,34.2572177341644,-10.9623307107444,-166.022492106277,1
@@ -2510,14 +2510,14 @@ Objects:  {
 			a: -0.664704382419586,-0.176337972283363,-0.725999116897583,0,0.090204768141246,-0.983579887189646,0.156312832269053,0,-0.741640762164558,0.0384131776133477,0.669695253928351,0,-99.369270324707,1.63597178459167,137.768737792969,1
 		} 
 	}
-	Deformer: 2752755712, "SubDeformer::", "Cluster" {
+	Deformer: 2491676304, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *20 {
 			a: 531,532,535,536,620,621,622,623,624,625,626,627,628,629,630,631,680,681,682,683
 		} 
 		Weights: *20 {
-			a: 0.24319925904274,0.227320998907089,0.201024398207664,0.208096399903297,1,1,0.981745660305023,0.98040509223938,0.65155154466629,0.650134444236755,1,0.98398619890213,0.982248783111572,1,0.668588042259216,0.667571604251862,0.493110001087189,0.501812160015106,0.46851772069931,0.473426014184952
+			a: 0.243201985955238,0.227318361401558,0.2009646743536,0.208069786429405,1,1,0.981742024421692,0.980395615100861,0.651558935642242,0.65012925863266,1,0.983978748321533,0.982240080833435,1,0.66860020160675,0.667584478855133,0.49305847287178,0.501787662506104,0.468510359525681,0.473416388034821
 		} 
 		Transform: *16 {
 			a: -0.536898040545306,0.243535125815116,-0.807732331618974,0,-0.279525595525678,-0.954699952276205,-0.102046174450178,0,-0.79599231099359,0.170993537216904,0.580651869914033,0,48.6632847148358,-2.41753425630749,-161.742227093457,1
@@ -2526,14 +2526,14 @@ Objects:  {
 			a: -0.536899209022522,-0.279526203870773,-0.79599404335022,0,0.243535090221995,-0.954699812744993,0.170993512225874,0,-0.807731091511688,-0.102046017779212,0.58065097844221,0,-103.928192138672,-5.21050643920898,133.064849853516,1
 		} 
 	}
-	Deformer: 2752753456, "SubDeformer::", "Cluster" {
+	Deformer: 2491675552, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *20 {
 			a: 540,542,566,568,569,570,571,632,633,643,647,648,649,650,663,664,684,685,686,687
 		} 
 		Weights: *20 {
-			a: 0.227357536554337,0.200285091996193,0.234308063983917,0.719351828098297,0.674210071563721,0.983643651008606,0.98513275384903,1,1,0.257671982049942,0.690593779087067,0.984348714351654,0.981897175312042,0.637424170970917,1,1,0.429664433002472,0.467883735895157,0.491208285093307,0.491263419389725
+			a: 0.227483943104744,0.167303562164307,0.234450742602348,0.719236612319946,0.674107074737549,0.983640730381012,0.985108971595764,1,1,0.257924258708954,0.690504610538483,0.984327018260956,0.981887757778168,0.637410223484039,1,1,0.429740160703659,0.467906653881073,0.491289079189301,0.491246521472931
 		} 
 		Transform: *16 {
 			a: -0.559525149471836,0.330906993875909,-0.759889832795377,0,-0.351060413042659,-0.925154805138452,-0.14437962872324,0,-0.750790170963698,0.185983312263373,0.633816827623995,0,41.3247899377348,-0.75739110090603,-163.704331248942,1
@@ -2542,14 +2542,14 @@ Objects:  {
 			a: -0.559526443481445,-0.351061224937439,-0.750791907310486,0,0.330906780604101,-0.925154208869891,0.185983192395863,0,-0.759888460318738,-0.144379367951666,0.633815682854382,0,-101.02409362793,-9.82870006561279,134.925552368164,1
 		} 
 	}
-	Deformer: 2752754208, "SubDeformer::", "Cluster" {
+	Deformer: 2491677808, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *20 {
 			a: 543,544,550,552,557,558,559,560,561,562,563,564,604,605,606,607,608,609,610,611
 		} 
 		Weights: *20 {
-			a: 0.578083992004395,0.545782089233398,0.589308619499207,0.600646793842316,0.788812875747681,0.812861561775208,0.959736227989197,0.981625497341156,0.915728747844696,0.899442434310913,1,1,0.956030130386353,0.919371068477631,0.916529774665833,0.959114015102386,0.979881465435028,1,0.83966338634491,0.839706778526306
+			a: 0.578255355358124,0.545759975910187,0.589140176773071,0.600649833679199,0.78912216424942,0.813056588172913,0.959658861160278,0.981578230857849,0.915652990341187,0.899594366550446,1,1,0.955994069576263,0.919282257556915,0.916445672512054,0.959007561206818,0.979788899421692,1,0.839714288711548,0.839542925357819
 		} 
 		Transform: *16 {
 			a: -0.212489112679124,0.897257780417056,0.387010767881319,0,-0.755365919710076,0.100424086576891,-0.647561931955625,0,-0.61989458724466,-0.429935101237252,0.65641908803428,0,57.5455382794696,138.394529076791,-64.2697161455873,1
@@ -2558,14 +2558,14 @@ Objects:  {
 			a: -0.212489411234856,-0.75536698102951,-0.619895458221436,0,0.897257140708936,0.100424014978622,-0.429934794711099,0,0.387010841680438,-0.647562055439269,0.656419213206896,0,-87.0745849609375,-12.0487642288208,137.360717773438,1
 		} 
 	}
-	Deformer: 2752747440, "SubDeformer::", "Cluster" {
+	Deformer: 2491681568, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
-		Indexes: *56 {
-			a: 555,634,635,636,637,638,665,666,688,689,690,691,692,693,695,833,834,835,836,837,838,839,840,850,851,852,853,854,855,889,890,891,892,893,894,895,896,897,898,899,900,901,902,903,904,905,906,921,922,923,924,925,926,927,928,929
+		Indexes: *50 {
+			a: 555,634,635,636,637,638,665,666,688,689,690,691,692,693,695,833,834,835,836,837,838,839,840,889,890,891,892,893,894,895,896,897,898,899,900,901,902,903,904,905,906,921,922,923,924,925,926,927,928,929
 		} 
-		Weights: *56 {
-			a: 0.0758390948176384,0.0260199923068285,0.0818897038698196,0.0880451947450638,0.0712659880518913,0.0826020091772079,0.0021534392144531,0.00552747678011656,0.12638196349144,0.13562123477459,0.119269646704197,0.510262012481689,0.132059067487717,0.12061857432127,0.121303223073483,0.274529904127121,0.270704418420792,0.627724409103394,0.627073228359222,0.627037286758423,0.645945727825165,0.655160248279572,0.632349789142609,0.0137416319921613,0.0166724305599928,0.0100635951384902,0.00975986383855343,0.0171699430793524,0.012528644874692,0.470888942480087,0.237423002719879,0.36124849319458,0.251842677593231,0.494530647993088,0.384621560573578,0.252187788486481,0.506217300891876,0.386791080236435,0.273581862449646,0.517005026340485,0.40889036655426,0.514959990978241,0.286445945501328,0.419841170310974,0.477588415145874,0.233246684074402,0.363408476114273,0.50043249130249,0.518987894058228,0.515072882175446,0.520148873329163,0.516879618167877,0.256743520498276,0.251747816801071,0.237978905439377,0.244819596409798
+		Weights: *50 {
+			a: 0.0758776888251305,0.0260860603302717,0.0819371044635773,0.0880705788731575,0.0713077336549759,0.0826785564422607,0.00218235002830625,0.00555052794516087,0.126413762569427,0.135649934411049,0.119308292865753,0.5,0.132096946239471,0.120650507509708,0.121344782412052,0.25,0.25,0.75,0.75,0.75,0.75,0.75,0.75,0.800000011920929,0.149999961256981,0.5,0.149999976158142,0.800000011920929,0.5,0.149575650691986,0.800000011920929,0.5,0.148516610264778,0.800000011920929,0.5,0.800000011920929,0.149543449282646,0.5,0.800000011920929,0.149999991059303,0.5,0.5,0.5,0.5,0.5,0.5,0.25,0.25,0.25,0.25
 		} 
 		Transform: *16 {
 			a: -0.810207663142079,0.567189395382508,0.147846682390143,0,-0.235608417576392,-0.0841833483311891,-0.968195119513899,0,-0.536702561069469,-0.81927481066803,0.201840670846373,0,52.3787308182196,170.595165143418,-13.136007794868,1
@@ -2574,14 +2574,14 @@ Objects:  {
 			a: -0.81020975112915,-0.235609024763107,-0.536703944206238,0,0.567188339410677,-0.0841831916018053,-0.819273285373078,0,0.147846669475438,-0.968195034940108,0.201840653215185,0,-52.3797149658203,13.9839296340942,170.527313232422,1
 		} 
 	}
-	Deformer: 2752754960, "SubDeformer::", "Cluster" {
+	Deformer: 2855665248, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *34 {
 			a: 573,574,575,576,577,578,579,580,581,582,583,584,585,586,587,588,589,602,603,612,615,616,617,641,652,653,654,655,656,657,672,673,674,675
 		} 
 		Weights: *34 {
-			a: 0.0732125118374825,0.464880108833313,0.538084983825684,0.457237035036087,0.55639636516571,0.228179201483727,0.2754026055336,0.0549712255597115,0.0842432603240013,0.640188336372375,0.626408994197845,0.55250471830368,0.521076858043671,0.0202523283660412,0.15894091129303,0.282401770353317,0.318126648664474,0.266619861125946,0.25736677646637,0.0315355956554413,0.0108004128560424,0.285724580287933,0.298198670148849,0.0231907702982426,0.00473987590521574,0.00281140953302383,0.313081681728363,0.359917759895325,0.040051531046629,0.0211521666496992,0.527565360069275,0.518469989299774,0.458420157432556,0.446600168943405
+			a: 0.073211744427681,0.464900314807892,0.538105726242065,0.457309633493423,0.556394994258881,0.228165581822395,0.275406420230865,0.0549906119704247,0.0842427238821983,0.640182673931122,0.62639582157135,0.552508294582367,0.521058917045593,0.130035951733589,0.159027636051178,0.282469481229782,0.318153917789459,0.266657561063766,0.257353752851486,0.0315498933196068,0.0108010061085224,0.285777062177658,0.298214256763458,0.0232390128076077,0.00474238488823175,0.00281654531136155,0.313139498233795,0.359950423240662,0.0400034561753273,0.0211672708392143,0.527570009231567,0.518496870994568,0.458439350128174,0.446597337722778
 		} 
 		Transform: *16 {
 			a: -0.568357225232778,-0.0737413610704746,-0.819471254524654,0,-0.0728833570681634,-0.987548152591805,0.139415752430902,0,-0.819546649324378,0.138963730843319,0.555906513302068,0,57.0290913558129,-20.7265768993165,-158.348137883293,1
@@ -2590,14 +2590,14 @@ Objects:  {
 			a: -0.56835800409317,-0.0728834569454194,-0.819547772407532,0,-0.0737413566083919,-0.987548092835361,0.138963722434637,0,-0.819469664303004,0.139415481888224,0.555905434539917,0,-98.8769607543945,5.76416778564453,137.644897460938,1
 		} 
 	}
-	Deformer: 2752760224, "SubDeformer::", "Cluster" {
+	Deformer: 2855666000, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *20 {
 			a: 575,577,582,583,612,613,614,615,616,617,654,655,656,657,659,660,672,673,674,675
 		} 
 		Weights: *20 {
-			a: 0.291475236415863,0.344492405653,0.272936820983887,0.302605807781219,0.968464374542236,1,1,0.989199578762054,0.714275419712067,0.701801300048828,0.686918318271637,0.640082240104675,0.959948480129242,0.978847861289978,1,1,0.472434639930725,0.481529980897903,0.541579842567444,0.546171247959137
+			a: 0.29141628742218,0.344493001699448,0.272948801517487,0.302602857351303,0.968450129032135,1,1,0.989198982715607,0.714222967624664,0.701785743236542,0.686860501766205,0.640049576759338,0.959996521472931,0.978832721710205,1,1,0.47242996096611,0.481503129005432,0.541560649871826,0.546168148517609
 		} 
 		Transform: *16 {
 			a: -0.576950317411323,-0.0737413209220555,-0.813443941581125,0,-0.0714120589295266,-0.987548189363303,0.140175123920285,0,-0.813650102650772,0.138963821965373,0.564501306624721,0,50.3809363309235,-20.7265774394333,-158.887195917038,1
@@ -2606,14 +2606,14 @@ Objects:  {
 			a: -0.576951563358307,-0.0714122131466866,-0.813651859760284,0,-0.0737413096734609,-0.987548038721449,0.138963800767656,0,-0.813442447578463,0.140174866469221,0.564500269839748,0,-101.706634521484,5.4013147354126,133.564651489258,1
 		} 
 	}
-	Deformer: 2752757216, "SubDeformer::", "Cluster" {
+	Deformer: 2855664496, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *20 {
 			a: 586,587,590,591,592,593,595,597,598,599,600,601,618,619,661,662,676,677,678,679
 		} 
 		Weights: *20 {
-			a: 0.254872977733612,0.198242291808128,0.978981792926788,0.97734010219574,0.690266788005829,0.688308298587799,0.142199486494064,0.217335239052773,0.731093883514404,0.973203897476196,0.723767638206482,0.980119228363037,1,1,1,1,0.484772443771362,0.478553980588913,0.489671617746353,0.525806069374084
+			a: 0.226135715842247,0.198093935847282,0.979001462459564,0.977350413799286,0.690276026725769,0.688249289989471,0.142051339149475,0.174134954810143,0.731063306331635,0.97321492433548,0.723733067512512,0.980130016803741,1,1,1,1,0.484525829553604,0.478522300720215,0.489644676446915,0.521476805210114
 		} 
 		Transform: *16 {
 			a: -0.584631764649256,0.0902044741286776,-0.80626877209037,0,-0.179359975007052,-0.98358006130661,0.0200137669743107,0,-0.791222978942595,0.156313071808869,0.591212185077869,0,43.929039474756,-10.9623875905262,-162.356391730561,1
@@ -2622,14 +2622,14 @@ Objects:  {
 			a: -0.584632873535156,-0.179360315203667,-0.791224479675293,0,0.0902044416035655,-0.983579706656222,0.156313015446917,0,-0.80626737603747,0.0200137323205099,0.591211161395055,0,-104.2314453125,0.346101760864258,132.458206176758,1
 		} 
 	}
-	Deformer: 2752760976, "SubDeformer::", "Cluster" {
+	Deformer: 2855662992, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
-		Indexes: *56 {
-			a: 702,800,801,802,805,806,807,808,809,810,811,812,813,814,815,816,817,818,819,820,821,822,823,824,835,836,837,838,839,840,850,851,852,853,854,855,889,890,891,892,893,894,895,896,897,898,899,900,901,902,903,904,905,906,1012,1013
+		Indexes: *48 {
+			a: 702,800,801,802,805,806,807,808,809,812,813,814,815,816,817,818,819,820,821,822,823,824,850,851,852,853,854,855,889,890,891,892,893,894,895,896,897,898,899,900,901,902,903,904,905,906,1012,1013
 		} 
-		Weights: *56 {
-			a: 0.0318085812032223,0.00631539383903146,0.0414269529283047,0.0677373111248016,0.355428963899612,0.319621533155441,0.338857740163803,0.366687506437302,0.27127993106842,0.181733831763268,0.206331610679626,0.300276726484299,0.0298883188515902,0.181334272027016,0.213465675711632,0.308806031942368,0.177606597542763,0.294923305511475,0.0681062638759613,0.356754034757614,0.372653067111969,0.0973711907863617,0.213465675711632,0.248309507966042,0.128226488828659,0.132281646132469,0.118104718625546,0.120739728212357,0.112740695476532,0.131572932004929,0.945747017860413,0.918339550495148,0.940923392772675,0.944712340831757,0.904000759124756,0.925119757652283,0.488465219736099,0.762576997280121,0.625322222709656,0.748157322406769,0.466551810503006,0.602689743041992,0.747096717357635,0.451077371835709,0.597827017307281,0.723685920238495,0.442954450845718,0.574641287326813,0.445996820926666,0.712680399417877,0.562543094158173,0.483320355415344,0.766753315925598,0.62376743555069,0.176648020744324,0.0719692260026932
+		Weights: *48 {
+			a: 0.0317971706390381,0.00632228283211589,0.041413851082325,0.0677260234951973,0.899999976158142,0.899999976158142,0.899999976158142,0.899999976158142,0.499999940395355,0.499999940395355,0.0298994518816471,0.499999940395355,0.499999940395355,0.499999940395355,0.1775743663311,0.499999940395355,0.0103268651291728,0.899999976158142,0.899999976158142,0.0973454192280769,0.499999940395355,0.499999940395355,1,1,1,1,1,1,0.199999988079071,0.850000023841858,0.5,0.850000023841858,0.199999988079071,0.5,0.850000023841858,0.199999988079071,0.5,0.850000023841858,0.199999988079071,0.5,0.199999988079071,0.850000023841858,0.5,0.199999988079071,0.850000023841858,0.5,0.176704660058022,0.0719565898180008
 		} 
 		Transform: *16 {
 			a: -0.809574938173831,0.567188763304637,-0.151276210084221,0,0.125728504642476,-0.0841831727477905,-0.988486211539763,0,-0.573392121374523,-0.819275352589027,-0.00315920770964462,0,91.1335686826104,170.595216238284,6.43786355327836,1
@@ -2638,7 +2638,7 @@ Objects:  {
 			a: -0.809576749801636,0.125728785991668,-0.573393404483795,0,0.567187627141152,-0.0841830041163699,-0.819273711458596,0,-0.151276291359673,-0.988486742619062,-0.00315920940697714,0,-22.0059814453125,9.26684761047363,192.039901733398,1
 		} 
 	}
-	Deformer: 2752748944, "SubDeformer::", "Cluster" {
+	Deformer: 2855663744, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *82 {
@@ -2654,7 +2654,7 @@ Objects:  {
 			a: 1.49477273193255e-07,0.154340818524361,-0.988018095493317,0,-1.46792792877242e-07,-0.988017911849723,-0.15434078983695,0,-1.00000047683716,1.68104345366063e-07,-1.25030080695631e-07,0,-11.1359796524048,-3.84776139259338,76.9822082519531,1
 		} 
 	}
-	Deformer: 2752757968, "SubDeformer::", "Cluster" {
+	Deformer: 2855667504, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *56 {
@@ -2670,7 +2670,7 @@ Objects:  {
 			a: 5.39727068372436e-07,-0.862285494804382,-0.506422817707062,0,4.86805566021804e-09,-0.506422895791691,0.862285627758988,0,-1.00000047683716,-4.67864178049581e-07,-2.69132485144986e-07,0,-11.1359701156616,5.54888725280762,16.8291358947754,1
 		} 
 	}
-	Deformer: 2752748192, "SubDeformer::", "Cluster" {
+	Deformer: 2855666752, "SubDeformer::", "Cluster" {
 		Version: 100
 		UserData: "", ""
 		Indexes: *22 {
@@ -2686,7 +2686,7 @@ Objects:  {
 			a: 1.10309918003343e-06,-0.998205006122589,-0.0598927959799766,0,7.85602100823275e-08,-0.0598928034275652,0.998205130249486,0,-1.00000047683715,-1.10582441950178e-06,1.23514922800002e-08,0,-11.1359596252441,-11.1605949401855,7.01560878753662,1
 		} 
 	}
-	Video: 611335440, "Video::Texture_gradient_shadow", "Clip" {
+	Video: 2852934880, "Video::Texture_gradient_shadow", "Clip" {
 		Type: "Clip"
 		Properties70:  {
 			P: "Path", "KString", "XRefUrl", "", "F:\Projects\LD40\trunk\res\chars\shadows\gradient_shadow.png"
@@ -2695,7 +2695,7 @@ Objects:  {
 		Filename: "F:\Projects\LD40\trunk\res\chars\shadows\gradient_shadow.png"
 		RelativeFilename: "gradient_shadow.png"
 	}
-	Texture: 2697602448, "Texture::Texture_gradient_shadow", "" {
+	Texture: 2749874320, "Texture::Texture_gradient_shadow", "" {
 		Type: "TextureVideoClip"
 		Version: 202
 		TextureName: "Texture::Texture_gradient_shadow"
@@ -2719,581 +2719,581 @@ Objects:  {
 Connections:  {
 	
 	;Model::Root, Model::RootNode
-	C: "OO",2845004848,0
+	C: "OO",2846233088,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",2699710832,2552158576
+	C: "OO",2855919792,2549676336
 	
 	;Model::Bip01, Model::Root
-	C: "OO",2844987312,2845004848
+	C: "OO",2846226512,2846233088
 	
 	;Model::shadow03, Model::Root
-	C: "OO",2848447280,2845004848
+	C: "OO",2649162912,2846233088
 	
 	;NodeAttribute::, Model::Root
-	C: "OO",2752243600,2845004848
+	C: "OO",2492547728,2846233088
 	
 	;Model::B_pelvis, Model::Bip01
-	C: "OO",2845007040,2844987312
+	C: "OO",2846219936,2846226512
 	
 	;NodeAttribute::, Model::Bip01
-	C: "OO",611816224,2844987312
+	C: "OO",2492298304,2846226512
 	
 	;Model::B_spine, Model::B_pelvis
-	C: "OO",2845018000,2845007040
+	C: "OO",2846217744,2846219936
 	
 	;Model::B_leg_01_L, Model::B_pelvis
-	C: "OO",2848451664,2845007040
+	C: "OO",2649127840,2846219936
 	
 	;Model::B_leg_01_R, Model::B_pelvis
-	C: "OO",2848464816,2845007040
+	C: "OO",2649138800,2846219936
 	
 	;NodeAttribute::, Model::B_pelvis
-	C: "OO",611816608,2845007040
+	C: "OO",2492309440,2846219936
 	
 	;Model::B_chest, Model::B_spine
-	C: "OO",2845020192,2845018000
+	C: "OO",2846228704,2846217744
 	
 	;NodeAttribute::, Model::B_spine
-	C: "OO",611825824,2845018000
+	C: "OO",2492301952,2846217744
 	
 	;Model::B_neck, Model::B_chest
-	C: "OO",2845009232,2845020192
+	C: "OO",2846204592,2846228704
 	
 	;Model::B_shoulder_L, Model::B_chest
-	C: "OO",2847335936,2845020192
+	C: "OO",2846248432,2846228704
 	
 	;Model::B_shoulder_R, Model::B_chest
-	C: "OO",2847351280,2845020192
+	C: "OO",2649110304,2846228704
 	
 	;NodeAttribute::, Model::B_chest
-	C: "OO",611822368,2845020192
+	C: "OO",2492307712,2846228704
 	
 	;Model::B_head, Model::B_neck
-	C: "OO",2847340320,2845009232
+	C: "OO",2846235280,2846204592
 	
 	;NodeAttribute::, Model::B_neck
-	C: "OO",611817184,2845009232
+	C: "OO",2492308096,2846204592
 	
 	;NodeAttribute::, Model::B_head
-	C: "OO",611816800,2847340320
+	C: "OO",2492298688,2846235280
 	
 	;Model::B_arm_L, Model::B_shoulder_L
-	C: "OO",2847316208,2847335936
+	C: "OO",2846237472,2846248432
 	
 	;NodeAttribute::, Model::B_shoulder_L
-	C: "OO",611820832,2847335936
+	C: "OO",2492306560,2846248432
 	
 	;Model::B_forearm_L, Model::B_arm_L
-	C: "OO",2847320592,2847316208
+	C: "OO",2846246240,2846237472
 	
 	;NodeAttribute::, Model::B_arm_L
-	C: "OO",611813728,2847316208
+	C: "OO",2492308288,2846237472
 	
 	;Model::B_hand_L, Model::B_forearm_L
-	C: "OO",2847333744,2847320592
+	C: "OO",2846255008,2846246240
 	
 	;Model::B_twist_L, Model::B_forearm_L
-	C: "OO",2847344704,2847320592
+	C: "OO",2649084000,2846246240
 	
 	;NodeAttribute::, Model::B_forearm_L
-	C: "OO",611814304,2847320592
+	C: "OO",2492302144,2846246240
 	
 	;Model::B_thumb_01_L, Model::B_hand_L
-	C: "OO",2847314016,2847333744
+	C: "OO",2846239664,2846255008
 	
 	;Model::B_ring_01_L, Model::B_hand_L
-	C: "OO",2847349088,2847333744
+	C: "OO",2846241856,2846255008
 	
 	;Model::B_pinky_01_L, Model::B_hand_L
-	C: "OO",2847331552,2847333744
+	C: "OO",2846252816,2846255008
 	
 	;Model::B_middle_01_L, Model::B_hand_L
-	C: "OO",2847327168,2847333744
+	C: "OO",2649112496,2846255008
 	
 	;Model::B_index_01_L, Model::B_hand_L
-	C: "OO",2847338128,2847333744
+	C: "OO",2649099344,2846255008
 	
 	;NodeAttribute::, Model::B_hand_L
-	C: "OO",611814880,2847333744
+	C: "OO",2492310400,2846255008
 	
 	;Model::B_thumb_02_L, Model::B_thumb_01_L
-	C: "OO",2847318400,2847314016
+	C: "OO",2846257200,2846239664
 	
 	;NodeAttribute::, Model::B_thumb_01_L
-	C: "OO",611823136,2847314016
+	C: "OO",2492306752,2846239664
 	
 	;Model::B_thumb_03_L, Model::B_thumb_02_L
-	C: "OO",2847329360,2847318400
+	C: "OO",2846250624,2846257200
 	
 	;NodeAttribute::, Model::B_thumb_02_L
-	C: "OO",611814688,2847318400
+	C: "OO",2492302336,2846257200
 	
 	;NodeAttribute::, Model::B_thumb_03_L
-	C: "OO",611819680,2847329360
+	C: "OO",2492306944,2846250624
 	
 	;Model::B_ring_02_L, Model::B_ring_01_L
-	C: "OO",2847346896,2847349088
+	C: "OO",2846244048,2846241856
 	
 	;NodeAttribute::, Model::B_ring_01_L
-	C: "OO",611824864,2847349088
+	C: "OO",2492302528,2846241856
 	
 	;NodeAttribute::, Model::B_ring_02_L
-	C: "OO",611825248,2847346896
+	C: "OO",2492302720,2846244048
 	
 	;Model::B_pinky_02_L, Model::B_pinky_01_L
-	C: "OO",2847342512,2847331552
+	C: "OO",2649108112,2846252816
 	
 	;NodeAttribute::, Model::B_pinky_01_L
-	C: "OO",611821216,2847331552
+	C: "OO",2492307328,2846252816
 	
 	;NodeAttribute::, Model::B_pinky_02_L
-	C: "OO",611822752,2847342512
+	C: "OO",2492305024,2649108112
 	
 	;Model::B_middle_02_L, Model::B_middle_01_L
-	C: "OO",2847322784,2847327168
+	C: "OO",2649090576,2649112496
 	
 	;NodeAttribute::, Model::B_middle_01_L
-	C: "OO",611814496,2847327168
+	C: "OO",2492299648,2649112496
 	
 	;NodeAttribute::, Model::B_middle_02_L
-	C: "OO",611823520,2847322784
+	C: "OO",2492299840,2649090576
 	
 	;Model::B_index_02_L, Model::B_index_01_L
-	C: "OO",2847353472,2847338128
+	C: "OO",2649101536,2649099344
 	
 	;NodeAttribute::, Model::B_index_01_L
-	C: "OO",611814112,2847338128
+	C: "OO",2492302912,2649099344
 	
 	;NodeAttribute::, Model::B_index_02_L
-	C: "OO",611820064,2847353472
+	C: "OO",2492303296,2649101536
 	
 	;NodeAttribute::, Model::B_twist_L
-	C: "OO",611816992,2847344704
+	C: "OO",2492301184,2649084000
 	
 	;Model::B_arm_R, Model::B_shoulder_R
-	C: "OO",2847324976,2847351280
+	C: "OO",2649103728,2649110304
 	
 	;NodeAttribute::, Model::B_shoulder_R
-	C: "OO",611819296,2847351280
+	C: "OO",2492305792,2649110304
 	
 	;Model::B_forearm_R, Model::B_arm_R
-	C: "OO",2847375392,2847324976
+	C: "OO",2649114688,2649103728
 	
 	;NodeAttribute::, Model::B_arm_R
-	C: "OO",611821024,2847324976
+	C: "OO",2492307904,2649103728
 	
 	;Model::B_hand_R, Model::B_forearm_R
-	C: "OO",2847362240,2847375392
+	C: "OO",2649105920,2649114688
 	
 	;Model::B_twist_R, Model::B_forearm_R
-	C: "OO",2848456048,2847375392
+	C: "OO",2649149760,2649114688
 	
 	;NodeAttribute::, Model::B_forearm_R
-	C: "OO",611817568,2847375392
+	C: "OO",2492300992,2649114688
 	
 	;Model::B_pinky_01_R, Model::B_hand_R
-	C: "OO",2847373200,2847362240
+	C: "OO",2649092768,2649105920
 	
 	;Model::B_thumb_01_R, Model::B_hand_R
-	C: "OO",2847364432,2847362240
+	C: "OO",2649094960,2649105920
 	
 	;Model::B_ring_01_R, Model::B_hand_R
-	C: "OO",2847360048,2847362240
+	C: "OO",2649097152,2649105920
 	
 	;Model::B_index_01_R, Model::B_hand_R
-	C: "OO",2847371008,2847362240
+	C: "OO",2649132224,2649105920
 	
 	;Model::B_middle_01_R, Model::B_hand_R
-	C: "OO",2848469200,2847362240
+	C: "OO",2649119072,2649105920
 	
 	;Model::B_lamp, Model::B_hand_R
-	C: "OO",2848462624,2847362240
+	C: "OO",2649136608,2649105920
 	
 	;NodeAttribute::, Model::B_hand_R
-	C: "OO",611817760,2847362240
+	C: "OO",2492303104,2649105920
 	
 	;Model::B_pinky_02_R, Model::B_pinky_01_R
-	C: "OO",2847355664,2847373200
+	C: "OO",2649086192,2649092768
 	
 	;NodeAttribute::, Model::B_pinky_01_R
-	C: "OO",611817952,2847373200
+	C: "OO",2492307136,2649092768
 	
 	;NodeAttribute::, Model::B_pinky_02_R
-	C: "OO",611818144,2847355664
+	C: "OO",2492305600,2649086192
 	
 	;Model::B_thumb_02_R, Model::B_thumb_01_R
-	C: "OO",2847366624,2847364432
+	C: "OO",2649088384,2649094960
 	
 	;NodeAttribute::, Model::B_thumb_01_R
-	C: "OO",611818336,2847364432
+	C: "OO",2492300416,2649094960
 	
 	;Model::B_thumb_03_R, Model::B_thumb_02_R
-	C: "OO",2847357856,2847366624
+	C: "OO",2649116880,2649088384
 	
 	;NodeAttribute::, Model::B_thumb_02_R
-	C: "OO",611818528,2847366624
+	C: "OO",2492303488,2649088384
 	
 	;NodeAttribute::, Model::B_thumb_03_R
-	C: "OO",611818720,2847357856
+	C: "OO",2492301376,2649116880
 	
 	;Model::B_ring_02_R, Model::B_ring_01_R
-	C: "OO",2847368816,2847360048
+	C: "OO",2649147568,2649097152
 	
 	;NodeAttribute::, Model::B_ring_01_R
-	C: "OO",611818912,2847360048
+	C: "OO",2492308480,2649097152
 	
 	;NodeAttribute::, Model::B_ring_02_R
-	C: "OO",611819104,2847368816
+	C: "OO",2492305216,2649147568
 	
 	;Model::B_index_02_R, Model::B_index_01_R
-	C: "OO",2848460432,2847371008
+	C: "OO",2649134416,2649132224
 	
 	;NodeAttribute::, Model::B_index_01_R
-	C: "OO",611819488,2847371008
+	C: "OO",2492303680,2649132224
 	
 	;NodeAttribute::, Model::B_index_02_R
-	C: "OO",611823904,2848460432
+	C: "OO",2492308672,2649134416
 	
 	;Model::B_middle_02_R, Model::B_middle_01_R
-	C: "OO",2848471392,2848469200
+	C: "OO",2649125648,2649119072
 	
 	;NodeAttribute::, Model::B_middle_01_R
-	C: "OO",611819872,2848469200
+	C: "OO",2492308864,2649119072
 	
 	;NodeAttribute::, Model::B_middle_02_R
-	C: "OO",611820256,2848471392
+	C: "OO",2492304448,2649125648
 	
 	;NodeAttribute::, Model::B_lamp
-	C: "OO",611820448,2848462624
+	C: "OO",2492301568,2649136608
 	
 	;NodeAttribute::, Model::B_twist_R
-	C: "OO",611820640,2848456048
+	C: "OO",2492298880,2649149760
 	
 	;Model::B_leg_02_L, Model::B_leg_01_L
-	C: "OO",2848453856,2848451664
+	C: "OO",2649130032,2649127840
 	
 	;NodeAttribute::, Model::B_leg_01_L
-	C: "OO",611821408,2848451664
+	C: "OO",2492304064,2649127840
 	
 	;Model::B_foot_L, Model::B_leg_02_L
-	C: "OO",2848458240,2848453856
+	C: "OO",2649145376,2649130032
 	
 	;NodeAttribute::, Model::B_leg_02_L
-	C: "OO",611821600,2848453856
+	C: "OO",2492300032,2649130032
 	
 	;Model::B_toe_L, Model::B_foot_L
-	C: "OO",2848442896,2848458240
+	C: "OO",2649121264,2649145376
 	
 	;NodeAttribute::, Model::B_foot_L
-	C: "OO",611821792,2848458240
+	C: "OO",2492301760,2649145376
 	
 	;NodeAttribute::, Model::B_toe_L
-	C: "OO",611821984,2848442896
+	C: "OO",2492310208,2649121264
 	
 	;Model::B_leg_02_R, Model::B_leg_01_R
-	C: "OO",2848467008,2848464816
+	C: "OO",2649140992,2649138800
 	
 	;NodeAttribute::, Model::B_leg_01_R
-	C: "OO",611822176,2848464816
+	C: "OO",2492304256,2649138800
 	
 	;Model::B_foot_R, Model::B_leg_02_R
-	C: "OO",2848473584,2848467008
+	C: "OO",2649143184,2649140992
 	
 	;NodeAttribute::, Model::B_leg_02_R
-	C: "OO",611822560,2848467008
+	C: "OO",2492307520,2649140992
 	
 	;Model::B_toe_R, Model::B_foot_R
-	C: "OO",2848445088,2848473584
+	C: "OO",2649151952,2649143184
 	
 	;NodeAttribute::, Model::B_foot_R
-	C: "OO",611823328,2848473584
+	C: "OO",2492310016,2649143184
 	
 	;NodeAttribute::, Model::B_toe_R
-	C: "OO",611824288,2848445088
+	C: "OO",2492309632,2649151952
 	
 	;Geometry::, Model::shadow03
-	C: "OO",2709298432,2848447280
+	C: "OO",2543287664,2649162912
 	
 	;Material::mat_shadow, Model::shadow03
-	C: "OO",2697601488,2848447280
+	C: "OO",2749876240,2649162912
 	
 	;Deformer::, Geometry::
-	C: "OO",611824480,2709298432
+	C: "OO",2492300608,2543287664
 	
 	;Texture::Texture_gradient_shadow, Material::mat_shadow
-	C: "OP",2697602448,2697601488, "DiffuseColor"
+	C: "OP",2749874320,2749876240, "DiffuseColor"
 	
 	;Video::Texture_gradient_shadow, Texture::Texture_gradient_shadow
-	C: "OO",611335440,2697602448
+	C: "OO",2852934880,2749874320
 	
 	;SubDeformer::, Deformer::
-	C: "OO",1767112032,611824480
+	C: "OO",2747252544,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",1767114288,611824480
+	C: "OO",2747259312,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",1260406624,611824480
+	C: "OO",2747254800,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2455026400,611824480
+	C: "OO",2747255552,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2483625024,611824480
+	C: "OO",2747263072,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2756953872,611824480
+	C: "OO",2747248784,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2756957632,611824480
+	C: "OO",2747249536,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2756958384,611824480
+	C: "OO",2747260064,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2756959136,611824480
+	C: "OO",2747260816,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2756967408,611824480
+	C: "OO",2747256304,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2756962144,611824480
+	C: "OO",2747251040,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2756954624,611824480
+	C: "OO",2747257808,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2756965152,611824480
+	C: "OO",2747253296,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2756952368,611824480
+	C: "OO",2747261568,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2756953120,611824480
+	C: "OO",2747257056,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2756966656,611824480
+	C: "OO",2747250288,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2756965904,611824480
+	C: "OO",2483637056,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2756955376,611824480
+	C: "OO",2483623520,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2756956128,611824480
+	C: "OO",2483625024,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2756956880,611824480
+	C: "OO",2483627280,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2756959888,611824480
+	C: "OO",2483634800,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2756961392,611824480
+	C: "OO",2483631040,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2756962896,611824480
+	C: "OO",2483631792,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2756960640,611824480
+	C: "OO",2483635552,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2756963648,611824480
+	C: "OO",1767111280,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2756964400,611824480
+	C: "OO",1767114288,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2752749696,611824480
+	C: "OO",1260406624,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2752756464,611824480
+	C: "OO",2455026400,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2752761728,611824480
+	C: "OO",2491674800,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2752751952,611824480
+	C: "OO",2491680816,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2752750448,611824480
+	C: "OO",2491678560,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2752751200,611824480
+	C: "OO",2491679312,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2752746688,611824480
+	C: "OO",2491680064,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2752752704,611824480
+	C: "OO",2491677056,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2752755712,611824480
+	C: "OO",2491676304,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2752753456,611824480
+	C: "OO",2491675552,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2752754208,611824480
+	C: "OO",2491677808,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2752747440,611824480
+	C: "OO",2491681568,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2752754960,611824480
+	C: "OO",2855665248,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2752760224,611824480
+	C: "OO",2855666000,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2752757216,611824480
+	C: "OO",2855664496,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2752760976,611824480
+	C: "OO",2855662992,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2752748944,611824480
+	C: "OO",2855663744,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2752757968,611824480
+	C: "OO",2855667504,2492300608
 	
 	;SubDeformer::, Deformer::
-	C: "OO",2752748192,611824480
+	C: "OO",2855666752,2492300608
 	
 	;Model::B_hand_L, SubDeformer::
-	C: "OO",2847333744,1767112032
+	C: "OO",2846255008,2747252544
 	
 	;Model::B_index_01_L, SubDeformer::
-	C: "OO",2847338128,1767114288
+	C: "OO",2649099344,2747259312
 	
 	;Model::B_thumb_01_L, SubDeformer::
-	C: "OO",2847314016,1260406624
+	C: "OO",2846239664,2747254800
 	
 	;Model::B_thumb_02_L, SubDeformer::
-	C: "OO",2847318400,2455026400
+	C: "OO",2846257200,2747255552
 	
 	;Model::B_twist_L, SubDeformer::
-	C: "OO",2847344704,2483625024
+	C: "OO",2649084000,2747263072
 	
 	;Model::B_middle_01_L, SubDeformer::
-	C: "OO",2847327168,2756953872
+	C: "OO",2649112496,2747248784
 	
 	;Model::B_ring_01_L, SubDeformer::
-	C: "OO",2847349088,2756957632
+	C: "OO",2846241856,2747249536
 	
 	;Model::B_middle_02_L, SubDeformer::
-	C: "OO",2847322784,2756958384
+	C: "OO",2649090576,2747260064
 	
 	;Model::B_index_02_L, SubDeformer::
-	C: "OO",2847353472,2756959136
+	C: "OO",2649101536,2747260816
 	
 	;Model::B_thumb_03_L, SubDeformer::
-	C: "OO",2847329360,2756967408
+	C: "OO",2846250624,2747256304
 	
 	;Model::B_forearm_L, SubDeformer::
-	C: "OO",2847320592,2756962144
+	C: "OO",2846246240,2747251040
 	
 	;Model::B_pinky_01_L, SubDeformer::
-	C: "OO",2847331552,2756954624
+	C: "OO",2846252816,2747257808
 	
 	;Model::B_pinky_02_L, SubDeformer::
-	C: "OO",2847342512,2756965152
+	C: "OO",2649108112,2747253296
 	
 	;Model::B_ring_02_L, SubDeformer::
-	C: "OO",2847346896,2756952368
+	C: "OO",2846244048,2747261568
 	
 	;Model::B_spine, SubDeformer::
-	C: "OO",2845018000,2756953120
+	C: "OO",2846217744,2747257056
 	
 	;Model::B_chest, SubDeformer::
-	C: "OO",2845020192,2756966656
+	C: "OO",2846228704,2747250288
 	
 	;Model::B_shoulder_L, SubDeformer::
-	C: "OO",2847335936,2756965904
+	C: "OO",2846248432,2483637056
 	
 	;Model::B_arm_L, SubDeformer::
-	C: "OO",2847316208,2756955376
+	C: "OO",2846237472,2483623520
 	
 	;Model::B_pelvis, SubDeformer::
-	C: "OO",2845007040,2756956128
+	C: "OO",2846219936,2483625024
 	
 	;Model::B_leg_01_L, SubDeformer::
-	C: "OO",2848451664,2756956880
+	C: "OO",2649127840,2483627280
 	
 	;Model::B_leg_01_R, SubDeformer::
-	C: "OO",2848464816,2756959888
+	C: "OO",2649138800,2483634800
 	
 	;Model::B_leg_02_L, SubDeformer::
-	C: "OO",2848453856,2756961392
+	C: "OO",2649130032,2483631040
 	
 	;Model::B_foot_L, SubDeformer::
-	C: "OO",2848458240,2756962896
+	C: "OO",2649145376,2483631792
 	
 	;Model::B_toe_L, SubDeformer::
-	C: "OO",2848442896,2756960640
+	C: "OO",2649121264,2483635552
 	
 	;Model::B_shoulder_R, SubDeformer::
-	C: "OO",2847351280,2756963648
+	C: "OO",2649110304,1767111280
 	
 	;Model::B_neck, SubDeformer::
-	C: "OO",2845009232,2756964400
+	C: "OO",2846204592,1767114288
 	
 	;Model::B_head, SubDeformer::
-	C: "OO",2847340320,2752749696
+	C: "OO",2846235280,1260406624
 	
 	;Model::B_hand_R, SubDeformer::
-	C: "OO",2847362240,2752756464
+	C: "OO",2649105920,2455026400
 	
 	;Model::B_index_01_R, SubDeformer::
-	C: "OO",2847371008,2752761728
+	C: "OO",2649132224,2491674800
 	
 	;Model::B_thumb_01_R, SubDeformer::
-	C: "OO",2847364432,2752751952
+	C: "OO",2649094960,2491680816
 	
 	;Model::B_thumb_02_R, SubDeformer::
-	C: "OO",2847366624,2752750448
+	C: "OO",2649088384,2491678560
 	
 	;Model::B_twist_R, SubDeformer::
-	C: "OO",2848456048,2752751200
+	C: "OO",2649149760,2491679312
 	
 	;Model::B_middle_01_R, SubDeformer::
-	C: "OO",2848469200,2752746688
+	C: "OO",2649119072,2491680064
 	
 	;Model::B_ring_01_R, SubDeformer::
-	C: "OO",2847360048,2752752704
+	C: "OO",2649097152,2491677056
 	
 	;Model::B_middle_02_R, SubDeformer::
-	C: "OO",2848471392,2752755712
+	C: "OO",2649125648,2491676304
 	
 	;Model::B_index_02_R, SubDeformer::
-	C: "OO",2848460432,2752753456
+	C: "OO",2649134416,2491675552
 	
 	;Model::B_thumb_03_R, SubDeformer::
-	C: "OO",2847357856,2752754208
+	C: "OO",2649116880,2491677808
 	
 	;Model::B_forearm_R, SubDeformer::
-	C: "OO",2847375392,2752747440
+	C: "OO",2649114688,2491681568
 	
 	;Model::B_pinky_01_R, SubDeformer::
-	C: "OO",2847373200,2752754960
+	C: "OO",2649092768,2855665248
 	
 	;Model::B_pinky_02_R, SubDeformer::
-	C: "OO",2847355664,2752760224
+	C: "OO",2649086192,2855666000
 	
 	;Model::B_ring_02_R, SubDeformer::
-	C: "OO",2847368816,2752757216
+	C: "OO",2649147568,2855664496
 	
 	;Model::B_arm_R, SubDeformer::
-	C: "OO",2847324976,2752760976
+	C: "OO",2649103728,2855662992
 	
 	;Model::B_leg_02_R, SubDeformer::
-	C: "OO",2848467008,2752748944
+	C: "OO",2649140992,2855663744
 	
 	;Model::B_foot_R, SubDeformer::
-	C: "OO",2848473584,2752757968
+	C: "OO",2649143184,2855667504
 	
 	;Model::B_toe_R, SubDeformer::
-	C: "OO",2848445088,2752748192
+	C: "OO",2649151952,2855666752
 }
