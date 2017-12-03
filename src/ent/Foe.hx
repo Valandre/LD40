@@ -134,8 +134,9 @@ class Foe extends Character
 			m.x = hxd.Math.srand(hitTime * 0.03);
 			m.y = hxd.Math.srand(hitTime * 0.03);
 			m.scaleX = m.scaleY = 1 + hitTime * 0.04;
-			//m.material.blendMode = Alpha;
-			//m.material.color.w = 1 - hitTime * 0.05;
+			m.material.mainPass.setPassName("alpha");
+			m.material.blendMode = Alpha;
+			m.material.color.w = 1 - hitTime * 0.05;
 		}
 	}
 

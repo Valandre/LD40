@@ -80,14 +80,11 @@ class CustomRenderer extends h3d.scene.Renderer {
 		var colorTex    = all.getTexture(0);
 		var depthTex    = all.getTexture(1);
 		var normalTex   = all.getTexture(2);
-		var additiveTex = allocTarget("additive", 0, true);
-		
-		setTarget(additiveTex);
-		clear(0);
+
+		setTarget(colorTex);
+		draw("alpha");
 		draw("additive");
 		resetTarget();
-
-		//this.ctx.engine.pushTargets([colorTex, depthTex, normalTex]);
 
 		if (enableSao) {
 			// apply soa
@@ -109,7 +106,7 @@ class CustomRenderer extends h3d.scene.Renderer {
 		}
 
 		h3d.pass.Copy.run(colorTex, null, None);
-		h3d.pass.Copy.run(additiveTex, null, Add);
+		//h3d.pass.Copy.run(additiveTex, null, Add);
 
 		/*h3d.pass.Copy.run(emissiveTexture, outputTexture, Add);
 
