@@ -18,7 +18,7 @@ class Player extends Character
 	var lampPower = 1.;
 	var lampDist = 10.;
 	var lampArc = Math.PI * 0.25;
-	var lampBattery = 60.;
+	var lampBattery = 5.;
 
 	var tmp = new h2d.col.Point();
 	var lampLight : h3d.scene.PointLight;
@@ -192,10 +192,10 @@ class Player extends Character
 		}
 	}
 
-
 	var oldMousePos = new h2d.col.Point();
 	function updateKeys(dt : Float) {
 		usingPad = false;
+
 		if(pad != null) {
 			var xAxis = pad.xAxis;
 			var yAxis = pad.yAxis;
@@ -212,7 +212,7 @@ class Player extends Character
 			}
 			else targetPos = null;
 
-			canMove = !pad.isDown(PAD.A);
+			canMove = !pad.isDown(PAD.X);
 		}
 
 		if(!usingPad) {
@@ -230,15 +230,17 @@ class Player extends Character
 			canMove = K.isDown(K.MOUSE_LEFT);// !K.isDown(K.SPACE);
 		}
 
-		if(targetPos != null )
+		if(pad.isDown(PAD.A) || K.isDown(K.MOUSE_RIGHT))
+			lampReload();
+		else if(targetPos != null )
 			move();
-		else stand();
+		else
+			stand();
 	}
 
 	var lightCoef = 1.;
 	function updateBattery(dt : Float) {
-		if(!lampActive) return;
-		lampBattery -= dt / 60;
+		lampBattery = Math.max(0, lampBattery - dt / 60);
 		lampActive = lampBattery > 0;
 
 		var min = 10;
@@ -252,7 +254,22 @@ class Player extends Character
 				lightCoef = Math.max(lampBattery / min, lightCoef - 0.25);
 			else lightCoef += 0.015 * dt;
 		}
+	}
 
+	function lampReload() {
+		if(job == LampReload) return;
+		if(lampBattery > 10) return;
+		play("reload", {loop : true});
+		setJob(LampReload, function(dt) {
+			lampBattery += dt * 2 / 60;
+			if(lampBattery > 3) {
+				lampBattery = 60;
+				matLight.color.w = 1;
+				lampLight.color.set(spotColor.x, spotColor.y, spotColor.z);
+				spotLight.color.set(spotColor.x, spotColor.y, spotColor.z);
+				stand();
+			}
+		});
 	}
 
 	override public function update(dt:Float) {

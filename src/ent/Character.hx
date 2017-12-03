@@ -14,6 +14,7 @@ enum JobKind {
 	Dead;
 	Spawn;
 	Attack;
+	LampReload;
 }
 
 class Character extends ent.Entity {
