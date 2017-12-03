@@ -29,23 +29,33 @@ class PostProcessingShader extends h3d.shader.ScreenShader {
 			return step(c, sin(time + a * cos(time * b)));
 		}
 
-		function readColor(uv : Vec2) : Vec3 {
+		function readColor(uv : Vec2, chromaticRate : Float) : Vec3 {
 			var window = 1. / (1.+20.*(uv.y-mod(time/4.,1.))*(uv.y-mod(time/4.,1.)));
-			uv.x += sin(uv.y * 10. + time) / 50.0 * (1.0 + cos(time*80.))
+
+			{	// buggify uvs
+				uv.x += sin(uv.y * 10. + time) / 50.0 * (1.0 + cos(time*80.))
 				* onOff(4.0, 4.0, 0.3)
 				* (1.0 + cos(time * 80.)) * window * bugPower;
-			
-			var vShift = 0.15 * onOff(4.0, 5.0, 0.9) * (sin(time)*sin(time*15.) + (0.5 + 0.1*sin(time*150.)*cos(time)));
-			vShift *= cos(time * 50) * sin(time * 20);
-			uv.y = mod(uv.y + vShift * bugPower, 1.);
+				var vShift = 0.15 * onOff(4.0, 5.0, 0.9) * (sin(time)*sin(time*15.) + (0.5 + 0.1*sin(time*150.)*cos(time)));
+				vShift *= cos(time * 50) * sin(time * 20);
+				uv.y = mod(uv.y + vShift * bugPower, 1.);
+			}
 
-			return colorTexture.get(uv).rgb;
+			// chromatic abberation
+			var r = colorTexture.get(uv + vec2(-0.005, 0.0) * chromaticRate).r;
+			var g = colorTexture.get(uv).g;
+			var b = colorTexture.get(uv + vec2( 0.005, 0.0) * chromaticRate).b;
+			
+			return vec3(r,g,b);
 		}
 		
 		function fragment() {
 			var uv = input.uv;
+			var vig = vignette(uv);
+
 			uv = curve(uv);
-			var color = readColor(uv);
+			var chromaRate = 1.0 - vig;
+			var color = readColor(uv, chromaRate);
 
 			if (uv.x < 0.0 || uv.x > 1.0) color *= 0.0;
 			if (uv.y < 0.0 || uv.y > 1.0) color *= 0.0;
