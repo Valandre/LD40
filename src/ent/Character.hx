@@ -21,10 +21,16 @@ class Character extends ent.Entity {
 	var currentJobFunc : Float -> Void;
 	var currentJobOnStop : Void -> Void;
 	var speedRot = 0.15;
+	var moveSpeed(get, never) : Float;
+
 
 	public function new(kind, x, y, z) {
 		this.kind = kind;
 		super(x, y, z);
+	}
+
+	function get_moveSpeed() {
+		return 0.15;
 	}
 
 	function setJob(j : JobKind, f : Float->Void, onStop = null ) {
@@ -68,6 +74,8 @@ class Character extends ent.Entity {
 		targetRotation = hxd.Math.atan2(dy, dx);
 		x += dx;
 		y += dy;
+
+		//trace(x, y);
 	}
 
 	function updateAngle(dt : Float) {

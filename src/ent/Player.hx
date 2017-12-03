@@ -10,11 +10,17 @@ class Player extends Character
 	var deadZone = 0.3;
 	var walkRef : Float;
 	var runRef : Float;
-	var moveSpeed(get, never) : Float;
 	var axisSpeed = 1.;
 	var acc = 0.;
 	var targetPos : h2d.col.Point;
 	var canMove = true;
+
+	var lampActive = true;
+	var lampPower = 1.;
+	var lampDist = 6.;
+	var lampArc = Math.PI * 0.2;
+
+	var tmp = new h2d.col.Point();
 
 	public function new(x = 0., y = 0., z = 0.) {
 		super(EPlayer, x, y, z);
@@ -46,13 +52,13 @@ class Player extends Character
 		lamp.follow = obj.getObjectByName("B_lamp");
 	}
 
-	function get_moveSpeed() {
+	override function get_moveSpeed() {
 		//return 0.2;
-		return switch(game.world.curStep) {
-			case 0,1 : 0.05;
-			case 2,3 : 0.08;
-			case 4: 0.12;
-			case 5,6,7 : 0.15;
+		return switch(game.world.step) {
+			case Start, Phone : 0.05;
+			case Park, River : 0.08;
+			case Shop: 0.12;
+			case Accident, Forest, Tombstone : 0.15;
 			default : 0.15;
 		}
 	}
@@ -77,7 +83,6 @@ class Player extends Character
 			acc = hxd.Math.min(1, acc + 0.05 * dt);
 			var sp = moveSpeed * axisSpeed * acc * dt;
 			moveTo(a.x * sp, a.y * sp);
-			//trace(x, y);
 			if(obj != null) obj.currentAnimation.speed = acc * moveSpeed / (moveSpeed > 0.1 ? runRef : walkRef);
 		});
 
@@ -90,6 +95,42 @@ class Player extends Character
 	function getCameraAng() {
 		var c = game.s3d.camera;
 		return hxd.Math.atan2(y - c.pos.y, x - c.pos.x);
+	}
+
+	var g : h3d.scene.Graphics;
+	function checkLamp(dt : Float) {
+		if(!lampActive) return;
+		var da = lampArc * 0.5;
+
+		for(e in game.foes) {
+			if(e.job == Dead) continue;
+
+			//for(m in e.obj.getMeshes())
+				//m.material.color.r = 0;
+
+			tmp.x = e.x - x;
+			tmp.y = e.y - y;
+			if(hxd.Math.distanceSq(tmp.x, tmp.y) > lampDist * lampDist) continue;
+			if(Math.abs(hxd.Math.angle(rotation - hxd.Math.atan2(tmp.y, tmp.x))) > da) continue;
+			e.hit(lampPower * dt);
+			//for(m in e.obj.getMeshes())
+				//m.material.color.r = 1;
+
+		}
+
+		//////DEBUG
+		if(g == null) g = new h3d.scene.Graphics(game.s3d);
+		g.clear();
+		g.lineStyle(3, 0xA03010);
+
+		g.moveTo(x, y, 0.1);
+		g.lineTo(x + lampDist * Math.cos(rotation - da), y + lampDist * Math.sin(rotation - da), 0.1);
+		g.moveTo(x, y, 0.1);
+		g.lineTo(x + lampDist * Math.cos(rotation + da), y + lampDist * Math.sin(rotation + da), 0.1);
+
+		g.moveTo(x + lampDist * Math.cos(rotation - da), y + lampDist * Math.sin(rotation - da), 0.1);
+		for(i in 0...8)
+			g.lineTo(x + lampDist * Math.cos(rotation - da + lampArc * (i + 1) / 8), y + lampDist * Math.sin(rotation - da + lampArc * (i + 1) / 8), 0.1);
 	}
 
 
@@ -128,6 +169,7 @@ class Player extends Character
 
 	override public function update(dt:Float) {
 		updateKeys(dt);
+		checkLamp(dt);
 		super.update(dt);
 	}
 

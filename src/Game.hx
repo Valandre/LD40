@@ -9,6 +9,7 @@ class Game extends hxd.App {
 	public var renderer : CustomRenderer;
 
 	public var entities : Array<ent.Entity>;
+	public var foes : Array<ent.Foe>;
 	public var world : map.World;
 	public var hero : ent.Player;
 
@@ -30,6 +31,7 @@ class Game extends hxd.App {
 		event = new hxd.WaitEvent();
 
 		entities = [];
+		foes = [];
 		world = new map.World();
 		hero = new ent.Player();
 
@@ -43,26 +45,18 @@ class Game extends hxd.App {
 		cam.target.y = y;
 		cam.target.z = z + 1.5;
 
-		var p = world.getCameraFramePos(hero.x, hero.y);
+		var p = getClampedFramePos();
 		cam.pos.x = p.x;
 		cam.pos.y = p.y;
 		cam.pos.z = p.z;
 	}
 
 	var tmp = new h2d.col.Point();
-	function cameraUpdate(dt : Float) {
-		if(hero == null) return;
-
-		var cam = s3d.camera;
-		cam.target.x += (hero.x - cam.target.x) * 0.05 * dt;
-		cam.target.y += (hero.y - cam.target.y) * 0.05 * dt;
-		cam.target.z += (hero.z + 1.5 - cam.target.z) * 0.05 * dt;
-
+	inline function getClampedFramePos() {
 		var p = world.getCameraFramePos(hero.x, hero.y);
 		tmp.x = p.x - hero.x;
 		tmp.y = p.y - hero.y;
 		var d = hxd.Math.distanceSq(tmp.x, tmp.y);
-
 		var r = 10;
 		if(d < r * r) {
 			tmp.normalize();
@@ -80,6 +74,18 @@ class Game extends hxd.App {
 			}
 		}
 
+		return p;
+	}
+
+	function cameraUpdate(dt : Float) {
+		if(hero == null) return;
+
+		var cam = s3d.camera;
+		cam.target.x += (hero.x - cam.target.x) * 0.05 * dt;
+		cam.target.y += (hero.y - cam.target.y) * 0.05 * dt;
+		cam.target.z += (hero.z + 1.5 - cam.target.z) * 0.05 * dt;
+
+		var p = getClampedFramePos();
 		cam.pos.x += (p.x - cam.pos.x) * 0.05 * dt;
 		cam.pos.y += (p.y - cam.pos.y) * 0.05 * dt;
 		cam.pos.z += (p.z - cam.pos.z) * 0.05 * dt;
