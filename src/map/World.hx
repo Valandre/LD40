@@ -91,7 +91,7 @@ class World
 		if(step == null) return;
 		switch (step) {
 			case Phone:
-				if(Math.random() < 0.01) {
+				if(Game.PREFS.mobSpawn && Math.random() < 0.01) {
 					var p = cam.target.localToGlobal();
 					var d = 12 + hxd.Math.random(8);
 					var a = hxd.Math.srand(Math.PI);
@@ -99,7 +99,7 @@ class World
 				}
 
 			case Park:
-				if(Math.random() < 0.015) {
+				if(Game.PREFS.mobSpawn && Math.random() < 0.015) {
 					var p = cam.target.localToGlobal();
 					var d = 10 + hxd.Math.random(8);
 					var a = hxd.Math.srand(Math.PI);
@@ -107,7 +107,7 @@ class World
 				}
 
 			case River, Shop:
-				if(Math.random() < 0.025) {
+				if(Game.PREFS.mobSpawn && Math.random() < 0.025) {
 					var p = cam.target.localToGlobal();
 					var d = 8 + hxd.Math.random(8);
 					var a = hxd.Math.srand(Math.PI);
@@ -115,7 +115,7 @@ class World
 				}
 
 			case Accident:
-				if(Math.random() < 0.1) {
+				if(Game.PREFS.mobSpawn && Math.random() < 0.1) {
 					var p = cam.target.localToGlobal();
 					var d = 6 + hxd.Math.random(8);
 					var a = hxd.Math.srand(Math.PI);
@@ -123,7 +123,7 @@ class World
 				}
 
 			case Forest:
-				if(Math.random() < 0.2) {
+				if(Game.PREFS.mobSpawn && Math.random() < 0.2) {
 					var p = cam.target.localToGlobal();
 					var d = 6 + hxd.Math.random(8);
 					var a = hxd.Math.srand(Math.PI);
@@ -187,6 +187,18 @@ class World
 
 	public function getZ(x : Float, y:Float) {
 		return 0.;
+	}
+
+	public function respawn() {
+		var i = game.foes.length - 1;
+		while(i >= 0) {
+			var f = game.foes[i--];
+			if(f.isStatic) continue;
+			f.remove();
+		}
+
+		@:privateAccess game.hero.stand();
+		gotoStep(stepId);
 	}
 
 	public function update(dt: Float) {

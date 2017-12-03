@@ -26,6 +26,7 @@ class Player extends Character
 		super(EPlayer, x, y, z);
 		walkRef = 0.05;
 		runRef = 0.14;
+		ray = 0.4;
 		stand();
 		hxd.Pad.wait(function(pad) {
 			this.pad = pad;
@@ -96,6 +97,17 @@ class Player extends Character
 		}
 	}
 
+	function dead() {
+		if(job == Dead) return;
+		var time = 100.;
+		setJob(Dead, function(dt) {
+			time -= dt;
+			if(time < 0) {
+				game.transition(game.world.respawn);
+			}
+		});
+	}
+
 	function getCameraAng() {
 		var c = game.s3d.camera;
 		return hxd.Math.atan2(y - c.pos.y, x - c.pos.x);
@@ -135,6 +147,18 @@ class Player extends Character
 		g.moveTo(x + lampDist * Math.cos(rotation - da), y + lampDist * Math.sin(rotation - da), 0.1);
 		for(i in 0...8)
 			g.lineTo(x + lampDist * Math.cos(rotation - da + lampArc * (i + 1) / 8), y + lampDist * Math.sin(rotation - da + lampArc * (i + 1) / 8), 0.1);
+	}
+
+	function checkHurt() {
+		for(e in game.foes) {
+			if(e.job == Dead) continue;
+			tmp.x = e.x - x;
+			tmp.y = e.y - y;
+			var r = 1 + ray + e.ray;
+			if(hxd.Math.distanceSq(tmp.x, tmp.y) > r * r) continue;
+			dead();
+			e.attack();
+		}
 	}
 
 
@@ -181,8 +205,11 @@ class Player extends Character
 	}
 
 	override public function update(dt:Float) {
-		updateKeys(dt);
-		checkLamp(dt);
+		if(job != Dead) {
+			updateKeys(dt);
+			checkLamp(dt);
+			checkHurt();
+		}
 		super.update(dt);
 	}
 

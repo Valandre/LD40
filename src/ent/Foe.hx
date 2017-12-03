@@ -4,9 +4,10 @@ import hxd.Key in K;
 
 class Foe extends Character
 {
+	public var isStatic = false;
+
 	var acc = 0.;
 	var targetPos : h2d.col.Point;
-	var isStatic = false;
 	var pl : ent.Player;
 
 	var hitTime = 0.;
@@ -15,6 +16,7 @@ class Foe extends Character
 		super(EFoe, x, y, z);
 		this.isStatic = isStatic;
 		this.pl = game.hero;
+		ray = 0.4;
 
 		game.foes.push(this);
 
@@ -70,7 +72,7 @@ class Foe extends Character
 		setJob(Spawn, function(dt) {
 			z += (oz - z) * 0.1 * dt;
 			obj.scaleX = obj.scaleY = 1 - (oz - z) * 0.5;
-			if(z > oz-0.01) stand();
+			if(z > oz - 0.01) stand();
 		});
 	}
 
@@ -113,6 +115,22 @@ class Foe extends Character
 		}
 	}
 
+	public function attack() {
+		if(job == Attack) return;
+		targetPos = new h2d.col.Point(pl.x, pl.y);
+		setJob(Move, function(dt) {
+			targetPos.x = pl.x;
+			targetPos.y = pl.y;
+			var a = new h3d.Vector(targetPos.x - x, targetPos.y - y);
+			if(hxd.Math.distanceSq(a.x, a.y) > 0.1) {
+				a.normalize();
+				var sp = 0.25 * dt;
+				moveTo(a.x * sp, a.y * sp);
+				//if(obj != null) obj.currentAnimation.speed = (body.velocity.length / moveSpeed) * 1.5;
+			}
+		});
+	}
+
 	function dead() {
 		if(job == Dead) return;
 		setJob(Dead, function(dt) {
@@ -147,7 +165,6 @@ class Foe extends Character
 
 		if(hitTime != 0)
 			hitTime = Math.max(0, hitTime - dt * 0.5);
-		hitShake();
-
+		if(!isStatic && job != Spawn) hitShake();
 	}
 }

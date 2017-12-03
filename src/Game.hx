@@ -3,6 +3,13 @@ import hxd.Key in K;
 
 class Game extends hxd.App {
 
+	static public var PREFS = initPrefs();
+	static function initPrefs() {
+		var prefs = { fullScreen : false, mobSpawn : true };
+		prefs = hxd.Save.load(prefs, "prefs");
+		return prefs;
+	}
+
 	public static var inst : Game;
 	public var event : hxd.WaitEvent;
 	public var modelCache : h3d.prim.ModelCache;
@@ -13,10 +20,13 @@ class Game extends hxd.App {
 	public var world : map.World;
 	public var hero : ent.Player;
 
+	var screenTransition : ui.ScreenTransition;
+
 	override function init() {
 		modelCache   = new CustomCache();
 		renderer     = new CustomRenderer();
 		s3d.renderer = renderer;
+		engine.fullScreen = PREFS.fullScreen;
 
 		renderer.depthColorMap = hxd.Res.Gradients.test.toTexture();
 		loadRenderConfig(renderer);
@@ -36,6 +46,13 @@ class Game extends hxd.App {
 		hero = new ent.Player();
 
 		event.wait(0, initCamera.bind(hero.x, hero.y, hero.z));
+	}
+
+	public function transition(?fadeIn = 0.25, ?fadeOut = 0.25, ?wait = 0.05, ?onReady : Void -> Void, ?onEnd : Void -> Void) {
+		screenTransition = new ui.ScreenTransition(fadeIn, fadeOut, wait, onReady, function() {
+			if(onEnd != null) onEnd();
+			screenTransition = null;
+		});
 	}
 
 	public function initCamera(x, y, z) {
@@ -91,19 +108,56 @@ class Game extends hxd.App {
 		cam.pos.z += (p.z - cam.pos.z) * 0.05 * dt;
 	}
 
+
+	var infos : h2d.Text;
 	function updateKeys(dt : Float) {
-		if(K.isDown(K.CTRL) && K.isPressed("F".code))
+		if(K.isDown(K.CTRL) && K.isPressed("F".code)) {
 			engine.fullScreen = !engine.fullScreen;
+			PREFS.fullScreen = engine.fullScreen;
+			hxd.Save.save(PREFS, "prefs");
+		}
 
 		 //DEBUG
-		if(K.isPressed(K.NUMBER_1)) world.gotoStep(0);
-		if(K.isPressed(K.NUMBER_2)) world.gotoStep(1);
-		if(K.isPressed(K.NUMBER_3)) world.gotoStep(2);
-		if(K.isPressed(K.NUMBER_4)) world.gotoStep(3);
-		if(K.isPressed(K.NUMBER_5)) world.gotoStep(4);
-		if(K.isPressed(K.NUMBER_6)) world.gotoStep(5);
-		if(K.isPressed(K.NUMBER_7)) world.gotoStep(6);
-		if(K.isPressed(K.NUMBER_8)) world.gotoStep(7);
+		if(K.isPressed(K.F1)) {
+			PREFS.mobSpawn = !PREFS.mobSpawn;
+			hxd.Save.save(PREFS, "prefs");
+			if(!PREFS.mobSpawn) {
+				var i = foes.length - 1;
+				while(i >= 0) {
+					var f = foes[i--];
+					if(f.isStatic) continue;
+					f.remove();
+				}
+			}
+		}
+
+		inline function setStep(v : Int) {
+			@:privateAccess world.stepId = -1;
+			world.gotoStep(v);
+		}
+		if(K.isPressed(K.NUMBER_1)) setStep(0);
+		if(K.isPressed(K.NUMBER_2)) setStep(1);
+		if(K.isPressed(K.NUMBER_3)) setStep(2);
+		if(K.isPressed(K.NUMBER_4)) setStep(3);
+		if(K.isPressed(K.NUMBER_5)) setStep(4);
+		if(K.isPressed(K.NUMBER_6)) setStep(5);
+		if(K.isPressed(K.NUMBER_7)) setStep(6);
+		if(K.isPressed(K.NUMBER_8)) setStep(7);
+
+		if(K.isPressed(K.BACKSPACE)) {
+			setStep(0);
+			world.respawn();
+		}
+
+		if(infos == null) {
+			infos = new h2d.Text(hxd.res.DefaultFont.get(), s2d);
+			infos.x = 10;
+		}
+		infos.text =
+		"[1-8] Change Place (" + world.step + ")\n" +
+		"[BackSpace] Restart Game\n" +
+		"[F1] Toggle mob spawn (" + PREFS.mobSpawn + ")";
+		infos.y = s2d.height - infos.textHeight - 10;
 	}
 
 	public function getMousePicker( ?x, ?y ) {
@@ -130,6 +184,12 @@ class Game extends hxd.App {
 			pMin.z += dir.z;
 		}
 		return null;
+	}
+
+	override function onResize() {
+		super.onResize();
+		if(screenTransition != null)
+			screenTransition.onResize();
 	}
 
 	override function update(dt:Float) {

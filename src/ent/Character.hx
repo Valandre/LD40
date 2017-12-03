@@ -13,6 +13,7 @@ enum JobKind {
 	Move;
 	Dead;
 	Spawn;
+	Attack;
 }
 
 class Character extends ent.Entity {
@@ -23,6 +24,7 @@ class Character extends ent.Entity {
 	var speedRot = 0.15;
 	var moveSpeed(get, never) : Float;
 	var canMove = true;
+	var ray = 1.;
 
 	public function new(kind, x, y, z) {
 		this.kind = kind;
