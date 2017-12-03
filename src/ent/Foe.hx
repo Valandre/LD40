@@ -109,16 +109,20 @@ class Foe extends Character
 	public function attack() {
 		if(job == Attack) return;
 		targetPos = new h2d.col.Point(pl.x, pl.y);
-		play("shadows_idle");
-		setJob(Move, function(dt) {
+		play("shadows_grab", {loop : false});
+		setJob(Attack, function(dt) {
+			if(obj.currentAnimation.frame < obj.currentAnimation.frameCount * 0.15) return;
+			@:privateAccess pl.dead();
 			targetPos.x = pl.x;
 			targetPos.y = pl.y;
+			targetRotation = hxd.Math.atan2(pl.y - y, pl.x - x);
+			/*
 			var a = new h3d.Vector(targetPos.x - x, targetPos.y - y);
 			if(hxd.Math.distanceSq(a.x, a.y) > 0.1) {
 				a.normalize();
 				var sp = 0.25 * dt;
 				moveTo(a.x * sp, a.y * sp);
-			}
+			}*/
 		});
 	}
 

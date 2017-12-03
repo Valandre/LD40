@@ -18,8 +18,7 @@ class ScreenTransition
 			if(bg.alpha >= 1) {
 				bg.alpha = 1;
 				game.event.wait(wait, function() {
-					if(onReady != null)
-						onReady();
+					if(onReady != null)	onReady();
 					game.event.waitUntil(function(dt) {
 						bg.alpha -= fadeOut * dt;
 						if(bg.alpha <= 0) {
@@ -31,7 +30,6 @@ class ScreenTransition
 						return false;
 					});
 				});
-
 				return true;
 			}
 			return false;

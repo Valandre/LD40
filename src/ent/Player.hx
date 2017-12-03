@@ -16,7 +16,7 @@ class Player extends Character
 
 	var lampActive = true;
 	var lampPower = 1.;
-	var lampDist = 8.;
+	var lampDist = 10.;
 	var lampArc = Math.PI * 0.25;
 
 	var tmp = new h2d.col.Point();
@@ -118,12 +118,13 @@ class Player extends Character
 	function dead() {
 		if(job == Dead) return;
 
-		play("idle01");
+		play("death", {loop : false});
 		var time = 100.;
 		setJob(Dead, function(dt) {
 			time -= dt;
 			if(time < 0) {
-				game.transition(game.world.respawn);
+				game.transition(0.01, 0.025, game.world.respawn);
+				currentJobFunc = null;
 			}
 		});
 	}
@@ -155,6 +156,7 @@ class Player extends Character
 		}
 
 		//////DEBUG
+		/*
 		if(g == null) g = new h3d.scene.Graphics(game.s3d);
 		g.clear();
 		g.lineStyle(3, 0xA03010);
@@ -167,6 +169,7 @@ class Player extends Character
 		g.moveTo(x + lampDist * Math.cos(rotation - da), y + lampDist * Math.sin(rotation - da), 0.1);
 		for(i in 0...8)
 			g.lineTo(x + lampDist * Math.cos(rotation - da + lampArc * (i + 1) / 8), y + lampDist * Math.sin(rotation - da + lampArc * (i + 1) / 8), 0.1);
+		*/
 	}
 
 	function checkHurt() {
@@ -176,7 +179,6 @@ class Player extends Character
 			tmp.y = e.y - y;
 			var r = 1 + ray + e.ray;
 			if(hxd.Math.distanceSq(tmp.x, tmp.y) > r * r) continue;
-			dead();
 			e.attack();
 		}
 	}
@@ -225,10 +227,10 @@ class Player extends Character
 	}
 
 	override public function update(dt:Float) {
+		checkHurt();
 		if(!game.world.cam.locked && job != Dead) {
 			updateKeys(dt);
 			checkLamp(dt);
-			checkHurt();
 		}
 		super.update(dt);
 	}

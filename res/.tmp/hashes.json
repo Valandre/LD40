@@ -5,6 +5,7 @@
 	"chars": {
 		"main_character": {
 			"model.FBX": "8d5917df4f5f091fa84c934f5e42f59047bb0d11",
+			"Anim_death.FBX": "cb663251a04d5577e785ed340b5dd8d15e154576",
 			"Anim_run.FBX": "c9ec0d9d5d21019c7aca26244d966354936f2619",
 			"Anim_walk.FBX": "d9a71090c9bdf80602d4809a00dc611759d8622a",
 			"Anim_idle01.FBX": "6cd209eb72416e86c84f8d1355d387b32666f68e"
@@ -15,6 +16,7 @@
 			"model02.FBX": "9f07a13b6fc4746fcda1faa3c44ee531a3e9766d",
 			"Anim_run.FBX": "c9ec0d9d5d21019c7aca26244d966354936f2619",
 			"model01.FBX": "43dd411128f26fa1eb2368b5a76f5a0e484c2931",
+			"Anim_shadows_grab.FBX": "e50c8b4cc26448b8dcf328d6073d783a2fcdecfc",
 			"Anim_shadows_walk.FBX": "11f69e67371912e2c78ab1d242e84460667d1353",
 			"Anim_shadows_idle.FBX": "3312a4434c6d4ba0ef674dab32fea331b69354a3",
 			"Anim_idle01.FBX": "82dda85ff78f484027b37280b2ea4dc3efa04e08"
