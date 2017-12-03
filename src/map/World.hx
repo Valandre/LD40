@@ -41,7 +41,7 @@ class World
 		var m = game.modelCache.loadModel(res);
 		m.playAnimation(game.modelCache.loadAnimation(res));
 		m.currentAnimation.speed = 0;
-		m.lightCameraCenter = true;
+		m.getObjectByName("Landscape").lightCameraCenter = true;
 		root.addChild(m);
 
 		for (m in m.getMeshes())

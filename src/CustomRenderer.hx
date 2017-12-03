@@ -125,6 +125,7 @@ class CustomRenderer extends h3d.scene.Renderer {
 			fxaa.apply(colorTex);
 		}
 		
-		post.apply(colorTex, null);
+		post.setGlobals(ctx);
+		post.apply(colorTex, ctx.time);
 	}
 }
