@@ -21,6 +21,7 @@ class Game extends hxd.App {
 	public var hero : ent.Player;
 
 	var screenTransition : ui.ScreenTransition;
+	var pause = false;
 
 	override function init() {
 		modelCache   = new CustomCache();
@@ -114,6 +115,9 @@ class Game extends hxd.App {
 			hxd.Save.save(PREFS, "prefs");
 		}
 
+		if(K.isPressed("P".code))
+			pause = !pause;
+
 		 //DEBUG
 		if(K.isPressed(K.F1)) {
 			PREFS.mobSpawn = !PREFS.mobSpawn;
@@ -193,7 +197,7 @@ class Game extends hxd.App {
 	override function update(dt:Float) {
 		/////
 		//DEBUG ONLY
-		var speed = 1.;
+		var speed = pause ? 0 : 1.;
 		if( K.isDown(K.SHIFT) )
 			speed *= K.isDown(K.CTRL) ? 0.1 : 5;
 		hxd.Timer.deltaT *= speed;
@@ -202,6 +206,7 @@ class Game extends hxd.App {
 		/////////
 
 		updateKeys(dt);
+		if(pause) return;
 
 		cameraUpdate(dt);
 		world.update(dt);

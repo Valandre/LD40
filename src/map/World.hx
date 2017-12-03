@@ -92,9 +92,9 @@ class World
 
 		switch(k) {
 			case Start:
-				new ent.Foe(-75, 90, 6, false, true);
-				new ent.Foe(-78, 90, 6, false, true);
-				new ent.Foe(-77, 70, 5, false, true);
+				new ent.Foe(-75, 90, 6, false, false, true);
+				new ent.Foe(-78, 90, 6, false, false, true);
+				new ent.Foe(-77, 70, 5, false, false, true);
 			case Phone:
 			case Park:
 			case River:
@@ -115,7 +115,7 @@ class World
 					var p = cam.target.localToGlobal();
 					var d = 12 + hxd.Math.random(8);
 					var a = hxd.Math.srand(Math.PI);
-					new ent.Foe(p.x + d * Math.cos(a), p.y + d * Math.sin(a), 0, true, true);
+					new ent.Foe(p.x + d * Math.cos(a), p.y + d * Math.sin(a), 0, true, false, false);
 				}
 
 			case Park:
@@ -123,7 +123,7 @@ class World
 					var p = cam.target.localToGlobal();
 					var d = 10 + hxd.Math.random(8);
 					var a = hxd.Math.srand(Math.PI);
-					new ent.Foe(p.x + d * Math.cos(a), p.y + d * Math.sin(a), 0, true);
+					new ent.Foe(p.x + d * Math.cos(a), p.y + d * Math.sin(a), 0);
 				}
 
 			case River, Shop:
@@ -131,7 +131,7 @@ class World
 					var p = cam.target.localToGlobal();
 					var d = 8 + hxd.Math.random(8);
 					var a = hxd.Math.srand(Math.PI);
-					new ent.Foe(p.x + d * Math.cos(a), p.y + d * Math.sin(a), 0, true);
+					new ent.Foe(p.x + d * Math.cos(a), p.y + d * Math.sin(a), 0);
 				}
 
 			case Accident:
@@ -139,7 +139,7 @@ class World
 					var p = cam.target.localToGlobal();
 					var d = 6 + hxd.Math.random(8);
 					var a = hxd.Math.srand(Math.PI);
-					new ent.Foe(p.x + d * Math.cos(a), p.y + d * Math.sin(a), 0, true);
+					new ent.Foe(p.x + d * Math.cos(a), p.y + d * Math.sin(a), 0);
 				}
 
 			case Forest:
@@ -147,7 +147,7 @@ class World
 					var p = cam.target.localToGlobal();
 					var d = 6 + hxd.Math.random(8);
 					var a = hxd.Math.srand(Math.PI);
-					new ent.Foe(p.x + d * Math.cos(a), p.y + d * Math.sin(a), 0, true);
+					new ent.Foe(p.x + d * Math.cos(a), p.y + d * Math.sin(a), 0);
 				}
 			default:
 		}

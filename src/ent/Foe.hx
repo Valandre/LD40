@@ -13,9 +13,10 @@ class Foe extends Character
 	var hitTime = 0.;
 	var scaleRef = 0.01;
 
-	public function new(x = 0., y = 0., z = 0., toSpawn = false, isStatic = false) {
+	public function new(x = 0., y = 0., z = 0., toSpawn = true, canMove = true, isStatic = false) {
 		super(EFoe, x, y, z);
 		this.isStatic = isStatic;
+		this.canMove = canMove;
 		this.pl = game.hero;
 		walkRef = 0.05;
 		runRef = 0.14;
@@ -79,13 +80,13 @@ class Foe extends Character
 		play("shadows_idle", {smooth : 0.2});
 		setJob(Stand, function(dt) {
 			targetRotation = hxd.Math.atan2(pl.y - y, pl.x - x);
-			if(!isStatic && Math.random() < 0.01 /*&& hxd.Math.distanceSq(pl.x - x, pl.y - y) < 16 * 16*/)
+			if(canMove && Math.random() < 0.01 /*&& hxd.Math.distanceSq(pl.x - x, pl.y - y) < 16 * 16*/)
 				move();
 		});
 	}
 
 	function move() {
-		if(isStatic || job == Move) return;
+		if(!canMove || job == Move) return;
 		speedRot = 0.15;
 		acc = 0;
 		var accPower = 0.005 + hxd.Math.random(0.005);
@@ -137,7 +138,6 @@ class Foe extends Character
 	}
 
 	function hitShake() {
-		z = hitTime * 0.01;
 		for(m in obj.getMeshes()) {
 			m.x = x + hxd.Math.srand(hitTime * 0.03);
 			m.y = y + hxd.Math.srand(hitTime * 0.03);
@@ -156,6 +156,6 @@ class Foe extends Character
 
 		if(hitTime != 0)
 			hitTime = Math.max(0, hitTime - dt * 0.5);
-		if(!isStatic && job != Spawn) hitShake();
+		if(job != Spawn) hitShake();
 	}
 }
