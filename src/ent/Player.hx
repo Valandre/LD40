@@ -9,8 +9,6 @@ class Player extends Character
 	var usingPad = false;
 
 	var deadZone = 0.3;
-	var walkRef : Float;
-	var runRef : Float;
 	var axisSpeed = 1.;
 	var acc = 0.;
 	var targetPos : h2d.col.Point;
@@ -99,6 +97,8 @@ class Player extends Character
 
 	function dead() {
 		if(job == Dead) return;
+
+		play("idle01");
 		var time = 100.;
 		setJob(Dead, function(dt) {
 			time -= dt;

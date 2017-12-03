@@ -50,7 +50,27 @@ class World
 			locked : false,
 		}
 
-					//start, phone, park, river, shop, accident, graveyard, tombstone
+		/*
+		//show cam target path
+		var g = new h3d.scene.Graphics(game.s3d);
+		g.lineStyle(3, 0x00FFFF);
+
+		var anim = cam.obj.currentAnimation;
+		anim.setFrame(0);
+		anim.sync();
+		var p = cam.target.localToGlobal();
+		g.moveTo(p.x, p.y, 0.1);
+
+		for(i in 0...anim.frameCount) {
+			if(i % 10 != 0) continue;
+			anim.setFrame(i);
+			anim.sync();
+			var p = cam.target.localToGlobal();
+			g.lineTo(p.x, p.y, 0.1);
+		}*/
+
+
+		//start, phone, park, river, shop, accident, graveyard, tombstone
 		stepFrames = [0, 1100, 1800, 2850, 3800, 4990, 5100, m.currentAnimation.frameCount - 1];
 
 		game.event.wait(0, function() {
@@ -163,8 +183,8 @@ class World
 	public function getCameraFramePos(x : Float, y : Float) {
 		var anim = cam.obj.currentAnimation;
 		var frame = anim.frame;
-		var fmin = Std.int(hxd.Math.max(0, anim.frame - 10));
-		var fmax = Std.int(hxd.Math.min(anim.frameCount - 1, anim.frame + 10));
+		var fmin = Std.int(hxd.Math.max(0, anim.frame - 1000));
+		var fmax = Std.int(hxd.Math.min(anim.frameCount - 1, anim.frame + 1000));
 		var dist = 1e9;
 
 		for(i in fmin...fmax) {
@@ -182,6 +202,7 @@ class World
 		anim.sync();
 		step = getStepFromFrame(frame);
 		//trace(frame, step);
+
 		return cam.pos.localToGlobal();
 	}
 

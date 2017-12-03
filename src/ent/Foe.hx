@@ -11,11 +11,14 @@ class Foe extends Character
 	var pl : ent.Player;
 
 	var hitTime = 0.;
+	var scaleRef = 0.01;
 
 	public function new(x = 0., y = 0., z = 0., toSpawn = false, isStatic = false) {
 		super(EFoe, x, y, z);
 		this.isStatic = isStatic;
 		this.pl = game.hero;
+		walkRef = 0.05;
+		runRef = 0.14;
 		ray = 0.4;
 
 		game.foes.push(this);
@@ -31,7 +34,7 @@ class Foe extends Character
 
 	override function get_moveSpeed() {
 		return switch(game.world.step) {
-			case River : 0.02;
+			case Phone, River : 0.02;
 			case Park: 0.04;
 			case Shop : 0.06;
 			case Accident, Forest, Tombstone : 0.1;
@@ -39,25 +42,25 @@ class Foe extends Character
 		}
 	}
 
+
+	override function getModel():hxd.res.Model {
+		var id = Std.random(3);
+		return hxd.Res.load("chars/shadows/model0" + id + ".FBX").toModel();
+	}
+
 	override function init() {
-		obj = new h3d.scene.Object();
+		model = getModel();
+		if(model == null) return;
+
+		obj = game.modelCache.loadModel(model);
+		obj.setScale(scaleRef);
 		obj.x = x;
 		obj.y = y;
 		obj.z = z;
-		obj.scaleZ = 0.9 + hxd.Math.random(0.3);
+		obj.scaleZ *= 0.9 + hxd.Math.random(0.3);
 		game.world.addChild(obj);
 
 		rotation = targetRotation = pl != null ? hxd.Math.atan2(pl.y - y, pl.x - x) : hxd.Math.srand(Math.PI);
-
-		var c = new h3d.prim.Cube(0.9, 0.9, 2.5);
-		c.addNormals();
-		c.addUVs();
-		c.translate( -0.5, -0.5, 0);
-
-		var m = new h3d.scene.Mesh(c, obj);
-		m.material.mainPass.enableLights = true;
-		m.material.shadows = true;
-		m.material.color.setColor(0);
 	}
 
 	function spawn() {
@@ -65,15 +68,7 @@ class Foe extends Character
 		speedRot = 0.;
 		acc = 0;
 		targetPos = null;
-
-		var oz = z;
-		z -= 4;
-		//play("stance_loop", {smooth : 0.2});
-		setJob(Spawn, function(dt) {
-			z += (oz - z) * 0.1 * dt;
-			obj.scaleX = obj.scaleY = 1 - (oz - z) * 0.5;
-			if(z > oz - 0.01) stand();
-		});
+		play("shadows_spawn", {smooth : 0.2, loop : false, onEnd : stand});
 	}
 
 	function stand() {
@@ -81,7 +76,7 @@ class Foe extends Character
 		speedRot = 0.04;
 		acc = 0;
 		targetPos = null;
-		//play("stance_loop", {smooth : 0.2});
+		play("shadows_idle", {smooth : 0.2});
 		setJob(Stand, function(dt) {
 			targetRotation = hxd.Math.atan2(pl.y - y, pl.x - x);
 			if(!isStatic && Math.random() < 0.01 && hxd.Math.distanceSq(pl.x - x, pl.y - y) < 16 * 16) {
@@ -93,10 +88,11 @@ class Foe extends Character
 	function move() {
 		if(isStatic || job == Move) return;
 		speedRot = 0.15;
+		acc = 0;
 		var accPower = 0.005 + hxd.Math.random(0.005);
 		var spCoeff = 1 - hxd.Math.random() * 0.8;
 		targetPos = new h2d.col.Point(pl.x, pl.y);
-		//play("run_loop", {smooth : 0.2});
+		play(moveSpeed > 0.1 ? "shadows_run" : "shadows_walk", {smooth : 0.2, speed : 0});
 
 		setJob(Move, function(dt) {
 			targetPos.x = pl.x;
@@ -106,13 +102,8 @@ class Foe extends Character
 			acc = hxd.Math.min(1, acc + accPower * dt);
 			var sp = moveSpeed * spCoeff * acc * dt;
 			moveTo(a.x * sp, a.y * sp);
-			//if(obj != null) obj.currentAnimation.speed = (body.velocity.length / moveSpeed) * 1.5;
+			obj.currentAnimation.speed = acc * moveSpeed / (moveSpeed > 0.1 ? runRef : walkRef);
 		});
-
-		if(hxd.Math.distance(targetPos.x - x, targetPos.y - y) < 0.2) {
-			stand();
-			return;
-		}
 	}
 
 	public function attack() {
@@ -149,12 +140,13 @@ class Foe extends Character
 	function hitShake() {
 		z = hitTime * 0.01;
 		for(m in obj.getMeshes()) {
-			m.x = hxd.Math.srand(hitTime * 0.03);
-			m.y = hxd.Math.srand(hitTime * 0.03);
-			m.scaleX = m.scaleY = 1 + hitTime * 0.04;
+			m.x = x + hxd.Math.srand(hitTime * 0.03);
+			m.y = y + hxd.Math.srand(hitTime * 0.03);
+			m.scaleX = m.scaleY = scaleRef * (1 + hitTime * 0.04);
+			/*
 			m.material.mainPass.setPassName("alpha");
 			m.material.blendMode = Alpha;
-			m.material.color.w = 1 - hitTime * 0.05;
+			m.material.color.w = 1 - hitTime * 0.05;*/
 		}
 	}
 

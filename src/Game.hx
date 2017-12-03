@@ -44,8 +44,6 @@ class Game extends hxd.App {
 		foes = [];
 		world = new map.World();
 		hero = new ent.Player();
-
-		event.wait(0, initCamera.bind(hero.x, hero.y, hero.z));
 	}
 
 	public function transition(?fadeIn = 0.25, ?fadeOut = 0.25, ?wait = 0.05, ?onReady : Void -> Void, ?onEnd : Void -> Void) {
@@ -56,7 +54,6 @@ class Game extends hxd.App {
 	}
 
 	public function initCamera(x, y, z) {
-		if(hero == null) return;
 		var cam = s3d.camera;
 		cam.target.x = x;
 		cam.target.y = y;
