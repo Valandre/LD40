@@ -12,6 +12,7 @@ class CustomCache extends h3d.prim.ModelCache {
 				m.mainPass.setPassName("additive");
 				m.mainPass.enableLights = false;
 				m.shadows = false;
+				m.mainPass.depth(false, Less);
 			} else {
 				m.mainPass.addShader(new shader.DepthColor());
 				m.mainPass.enableLights = true;

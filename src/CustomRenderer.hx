@@ -77,18 +77,22 @@ class CustomRenderer extends h3d.scene.Renderer {
 		all.setContext(ctx);
 		all.draw(get("default"));
 
-		var colorTex  = all.getTexture(0);
-		var depthTex  = all.getTexture(1);
-		var normalTex = all.getTexture(2);
+		var colorTex    = all.getTexture(0);
+		var depthTex    = all.getTexture(1);
+		var normalTex   = all.getTexture(2);
+		var additiveTex = allocTarget("additive");
 
 		setTarget(colorTex);
 		draw("alpha");
+		resetTarget();
+
+		setTarget(additiveTex);
+		clear(0);
 		draw("additive");
 		resetTarget();
 
 		emissive.setContext(ctx);
 		emissive.draw(get("emissive"));
-		h3d.pass.Copy.run(emissive.getTexture(), colorTex, Add);
 		
 		if (enableSao) {
 			// apply sao
@@ -108,7 +112,9 @@ class CustomRenderer extends h3d.scene.Renderer {
 			resetTarget();
 			colorTex = fogTarget;
 		}
-
+		
+		h3d.pass.Copy.run(emissive.getTexture(), colorTex, Add);
+		h3d.pass.Copy.run(additiveTex, colorTex, Add);
 
 		h3d.pass.Copy.run(colorTex, null, None);
 		if (enableFXAA) {
