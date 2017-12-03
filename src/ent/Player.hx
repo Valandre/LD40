@@ -5,6 +5,7 @@ import hxd.Key in K;
 class Player extends Character
 {
 	static var PAD = hxd.Pad.DEFAULT_CONFIG;
+
 	var pad : hxd.Pad;
 	var usingPad = false;
 
@@ -224,7 +225,7 @@ class Player extends Character
 	}
 
 	override public function update(dt:Float) {
-		if(job != Dead) {
+		if(!game.world.cam.locked && job != Dead) {
 			updateKeys(dt);
 			checkLamp(dt);
 			checkHurt();

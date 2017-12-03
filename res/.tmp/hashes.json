@@ -4,10 +4,10 @@
 	},
 	"chars": {
 		"main_character": {
-			"model.FBX": "8e0922af7d1e865af129fa9eb776b199ce3fb6b6",
+			"model.FBX": "8d5917df4f5f091fa84c934f5e42f59047bb0d11",
 			"Anim_run.FBX": "c9ec0d9d5d21019c7aca26244d966354936f2619",
-			"Anim_walk.FBX": "79ff4d99d1dc15bc11169bac5f599267fd8a1195",
-			"Anim_idle01.FBX": "82dda85ff78f484027b37280b2ea4dc3efa04e08"
+			"Anim_walk.FBX": "d9a71090c9bdf80602d4809a00dc611759d8622a",
+			"Anim_idle01.FBX": "6cd209eb72416e86c84f8d1355d387b32666f68e"
 		},
 		"shadows": {
 			"Anim_shadows_spawn.FBX": "18f0c65dfc2600d13ca25987322c6432dd33a9ae",

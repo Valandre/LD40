@@ -22,7 +22,7 @@ class World
 
 	public var step(default, set) : StepKind;
 
-	var cam : {
+	public var cam : {
 		obj :  h3d.scene.Object,
 		target : h3d.scene.Object,
 		pos : h3d.scene.Object,
@@ -164,20 +164,80 @@ class World
 		}
 	}
 
-	public function gotoStep(v : Int) {
-		step = allSteps[v];
-		var frame = stepFrames[v];
-		var anim = cam.obj.currentAnimation;
-		anim.setFrame(frame);
-		anim.sync();
 
-		if(game.hero != null) {
-			var p = cam.target.localToGlobal();
-			game.hero.x = p.x;
-			game.hero.y = p.y;
-			game.hero.z = 0;
-			game.initCamera(game.hero.x, game.hero.y, game.hero.z);
+	public function gotoStep(v : Int) {
+		if(v == -1) return;
+		if(Game.PREFS.disableStart || v > 0) {
+			cam.locked = false;
+
+			step = allSteps[v];
+			var frame = stepFrames[v];
+			var anim = cam.obj.currentAnimation;
+			anim.setFrame(frame);
+			anim.sync();
+
+			if(game.hero != null) {
+				var p = cam.target.localToGlobal();
+				game.hero.x = p.x;
+				game.hero.y = p.y;
+				game.hero.z = 0;
+				game.initCamera(game.hero.x, game.hero.y, game.hero.z);
+			}
 		}
+		else {
+			game.hero.x = game.hero.y = game.hero.z = 0;
+			stepId = 0;
+			var frame = stepFrames[0];
+			var anim = cam.obj.currentAnimation;
+			anim.setFrame(frame);
+			anim.sync();
+
+			cam.locked = true;
+
+			game.s3d.camera.target = cam.obj.getObjectByName("Cameratitle.Target").localToGlobal();
+			game.s3d.camera.pos = cam.obj.getObjectByName("Cameratitle").localToGlobal();
+			game.ui.setTitle();
+
+			game.event.clear();
+			var pad = game.hero != null ? @:privateAccess game.hero.pad : null;
+			if(pad != null) {
+				var PAD = hxd.Pad.DEFAULT_CONFIG;
+				game.event.waitUntil(function(dt) {
+					if(hxd.Key.isPressed(hxd.Key.MOUSE_LEFT) || hxd.Key.isPressed(hxd.Key.MOUSE_RIGHT) || hxd.Key.isPressed(hxd.Key.ENTER) || hxd.Key.isPressed(hxd.Key.SPACE)
+					|| pad.isPressed(PAD.A) || pad.isPressed(PAD.B) || pad.isPressed(PAD.X) || pad.isPressed(PAD.Y) || pad.isPressed(PAD.start)  || pad.isPressed(PAD.back) || pad.isPressed(PAD.LB) || pad.isPressed(PAD.RB)) {
+						startGame();
+						return true;
+					}
+					return false;
+				});
+			}
+		}
+	}
+
+	function startGame() {
+		game.ui.resetTitle();
+
+		//var camera = game.s3d.camera;
+		//var v = 1.;
+		//var dTarget = new h3d.col.Point(game.hero.x - camera.target.x, game.hero.y - camera.target.y, (game.hero.z + 1.5) - camera.target.z);
+		//getCameraFramePos(game.hero.x, game.hero.y);
+		//var p = cam.pos.localToGlobal();
+		//var dPos = new h3d.col.Point(p.x - camera.pos.x, p.y - camera.pos.y, p.z - camera.pos.z);
+		//game.event.waitUntil(function(dt) {
+			//v = Math.max(0, v - 0.005 * dt);
+			//camera.target.x = game.hero.x - dTarget.x * v;
+			//camera.target.y = game.hero.y - dTarget.y * v;
+			//camera.target.z = (game.hero.z + 1.5) - dTarget.z * v;
+			//camera.pos.x = cam.pos.x - dPos.x * v;
+			//camera.pos.y = cam.pos.y - dPos.y * v;
+			//camera.pos.z = cam.pos.z - dPos.z * v;
+			//if(v == 0) {
+				@:privateAccess game.infos.visible = true;
+				cam.locked = false;
+				//return true;
+			//}
+			//return false;
+		//});
 	}
 
 	function getStepFromFrame(f : Float) {

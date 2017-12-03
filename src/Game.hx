@@ -5,7 +5,7 @@ class Game extends hxd.App {
 
 	static public var PREFS = initPrefs();
 	static function initPrefs() {
-		var prefs = { fullScreen : false, mobSpawn : true };
+		var prefs = { fullScreen : false, mobSpawn : true , disableStart : true };
 		prefs = hxd.Save.load(prefs, "prefs");
 		return prefs;
 	}
@@ -19,9 +19,11 @@ class Game extends hxd.App {
 	public var foes : Array<ent.Foe>;
 	public var world : map.World;
 	public var hero : ent.Player;
+	public var ui : ui.UI;
 
 	var screenTransition : ui.ScreenTransition;
 	var pause = false;
+	var infos : h2d.Text;
 
 	override function init() {
 		modelCache   = new CustomCache();
@@ -45,6 +47,8 @@ class Game extends hxd.App {
 		foes = [];
 		world = new map.World();
 		hero = new ent.Player();
+
+		ui = new ui.UI();
 	}
 
 	public function transition(?fadeIn = 0.25, ?fadeOut = 0.25, ?wait = 0.05, ?onReady : Void -> Void, ?onEnd : Void -> Void) {
@@ -92,22 +96,21 @@ class Game extends hxd.App {
 		return p;
 	}
 
+	public var camSpeed = 0.05;
 	function cameraUpdate(dt : Float) {
-		if(hero == null) return;
-
+		if(world.cam.locked || hero == null) return;
 		var cam = s3d.camera;
-		cam.target.x += (hero.x - cam.target.x) * 0.05 * dt;
-		cam.target.y += (hero.y - cam.target.y) * 0.05 * dt;
-		cam.target.z += (hero.z + 1.5 - cam.target.z) * 0.05 * dt;
+		cam.target.x += (hero.x - cam.target.x) * camSpeed * dt;
+		cam.target.y += (hero.y - cam.target.y) * camSpeed * dt;
+		cam.target.z += (hero.z + 1.5 - cam.target.z) * camSpeed * dt;
 
 		var p = getClampedFramePos();
-		cam.pos.x += (p.x - cam.pos.x) * 0.05 * dt;
-		cam.pos.y += (p.y - cam.pos.y) * 0.05 * dt;
-		cam.pos.z += (p.z - cam.pos.z) * 0.05 * dt;
+		cam.pos.x += (p.x - cam.pos.x) * camSpeed * dt;
+		cam.pos.y += (p.y - cam.pos.y) * camSpeed * dt;
+		cam.pos.z += (p.z - cam.pos.z) * camSpeed * dt;
 	}
 
 
-	var infos : h2d.Text;
 	function updateKeys(dt : Float) {
 		if(K.isDown(K.CTRL) && K.isPressed("F".code)) {
 			engine.fullScreen = !engine.fullScreen;
@@ -130,6 +133,11 @@ class Game extends hxd.App {
 					f.remove();
 				}
 			}
+		}
+
+		if(K.isPressed(K.F2)) {
+			PREFS.disableStart = !PREFS.disableStart;
+			hxd.Save.save(PREFS, "prefs");
 		}
 
 		inline function setStep(v : Int) {
@@ -169,7 +177,8 @@ class Game extends hxd.App {
 		infos.text =
 		"[1-8] Change Place (" + world.step + ")\n" +
 		"[BackSpace] Restart Game\n" +
-		"[F1] Toggle mob spawn (" + PREFS.mobSpawn + ")";
+		"[F1] Toggle mob spawn (" + PREFS.mobSpawn + ")\n" +
+		"[F2] Toggle Start menu (" + PREFS.disableStart + ")\n";
 		infos.y = s2d.height - infos.textHeight - 10;
 	}
 
@@ -203,6 +212,8 @@ class Game extends hxd.App {
 		super.onResize();
 		if(screenTransition != null)
 			screenTransition.onResize();
+		if(ui != null)
+			ui.onResize();
 	}
 
 	override function update(dt:Float) {
