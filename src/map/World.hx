@@ -49,7 +49,10 @@ class World
 			// spawn cone light
 			var l = new scene.SpotLight();
 			l.direction.set(-1, 0, 0);
-			l.color.scale3(100);
+			l.color.setColor(0xf7cf78);
+			l.color.scale3(1.5);
+			l.params.set(1.0, 0.014, 0.0007);
+			l.setAngle(Math.PI / 16, Math.PI / 24);
 			l.follow = o;
 			addChild(l);
 		}

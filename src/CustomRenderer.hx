@@ -1,13 +1,16 @@
 class CustomRenderer extends h3d.scene.Renderer {
 
-	public var sao          : h3d.pass.ScalableAO;
+	
 	public var saoBlur      : h3d.pass.Blur;
 	public var enableSao    : Bool;
 	public var enableFXAA   : Bool;
-	public var fxaa         : h3d.pass.FXAA;
-	public var fog          : pass.Fog;
-	public var all          : h3d.pass.MRT;
-	public var emissive     : pass.Emissive;
+	
+	public var all      : h3d.pass.MRT;
+	public var fog      : pass.Fog;
+	public var sao      : h3d.pass.ScalableAO;
+	public var emissive : pass.Emissive;
+	public var fxaa     : h3d.pass.FXAA;
+	public var post     : pass.PostProcessing;
 
 	public var depthColorMap(default, set) : h3d.mat.Texture;
 	public var depthColorNear : Float;
@@ -58,6 +61,8 @@ class CustomRenderer extends h3d.scene.Renderer {
 		emissive.blur.passes  = 5;
 		emissive.blur.quality = 4;
 		emissive.blur.sigma   = 2;
+
+		post = new pass.PostProcessing();
 	}
 
 	function set_depthColorMap(v : h3d.mat.Texture) {
@@ -118,17 +123,8 @@ class CustomRenderer extends h3d.scene.Renderer {
 
 		if (enableFXAA) {
 			fxaa.apply(colorTex);
-		} else {
-			h3d.pass.Copy.run(colorTex, null, None);
 		}
+		
+		post.apply(colorTex, null);
 	}
-
 }
-
-/*{
-	var uv = input.uv; 
-	uv *=  1.0 - uv.yx;
-	var vig = uv.x*uv.y * 15.0; // multiply with sth for intensity
-	vig = pow(vig, 0.10); // change pow for modifying the extend of the  vignette
-	color *= vig;
-}*/

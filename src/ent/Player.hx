@@ -63,11 +63,11 @@ class Player extends Character
 		spotLight = new scene.SpotLight(obj);
 		spotLight.setPos(-20, 0, 0);
 		spotLight.color.set(1.0, 1.0, 0.6);
-		spotLight.color.scale3(4);
 
 		spotLight.direction.set(-1, 0, 0);
 		spotLight.follow = obj.getObjectByName("B_lamp");
 		spotLight.params.set(1.0, 0.014, 0.0007);
+		spotLight.setAngle(Math.PI / 8, Math.PI / 8);
 		game.world.addChild(spotLight);
 	}
 
