@@ -41,7 +41,18 @@ class World
 		var m = game.modelCache.loadModel(res);
 		m.playAnimation(game.modelCache.loadAnimation(res));
 		m.currentAnimation.speed = 0;
+		m.lightCameraCenter = true;
 		root.addChild(m);
+
+		for (m in m.getMeshes())
+		for (o in m) if (o.name.indexOf("Conelight") == 0) {
+			// spawn cone light
+			var l = new scene.SpotLight();
+			l.direction.set(-1, 0, 0);
+			l.color.scale3(100);
+			l.follow = o;
+			addChild(l);
+		}
 
 		cam = {
 			obj : m,
