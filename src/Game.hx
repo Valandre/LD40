@@ -62,6 +62,7 @@ class Game extends hxd.App {
 
 	function restart() {
 		haxe.Timer.delay(function() {
+			audio.dispose();
 			dispose();
 			inst = new Game();
 		}, 0);
@@ -129,8 +130,6 @@ class Game extends hxd.App {
 		cam.pos.x += (p.x - cam.pos.x) * camSpeed * dt;
 		cam.pos.y += (p.y - cam.pos.y) * camSpeed * dt;
 		cam.pos.z += (p.z + camDz - cam.pos.z) * camSpeed * dt;
-
-		hxd.snd.Driver.get().listener.syncCamera(cam);
 	}
 
 
@@ -249,6 +248,10 @@ class Game extends hxd.App {
 
 		ui.update(dt);
 		updateKeys(dt);
+
+		hxd.snd.Driver.get().listener.syncCamera(s3d.camera);
+		audio.update(dt);
+
 		if(pause) return;
 
 		cameraUpdate(dt);
@@ -256,8 +259,6 @@ class Game extends hxd.App {
 		event.update(dt);
 		for(e in entities)
 			e.update(dt);
-
-		audio.update(dt);
 	}
 
 	function loadRenderConfig(renderer : CustomRenderer) {

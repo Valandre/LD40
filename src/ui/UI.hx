@@ -22,7 +22,7 @@ class UI
 
 		sndKeyGroup = new hxd.snd.SoundGroup("keyGroup");
 		sndKeyGroup.maxAudible = 1;
-		sndKeyGroup.volume = 0.5;
+		sndKeyGroup.volume = 0.25;
 
 		onResize();
 	}

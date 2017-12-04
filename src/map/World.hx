@@ -78,6 +78,20 @@ class World
 				l.color.setColor(0xf7cf78);
 				l.follow = m;
 				l.params.set(1.0, 0.14, 0.07);
+				var i = Std.parseInt(m.name.substr(6));
+				var p = m.localToGlobal();
+				switch(i) {
+					case 1 :// park;
+						game.audio.addAmbientAt(hxd.Res.Ambient.playground_loop,
+							p.x, p.y, p.z
+						);
+					case 2 : // bridge
+						game.audio.addAmbientAt(hxd.Res.Ambient.water_loop,
+							p.x, p.y, p.z
+						);
+					default :
+				}
+				
 				addChild(l);
 			}
 
@@ -468,25 +482,34 @@ class World
 		sceneLock = true;
 		var t = 0.;
 		switch(k) {
+			case Phone :
+				game.audio.playEventAt(hxd.Res.Sfx.pick_phone,
+					game.hero.x, game.hero.y, game.hero.z
+				);
+				t = 1.5;
 			case Park :
+				game.audio.playUIEvent(hxd.Res.Sfx.flower);
 				game.renderer.flash(0xFFFFFF, 4);
 				memory = memories[0];
 				memory.visible = true;
 				clearMobs();
 				t = 3;
 			case River :
+				game.audio.playUIEvent(hxd.Res.Sfx.flower);
 				game.renderer.flash(0xFFFFFF, 4);
 				memory = memories[1];
 				memory.visible = true;
 				clearMobs();
 				t = 3;
 			case Shop :
+				game.audio.playUIEvent(hxd.Res.Sfx.flower);
 				game.renderer.flash(0xFFFFFF, 4);
 				memory = memories[2];
 				memory.visible = true;
 				clearMobs();
 				t = 3;
 			case Accident :
+				game.audio.playUIEvent(hxd.Res.Sfx.flower);
 				game.renderer.flash(0xFFFFFF, 4);
 				clearMobs();
 				t = 3;

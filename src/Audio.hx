@@ -57,14 +57,16 @@ class Audio {
 
 	public var bugPower : Float;
 
-	var localEventSoundGroup : SoundGroup;
+	var localEventSoundGroup   : SoundGroup;
+	var localAmbientSoundGroup : SoundGroup;
 
-	var music       : Channel;
-	var mainAmbient : Channel;
-	var bugAmbient  : Channel;
+	var music         : Channel;
+	var mainAmbient   : Channel;
+	var localAmbients : Array<Channel>;
+	var bugAmbient    : Channel;
 
-	var newEvents    : Event;
-	var onHoldEvents : Event;
+	var newEvents     : Event;
+	var onHoldEvents  : Event;
 
 	var time : Float;
 
@@ -78,12 +80,16 @@ class Audio {
 		sfxChanGroup     = new ChannelGroup("sfx");
 
 		musicChanGroup.priority   = 100;
-		ambientChanGroup.priority = 90;
-		uiChanGroup.priority      = 80;
+		uiChanGroup.priority      = 90;
+		ambientChanGroup.priority = 80;
 		sfxChanGroup.priority     = 40;
 
 		localEventSoundGroup = new SoundGroup("spatializedEvent");
 		localEventSoundGroup.mono = true;
+
+		localAmbientSoundGroup = new SoundGroup("spatializedAmbient");
+		localAmbientSoundGroup.mono = true;
+		localAmbientSoundGroup.maxAudible = 2 + 2; // main, bug, and 2 subs
 
 		mainAmbient = hxd.Res.Ambient.wind_loop.play(true, BASE_AMBIENT_VOLUME, ambientChanGroup);
 		bugAmbient  = hxd.Res.Ambient.shadow_loop.play(true, BUG_AMBIENT_VOLUME, ambientChanGroup);
@@ -93,6 +99,7 @@ class Audio {
 
 		time = 0.0;
 		bugPower = 0.0;
+		localAmbients = [];
 	}
 
 	public function playUIEvent(snd : hxd.res.Sound, ?soundGroup : SoundGroup) {
@@ -107,6 +114,15 @@ class Audio {
 			music.volume = 0.0;
 			music.fadeTo(1.0, fadeIn);
 		}
+	}
+
+	public function addAmbientAt(snd : hxd.res.Sound, x : Float, y : Float, z : Float, ?volume = 1.0) {
+		var c = snd.play(true, volume, ambientChanGroup, localAmbientSoundGroup);
+		var space = createAmbientSpace();
+		space.position.set(x, y, z);
+		c.addEffect(space);
+		localAmbients.push(c);
+		return c;
 	}
 
 	public function playEventAt(snd : hxd.res.Sound, x : Float, y : Float, z : Float, ?volume = 1.0, ?pitch : Float, ?group : String) : Event {
@@ -129,7 +145,10 @@ class Audio {
 
 	public function updateAmbients() {
 		bugAmbient.volume = BUG_AMBIENT_VOLUME * bugPower;
-		mainAmbient.volume = BASE_AMBIENT_VOLUME * (1 - bugPower);
+
+		var base = BASE_AMBIENT_VOLUME * (1 - bugPower);
+		mainAmbient.volume = base;
+		for (c in localAmbients) c.volume = base;
 	}
 
 	public function updateEvents() {
@@ -257,6 +276,19 @@ class Audio {
 		}
 	}
 
+	public function dispose() {
+		mainAmbient.stop();
+		bugAmbient.stop();
+		if (music != null) music.stop();
+		for (c in localAmbients) c.stop();
+
+		var e = onHoldEvents;
+		while (e != null) {
+			e.channel.stop();
+			e = e.nextOnHold;
+		} onHoldEvents = null;
+	}
+
 	inline function regEvent(e : Event) {
 		e.next = newEvents;
 		newEvents = e;
@@ -264,8 +296,17 @@ class Audio {
 
 	function createEventSpace() {
 		var space = new hxd.snd.effect.Spatialization();
+		space.maxDistance   = 48;
+		space.fadeDistance  = 16;
+		space.rollOffFactor = 0.5;
+		return space;
+	}
+
+	function createAmbientSpace() {
+		var space = new hxd.snd.effect.Spatialization();
+		space.referenceDistance = 16;
 		space.maxDistance   = 24;
-		space.fadeDistance  = 8;
+		space.fadeDistance  = 16;
 		return space;
 	}
 
