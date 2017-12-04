@@ -17,6 +17,7 @@ class World
 	var sceneZones : Array<h3d.col.Sphere> = [];
 	var memories : Array<h3d.scene.Object> = [];
 	var flowers : Array<h3d.scene.Object> = [];
+	var flowerGlow : Array<h3d.scene.Object> = [];
 
 	public var step(default, set) : Data.SpeechKind;
 	public var sceneLock = false;
@@ -71,6 +72,7 @@ class World
 			}
 			if(m.name.substr(0, 6) == "Flower") {
 				flowers.push(m);
+
 				var b = m.getBounds();
 				b.scaleCenter(4);
 				sceneZones.push(b.toSphere());
@@ -91,8 +93,13 @@ class World
 						);
 					default :
 				}
-				
 				addChild(l);
+
+				var glow = game.modelCache.loadModel(hxd.Res.Map.flower_glow);
+				glow.x = p.x;
+				glow.y = p.y;
+				glow.z = p.z;
+				flowerGlow.push(glow);
 			}
 
 			for (o in m) if (o.name.indexOf("Conelight") == 0) {

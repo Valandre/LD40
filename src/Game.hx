@@ -189,7 +189,7 @@ class Game extends hxd.App {
 
 		if(K.isPressed(K.BACKSPACE))
 			restart();
-
+		/*
 		if(infos == null) {
 			infos = new h2d.Text(hxd.res.DefaultFont.get(), s2d);
 			infos.x = 10;
@@ -199,6 +199,7 @@ class Game extends hxd.App {
 		"[BackSpace] Restart Game\n" +
 		"[F1] Toggle mob spawn (" + PREFS.mobSpawn + ")\n";
 		infos.y = s2d.height - infos.textHeight - 10;
+		*/
 	}
 
 	public function getMousePicker( ?x, ?y ) {
