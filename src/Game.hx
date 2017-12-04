@@ -15,6 +15,7 @@ class Game extends hxd.App {
 	public var modelCache : h3d.prim.ModelCache;
 	public var renderer : CustomRenderer;
 
+	public var audio : Audio;
 	public var entities : Array<ent.Entity>;
 	public var foes : Array<ent.Foe>;
 	public var world : map.World;
@@ -24,12 +25,13 @@ class Game extends hxd.App {
 	var screenTransition : ui.ScreenTransition;
 	var pause = false;
 	var infos : h2d.Text;
-
+	
 	override function init() {
 		modelCache   = new CustomCache();
 		renderer     = new CustomRenderer();
 		s3d.renderer = renderer;
 		engine.fullScreen = PREFS.fullScreen;
+		audio = new Audio();
 
 		renderer.depthColorMap = hxd.Res.Gradients.test.toTexture();
 		loadRenderConfig(renderer);

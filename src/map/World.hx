@@ -109,6 +109,8 @@ class World
 		game.event.wait(0, function() {
 			gotoStep(0);
 		});
+
+		//game.audio.playMusic(hxd.Res.Music._01_title);
 	}
 
 	public function addChild(o : h3d.scene.Object) {
@@ -297,6 +299,8 @@ class World
 			var cam = game.s3d.camera;
 			var hero = game.hero;
 			var camSpeed = 0.0005;
+
+			game.audio.playMusic(hxd.Res.Music._01_title, 1.0);
 
 			game.event.waitUntil(function(dt) {
 				cam.target.x += (hero.x - cam.target.x) * camSpeed * dt;
