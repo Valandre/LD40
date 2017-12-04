@@ -17,10 +17,6 @@ class UI
 		game = Game.inst;
 		root = new h2d.Sprite(game.s2d);
 
-		text = new h2d.Text(hxd.Res.Font.anitypewriter_medium_24.toFont(), root);
-		text.smooth  = true;
-		text.visible = false;
-
 		sentenceQueue = [];
 		curSentence   = null;
 
@@ -34,7 +30,6 @@ class UI
 	public function triggerSpeech(id : Data.SpeechKind) {
 		var sentences = Data.speech.get(id).value;
 		sentenceQueue = sentences.split("#");
-		text.visible = true;
 		nextSentence();
 		onResize();
 	}
@@ -43,11 +38,14 @@ class UI
 		if (sentenceQueue.length == 0)
 			return true;
 
+		if (text != null) text.remove();
+
 		curSentence = sentenceQueue.shift();
-		text.text = curSentence;
-		text.maxWidth = text.textWidth;
-		text.text = "";
-		textAccu  = 0.0;
+
+		text = new h2d.Text(hxd.Res.Font.anitypewriter_medium_24.toFont(), root);
+		text.smooth   = true;
+		text.maxWidth = text.calcTextWidth(curSentence);
+		textAccu = 0.0;
 		onResize();
 
 		return false;
@@ -101,7 +99,7 @@ class UI
 
 		// speech is done
 		curSentence  = null;
-		text.visible = false;
+		text.remove();
 		return true;
 	}
 
@@ -121,7 +119,7 @@ class UI
 
 	public function onResize() {
 		var textScale = game.s2d.height / 1080;
-		if (text.visible) {
+		if (text != null) {
 			text.setScale(textScale);
 			text.setPos(
 				Std.int((game.s2d.width - text.maxWidth * textScale) * 0.5),

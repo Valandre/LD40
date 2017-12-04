@@ -1,5 +1,4 @@
 class CustomRenderer extends h3d.scene.Renderer {
-
 	
 	public var saoBlur      : h3d.pass.Blur;
 	public var enableSao    : Bool;
@@ -127,5 +126,9 @@ class CustomRenderer extends h3d.scene.Renderer {
 		
 		post.setGlobals(ctx);
 		post.apply(colorTex, ctx.time);
+	}
+
+	public function flash(duration : Float) {
+		post.flash(ctx.time, duration);
 	}
 }

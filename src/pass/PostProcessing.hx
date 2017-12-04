@@ -10,6 +10,7 @@ class PostProcessingShader extends h3d.shader.ScreenShader {
 
 		@param var time : Float;
 		@param var bugPower : Float;
+		@param var flashPower : Float;
 		@param var tsize : Vec2;
 		
 		function curve(uv : Vec2) : Vec2 {
@@ -83,12 +84,19 @@ class PostProcessingShader extends h3d.shader.ScreenShader {
 }
 
 class PostProcessing extends h3d.pass.ScreenFx<PostProcessingShader> {
+	var flashStart : Float;
+	var flashDuration : Float;
+
 	public function new() {
 		super(new PostProcessingShader());
 		shader.noiseTexture = hxd.Res.noise.toTexture();
 		shader.noiseTexture.wrap = Repeat;
 		shader.noiseTexture.filter = Nearest;
 		shader.bugPower = 0.0;
+		shader.flashPower = 0.0;
+
+		flashStart = 0.0;
+		flashDuration = 0.0;
 	}
 
 	public function apply(from : h3d.mat.Texture, time : Float, ?to : h3d.mat.Texture) {
@@ -97,7 +105,16 @@ class PostProcessing extends h3d.pass.ScreenFx<PostProcessingShader> {
 		shader.colorTexture  = from;
 		shader.time = time;
 		shader.tsize.set(from.width, from.height);
+
+		/*if ()
+		shader.flashPower = (time - flashStart) / flashDuration;*/
+
 		render();
 		engine.popTarget();
+	}
+
+	public function flash(time : Float, duration : Float) {
+		flashDuration = duration;
+		flashStart = time;
 	}
 }
