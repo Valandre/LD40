@@ -16,7 +16,7 @@ class Player extends Character
 
 	var lampActive = true;
 	var lampPower = 1.;
-	var lampDist = 10.;
+	var lampDist = 12.;
 	var lampArc = Math.PI * 0.25;
 	var lampBattery = 5.;
 

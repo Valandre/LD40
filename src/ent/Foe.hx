@@ -97,7 +97,7 @@ class Foe extends Character
 		if(!canMove || job == Move) return;
 		speedRot = 0.15;
 		acc = 0;
-		var accPower = 0.01 + hxd.Math.random(0.005);
+		var accPower = 0.005 + hxd.Math.random(0.005);
 		var spCoeff = 1 - hxd.Math.random() * 0.5;
 		targetPos = new h2d.col.Point(pl.x, pl.y);
 		play(moveSpeed * spCoeff > runAt ? "shadows_run" : "shadows_walk", {smooth : 0.2, speed : 0});

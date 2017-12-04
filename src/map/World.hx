@@ -24,6 +24,8 @@ class World
 	var traps : Array<h3d.col.Collider> = [];
 	var safeZones : Array<h3d.col.Sphere> = [];
 
+	var sceneZones : Array<h3d.col.Sphere> = [];
+
 	public var step(default, set) : StepKind;
 
 	public var cam : {
@@ -42,13 +44,13 @@ class World
 		root = new h3d.scene.Object(game.s3d);
 
 		var res = hxd.Res.Map.Map01;
-		var m = game.modelCache.loadModel(res);
-		m.playAnimation(game.modelCache.loadAnimation(res));
-		m.currentAnimation.speed = 0;
-		m.getObjectByName("Landscape").lightCameraCenter = true;
-		root.addChild(m);
+		var obj = game.modelCache.loadModel(res);
+		obj.playAnimation(game.modelCache.loadAnimation(res));
+		obj.currentAnimation.speed = 0;
+		obj.getObjectByName("Landscape").lightCameraCenter = true;
+		root.addChild(obj);
 
-		for (m in m.getMeshes()) {
+		for (m in obj.getMeshes()) {
 			if(m.name == "Road") {
 				initCollideShape(m);
 				m.visible = false;
@@ -60,6 +62,14 @@ class World
 			if(m.name.substr(0, 4) == "Safe") {
 				m.visible = false;
 				safeZones.push(m.getBounds().toSphere());
+			}
+			if(m.name.substr(0, 6) == "Flower") {
+				sceneZones.push(m.getBounds().toSphere());
+				var l = new h3d.scene.PointLight();
+				l.color.setColor(0xf7cf78);
+				l.follow = m;
+				l.params.set(1.0, 0.14, 0.07);
+				addChild(l);
 			}
 			for (o in m) if (o.name.indexOf("Conelight") == 0) {
 				// spawn cone light
@@ -75,9 +85,9 @@ class World
 		}
 
 		cam = {
-			obj : m,
-			target : m.getObjectByName("Camera001.Target"),
-			pos : m.getObjectByName("Camera001"),
+			obj : obj,
+			target : obj.getObjectByName("Camera001.Target"),
+			pos : obj.getObjectByName("Camera001"),
 			locked : false,
 		}
 
@@ -102,7 +112,7 @@ class World
 
 
 		//start, phone, park, river, shop, accident, graveyard, tombstone
-		stepFrames = [0, 1100, 1950, 2850, 3800, 4990, 5100, m.currentAnimation.frameCount - 1];
+		stepFrames = [0, 1100, 1950, 2850, 3800, 4990, 5100, obj.currentAnimation.frameCount - 1];
 
 		game.event.wait(0, function() {
 			step = Start;
@@ -112,6 +122,12 @@ class World
 
 	public function addChild(o : h3d.scene.Object) {
 		root.addChild(o);
+	}
+
+	public function isScene(x, y) {
+		for(s in sceneZones)
+			if(s.contains(new h3d.col.Point(x, y, 0))) return true;
+		return false;
 	}
 
 	public function isSafe(x, y) {
@@ -236,13 +252,13 @@ class World
 				}
 
 			case River:
-				if(Math.random() < 0.05) setFrontSpawn(16);
+				if(Math.random() < 0.05) setFrontSpawn(20);
 
 			case Shop:
-				if(Math.random() < 0.1) setFrontSpawn(20);
+				if(Math.random() < 0.1) setFrontSpawn(26);
 
 			case Accident:
-				if(Math.random() < 0.15) setFrontSpawn(24);
+				if(Math.random() < 0.15) setFrontSpawn(30);
 
 			case Forest:
 				if(Math.random() < 0.25) setFrontSpawn(30);
