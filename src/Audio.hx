@@ -102,8 +102,8 @@ class Audio {
 		localAmbients = [];
 	}
 
-	public function playUIEvent(snd : hxd.res.Sound, ?soundGroup : SoundGroup) {
-		var c = snd.play(uiChanGroup, soundGroup);
+	public function playUIEvent(snd : hxd.res.Sound, ?volume = 1.0, ?soundGroup : SoundGroup) {
+		var c = snd.play(volume, uiChanGroup, soundGroup);
 		c.priority = time;
 	}
 

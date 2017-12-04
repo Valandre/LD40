@@ -559,9 +559,7 @@ class World
 		var t = 0.;
 		switch(k) {
 			case Phone :
-				game.audio.playEventAt(hxd.Res.Sfx.pick_phone,
-					game.hero.x, game.hero.y, game.hero.z
-				);
+				game.audio.playUIEvent(hxd.Res.Sfx.pick_phone, 0.5);
 				t = 1.5;
 			case Park :
 				game.audio.playUIEvent(hxd.Res.Sfx.flower);
