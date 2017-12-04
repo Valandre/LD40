@@ -15,6 +15,8 @@ class World
 	var safeZones : Array<h3d.col.Sphere> = [];
 
 	var sceneZones : Array<h3d.col.Sphere> = [];
+	var memories : Array<h3d.scene.Object> = [];
+	var flowers : Array<h3d.scene.Object> = [];
 
 	public var step(default, set) : Data.SpeechKind;
 	public var sceneLock = false;
@@ -63,9 +65,14 @@ class World
 				b.scaleCenter(2);
 				sceneZones.push(b.toSphere());
 			}
+			if(m.name.substr(0, 8) == "Memories") {
+				m.visible = false;
+				memories.push(m);
+			}
 			if(m.name.substr(0, 6) == "Flower") {
+				flowers.push(m);
 				var b = m.getBounds();
-				b.scaleCenter(7);
+				b.scaleCenter(4);
 				sceneZones.push(b.toSphere());
 				var l = new h3d.scene.PointLight();
 				l.color.setColor(0xf7cf78);
@@ -125,6 +132,27 @@ class World
 		for(s in sceneZones)
 			if(s.contains(new h3d.col.Point(x, y, 0))) return true;
 		return false;
+	}
+
+	public function getSpeechAt(x, y) {
+		for(s in sceneZones)
+			if(s.contains(new h3d.col.Point(x, y, 0))) return s;
+		return null;
+	}
+
+	public function getFlowerAt(x : Float, y : Float ) {
+		var flower = null;
+		var d = 1e9;
+		for(f in flowers) {
+			var p = f.localToGlobal();
+			var dist = hxd.Math.distanceSq(p.x - x, p.y - y);
+			if(dist < d) {
+				flower = f;
+				d = dist;
+			}
+		}
+
+		return flower;
 	}
 
 	public function removeSpeechAt(x, y) {
@@ -361,13 +389,7 @@ class World
 	}
 
 	public function playScene(k : Data.SpeechKind, ?onEnd : Void -> Void) {
-		var b = game.ui.triggerSpeech(k);
-		sceneLock = b;
-		if(!sceneLock) {
-			if(onEnd != null)
-				onEnd();
-			return;
-		}
+		if(sceneLock) return;
 
 		var pressed = false;
 		inline function actionPressed() {
@@ -379,28 +401,128 @@ class World
 			return false;
 		}
 
-		game.hero.stand();
-		game.event.waitUntil(function(dt) {
-			if(step != k) {
-				game.ui.clear();
+		inline function clearMobs(dist = 30) {
+			var i = game.foes.length - 1;
+			while(i >= 0) {
+				var f = game.foes[i--];
+				if(hxd.Math.distanceSq(f.x - game.hero.x, f.y - game.hero.y) < dist * dist)
+					f.remove();
+			}
+		}
+
+		var memory : h3d.scene.Object = null;
+		inline function endScene() {
+			if(memory != null) {
+				for(m in memory.getMeshes())
+					m.material.blendMode = Alpha;
+				game.event.waitUntil(function(dt) {
+					for(m in memory.getMeshes())
+					m.material.color.w -= 0.01 * dt;
+					return false;
+				});
+
+				var s = getSpeechAt(game.hero.x, game.hero.y);
+				if(s != null)
+					game.hero.targetRotation = hxd.Math.atan2(s.y - game.hero.y, s.x - game.hero.x);
+
+				game.event.waitUntil(function(dt) {
+					@:privateAccess game.hero.updateAngle(dt);
+					if(hxd.Math.abs(hxd.Math.angle(game.hero.rotation - game.hero.targetRotation)) < 0.01) {
+						game.hero.play("catch", {loop : false, onEnd : function() {
+							removeSpeechAt(game.hero.x, game.hero.y);
+							if(onEnd != null) onEnd();
+							sceneLock = false;
+						}});
+
+						var catched = false;
+						game.event.waitUntil(function(dt) {
+							@:privateAccess if(!catched && game.hero.obj.currentAnimation.frame > game.hero.obj.currentAnimation.frameCount * 0.5) {
+								//memory.visible = false;
+								getFlowerAt(game.hero.x, game.hero.y).visible = false;
+								catched = true;
+							}
+							return !sceneLock;
+						});
+						return true;
+					}
+					return false;
+				});
+			}
+			else {
+				removeSpeechAt(game.hero.x, game.hero.y);
+				if(onEnd != null) onEnd();
 				sceneLock = false;
-				return  true;
 			}
-			if(actionPressed() || hxd.Key.isPressed(hxd.Key.MOUSE_LEFT)) {
-				if(game.ui.triggerValidate()) {
-					if(onEnd != null) onEnd();
+		}
+
+		sceneLock = true;
+		var t = 0.;
+		switch(k) {
+			case Park :
+				game.renderer.flash(0xFFFFFF, 4);
+				memory = memories[0];
+				memory.visible = true;
+				clearMobs();
+				t = 3;
+			case River :
+				game.renderer.flash(0xFFFFFF, 4);
+				memory = memories[1];
+				memory.visible = true;
+				clearMobs();
+				t = 3;
+			case Shop :
+				game.renderer.flash(0xFFFFFF, 4);
+				memory = memories[2];
+				memory.visible = true;
+				clearMobs();
+				t = 3;
+			case Accident :
+				game.renderer.flash(0xFFFFFF, 4);
+				clearMobs();
+				t = 3;
+			default:
+		}
+
+		game.hero.stand();
+		game.event.wait(t, function() {
+			var b = game.ui.triggerSpeech(k);
+			sceneLock = b;
+			if(!sceneLock) {
+				endScene();
+				return;
+			}
+
+			if(memory == null) {
+				var s = getSpeechAt(game.hero.x, game.hero.y);
+				if(s != null)
+					game.hero.targetRotation = hxd.Math.atan2(s.y - game.hero.y, s.x - game.hero.x);
+			}
+			else {
+				var p = memory.localToGlobal();
+				game.hero.targetRotation = hxd.Math.atan2(p.y - game.hero.y, p.x - game.hero.x);
+			}
+
+
+			game.event.waitUntil(function(dt) {
+				@:privateAccess game.hero.updateAngle(dt);
+				if(step != k) {
+					game.ui.clear();
 					sceneLock = false;
+					return  true;
 				}
-			}
-			return !sceneLock;
+				if(actionPressed() || hxd.Key.isPressed(hxd.Key.MOUSE_LEFT))
+					if(game.ui.triggerValidate()) {
+						endScene();
+						return true;
+					}
+				return false;
+			});
 		});
 	}
 
 	public function triggerSpeech(x, y) {
-		if(isSpeech(x, y)) {
+		if(isSpeech(x, y))
 			playScene(step);
-			removeSpeechAt(x, y);
-		}
 	}
 
 	function bugPowerUpdate(dt : Float) {
@@ -418,7 +540,7 @@ class World
 	}
 
 	public function update(dt: Float) {
-		stepUpdate(dt);
+		if(!sceneLock) stepUpdate(dt);
 		bugPowerUpdate(dt);
 		triggerSpeech(game.hero.x, game.hero.y);
 		triggerTrap(game.hero.x, game.hero.y);
