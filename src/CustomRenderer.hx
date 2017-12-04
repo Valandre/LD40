@@ -12,8 +12,6 @@ class CustomRenderer extends h3d.scene.Renderer {
 	public var post     : pass.PostProcessing;
 
 	public var depthColorMap(default, set) : h3d.mat.Texture;
-	public var depthColorNear : Float;
-	public var depthColorFar  : Float;
 
 	var depthColorMapId  : Int;
 	var depthColorMax    : Int;
@@ -40,8 +38,6 @@ class CustomRenderer extends h3d.scene.Renderer {
 		setPass("all", all);
 
 		depthColorMap    = h3d.mat.Texture.fromColor(0xFFFFFF);
-		depthColorNear   = 0.0;
-		depthColorFar    = 1000.0; 
 		depthColorMapId  = hxsl.Globals.allocID("depthColorMap");
 
 		sao = new h3d.pass.ScalableAO();
