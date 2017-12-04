@@ -128,7 +128,7 @@ class World
 			var d = (0.2 + 0.8 * (1 - Math.abs(da) / Math.PI)) * 20;
 			var x = game.hero.x + d * Math.cos(a);
 			var y = game.hero.y + d * Math.sin(a);
-			if(!collides(x, y))	new ent.Foe(x, y, 0);
+			if(!collides(x, y) && !isSafe(x, y)) new ent.Foe(x, y, 0);
 		}
 	}
 
@@ -369,6 +369,7 @@ class World
 			f.remove();
 		}
 
+		game.renderer.post.shader.bugPower = 0;
 		@:privateAccess game.hero.stand();
 		gotoStep(stepId);
 	}
@@ -379,11 +380,12 @@ class World
 		for(f in game.foes) {
 			var d = hxd.Math.distanceSq(f.x - game.hero.x, f.y - game.hero.y);
 			if(d < r * r) {
-				var n = (1 - Math.sqrt(d) / r) * 0.5;
-				v += n * n;
+				var n = (1 - Math.sqrt(d) / r) * 0.85;
+				v += n * n * n * n * n;
 			}
 		}
-		game.renderer.post.shader.bugPower = Math.min(1, v);
+		v = Math.min(1, v);
+		game.renderer.post.shader.bugPower += (v - game.renderer.post.shader.bugPower) * 0.1 * dt;
 	}
 
 	public function update(dt: Float) {
