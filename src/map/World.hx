@@ -285,7 +285,7 @@ class World
 
 			game.s3d.camera.target = cam.obj.getObjectByName("Cameratitle.Target").localToGlobal();
 			game.s3d.camera.pos = cam.obj.getObjectByName("Cameratitle").localToGlobal();
-			game.ui.setTitle();
+			//game.ui.setTitle();
 
 			game.event.clear();
 			var pad = game.hero != null ? @:privateAccess game.hero.pad : null;
@@ -304,7 +304,7 @@ class World
 	}
 
 	function startGame() {
-		game.ui.resetTitle();
+		//game.ui.resetTitle();
 
 		var cam = game.s3d.camera;
 		var hero = game.hero;

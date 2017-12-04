@@ -54,6 +54,28 @@
 			],
 			"separators": [],
 			"props": {}
+		},
+		{
+			"name": "speech",
+			"columns": [
+				{
+					"typeStr": "0",
+					"name": "id"
+				},
+				{
+					"typeStr": "1",
+					"name": "value",
+					"display": null
+				}
+			],
+			"lines": [
+				{
+					"id": "Phone",
+					"value": "Blah blah, I'm talking to the phone.\nJe dis une autre phrase."
+				}
+			],
+			"separators": [],
+			"props": {}
 		}
 	],
 	"customTypes": [],

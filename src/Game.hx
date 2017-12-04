@@ -49,6 +49,7 @@ class Game extends hxd.App {
 		hero = new ent.Player();
 
 		ui = new ui.UI();
+		ui.triggerSpeech(Phone);
 	}
 
 	public function transition(?fadeIn = 0.25, ?fadeOut = 0.25, ?wait = 0.05, ?onReady : Void -> Void, ?onEnd : Void -> Void) {
@@ -239,6 +240,7 @@ class Game extends hxd.App {
 		dt *= speed;
 		/////////
 
+		ui.update(dt);
 		updateKeys(dt);
 		if(pause) return;
 
