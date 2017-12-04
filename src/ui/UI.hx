@@ -27,9 +27,15 @@ class UI
 		onResize();
 	}
 
+	public function clear() {
+		curSentence  = null;
+		text.remove();
+	}
+
 	public function triggerSpeech(id : Data.SpeechKind) {
 		var sentences = Data.speech.get(id).value;
-		sentenceQueue = sentences.split("#");
+		if(sentences.length != 0)
+			sentenceQueue = sentences.split("#");
 		return !nextSentence();
 	}
 

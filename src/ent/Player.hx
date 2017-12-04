@@ -4,9 +4,6 @@ import hxd.Key in K;
 
 class Player extends Character
 {
-	static var PAD = hxd.Pad.DEFAULT_CONFIG;
-
-	var pad : hxd.Pad;
 	var usingPad = false;
 
 	var deadZone = 0.3;
@@ -34,9 +31,6 @@ class Player extends Character
 		ray = 0.4;
 		runAt = 0.085;
 		reset();
-		hxd.Pad.wait(function(pad) {
-			this.pad = pad;
-		});
 	}
 
 	override function getModel():hxd.res.Model {
@@ -90,7 +84,7 @@ class Player extends Character
 		return 0.05 + 0.15 * v * v;
 	}
 
-	function stand() {
+	public function stand() {
 		if(job == Stand) return;
 		acc = 0;
 		targetPos = null;
@@ -202,7 +196,7 @@ class Player extends Character
 	var oldMousePos = new h2d.col.Point();
 	function updateKeys(dt : Float) {
 		usingPad = false;
-
+		var pad = Game.pad;
 		if(pad != null) {
 			var xAxis = pad.xAxis;
 			var yAxis = pad.yAxis;
@@ -219,7 +213,7 @@ class Player extends Character
 			}
 			else targetPos = null;
 
-			canMove = !pad.isDown(PAD.X);
+			canMove = !pad.isDown(Game.PAD.X);
 		}
 
 		if(!usingPad) {
@@ -237,7 +231,7 @@ class Player extends Character
 			canMove = K.isDown(K.MOUSE_LEFT);// !K.isDown(K.SPACE);
 		}
 
-		if(pad.isDown(PAD.A) || K.isDown(K.MOUSE_RIGHT))
+		if(pad.isDown(Game.PAD.A) || K.isDown(K.MOUSE_RIGHT))
 			lampReload();
 		else if(targetPos != null )
 			move();
@@ -287,8 +281,6 @@ class Player extends Character
 		updateBattery(dt);
 		if(!game.world.sceneLock) {
 			checkHurt();
-			game.world.triggerTrap(x, y);
-
 			if(!game.world.cam.locked && job != Dead) {
 				updateKeys(dt);
 				checkLamp(dt);

@@ -31,6 +31,10 @@ class World
 		init();
 	}
 
+	public function remove(){
+		root.remove();
+	}
+
 	function init() {
 		root = new h3d.scene.Object(game.s3d);
 
@@ -54,14 +58,22 @@ class World
 				m.visible = false;
 				safeZones.push(m.getBounds().toSphere());
 			}
+			if(m.name.substr(0, 5) == "Phone") {
+				var b = m.getBounds();
+				b.scaleCenter(2);
+				sceneZones.push(b.toSphere());
+			}
 			if(m.name.substr(0, 6) == "Flower") {
-				sceneZones.push(m.getBounds().toSphere());
+				var b = m.getBounds();
+				b.scaleCenter(7);
+				sceneZones.push(b.toSphere());
 				var l = new h3d.scene.PointLight();
 				l.color.setColor(0xf7cf78);
 				l.follow = m;
 				l.params.set(1.0, 0.14, 0.07);
 				addChild(l);
 			}
+
 			for (o in m) if (o.name.indexOf("Conelight") == 0) {
 				// spawn cone light
 				var l = new scene.SpotLight();
@@ -82,28 +94,8 @@ class World
 			locked : false,
 		}
 
-		/*
-		//show cam target path
-		var g = new h3d.scene.Graphics(game.s3d);
-		g.lineStyle(3, 0x00FFFF);
-
-		var anim = cam.obj.currentAnimation;
-		anim.setFrame(0);
-		anim.sync();
-		var p = cam.target.localToGlobal();
-		g.moveTo(p.x, p.y, 0.1);
-
-		for(i in 0...anim.frameCount) {
-			if(i % 10 != 0) continue;
-			anim.setFrame(i);
-			anim.sync();
-			var p = cam.target.localToGlobal();
-			g.lineTo(p.x, p.y, 0.1);
-		}*/
-
-
 		//Title, start, phone, park, river, shop, Avenue, accident, graveyard, tombstone
-		stepFrames = [0, 1, 1100, 1950, 2850, 3800, 4500, 4990, 5100, obj.currentAnimation.frameCount - 1];
+		stepFrames = [0, 1, 890, 1800, 2850, 3800, 4500, 4900, 5100, obj.currentAnimation.frameCount - 1];
 
 		step = Title;
 		game.event.wait(0, function() {
@@ -127,6 +119,20 @@ class World
 		for(s in safeZones)
 			if(s.contains(new h3d.col.Point(x, y, 0))) return true;
 		return false;
+	}
+
+	public function isSpeech(x, y) {
+		for(s in sceneZones)
+			if(s.contains(new h3d.col.Point(x, y, 0))) return true;
+		return false;
+	}
+
+	public function removeSpeechAt(x, y) {
+		for(s in sceneZones)
+			if(s.contains(new h3d.col.Point(x, y, 0))) {
+				sceneZones.remove(s);
+				break;
+			}
 	}
 
 	public function triggerTrap(x, y) {
@@ -168,20 +174,6 @@ class World
 			colliders.push(t);
 		}
 		colliders = colliders.toIPolygons(100).union(false).toPolygons(1 / 100);
-
-/*
-		var g = new h3d.scene.Graphics(game.s3d);
-		g.lineStyle(3, 0xFF00FF);
-		for(c in colliders) {
-			for(i in 0...5) {
-				var p0 = c.points[c.points.length - 1];
-				g.moveTo(p0.x, p0.y, i*0.4);
-				for(p in c.points) {
-					g.lineTo(p.x, p.y, i*0.4);
-					p0 = p;
-				}
-			}
-		}*/
 	}
 
 	public function getFrameCoef() {
@@ -194,14 +186,6 @@ class World
 		var curId = Data.speech.get(k).index;
 		if(stepId >= curId) return step;
 		stepId = curId;
-/*
-		switch(k) {
-			case Title:
-				new ent.Foe(-75, 90, 6, false, false, true);
-				new ent.Foe(-78, 90, 6, false, false, true);
-				new ent.Foe(-77, 70, 5, false, false, true);
-			default:
-		}*/
 		return step = k;
 	}
 
@@ -276,21 +260,23 @@ class World
 
 			game.s3d.camera.target = cam.obj.getObjectByName("Cameratitle.Target").localToGlobal();
 			game.s3d.camera.pos = cam.obj.getObjectByName("Cameratitle").localToGlobal();
-			//game.ui.setTitle();
 
 			game.event.clear();
-			var pad = game.hero != null ? @:privateAccess game.hero.pad : null;
-			if(pad != null) {
-				var PAD = hxd.Pad.DEFAULT_CONFIG;
-				game.event.waitUntil(function(dt) {
-					if(hxd.Key.isPressed(hxd.Key.MOUSE_LEFT) || hxd.Key.isPressed(hxd.Key.MOUSE_RIGHT) || hxd.Key.isPressed(hxd.Key.ENTER) || hxd.Key.isPressed(hxd.Key.SPACE)
-					|| pad.isPressed(PAD.A) || pad.isPressed(PAD.B) || pad.isPressed(PAD.X) || pad.isPressed(PAD.Y) || pad.isPressed(PAD.start)  || pad.isPressed(PAD.back) || pad.isPressed(PAD.LB) || pad.isPressed(PAD.RB)) {
-						startGame();
-						return true;
-					}
-					return false;
-				});
-			}
+			var PAD = hxd.Pad.DEFAULT_CONFIG;
+			game.event.waitUntil(function(dt) {
+				if(step != Title) return true;
+				if(hxd.Key.isPressed(hxd.Key.MOUSE_LEFT) || hxd.Key.isPressed(hxd.Key.MOUSE_RIGHT) || hxd.Key.isPressed(hxd.Key.ENTER) || hxd.Key.isPressed(hxd.Key.SPACE)) {
+					startGame();
+					return true;
+				}
+				var pad = Game.pad;
+				if(pad == null) return false;
+				if(pad.isPressed(PAD.A) || pad.isPressed(PAD.B) || pad.isPressed(PAD.X) || pad.isPressed(PAD.Y) || pad.isPressed(PAD.start)  || pad.isPressed(PAD.back) || pad.isPressed(PAD.LB) || pad.isPressed(PAD.RB)) {
+					startGame();
+					return true;
+				}
+				return false;
+			});
 		}
 	}
 
@@ -375,15 +361,32 @@ class World
 	}
 
 	public function playScene(k : Data.SpeechKind, ?onEnd : Void -> Void) {
-		sceneLock = game.ui.triggerSpeech(k);
+		var b = game.ui.triggerSpeech(k);
+		sceneLock = b;
 		if(!sceneLock) {
 			if(onEnd != null)
 				onEnd();
 			return;
 		}
 
+		var pressed = false;
+		inline function actionPressed() {
+			if(!Game.pad.isDown(Game.PAD.A)) pressed = false;
+			if(!pressed && Game.pad.isDown(Game.PAD.A)) {
+				pressed = true;
+				return true;
+			}
+			return false;
+		}
+
+		game.hero.stand();
 		game.event.waitUntil(function(dt) {
-			if(hxd.Key.isPressed(hxd.Key.MOUSE_LEFT)) {
+			if(step != k) {
+				game.ui.clear();
+				sceneLock = false;
+				return  true;
+			}
+			if(actionPressed() || hxd.Key.isPressed(hxd.Key.MOUSE_LEFT)) {
 				if(game.ui.triggerValidate()) {
 					if(onEnd != null) onEnd();
 					sceneLock = false;
@@ -391,6 +394,13 @@ class World
 			}
 			return !sceneLock;
 		});
+	}
+
+	public function triggerSpeech(x, y) {
+		if(isSpeech(x, y)) {
+			playScene(step);
+			removeSpeechAt(x, y);
+		}
 	}
 
 	function bugPowerUpdate(dt : Float) {
@@ -410,5 +420,7 @@ class World
 	public function update(dt: Float) {
 		stepUpdate(dt);
 		bugPowerUpdate(dt);
+		triggerSpeech(game.hero.x, game.hero.y);
+		triggerTrap(game.hero.x, game.hero.y);
 	}
 }

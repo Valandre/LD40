@@ -10,6 +10,9 @@ class Game extends hxd.App {
 		return prefs;
 	}
 
+	static public var PAD = hxd.Pad.DEFAULT_CONFIG;
+	static public var pad : hxd.Pad;
+
 	public static var inst : Game;
 	public var event : hxd.WaitEvent;
 	public var modelCache : h3d.prim.ModelCache;
@@ -25,7 +28,7 @@ class Game extends hxd.App {
 	var screenTransition : ui.ScreenTransition;
 	var pause = false;
 	var infos : h2d.Text;
-	
+
 	override function init() {
 		modelCache   = new CustomCache();
 		renderer     = new CustomRenderer();
@@ -51,6 +54,17 @@ class Game extends hxd.App {
 		hero = new ent.Player();
 
 		ui = new ui.UI();
+
+		hxd.Pad.wait(function(pad) {
+			Game.pad = pad;
+		});
+	}
+
+	function restart() {
+		haxe.Timer.delay(function() {
+			dispose();
+			inst = new Game();
+		}, 0);
 	}
 
 	public function transition(?fadeIn = 0.25, ?fadeOut = 0.25, ?wait = 0.05, ?onReady : Void -> Void, ?onEnd : Void -> Void) {
@@ -167,22 +181,9 @@ class Game extends hxd.App {
 		if(K.isPressed(K.NUMBER_8)) setStep(7);
 		if(K.isPressed(K.NUMBER_9)) setStep(8);
 		if(K.isPressed(K.NUMBER_0)) setStep(9);
-		/*
-		if(hero != null) {
-			@:privateAccess {
-				//trace(hero.pad.isPressed(hxd.Pad.DEFAULT_CONFIG.A));
-				if(hero.pad.isPressed(hxd.Pad.DEFAULT_CONFIG.LB))
-					setStep(hxd.Math.imax(0 , world.stepId - 1));
-				else if(hero.pad.isPressed(hxd.Pad.DEFAULT_CONFIG.RB))
-					setStep(hxd.Math.imin(world.allSteps.length - 1, world.stepId + 1));
-			}
-		}*/
 
-
-		if(K.isPressed(K.BACKSPACE)) {
-			setStep(0);
-			world.respawn();
-		}
+		if(K.isPressed(K.BACKSPACE))
+			restart();
 
 		if(infos == null) {
 			infos = new h2d.Text(hxd.res.DefaultFont.get(), s2d);
@@ -232,9 +233,8 @@ class Game extends hxd.App {
 	override function update(dt:Float) {
 		/////
 		//DEBUG ONLY
-
 		var speed = pause ? 0 : 1.;
-		if( K.isDown(K.SHIFT) || (hero != null && @:privateAccess hero.pad.isDown(hxd.Pad.DEFAULT_CONFIG.RB)))
+		if( K.isDown(K.SHIFT) || (pad != null && pad.isDown(hxd.Pad.DEFAULT_CONFIG.RB)))
 			speed *= K.isDown(K.CTRL) ? 0.1 : 5;
 		hxd.Timer.deltaT *= speed;
 		hxd.Timer.tmod *= speed;

@@ -71,7 +71,7 @@
 			"lines": [
 				{
 					"id": "Title",
-					"value": "Test#Je dis une autre phrase.",
+					"value": "",
 					"index": 0
 				},
 				{
@@ -81,22 +81,22 @@
 				},
 				{
 					"id": "Phone",
-					"value": "Blah blah, I'm talking to the phone.#Je dis une autre phrase.",
+					"value": "Ouais, c'est moi !#je vais être à la bourre à ce fucking enterr...mariage !!!",
 					"index": 2
 				},
 				{
 					"id": "Park",
-					"value": "",
+					"value": "Park !",
 					"index": 3
 				},
 				{
 					"id": "River",
-					"value": "",
+					"value": "River !",
 					"index": 4
 				},
 				{
 					"id": "Shop",
-					"value": "",
+					"value": "Shop !",
 					"index": 5
 				},
 				{
