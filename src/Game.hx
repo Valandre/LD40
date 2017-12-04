@@ -143,7 +143,7 @@ class Game extends hxd.App {
 
 		if (K.isDown(K.LEFT)) {
 			renderer.post.shader.bugPower -= 0.01;
-			if (renderer.post.shader.bugPower < 0.0) 
+			if (renderer.post.shader.bugPower < 0.0)
 				renderer.post.shader.bugPower = 0.0;
 		}
 

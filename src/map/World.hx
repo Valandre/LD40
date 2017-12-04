@@ -363,7 +363,19 @@ class World
 		gotoStep(stepId);
 	}
 
+	function bugPowerUpdate(dt : Float) {
+		var r = 8 * 8;
+		var v = 0.;
+		for(f in game.foes) {
+			var d = hxd.Math.distanceSq(f.x - game.hero.x, f.y - game.hero.y);
+			if(d < r)
+				v += (1 - d / r) * 0.05;
+		}
+		game.renderer.post.shader.bugPower = v;
+	}
+
 	public function update(dt: Float) {
 		stepUpdate(dt);
+		bugPowerUpdate(dt);
 	}
 }
