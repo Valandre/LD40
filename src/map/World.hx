@@ -22,6 +22,7 @@ class World
 
 	var colliders : h2d.col.Polygons;
 	var traps : Array<h3d.col.Collider> = [];
+	var safeZones : Array<h3d.col.Sphere> = [];
 
 	public var step(default, set) : StepKind;
 
@@ -55,6 +56,10 @@ class World
 			if(m.name.substr(0, 4) == "Trap") {
 				m.visible = false;
 				traps.push(m.getCollider());
+			}
+			if(m.name.substr(0, 4) == "Safe") {
+				m.visible = false;
+				safeZones.push(m.getBounds().toSphere());
 			}
 			for (o in m) if (o.name.indexOf("Conelight") == 0) {
 				// spawn cone light
@@ -109,6 +114,11 @@ class World
 		root.addChild(o);
 	}
 
+	public function isSafe(x, y) {
+		for(s in safeZones)
+			if(s.contains(new h3d.col.Point(x, y, 0))) return true;
+		return false;
+	}
 
 	public function triggerTrap(x, y) {
 		if(!game.world.trapped(x, y)) return;
@@ -364,14 +374,16 @@ class World
 	}
 
 	function bugPowerUpdate(dt : Float) {
-		var r = 8 * 8;
+		var r = 10;
 		var v = 0.;
 		for(f in game.foes) {
 			var d = hxd.Math.distanceSq(f.x - game.hero.x, f.y - game.hero.y);
-			if(d < r)
-				v += (1 - d / r) * 0.05;
+			if(d < r * r) {
+				var n = (1 - Math.sqrt(d) / r) * 0.5;
+				v += n * n;
+			}
 		}
-		game.renderer.post.shader.bugPower = v;
+		game.renderer.post.shader.bugPower = Math.min(1, v);
 	}
 
 	public function update(dt: Float) {

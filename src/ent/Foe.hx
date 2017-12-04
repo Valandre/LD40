@@ -163,6 +163,9 @@ class Foe extends Character
 		if(!isStatic && hxd.Math.distanceSq(pl.x - x, pl.y - y) > 50 * 50)
 			remove();
 
+		if(game.world.isSafe(x, y))
+			hit(1);
+
 		if(hitTime != 0)
 			hitTime = Math.max(0, hitTime - dt * 0.5);
 		if(canBeHit()) hitShake();

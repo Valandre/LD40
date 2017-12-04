@@ -186,6 +186,7 @@ class Player extends Character
 	}
 
 	function checkHurt() {
+		if(game.world.isSafe(x, y)) return;
 		for(e in game.foes) {
 			if(e.job == Dead || e.job == Spawn) continue;
 			tmp.x = e.x - x;
