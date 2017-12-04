@@ -17,6 +17,7 @@ class World
 	var sceneZones : Array<h3d.col.Sphere> = [];
 
 	public var step(default, set) : Data.SpeechKind;
+	public var sceneLock = false;
 
 	public var cam : {
 		obj :  h3d.scene.Object,
@@ -292,28 +293,29 @@ class World
 	}
 
 	function startGame() {
-		//game.ui.resetTitle();
+		playScene(Title, function() {
+			var cam = game.s3d.camera;
+			var hero = game.hero;
+			var camSpeed = 0.0005;
 
-		var cam = game.s3d.camera;
-		var hero = game.hero;
-		var camSpeed = 0.0005;
-		game.event.waitUntil(function(dt) {
-			cam.target.x += (hero.x - cam.target.x) * camSpeed * dt;
-			cam.target.y += (hero.y - cam.target.y) * camSpeed * dt;
-			cam.target.z += (hero.z + 1.5 - cam.target.z) * camSpeed * dt;
+			game.event.waitUntil(function(dt) {
+				cam.target.x += (hero.x - cam.target.x) * camSpeed * dt;
+				cam.target.y += (hero.y - cam.target.y) * camSpeed * dt;
+				cam.target.z += (hero.z + 1.5 - cam.target.z) * camSpeed * dt;
 
-			var p = @:privateAccess game.getClampedFramePos();
-			cam.pos.x += (p.x - cam.pos.x) * camSpeed * dt;
-			cam.pos.y += (p.y - cam.pos.y) * camSpeed * dt;
-			cam.pos.z += (p.z - cam.pos.z) * camSpeed * dt;
-			camSpeed *= Math.pow(1.02, dt);
+				var p = @:privateAccess game.getClampedFramePos();
+				cam.pos.x += (p.x - cam.pos.x) * camSpeed * dt;
+				cam.pos.y += (p.y - cam.pos.y) * camSpeed * dt;
+				cam.pos.z += (p.z - cam.pos.z) * camSpeed * dt;
+				camSpeed *= Math.pow(1.02, dt);
 
-			if(Math.abs(cam.pos.z - p.z) < 0.1) {
-				this.cam.locked = false;
-				game.ui.triggerSpeech(Start);
-				return true;
-			}
-			return false;
+				if(Math.abs(cam.pos.z - p.z) < 0.1) {
+					this.cam.locked = false;
+					playScene(Start, null);
+					return true;
+				}
+				return false;
+			});
 		});
 	}
 
@@ -366,6 +368,25 @@ class World
 		game.renderer.post.shader.bugPower = 0;
 		@:privateAccess game.hero.stand();
 		if(stepId != -1) gotoStep(stepId);
+	}
+
+	public function playScene(k : Data.SpeechKind, ?onEnd : Void -> Void) {
+		sceneLock = game.ui.triggerSpeech(k);
+		if(!sceneLock) {
+			if(onEnd != null)
+				onEnd();
+			return;
+		}
+
+		game.event.waitUntil(function(dt) {
+			if(hxd.Key.isPressed(hxd.Key.MOUSE_LEFT)) {
+				if(game.ui.triggerValidate()) {
+					if(onEnd != null) onEnd();
+					sceneLock = false;
+				}
+			}
+			return !sceneLock;
+		});
 	}
 
 	function bugPowerUpdate(dt : Float) {

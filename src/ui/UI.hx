@@ -30,8 +30,7 @@ class UI
 	public function triggerSpeech(id : Data.SpeechKind) {
 		var sentences = Data.speech.get(id).value;
 		sentenceQueue = sentences.split("#");
-		nextSentence();
-		onResize();
+		return !nextSentence();
 	}
 
 	function nextSentence() : Bool {
@@ -104,10 +103,6 @@ class UI
 	}
 
 	public function update(dt:Float) {
-		if (hxd.Key.isPressed(hxd.Key.MOUSE_LEFT)) {
-			triggerValidate();
-		}
-
 		if (curSentence != null && curSentence.length > 0) {
 			textAccu += dt;
 			while (textAccu > CHAR_COOLDOWN) {

@@ -45,6 +45,7 @@ class Player extends Character
 
 	public function reset() {
 		x = y = z = 0;
+		rotation = targetRotation = Math.PI+1;
 		lampBattery = 5;
 		stand();
 	}
@@ -284,12 +285,14 @@ class Player extends Character
 
 	override public function update(dt:Float) {
 		updateBattery(dt);
-		checkHurt();
-		game.world.triggerTrap(x, y);
+		if(!game.world.sceneLock) {
+			checkHurt();
+			game.world.triggerTrap(x, y);
 
-		if(!game.world.cam.locked && job != Dead) {
-			updateKeys(dt);
-			checkLamp(dt);
+			if(!game.world.cam.locked && job != Dead) {
+				updateKeys(dt);
+				checkLamp(dt);
+			}
 		}
 
 		super.update(dt);
