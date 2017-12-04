@@ -72,7 +72,6 @@ class World
 			}
 			if(m.name.substr(0, 6) == "Flower") {
 				flowers.push(m);
-
 				var b = m.getBounds();
 				b.scaleCenter(4);
 				sceneZones.push(b.toSphere());
@@ -95,10 +94,15 @@ class World
 				}
 				addChild(l);
 
-				var glow = game.modelCache.loadModel(hxd.Res.Map.flower_glow);
+				var glowRes = hxd.Res.Map.flower_glow;
+				var glow = game.modelCache.loadModel(glowRes);
 				glow.x = p.x;
 				glow.y = p.y;
 				glow.z = p.z;
+				glow.setScale(0.5);
+				addChild(glow);
+				var a = game.modelCache.loadAnimation(glowRes);
+				glow.playAnimation(a);
 				flowerGlow.push(glow);
 			}
 
@@ -165,6 +169,21 @@ class World
 		var flower = null;
 		var d = 8.;
 		for(f in flowers) {
+			var p = f.localToGlobal();
+			var dist = hxd.Math.distanceSq(p.x - x, p.y - y);
+			if(dist < d) {
+				flower = f;
+				d = dist;
+			}
+		}
+
+		return flower;
+	}
+
+	public function getFlowerGlowAt(x : Float, y : Float ) {
+		var flower = null;
+		var d = 8.;
+		for(f in flowerGlow) {
 			var p = f.localToGlobal();
 			var dist = hxd.Math.distanceSq(p.x - x, p.y - y);
 			if(dist < d) {
@@ -422,7 +441,7 @@ class World
 			return false;
 		}
 
-		inline function clearMobs(dist = 30) {
+		inline function clearMobs(dist = 50) {
 			var i = game.foes.length - 1;
 			while(i >= 0) {
 				var f = game.foes[i--];
@@ -457,17 +476,26 @@ class World
 				var p = flower.localToGlobal();
 				game.hero.targetRotation = hxd.Math.atan2(p.y - game.hero.y, p.x - game.hero.x);
 
+				var glow = getFlowerGlowAt(game.hero.x, game.hero.y);
+
 				game.event.waitUntil(function(dt) {
+					for(m in glow.getMeshes()) {
+						m.material.color.w -= 0.05 * dt;
+					}
 					@:privateAccess game.hero.updateAngle(dt);
 					if(hxd.Math.abs(hxd.Math.angle(game.hero.rotation - game.hero.targetRotation)) < 0.01) {
 						game.hero.play("catch", {loop : false, onEnd : function() {
 							removeSpeechAt(game.hero.x, game.hero.y);
+							glow.visible = false;
 							if(onEnd != null) onEnd();
 							sceneLock = false;
 						}});
 
 						var catched = false;
 						game.event.waitUntil(function(dt) {
+							for(m in glow.getMeshes()) {
+								m.material.color.w -= 0.05 * dt;
+							}
 							@:privateAccess if(!catched && game.hero.obj.currentAnimation.frame > game.hero.obj.currentAnimation.frameCount * 0.5) {
 								flower.visible = false;
 								catched = true;

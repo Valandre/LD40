@@ -133,6 +133,7 @@ class Game extends hxd.App {
 	}
 
 
+	var tfPause : h2d.Text;
 	function updateKeys(dt : Float) {
 		if(K.isDown(K.CTRL) && K.isPressed("F".code)) {
 			engine.fullScreen = !engine.fullScreen;
@@ -140,8 +141,19 @@ class Game extends hxd.App {
 			hxd.Save.save(PREFS, "prefs");
 		}
 
-		if(K.isPressed("P".code))
+		if(K.isPressed("P".code) || K.isPressed(K.ESCAPE) || K.isPressed(K.SPACE)) {
+			audio.playUIEvent(hxd.Res.Sfx.typewriterRoll, @:privateAccess ui.sndKeyGroup);
 			pause = !pause;
+			if(pause) {
+				tfPause = new h2d.Text(hxd.Res.Font.anitypewriter_medium_24.toFont(), s2d);
+				tfPause.text = "GAME PAUSED";
+				tfPause.smooth  = true;
+			}
+			else if(tfPause != null)
+				tfPause.remove();
+			onResize();
+		}
+
 
 		 //DEBUG
 		if(K.isPressed(K.F1)) {
@@ -234,6 +246,15 @@ class Game extends hxd.App {
 			screenTransition.onResize();
 		if(ui != null)
 			ui.onResize();
+
+		if (tfPause != null) {
+			var textScale = s2d.height / 1080;
+			tfPause.setScale(textScale);
+			tfPause.setPos(
+				Std.int((s2d.width - tfPause.textWidth * textScale) * 0.5),
+				Std.int((s2d.height - tfPause.textHeight * textScale) * 0.5)
+			);
+		}
 	}
 
 	override function update(dt:Float) {
