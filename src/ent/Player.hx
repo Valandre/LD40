@@ -141,6 +141,7 @@ class Player extends Character
 	function dead() {
 		if(job == Dead) return;
 
+		game.audio.playUIEvent(hxd.Res.Sfx.hero_die);
 		play("death", {loop : false});
 		var time = 100.;
 		setJob(Dead, function(dt) {

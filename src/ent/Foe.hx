@@ -26,6 +26,17 @@ class Foe extends Character
 
 		if(toSpawn)	spawn();
 		else stand();
+
+		var e = game.audio.playEventOn(hxd.Res.Sfx.shadow_fry, this, 0.0);
+		e.holdWhile(isAlive, true, 0.1, updateHitVolume);
+	}
+
+	function updateHitVolume(c : hxd.snd.Channel) {
+		c.volume = Math.min(hitTime, 1.0);
+	}
+
+	function isAlive() {
+		return job != Dead && @:privateAccess obj.allocated;
 	}
 
 	override public function remove() {
@@ -135,6 +146,7 @@ class Foe extends Character
 
 	function dead() {
 		if(job == Dead) return;
+		game.audio.playEventAt(hxd.Res.Sfx.shadow_die, x, y, z, 0.9 + Math.random() * 0.2);
 		setJob(Dead, function(dt) {
 			remove();
 		});
