@@ -107,8 +107,11 @@ class Audio {
 		c.priority = time;
 	}
 
-	public function playMusic(snd : hxd.res.Sound, ?fadeIn = 0.0) {
-		if (music != null) music.stop();
+	public function playMusic(snd : hxd.res.Sound, ?fadeIn = 0.0, ?fadeOut = 0.0) {
+		if (music != null) {
+			if (fadeOut > 0.0) music.fadeTo(0, fadeOut, music.stop);
+			else music.stop();
+		}
 		music = snd.play(true, musicChanGroup);
 		if (fadeIn > 0) {
 			music.volume = 0.0;

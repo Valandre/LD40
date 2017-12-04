@@ -133,8 +133,6 @@ class World
 		game.event.wait(0, function() {
 			gotoStep(0);
 		});
-
-		//game.audio.playMusic(hxd.Res.Music._01_title);
 	}
 
 	public function addChild(o : h3d.scene.Object) {
@@ -354,8 +352,7 @@ class World
 			var hero = game.hero;
 			var camSpeed = 0.0005;
 
-			game.audio.playMusic(hxd.Res.Music._01_title, 1.0);
-
+			game.audio.playMusic(hxd.Res.Music._01_title, 2.0);
 			game.event.waitUntil(function(dt) {
 				cam.target.x += (hero.x - cam.target.x) * camSpeed * dt;
 				cam.target.y += (hero.y - cam.target.y) * camSpeed * dt;
@@ -524,6 +521,7 @@ class World
 				t = 1.5;
 			case Park :
 				game.audio.playUIEvent(hxd.Res.Sfx.flower);
+				game.audio.playMusic(hxd.Res.Music._02_playground, 6.0, 0.1);
 				game.renderer.flash(0xFFFFFF, 4);
 				memory = memories[0];
 				memory.visible = true;
@@ -538,6 +536,7 @@ class World
 				t = 3;
 			case Shop :
 				game.audio.playUIEvent(hxd.Res.Sfx.flower);
+				game.audio.playMusic(hxd.Res.Music._04_city, 6.0, 0.1);
 				game.renderer.flash(0xFFFFFF, 4);
 				memory = memories[2];
 				memory.visible = true;
@@ -545,6 +544,7 @@ class World
 				t = 3;
 			case Accident :
 				game.audio.playUIEvent(hxd.Res.Sfx.flower);
+				game.audio.playMusic(hxd.Res.Music._05_escape, 4.0, 0.1);
 				game.renderer.flash(0xFFFFFF, 4);
 				clearMobs();
 				t = 3;
