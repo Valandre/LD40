@@ -46,7 +46,7 @@ class Foe extends Character
 
 	override function get_moveSpeed() {
 		var v = game.world.getFrameCoef();
-		return 0.02 + 0.15 * v * v;
+		return 0.02 + 0.14 * v * v;
 		/*
 		return switch(game.world.step) {
 			case Phone, Park : 0.02;
@@ -99,7 +99,7 @@ class Foe extends Character
 		play("shadows_idle", {smooth : 0.2});
 		setJob(Stand, function(dt) {
 			targetRotation = hxd.Math.atan2(pl.y - y, pl.x - x);
-			if(canMove && Math.random() < 0.01 /*&& hxd.Math.distanceSq(pl.x - x, pl.y - y) < 16 * 16*/)
+			if(canMove && Math.random() < 0.01 * Data.speech.get(game.world.step).index /*&& hxd.Math.distanceSq(pl.x - x, pl.y - y) < 16 * 16*/)
 				move();
 		});
 	}

@@ -141,7 +141,7 @@ class World
 		}
 
 		//Title, start, phone, park, river, shop, Avenue, accident, graveyard, tombstone
-		stepFrames = [0, 1, 890, 1800, 2850, 3800, 4500, 4900, 5100, obj.currentAnimation.frameCount - 1];
+		stepFrames = [0, 1, 890, 1600, 2300, 3050, 4100, 4400, 5200, obj.currentAnimation.frameCount - 1];
 
 		step = Title;
 		game.event.wait(0, function() {
@@ -306,7 +306,7 @@ class World
 			case Shop:
 				if(Math.random() < 0.1) setFrontSpawn(20);
 			case Avenue :
-				if(Math.random() < 0.2) setFrontSpawn(35);
+				if(Math.random() < 0.3) setFrontSpawn(35);
 			case Accident:
 				if(Math.random() < 0.15) setFrontSpawn(25);
 			case Forest:
@@ -327,6 +327,8 @@ class World
 			var camera = game.s3d.camera;
 			var camSpeed = 0.0025;
 			game.event.waitUntil(function(dt) {
+				for(e in game.foes)	e.hit(0.2 + Math.random());
+
 				camera.target.x += (cameraEndTarget.x - camera.target.x ) * camSpeed * dt;
 				camera.target.y += (cameraEndTarget.y - camera.target.y) * camSpeed * dt;
 				camera.target.z += (cameraEndTarget.z - camera.target.z) * camSpeed * dt;
@@ -512,6 +514,26 @@ class World
 	}
 
 
+	function endSceneAccident(onEnd : Void -> Void) {
+		game.camSpeed = 0.05;
+		cam.locked = false;
+		var t = 0.;
+
+		var speed = 0.1;
+		game.event.waitUntil(function(dt) {
+			game.hero.rotation = game.hero.targetRotation = 2.9;
+			game.hero.endMove(0.1);
+			speed -= 0.0005 * dt;
+			t += dt;
+			if(t > 120) {
+				if(onEnd != null) onEnd();
+				sceneLock = false;
+				return true;
+			}
+			return false;
+		});
+	}
+
 	public function playScene(k : Data.SpeechKind, ?onEnd : Void -> Void) {
 		if(sceneLock) return;
 
@@ -561,6 +583,10 @@ class World
 						game.hero.play("catch", {loop : false, onEnd : function() {
 							removeSpeechAt(game.hero.x, game.hero.y);
 							glow.visible = false;
+							if(step == Accident) {
+								endSceneAccident(onEnd);
+								return;
+							}
 							if(onEnd != null) onEnd();
 							sceneLock = false;
 						}});
@@ -689,12 +715,12 @@ class World
 	}
 
 	public function update(dt: Float) {
+		bugPowerUpdate(dt);
 		if(!sceneLock) stepUpdate(dt);
 		if(step != Tombstone && cam.obj.currentAnimation.frame > 5950)
 			gotoStep(stepFrames.length - 1);
 		if(step == Tombstone) return;
 
-		bugPowerUpdate(dt);
 		triggerSpeech(game.hero.x, game.hero.y);
 		triggerTrap(game.hero.x, game.hero.y);
 	}
