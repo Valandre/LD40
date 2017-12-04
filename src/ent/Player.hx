@@ -78,14 +78,15 @@ class Player extends Character
 	}
 
 	override function get_moveSpeed() {
-		//return 0.2;
+		return 0.05 + 0.1 * game.world.getFrameCoef();
+		/*
 		return switch(game.world.step) {
 			case Start, Phone : 0.05;
 			case Park, River : 0.095;
 			case Shop: 0.12;
 			case Accident, Forest, Tombstone : 0.15;
 			default : 0.15;
-		}
+		}*/
 	}
 
 	function stand() {
@@ -99,6 +100,7 @@ class Player extends Character
 	function move() {
 		if(job == Move) return;
 
+		var runAt = 0.08;
 		setJob(Move, function(dt) {
 			if(targetPos == null) {
 				stand();
@@ -109,9 +111,9 @@ class Player extends Character
 			acc = hxd.Math.min(1, acc + 0.05 * dt);
 			var sp = moveSpeed * axisSpeed * acc * dt;
 			if(canMove) {
-				play(moveSpeed > 0.08 ? "run" : "walk", {smooth : 0.2});
+				play(moveSpeed > runAt ? "run" : "walk", {smooth : 0.2});
 				moveTo(a.x * sp, a.y * sp);
-				if(obj != null) obj.currentAnimation.speed = acc * moveSpeed / (moveSpeed > 0.08 ? runRef : walkRef);
+				if(obj != null) obj.currentAnimation.speed = acc * moveSpeed / (moveSpeed > runAt ? runRef : walkRef);
 			}
 			else {
 				targetRotation = hxd.Math.atan2(a.y, a.x);

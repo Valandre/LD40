@@ -175,6 +175,10 @@ class World
 		}*/
 	}
 
+	public function getFrameCoef() {
+		return cam.obj.currentAnimation.frame / cam.obj.currentAnimation.frameCount;
+	}
+
 	function set_step(k : StepKind) {
 		if(step == k) return step;
 
