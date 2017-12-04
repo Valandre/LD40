@@ -33,7 +33,7 @@ class Player extends Character
 		runRef = 0.14;
 		ray = 0.4;
 		runAt = 0.085;
-		stand();
+		reset();
 		hxd.Pad.wait(function(pad) {
 			this.pad = pad;
 		});
@@ -46,6 +46,7 @@ class Player extends Character
 	public function reset() {
 		x = y = z = 0;
 		lampBattery = 5;
+		stand();
 	}
 
 	override function init() {

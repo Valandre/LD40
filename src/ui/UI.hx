@@ -20,7 +20,7 @@ class UI
 		text = new h2d.Text(hxd.Res.Font.anitypewriter_medium_24.toFont(), root);
 		text.smooth  = true;
 		text.visible = false;
-		
+
 		sentenceQueue = [];
 		curSentence   = null;
 
@@ -33,7 +33,7 @@ class UI
 
 	public function triggerSpeech(id : Data.SpeechKind) {
 		var sentences = Data.speech.get(id).value;
-		sentenceQueue = sentences.split("\n");
+		sentenceQueue = sentences.split("#");
 		text.visible = true;
 		nextSentence();
 		onResize();
@@ -66,7 +66,7 @@ class UI
 			var c = hxd.Res.Sfx.typewriterRoll.play(sndKeyGroup);
 			c.priority = text.text.length;
 		} else {
-			var sfx = (Std.random(2) > 0) 
+			var sfx = (Std.random(2) > 0)
 				? hxd.Res.Sfx.typewriterKey1
 				: hxd.Res.Sfx.typewriterKey2;
 			var c = sfx.play(sndKeyGroup);
@@ -85,7 +85,7 @@ class UI
 	}
 
 	public function triggerValidate() : Bool {
-		if (curSentence == null) 
+		if (curSentence == null)
 			return true;
 
 		if (curSentence.length > 0) {
@@ -118,6 +118,7 @@ class UI
 			}
 		}
 	}
+
 
 	public function onResize() {
 		var textScale = game.s2d.height / 1080;

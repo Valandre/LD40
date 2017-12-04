@@ -1,17 +1,5 @@
 package map;
 
-enum StepKind {
-	Title;
-	Start;
-	Phone;
-	Park;
-	River;
-	Shop;
-	Avenue;
-	Accident;
-	Forest;
-	Tombstone;
-}
 
 class World
 {
@@ -20,7 +8,7 @@ class World
 
 	var stepId = -1;
 	var stepFrames = [];
-	var allSteps = StepKind.createAll();
+	var allSteps = Data.speech.all;
 
 	var colliders : h2d.col.Polygons;
 	var traps : Array<h3d.col.Collider> = [];
@@ -28,7 +16,7 @@ class World
 
 	var sceneZones : Array<h3d.col.Sphere> = [];
 
-	public var step(default, set) : StepKind;
+	public var step(default, set) : Data.SpeechKind;
 
 	public var cam : {
 		obj :  h3d.scene.Object,
@@ -197,10 +185,10 @@ class World
 		return cam.obj.currentAnimation.frame / cam.obj.currentAnimation.frameCount;
 	}
 
-	function set_step(k : StepKind) {
+	function set_step(k : Data.SpeechKind) {
 		if(step == k) return step;
 
-		var curId = allSteps.indexOf(k);
+		var curId = Data.speech.get(k).index;
 		if(stepId >= curId) return step;
 		stepId = curId;
 /*
@@ -230,7 +218,7 @@ class World
 		switch (step) {
 			case Phone:
 				if(Math.random() < 0.015) {
-					var d = 12 + hxd.Math.random(8);
+					var d = 8 + hxd.Math.random(6);
 					var a = hxd.Math.srand(Math.PI);
 					var x = game.hero.x + d * Math.cos(a);
 					var y = game.hero.y + d * Math.sin(a);
@@ -239,7 +227,7 @@ class World
 
 			case Park:
 				if(Math.random() < 0.025) {
-					var d = 10 + hxd.Math.random(8);
+					var d = 8 + hxd.Math.random(6);
 					var a = hxd.Math.srand(Math.PI);
 					var x = game.hero.x + d * Math.cos(a);
 					var y = game.hero.y + d * Math.sin(a);
@@ -247,13 +235,13 @@ class World
 				}
 
 			case River:
-				if(Math.random() < 0.05) setFrontSpawn(20);
+				if(Math.random() < 0.05) setFrontSpawn(12);
 			case Shop:
-				if(Math.random() < 0.1) setFrontSpawn(35);
+				if(Math.random() < 0.1) setFrontSpawn(20);
 			case Avenue :
 				if(Math.random() < 0.2) setFrontSpawn(35);
 			case Accident:
-				if(Math.random() < 0.15) setFrontSpawn(30);
+				if(Math.random() < 0.15) setFrontSpawn(25);
 			case Forest:
 				if(Math.random() < 0.25) setFrontSpawn(30);
 			default:
@@ -262,7 +250,7 @@ class World
 
 
 	public function gotoStep(v : Int) {
-		step = allSteps[v];
+		step = allSteps[v].id;
 		if(v > 0) {
 			cam.locked = false;
 
@@ -322,6 +310,7 @@ class World
 
 			if(Math.abs(cam.pos.z - p.z) < 0.1) {
 				this.cam.locked = false;
+				game.ui.triggerSpeech(Start);
 				return true;
 			}
 			return false;
@@ -331,11 +320,10 @@ class World
 	function getStepFromFrame(f : Float) {
 		var index = stepFrames.length - 1;
 		while(index >= 0) {
-			if(stepFrames[index] <= f) return allSteps[index];
+			if(stepFrames[index] <= f) return allSteps[index].id;
 			index--;
 		}
-		;
-		return allSteps[0];
+		return allSteps[0].id;
 	}
 
 

@@ -70,12 +70,60 @@
 			],
 			"lines": [
 				{
+					"id": "Title",
+					"value": "",
+					"index": 0
+				},
+				{
+					"id": "Start",
+					"value": "Je suis en panne, fais chier Putain !#Je dois recharger ma lampe.#Et telephoner.",
+					"index": 1
+				},
+				{
 					"id": "Phone",
-					"value": "Blah blah, I'm talking to the phone.\nJe dis une autre phrase."
+					"value": "Blah blah, I'm talking to the phone.#Je dis une autre phrase.",
+					"index": 2
+				},
+				{
+					"id": "Park",
+					"value": "",
+					"index": 3
+				},
+				{
+					"id": "River",
+					"value": "",
+					"index": 4
+				},
+				{
+					"id": "Shop",
+					"value": "",
+					"index": 5
+				},
+				{
+					"id": "Avenue",
+					"value": "",
+					"index": 6
+				},
+				{
+					"id": "Accident",
+					"value": "Ouch !",
+					"index": 7
+				},
+				{
+					"id": "Forest",
+					"value": "",
+					"index": 8
+				},
+				{
+					"id": "Tombstone",
+					"value": "Bouh waaaaaa...",
+					"index": 9
 				}
 			],
 			"separators": [],
-			"props": {}
+			"props": {
+				"hasIndex": true
+			}
 		}
 	],
 	"customTypes": [],
