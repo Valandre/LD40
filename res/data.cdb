@@ -76,27 +76,27 @@
 				},
 				{
 					"id": "Start",
-					"value": "Je suis en panne, fais chier Putain !#Je dois recharger ma lampe.#Et telephoner.",
+					"value": "My car got stranded, I shall go by foot#And use this torch to fight dark and gloom.#I can see a booth to make a phone call#And hope it will help me reaching my goal.#<Hold left click or gamepad joystick to move>#<Hold right click or gamepad button \"A\" to reload torch>",
 					"index": 1
 				},
 				{
 					"id": "Phone",
-					"value": "Ouais, c'est moi !#bla blab alablabala !!!",
+					"value": "My Dear, I’ll be late for your important date.#Can’t afford to miss my daughter’s marriage,#But Dad will be there for your big sacrement.#As long as there's light, shadows I can fight.",
 					"index": 2
 				},
 				{
 					"id": "Park",
-					"value": "Park !",
+					"value": "Beloved lass she was, when she bloomed as child#Nice all the time, big smile alongside#To share her my love, for this important day#I’ll bring her flowers in a wedding bouquet.",
 					"index": 3
 				},
 				{
 					"id": "River",
-					"value": "River !",
+					"value": "I wish this moment would have last forever#Fishing and laughing all along this river#A big one we caught, almost flawless#This is our kingdom and she is my princess.",
 					"index": 4
 				},
 				{
 					"id": "Shop",
-					"value": "Shop !",
+					"value": "Delighted she was, gifted by a car#Happy that now she could travel so far#Behold my dear, I will quickly be there#I’ll fight all shadows that slows me away.",
 					"index": 5
 				},
 				{
@@ -106,7 +106,7 @@
 				},
 				{
 					"id": "Accident",
-					"value": "Ouch !",
+					"value": "I remember know this last September#There was a car crash and I lost my daughter#During this morning, she left us away#On this road making way to her wedding day.",
 					"index": 7
 				},
 				{
@@ -116,7 +116,7 @@
 				},
 				{
 					"id": "Tombstone",
-					"value": "Bouh waaaaaa...",
+					"value": "Finally love, I step by your grave#I brought you flowers you can carry away#In your dad’s hearth you will always survive#I’m leaving you dear, with one last goodbye.",
 					"index": 9
 				}
 			],
