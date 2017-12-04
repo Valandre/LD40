@@ -319,13 +319,19 @@ class Game extends hxd.App {
 	}
 
 	static function main() {
-		hxd.res.Resource.LIVE_UPDATE = true;
-		hxd.Res.initLocal();
+		#if pak
+			hxd.Res.initPak();
+		#else
+			hxd.res.Resource.LIVE_UPDATE = true;
+			hxd.Res.initLocal();
+			hxd.Res.data.watch(function() {
+				Data.load(hxd.Res.data.entry.getBytes().toString());
+				inst.onCdbReload();
+			});
+		#end
+		
 		Data.load(hxd.Res.data.entry.getBytes().toString());
 		inst = new Game();
-		hxd.Res.data.watch(function() {
-			Data.load(hxd.Res.data.entry.getBytes().toString());
-			inst.onCdbReload();
-		});
+		
 	}
 }
