@@ -11,6 +11,7 @@ class PostProcessingShader extends h3d.shader.ScreenShader {
 		@param var time : Float;
 		@param var bugPower : Float;
 		@param var flashPower : Float;
+		@param var flashColor : Vec3;
 		@param var tsize : Vec2;
 		
 		function curve(uv : Vec2) : Vec2 {
@@ -67,6 +68,8 @@ class PostProcessingShader extends h3d.shader.ScreenShader {
 				color += (noise - 0.4) * 0.3 * bugPower;
 			}
 
+			color = saturate(color + flashColor * flashPower);
+
 			if (uv.x < 0.0 || uv.x > 1.0) color *= 0.0;
 			if (uv.y < 0.0 || uv.y > 1.0) color *= 0.0;
 
@@ -99,6 +102,10 @@ class PostProcessing extends h3d.pass.ScreenFx<PostProcessingShader> {
 		flashDuration = 0.0;
 	}
 
+	function easeOutCubic(t : Float) {
+		return (--t)*t*t+1;
+	}
+
 	public function apply(from : h3d.mat.Texture, time : Float, ?to : h3d.mat.Texture) {
 		engine.pushTarget(to);
 		pass.setBlendMode(None);
@@ -106,15 +113,21 @@ class PostProcessing extends h3d.pass.ScreenFx<PostProcessingShader> {
 		shader.time = time;
 		shader.tsize.set(from.width, from.height);
 
-		/*if ()
-		shader.flashPower = (time - flashStart) / flashDuration;*/
+		if (flashDuration > 0)
+			shader.flashPower = 1.0 - easeOutCubic((time - flashStart) / flashDuration);
+
+		if (shader.flashPower < 0.0) {
+			shader.flashPower = 0.0;
+			flashDuration = 0;
+		}
 
 		render();
 		engine.popTarget();
 	}
 
-	public function flash(time : Float, duration : Float) {
+	public function flash(color : Int, time : Float, duration : Float) {
 		flashDuration = duration;
 		flashStart = time;
+		shader.flashColor.setColor(color);
 	}
 }

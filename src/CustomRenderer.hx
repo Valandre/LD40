@@ -128,7 +128,7 @@ class CustomRenderer extends h3d.scene.Renderer {
 		post.apply(colorTex, ctx.time);
 	}
 
-	public function flash(duration : Float) {
-		post.flash(ctx.time, duration);
+	public function flash(color : Int, duration : Float) {
+		post.flash(color, ctx.time, duration);
 	}
 }
