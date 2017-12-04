@@ -87,12 +87,14 @@ class Game extends hxd.App {
 	}
 
 	var tmp = new h2d.col.Point();
+	public var camMinDist = 10;
+	public var camMaxDist = 25;
 	inline function getClampedFramePos() {
 		var p = world.getCameraFramePos(hero.x, hero.y);
 		tmp.x = p.x - hero.x;
 		tmp.y = p.y - hero.y;
 		var d = hxd.Math.distanceSq(tmp.x, tmp.y);
-		var r = 10;
+		var r = camMinDist;
 		if(d < r * r) {
 			tmp.normalize();
 			tmp.scale(r);
@@ -100,7 +102,7 @@ class Game extends hxd.App {
 			p.y = hero.y + tmp.y;
 		}
 		else {
-			var r = 25;
+			var r = camMaxDist;
 			if(d > r * r) {
 				tmp.normalize();
 				tmp.scale(r);
@@ -113,6 +115,7 @@ class Game extends hxd.App {
 	}
 
 	public var camSpeed = 0.05;
+	public var camDz = 0.
 	var camDir : h3d.Vector;
 	function cameraUpdate(dt : Float) {
 		if(world.step == Title) return;
@@ -125,7 +128,7 @@ class Game extends hxd.App {
 		var p = getClampedFramePos();
 		cam.pos.x += (p.x - cam.pos.x) * camSpeed * dt;
 		cam.pos.y += (p.y - cam.pos.y) * camSpeed * dt;
-		cam.pos.z += (p.z - cam.pos.z) * camSpeed * dt;
+		cam.pos.z += (p.z + camDz - cam.pos.z) * camSpeed * dt;
 
 		hxd.snd.Driver.get().listener.syncCamera(cam);
 	}

@@ -95,6 +95,12 @@ class Player extends Character
 	function move() {
 		if(job == Move) return;
 
+		var stepWalkFrames = [10, 25];
+		var stepRunFrames = [0, 10];
+		var stepSprintFrames = [7, 15];
+		var nextStepId = 0;
+		var sprintRef = 0.2;
+
 		setJob(Move, function(dt) {
 			if(targetPos == null) {
 				stand();
@@ -104,10 +110,21 @@ class Player extends Character
 			a.normalize();
 			acc = hxd.Math.min(1, acc + 0.05 * dt);
 			var sp = moveSpeed * axisSpeed * acc * dt;
+
 			if(canMove) {
-				play(moveSpeed > runAt ? "run" : "walk", {smooth : 0.2});
+				var sprinting = moveSpeed > 0.1;
+				var running = moveSpeed > runAt;
+				play(sprinting ? "sprint" : running ? "run" : "walk", {smooth : 0.2});
 				moveTo(a.x * sp, a.y * sp);
-				if(obj != null) obj.currentAnimation.speed = acc * moveSpeed / (moveSpeed > runAt ? runRef : walkRef);
+				if(obj != null) {
+					obj.currentAnimation.speed = acc * moveSpeed / (sprinting ? sprintRef : running ? runRef : walkRef);
+
+					var tab = sprinting ? stepSprintFrames : running ? stepRunFrames : stepWalkFrames;
+					if(obj.currentAnimation.frame > tab[nextStepId] && (nextStepId != 0 || obj.currentAnimation.frame < tab[1]) ) {
+						nextStepId = 1 - nextStepId;
+						game.audio.playEventAt(hxd.Res.Sfx.step, x, y, z, 25 * sp * (0.5 + 0.5 * Math.random()));
+					}
+				}
 			}
 			else {
 				targetRotation = hxd.Math.atan2(a.y, a.x);

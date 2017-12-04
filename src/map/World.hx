@@ -142,7 +142,7 @@ class World
 
 	public function getFlowerAt(x : Float, y : Float ) {
 		var flower = null;
-		var d = 1e9;
+		var d = 8.;
 		for(f in flowers) {
 			var p = f.localToGlobal();
 			var dist = hxd.Math.distanceSq(p.x - x, p.y - y);
@@ -412,18 +412,29 @@ class World
 
 		var memory : h3d.scene.Object = null;
 		inline function endScene() {
+			game.camMaxDist = 25;
+			game.camSpeed = 0.01;
+			game.camDz = 0;
+			game.event.wait(4, function() {
+				game.camSpeed = 0.05;
+			});
+
 			if(memory != null) {
 				for(m in memory.getMeshes())
 					m.material.blendMode = Alpha;
+				var a = 1.;
 				game.event.waitUntil(function(dt) {
+					a = Math.max(0, a - 0.01 * dt);
 					for(m in memory.getMeshes())
-					m.material.color.w -= 0.01 * dt;
-					return false;
+						m.material.color.w = a;
+					return a == 0;
 				});
+			}
 
-				var s = getSpeechAt(game.hero.x, game.hero.y);
-				if(s != null)
-					game.hero.targetRotation = hxd.Math.atan2(s.y - game.hero.y, s.x - game.hero.x);
+			var flower = getFlowerAt(game.hero.x, game.hero.y);
+			if(flower != null) {
+				var p = flower.localToGlobal();
+				game.hero.targetRotation = hxd.Math.atan2(p.y - game.hero.y, p.x - game.hero.x);
 
 				game.event.waitUntil(function(dt) {
 					@:privateAccess game.hero.updateAngle(dt);
@@ -437,8 +448,7 @@ class World
 						var catched = false;
 						game.event.waitUntil(function(dt) {
 							@:privateAccess if(!catched && game.hero.obj.currentAnimation.frame > game.hero.obj.currentAnimation.frameCount * 0.5) {
-								//memory.visible = false;
-								getFlowerAt(game.hero.x, game.hero.y).visible = false;
+								flower.visible = false;
 								catched = true;
 							}
 							return !sceneLock;
@@ -502,6 +512,11 @@ class World
 				game.hero.targetRotation = hxd.Math.atan2(p.y - game.hero.y, p.x - game.hero.x);
 			}
 
+			if(k != Start) {
+				game.camMaxDist = 9;
+				game.camSpeed = 0.02;
+				game.camDz = 1.5;
+			}
 
 			game.event.waitUntil(function(dt) {
 				@:privateAccess game.hero.updateAngle(dt);
