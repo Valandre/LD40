@@ -364,6 +364,7 @@ class World
 
 						game.renderer.flash(0xFFFFFF, 4);
 						game.renderer.post.shader.crtPower = 0.0;
+						game.renderer.depthColorMap = hxd.Res.Gradients.test_orangeblue.toTexture();
 						game.audio.playUIEvent(hxd.Res.Sfx.end_sequence2);
 						game.audio.stopMusic(0.1);
 
