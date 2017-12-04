@@ -178,24 +178,7 @@ class Player extends Character
 			e.hit(lampPower * d * dt);
 			//for(m in e.obj.getMeshes())
 				//m.material.color.r = 1;
-
 		}
-
-		//////DEBUG
-		/*
-		if(g == null) g = new h3d.scene.Graphics(game.s3d);
-		g.clear();
-		g.lineStyle(3, 0xA03010);
-
-		g.moveTo(x, y, 0.1);
-		g.lineTo(x + lampDist * Math.cos(rotation - da), y + lampDist * Math.sin(rotation - da), 0.1);
-		g.moveTo(x, y, 0.1);
-		g.lineTo(x + lampDist * Math.cos(rotation + da), y + lampDist * Math.sin(rotation + da), 0.1);
-
-		g.moveTo(x + lampDist * Math.cos(rotation - da), y + lampDist * Math.sin(rotation - da), 0.1);
-		for(i in 0...8)
-			g.lineTo(x + lampDist * Math.cos(rotation - da + lampArc * (i + 1) / 8), y + lampDist * Math.sin(rotation - da + lampArc * (i + 1) / 8), 0.1);
-		*/
 	}
 
 	function checkHurt() {

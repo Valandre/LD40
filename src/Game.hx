@@ -116,7 +116,7 @@ class Game extends hxd.App {
 	}
 
 	public var camSpeed = 0.05;
-	public var camDz = 0.
+	public var camDz = 0.;
 	var camDir : h3d.Vector;
 	function cameraUpdate(dt : Float) {
 		if(world.step == Title) return;

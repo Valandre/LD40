@@ -128,7 +128,7 @@ class Foe extends Character
 
 			for(m in obj.getMeshes()) {
 				m.material.blendMode = Alpha;
-				m.material.color.w -= 0.01 * dt;
+				m.material.color.w -= 0.015 * dt;
 			}
 		});
 	}
