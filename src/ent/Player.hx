@@ -112,7 +112,7 @@ class Player extends Character
 			var sp = moveSpeed * axisSpeed * acc * dt;
 
 			if(canMove) {
-				var sprinting = moveSpeed > 0.1;
+				var sprinting = moveSpeed > 0.125;
 				var running = moveSpeed > runAt;
 				play(sprinting ? "sprint" : running ? "run" : "walk", {smooth : 0.2});
 				moveTo(a.x * sp, a.y * sp);
