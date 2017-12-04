@@ -113,6 +113,7 @@ class Game extends hxd.App {
 	}
 
 	public var camSpeed = 0.05;
+	var camDir : h3d.Vector;
 	function cameraUpdate(dt : Float) {
 		if(world.step == Title) return;
 		if(world.cam.locked || hero == null) return;
@@ -125,6 +126,8 @@ class Game extends hxd.App {
 		cam.pos.x += (p.x - cam.pos.x) * camSpeed * dt;
 		cam.pos.y += (p.y - cam.pos.y) * camSpeed * dt;
 		cam.pos.z += (p.z - cam.pos.z) * camSpeed * dt;
+
+		hxd.snd.Driver.get().listener.syncCamera(cam);
 	}
 
 
@@ -250,6 +253,8 @@ class Game extends hxd.App {
 		event.update(dt);
 		for(e in entities)
 			e.update(dt);
+
+		audio.update(dt);
 	}
 
 	function loadRenderConfig(renderer : CustomRenderer) {

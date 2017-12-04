@@ -258,10 +258,18 @@ class Player extends Character
 		}
 	}
 
+	function isReloading() {
+		return job == LampReload;
+	}
+
 	function lampReload() {
 		if(job == LampReload) return;
 		if(lampBattery > 10) return;
 		lampBattery = 0;
+
+		var e = game.audio.playEventOn(hxd.Res.Sfx.lamp_reload, this);
+		e.holdWhile(isReloading, true, 0.2);
+		e.fadeInTime = 0.2;
 
 		play("reload", {loop : true, speed : 1.8});
 		setJob(LampReload, function(dt) {
