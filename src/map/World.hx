@@ -25,6 +25,8 @@ class World
 	var cameraCreditsPos : h3d.Vector;
 	var cameraCreditsTarget : h3d.Vector;
 
+	var shadowsPos : Array<h3d.Vector> = [];
+
 	public var step(default, set) : Data.SpeechKind;
 	public var sceneLock = false;
 
@@ -62,15 +64,18 @@ class World
 		cameraCreditsPos = obj.getObjectByName("Cameraend").localToGlobal();
 		cameraCreditsTarget = obj.getObjectByName("Cameraend.Target").localToGlobal();
 
+		var i = 0;
+		while(true) {
+			i++;
+			var o = obj.getObjectByName("ShadowPos" + (i < 100 ? "0" : "") + (i < 10 ? "0" : "") + i);
+			if(o == null) break;
+			shadowsPos.push(o.localToGlobal());
+		}
+
 		for (m in obj.getMeshes()) {
 			if(m.name == "Road") {
 				initCollideShape(m);
 				m.visible = false;
-			}
-			if(m.name.substr(0, 9) == "ShadowPos") {
-				trace("shadow");
-				var p = m.localToGlobal();
-				new ent.Foe(p.x, p.y,p.z, false, false, true);
 			}
 			if(m.name.substr(0, 4) == "Trap") {
 				m.visible = false;
@@ -151,6 +156,8 @@ class World
 		step = Title;
 		game.event.wait(0, function() {
 			gotoStep(0);
+			for(p in shadowsPos)
+				new ent.Foe(p.x, p.y,p.z, false, false, true);
 		});
 	}
 
@@ -279,9 +286,11 @@ class World
 		if(!Game.PREFS.mobSpawn) return;
 
 		inline function setFrontSpawn(dmax) {
+			if(isSafe(game.hero.x, game.hero.y)) return;
 			var da = hxd.Math.min(hxd.Math.random(Math.PI * 0.9), hxd.Math.random(Math.PI * 0.9)) * (hxd.Math.random() < 0.5 ? -1 : 1);
 			var a = game.hero.targetRotation + da;
-			var d = (0.2 + 0.8 * (1 - Math.abs(da) / Math.PI)) * dmax;
+			var d = (0.5 * (1 - Math.abs(da) / Math.PI)) * dmax;
+			d = 0.5 * dmax + Math.max(hxd.Math.random(d), hxd.Math.random(d) );
 			var x = game.hero.x + d * Math.cos(a);
 			var y = game.hero.y + d * Math.sin(a);
 			if(!collides(x, y) && !isSafe(x, y)) new ent.Foe(x, y, 0);
@@ -289,7 +298,7 @@ class World
 
 		switch (step) {
 			case Phone:
-				if(Math.random() < 0.015) {
+				if(Math.random() < 0.005) {
 					var d = 8 + hxd.Math.random(6);
 					var a = hxd.Math.srand(Math.PI);
 					var x = game.hero.x + d * Math.cos(a);
@@ -298,7 +307,7 @@ class World
 				}
 
 			case Park:
-				if(Math.random() < 0.025) {
+				if(Math.random() < 0.015) {
 					var d = 8 + hxd.Math.random(6);
 					var a = hxd.Math.srand(Math.PI);
 					var x = game.hero.x + d * Math.cos(a);
@@ -307,15 +316,15 @@ class World
 				}
 
 			case River:
-				if(Math.random() < 0.05) setFrontSpawn(12);
+				if(Math.random() < 0.02) setFrontSpawn(12);
 			case Shop:
-				if(Math.random() < 0.1) setFrontSpawn(20);
+				if(Math.random() < 0.035) setFrontSpawn(20);
 			case Avenue :
-				if(Math.random() < 0.3) setFrontSpawn(35);
+				if(Math.random() < 0.15) setFrontSpawn(35);
 			case Accident:
-				if(Math.random() < 0.15) setFrontSpawn(25);
+				if(Math.random() < 0.1) setFrontSpawn(25);
 			case Forest:
-				if(Math.random() < 0.25) setFrontSpawn(30);
+				if(Math.random() < 0.2) setFrontSpawn(30);
 			default:
 		}
 	}
@@ -351,41 +360,43 @@ class World
 				if(hxd.Math.distance(game.hero.x - endPos.x, game.hero.y - endPos.y) < 0.1) {
 					game.hero.play("idle01");
 					game.event.wait(0.5, function() {
-						//this.cam.locked = false;
-						//playScene(Start, null);
+						game.hero.stand();
+
 						game.renderer.flash(0xFFFFFF, 4);
 						game.renderer.post.shader.crtPower = 0.0;
-						game.hero.stand();
 						game.audio.playUIEvent(hxd.Res.Sfx.end_sequence2);
-						game.hero.play("fall", {loop : false, onEnd : function() {
-							game.audio.stopMusic(0.1);
-							game.event.wait(3, function() {
-								game.audio.playMusic(hxd.Res.Music.end, 10.0);
-								game.ui.triggerSpeech(Tombstone);
-								game.event.waitUntil(function(dt) {
-									if(actionPressed() || hxd.Key.isPressed(hxd.Key.MOUSE_LEFT))
-										if(game.ui.triggerValidate()) {
-											game.event.wait(3, function() {
-												var camSpeed = 0.0002;
-												game.event.waitUntil(function(dt) {
-													camera.target.x += (cameraCreditsTarget.x - camera.target.x ) * camSpeed * dt;
-													camera.target.y += (cameraCreditsTarget.y - camera.target.y) * camSpeed * dt;
-													camera.target.z += (cameraCreditsTarget.z - camera.target.z) * camSpeed * dt;
+						game.audio.stopMusic(0.1);
 
-													camera.pos.x += (cameraCreditsPos.x - camera.pos.x) * camSpeed * dt;
-													camera.pos.y += (cameraCreditsPos.y - camera.pos.y) * camSpeed * dt;
-													camera.pos.z += (cameraCreditsPos.z - camera.pos.z) * camSpeed * dt;
-													camSpeed *= Math.pow(1.001, dt);
-													return false;
+						game.event.wait(2, function() {
+							game.hero.play("fall", {loop : false, onEnd : function() {
+								game.event.wait(3, function() {
+									game.audio.playMusic(hxd.Res.Music.end, 10.0);
+									game.ui.triggerSpeech(Tombstone);
+									game.event.waitUntil(function(dt) {
+										if(actionPressed() || hxd.Key.isPressed(hxd.Key.MOUSE_LEFT))
+											if(game.ui.triggerValidate()) {
+												game.event.wait(3, function() {
+													var camSpeed = 0.0002;
+													game.event.waitUntil(function(dt) {
+														camera.target.x += (cameraCreditsTarget.x - camera.target.x ) * camSpeed * dt;
+														camera.target.y += (cameraCreditsTarget.y - camera.target.y) * camSpeed * dt;
+														camera.target.z += (cameraCreditsTarget.z - camera.target.z) * camSpeed * dt;
+
+														camera.pos.x += (cameraCreditsPos.x - camera.pos.x) * camSpeed * dt;
+														camera.pos.y += (cameraCreditsPos.y - camera.pos.y) * camSpeed * dt;
+														camera.pos.z += (cameraCreditsPos.z - camera.pos.z) * camSpeed * dt;
+														camSpeed *= Math.pow(1.001, dt);
+														return false;
+													});
 												});
-											});
-											return true;
-										}
-									return false;
+												return true;
+											}
+										return false;
+									});
 								});
+							}});
+						});
 
-							});
-						}});
 					});
 					return true;
 				}

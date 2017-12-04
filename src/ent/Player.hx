@@ -304,6 +304,7 @@ class Player extends Character
 	}
 
 	override public function update(dt:Float) {
+		if(game.world.step == Forest) lampBattery = Math.min(lampBattery, 5);
 		updateBattery(dt);
 		if(!game.world.sceneLock) {
 			checkHurt();

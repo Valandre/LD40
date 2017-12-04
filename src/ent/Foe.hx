@@ -25,7 +25,10 @@ class Foe extends Character
 		game.foes.push(this);
 
 		if(toSpawn)	spawn();
-		else stand();
+		else {
+			stand();
+			obj.currentAnimation.setFrame(Math.random() * obj.currentAnimation.frameCount);
+		}
 
 		var e = game.audio.playEventOn(hxd.Res.Sfx.shadow_fry, this, 0.0);
 		e.holdWhile(isAlive, true, 0.1, updateHitVolume);
