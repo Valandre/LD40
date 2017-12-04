@@ -348,9 +348,14 @@ class World
 					game.event.wait(0.5, function() {
 						//this.cam.locked = false;
 						//playScene(Start, null);
+						game.renderer.flash(0xFFFFFF, 4);
+						game.renderer.post.shader.crtPower = 0.0;
 						game.hero.stand();
+						game.audio.playUIEvent(hxd.Res.Sfx.end_sequence2);
 						game.hero.play("fall", {loop : false, onEnd : function() {
+							game.audio.stopMusic(0.1);
 							game.event.wait(3, function() {
+								game.audio.playMusic(hxd.Res.Music.end, 10.0);
 								game.ui.triggerSpeech(Tombstone);
 								game.event.waitUntil(function(dt) {
 									if(actionPressed() || hxd.Key.isPressed(hxd.Key.MOUSE_LEFT))

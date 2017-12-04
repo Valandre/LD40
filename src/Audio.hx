@@ -119,6 +119,13 @@ class Audio {
 		}
 	}
 
+	public function stopMusic(?fadeOut = 0.0) {
+		if (music == null) return;
+		if (fadeOut > 0.0) music.fadeTo(0, fadeOut, music.stop);
+		else music.stop();
+		music = null;
+	}
+
 	public function addAmbientAt(snd : hxd.res.Sound, x : Float, y : Float, z : Float, ?volume = 1.0) {
 		var c = snd.play(true, volume, ambientChanGroup, localAmbientSoundGroup);
 		var space = createAmbientSpace();

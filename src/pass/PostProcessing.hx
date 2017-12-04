@@ -12,6 +12,7 @@ class PostProcessingShader extends h3d.shader.ScreenShader {
 		@param var bugPower : Float;
 		@param var flashPower : Float;
 		@param var flashColor : Vec3;
+		@param var crtPower : Float;
 		@param var tsize : Vec2;
 		
 		function curve(uv : Vec2) : Vec2 {
@@ -57,8 +58,8 @@ class PostProcessingShader extends h3d.shader.ScreenShader {
 			var uv = input.uv;
 			var vig = vignette(uv);
 
-			uv = curve(uv);
-			var chromaRate = 1.0 - vig;
+			uv = mix(uv, curve(uv), crtPower);
+			var chromaRate = (1.0 - vig) * crtPower;
 			var color = readColor(uv, chromaRate);
 
 			{	// noise
@@ -75,6 +76,7 @@ class PostProcessingShader extends h3d.shader.ScreenShader {
 
 			// scanlines
 			var s = sin(time * -10.0 + uv.y * tsize.y);
+			s = mix(1.0, s, crtPower);
 			color *= vec3(0.96 + 0.04 * s);
 
 			// vignette
@@ -97,6 +99,7 @@ class PostProcessing extends h3d.pass.ScreenFx<PostProcessingShader> {
 		shader.noiseTexture.filter = Nearest;
 		shader.bugPower = 0.0;
 		shader.flashPower = 0.0;
+		shader.crtPower = 1.0;
 
 		flashStart = 0.0;
 		flashDuration = 0.0;

@@ -121,7 +121,11 @@ class CustomRenderer extends h3d.scene.Renderer {
 		h3d.pass.Copy.run(additiveTex, colorTex, Add);
 
 		if (enableFXAA) {
+			var t = allocTarget("fxaaOut", 0, false);
+			setTarget(t);
 			fxaa.apply(colorTex);
+			resetTarget();
+			colorTex = t;
 		}
 		
 		post.setGlobals(ctx);
