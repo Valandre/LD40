@@ -95,6 +95,11 @@ class Audio {
 		bugPower = 0.0;
 	}
 
+	public function playUIEvent(snd : hxd.res.Sound, ?soundGroup : SoundGroup) {
+		var c = snd.play(uiChanGroup, soundGroup);
+		c.priority = time;
+	}
+
 	public function playMusic(snd : hxd.res.Sound, ?fadeIn = 0.0) {
 		if (music != null) music.stop();
 		music = snd.play(true, musicChanGroup);
@@ -117,18 +122,17 @@ class Audio {
 	}
 
 	public function update(dt : Float) {
-		updateEvents(dt);
-		updateAmbients(dt);
+		time += dt;
+		updateEvents();
+		updateAmbients();
 	}
 
-	public function updateAmbients(dt) {
+	public function updateAmbients() {
 		bugAmbient.volume = BUG_AMBIENT_VOLUME * bugPower;
 		mainAmbient.volume = BASE_AMBIENT_VOLUME * (1 - bugPower);
 	}
 
-	public function updateEvents(dt : Float) {
-		time += dt;
-
+	public function updateEvents() {
 		var listenerPos = hxd.snd.Driver.get().listener.position;
 
 		if (newEvents != null) {

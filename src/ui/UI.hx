@@ -66,14 +66,12 @@ class UI
 
 		var done = curSentence.length == 0;
 		if (done) {
-			var c = hxd.Res.Sfx.typewriterRoll.play(sndKeyGroup);
-			c.priority = text.text.length;
+			game.audio.playUIEvent(hxd.Res.Sfx.typewriterRoll, sndKeyGroup);
 		} else {
 			var sfx = (Std.random(2) > 0)
 				? hxd.Res.Sfx.typewriterKey1
 				: hxd.Res.Sfx.typewriterKey2;
-			var c = sfx.play(sndKeyGroup);
-			c.priority = text.text.length;
+			game.audio.playUIEvent(sfx, sndKeyGroup);
 		}
 
 		return done;
@@ -94,8 +92,7 @@ class UI
 		if (curSentence.length > 0) {
 			text.text += curSentence;
 			curSentence = "";
-			var c = hxd.Res.Sfx.typewriterRoll.play(sndKeyGroup);
-			c.priority = text.text.length;
+			game.audio.playUIEvent(hxd.Res.Sfx.typewriterRoll, sndKeyGroup);
 			return false;
 		}
 
