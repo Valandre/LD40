@@ -119,7 +119,6 @@ class UI
 		}
 	}
 
-
 	public function onResize() {
 		var textScale = game.s2d.height / 1080;
 		if (text.visible) {
