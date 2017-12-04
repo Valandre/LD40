@@ -92,38 +92,32 @@ class Player extends Character
 		setJob(Stand, null);
 	}
 
-	public function endMove(sp) {
-		var stepWalkFrames = [10, 25];
-		var stepRunFrames = [0, 10];
-		var stepSprintFrames = [7, 15];
-		var nextStepId = 0;
-		var sprintRef = 0.2;
 
-		if(canMove) {
-			var sprinting = sp > 0.125;
-			var running = sp > runAt;
-			play(sprinting ? "sprint" : running ? "run" : "walk", {smooth : 0.2});
-			moveTo(sp * Math.cos(rotation), sp * Math.sin(rotation));
-			if(obj != null) {
-				obj.currentAnimation.speed =  sp / (sprinting ? sprintRef : running ? runRef : walkRef);
-				var tab = sprinting ? stepSprintFrames : running ? stepRunFrames : stepWalkFrames;
-				if(obj.currentAnimation.frame > tab[nextStepId] && (nextStepId != 0 || obj.currentAnimation.frame < tab[1]) ) {
-					nextStepId = 1 - nextStepId;
-					game.audio.playEventAt(hxd.Res.Sfx.step, x, y, z, 25 * sp * (0.5 + 0.5 * Math.random()), 1 + hxd.Math.srand(0.2));
-				}
+	var stepWalkFrames = [10, 25];
+	var stepRunFrames = [0, 10];
+	var stepSprintFrames = [7, 15];
+	var nextStepId = 0;
+	var sprintRef = 0.2;
+
+	public function endMove(sp) {
+		currentJobFunc = null;
+
+		var sprinting = sp > 0.125;
+		var running = sp > runAt;
+		play(sprinting ? "sprint" : running ? "run" : "walk", {smooth : 0.2});
+		moveTo(sp * Math.cos(rotation), sp * Math.sin(rotation));
+		if(obj != null) {
+			obj.currentAnimation.speed =  sp / (sprinting ? sprintRef : running ? runRef : walkRef);
+			var tab = sprinting ? stepSprintFrames : running ? stepRunFrames : stepWalkFrames;
+			if(obj.currentAnimation.frame > tab[nextStepId] && (nextStepId != 0 || obj.currentAnimation.frame < tab[1]) ) {
+				nextStepId = 1 - nextStepId;
+				game.audio.playEventAt(hxd.Res.Sfx.step, x, y, z, 25 * sp * (0.5 + 0.5 * Math.random()), 1 + hxd.Math.srand(0.2));
 			}
 		}
 	}
 
 	function move() {
 		if(job == Move) return;
-
-		var stepWalkFrames = [10, 25];
-		var stepRunFrames = [0, 10];
-		var stepSprintFrames = [7, 15];
-		var nextStepId = 0;
-		var sprintRef = 0.2;
-
 		setJob(Move, function(dt) {
 			if(targetPos == null) {
 				stand();

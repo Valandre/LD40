@@ -325,7 +325,7 @@ class World
 
 			var speed = @:privateAccess game.hero.moveSpeed;
 			var camera = game.s3d.camera;
-			var camSpeed = 0.005;
+			var camSpeed = 0.0025;
 			game.event.waitUntil(function(dt) {
 				camera.target.x += (cameraEndTarget.x - camera.target.x ) * camSpeed * dt;
 				camera.target.y += (cameraEndTarget.y - camera.target.y) * camSpeed * dt;
@@ -336,14 +336,46 @@ class World
 				camera.pos.z += (cameraEndPos.z - camera.pos.z) * camSpeed * dt;
 				camSpeed *= Math.pow(1.01, dt);
 
-				game.hero.targetRotation = hxd.Math.atan2(endPos.y - game.hero.y, endPos.x - game.hero.x);
+				game.hero.rotation = game.hero.targetRotation = hxd.Math.atan2(endPos.y - game.hero.y, endPos.x - game.hero.x);
 				game.hero.endMove(speed);
-				//speed *= Math.pow(0.9, dt);
+				speed -= 0.0005 * dt;
+				speed = hxd.Math.max(0.02, speed);
 
-				if(Math.abs(cameraEndPos.z - camera.pos.z) < 0.1) {
-					//this.cam.locked = false;
-					//playScene(Start, null);
-					//return true;
+				if(hxd.Math.distance(game.hero.x - endPos.x, game.hero.y - endPos.y) < 0.1) {
+					game.hero.play("idle01");
+					game.event.wait(0.5, function() {
+						//this.cam.locked = false;
+						//playScene(Start, null);
+						game.hero.stand();
+						game.hero.play("fall", {loop : false, onEnd : function() {
+							game.event.wait(3, function() {
+								game.ui.triggerSpeech(Tombstone);
+								game.event.waitUntil(function(dt) {
+									if(actionPressed() || hxd.Key.isPressed(hxd.Key.MOUSE_LEFT))
+										if(game.ui.triggerValidate()) {
+											game.event.wait(3, function() {
+												var camSpeed = 0.0002;
+												game.event.waitUntil(function(dt) {
+													camera.target.x += (cameraCreditsTarget.x - camera.target.x ) * camSpeed * dt;
+													camera.target.y += (cameraCreditsTarget.y - camera.target.y) * camSpeed * dt;
+													camera.target.z += (cameraCreditsTarget.z - camera.target.z) * camSpeed * dt;
+
+													camera.pos.x += (cameraCreditsPos.x - camera.pos.x) * camSpeed * dt;
+													camera.pos.y += (cameraCreditsPos.y - camera.pos.y) * camSpeed * dt;
+													camera.pos.z += (cameraCreditsPos.z - camera.pos.z) * camSpeed * dt;
+													camSpeed *= Math.pow(1.001, dt);
+													return false;
+												});
+											});
+											return true;
+										}
+									return false;
+								});
+
+							});
+						}});
+					});
+					return true;
 				}
 				return false;
 			});
@@ -469,18 +501,19 @@ class World
 		if(stepId != -1) gotoStep(stepId);
 	}
 
+	var pressed = false;
+	inline function actionPressed() {
+		if(!Game.pad.isDown(Game.PAD.A)) pressed = false;
+		if(!pressed && Game.pad.isDown(Game.PAD.A)) {
+			pressed = true;
+			return true;
+		}
+		return false;
+	}
+
+
 	public function playScene(k : Data.SpeechKind, ?onEnd : Void -> Void) {
 		if(sceneLock) return;
-
-		var pressed = false;
-		inline function actionPressed() {
-			if(!Game.pad.isDown(Game.PAD.A)) pressed = false;
-			if(!pressed && Game.pad.isDown(Game.PAD.A)) {
-				pressed = true;
-				return true;
-			}
-			return false;
-		}
 
 		inline function clearMobs(dist = 50) {
 			var i = game.foes.length - 1;
