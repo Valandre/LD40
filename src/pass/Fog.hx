@@ -11,11 +11,7 @@ class FogShader extends h3d.shader.ScreenShader {
 		@param var zNear : Float;
 		@param var zFar : Float;
 
-		@global var depthColor : {
-			var currentMap      : Sampler2D;
-			var transitionMap   : Sampler2D;
-			var transitionRatio : Float;
-		};
+		@global var depthColorMap : Sampler2D;
 
 		function getPosition(uv : Vec2) : Vec3 {
 			var depth = unpack(depthTexture.get(uv));
@@ -36,7 +32,7 @@ class FogShader extends h3d.shader.ScreenShader {
 			var fogIntensity = saturate((dist - zNear) / (zFar - zNear));
 			var color = mix(
 				colorTexture.get(input.uv), 
-				depthColor.currentMap.get(vec2(fogIntensity, 0.5)),
+				depthColorMap.get(vec2(fogIntensity, 0.5)),
 				fogIntensity);
 			output.color = color;
 		}

@@ -8,11 +8,7 @@ class DepthColor extends hxsl.Shader {
 			var zFar : Float;
 		};
 
-		@global var depthColor : {
-			var currentMap      : Sampler2D;
-			var transitionMap   : Sampler2D;
-			var transitionRatio : Float;
-		};
+		@global var depthColorMap : Sampler2D;
 
 		var pixelColor        : Vec4;
 		var projectedPosition : Vec4;
@@ -21,7 +17,7 @@ class DepthColor extends hxsl.Shader {
 			var q  = (projectedPosition.z - camera.zNear) / (camera.zFar - camera.zNear);
 			q += (pixelColor.r - 0.5) * 2.0;
 			q  = saturate(q);
-			pixelColor.rgb = depthColor.currentMap.get(vec2(q, 0.5)).rgb;
+			pixelColor.rgb = depthColorMap.get(vec2(q, 0.5)).rgb;
 		}
 	};
 

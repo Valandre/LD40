@@ -16,8 +16,6 @@ class CustomRenderer extends h3d.scene.Renderer {
 	public var depthColorFar  : Float;
 
 	var depthColorMapId  : Int;
-	var depthColorNearId : Int;
-	var depthColorFarId  : Int;
 	var depthColorMax    : Int;
 
 	var out : h3d.mat.Texture;
@@ -44,9 +42,7 @@ class CustomRenderer extends h3d.scene.Renderer {
 		depthColorMap    = h3d.mat.Texture.fromColor(0xFFFFFF);
 		depthColorNear   = 0.0;
 		depthColorFar    = 1000.0; 
-		depthColorMapId  = hxsl.Globals.allocID("depthColor.currentMap");
-		depthColorNearId = hxsl.Globals.allocID("depthColor.near");
-		depthColorFarId  = hxsl.Globals.allocID("depthColor.far");
+		depthColorMapId  = hxsl.Globals.allocID("depthColorMap");
 
 		sao = new h3d.pass.ScalableAO();
 		saoBlur = new h3d.pass.Blur(3, 3, 2);
@@ -72,9 +68,7 @@ class CustomRenderer extends h3d.scene.Renderer {
 	}
 
 	override function render() {
-		ctx.setGlobalID(depthColorMapId,  depthColorMap);
-		ctx.setGlobalID(depthColorNearId, depthColorNear);
-		ctx.setGlobalID(depthColorFarId,  depthColorFar);
+		ctx.setGlobalID(depthColorMapId, depthColorMap);
 
 		shadow.draw(get("shadow"));
 
