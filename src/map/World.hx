@@ -521,7 +521,7 @@ class World
 				t = 1.5;
 			case Park :
 				game.audio.playUIEvent(hxd.Res.Sfx.flower);
-				game.audio.playMusic(hxd.Res.Music.playground, 10.0, 0.1);
+				game.audio.playMusic(hxd.Res.Music.playground, 30.0, 0.1);
 				game.renderer.flash(0xFFFFFF, 4);
 				memory = memories[0];
 				memory.visible = true;
@@ -536,7 +536,7 @@ class World
 				t = 3;
 			case Shop :
 				game.audio.playUIEvent(hxd.Res.Sfx.flower);
-				game.audio.playMusic(hxd.Res.Music.city, 10.0, 0.1);
+				game.audio.playMusic(hxd.Res.Music.city, 30.0, 0.1);
 				game.renderer.flash(0xFFFFFF, 4);
 				memory = memories[2];
 				memory.visible = true;
@@ -545,7 +545,7 @@ class World
 			case Accident :
 				game.audio.playUIEvent(hxd.Res.Sfx.flower);
 				game.audio.playMusic(hxd.Res.Music.run, 4.0, 0.1);
-				game.renderer.flash(0xFFFFFF, 4);
+				game.renderer.flash(0xFFFFFF, 10.0);
 				clearMobs();
 				t = 3;
 			default:
