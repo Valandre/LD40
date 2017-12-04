@@ -122,7 +122,7 @@ class Player extends Character
 					var tab = sprinting ? stepSprintFrames : running ? stepRunFrames : stepWalkFrames;
 					if(obj.currentAnimation.frame > tab[nextStepId] && (nextStepId != 0 || obj.currentAnimation.frame < tab[1]) ) {
 						nextStepId = 1 - nextStepId;
-						game.audio.playEventAt(hxd.Res.Sfx.step, x, y, z, 25 * sp * (0.5 + 0.5 * Math.random()));
+						game.audio.playEventAt(hxd.Res.Sfx.step, x, y, z, 25 * sp * (0.5 + 0.5 * Math.random()), 1 + hxd.Math.srand(0.2));
 					}
 				}
 			}
