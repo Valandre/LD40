@@ -20,6 +20,8 @@ class World
 	var stepFrames = [];
 	var allSteps = StepKind.createAll();
 
+	var colliders : h2d.col.Polygons;
+
 	public var step(default, set) : StepKind;
 
 	public var cam : {
@@ -45,7 +47,10 @@ class World
 		root.addChild(m);
 
 		for (m in m.getMeshes()) {
-			if(m.name == "Road") m.visible = false;
+			if(m.name == "Road") {
+				initCollideShape(m);
+				m.visible = false;
+			}
 			if(m.name.substr(0, 4) == "Trap") m.visible = false;
 			for (o in m) if (o.name.indexOf("Conelight") == 0) {
 				// spawn cone light
@@ -98,6 +103,43 @@ class World
 
 	public function addChild(o : h3d.scene.Object) {
 		root.addChild(o);
+	}
+
+	public function collides(x, y) {
+		return !colliders.contains(new h2d.col.Point(x, y));
+	}
+
+	function initCollideShape(col : h3d.scene.Object) {
+		colliders = [];
+		var buffs = cast(col.toMesh().primitive, h3d.prim.HMDModel).getDataBuffers([new hxd.fmt.hmd.Data.GeometryFormat("position", DVec3)]);
+		var dx = 8.5;
+		var dy = -12;
+		for(i in 0...Std.int(buffs.indexes.length / 3)) {
+			var t = new h2d.col.Polygon();
+			inline function addPoint(x:Float, y:Float) {
+				t.push(new h2d.col.Point(x + dx, y + dy));
+			}
+			addPoint(buffs.vertexes[buffs.indexes[i * 3] * 3], buffs.vertexes[buffs.indexes[i * 3] * 3 + 1]);
+			addPoint(buffs.vertexes[buffs.indexes[i * 3 + 1] * 3], buffs.vertexes[buffs.indexes[i * 3 + 1] * 3 + 1]);
+			addPoint(buffs.vertexes[buffs.indexes[i * 3 + 2] * 3], buffs.vertexes[buffs.indexes[i * 3 + 2] * 3 + 1]);
+
+			colliders.push(t);
+		}
+		colliders = colliders.toIPolygons(100).union(false).toPolygons(1 / 100);
+
+		/*
+		var g = new h3d.scene.Graphics(game.s3d);
+		g.lineStyle(3, 0xFF00FF);
+		for(c in colliders) {
+			for(i in 0...5) {
+				var p0 = c.points[c.points.length - 1];
+				g.moveTo(p0.x, p0.y, i*0.4);
+				for(p in c.points) {
+					g.lineTo(p.x, p.y, i*0.4);
+					p0 = p;
+				}
+			}
+		}*/
 	}
 
 	function set_step(k : StepKind) {

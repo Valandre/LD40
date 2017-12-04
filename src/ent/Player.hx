@@ -267,7 +267,7 @@ class Player extends Character
 		setJob(LampReload, function(dt) {
 			lampBattery += dt * 2 / 60;
 			if(lampBattery > 3) {
-				lampBattery = 60;
+				lampBattery = 45;
 				matLight.color.w = 1;
 				lampLight.color.set(spotColor.x, spotColor.y, spotColor.z);
 				spotLight.color.set(spotColor.x, spotColor.y, spotColor.z);

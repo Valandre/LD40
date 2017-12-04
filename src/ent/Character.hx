@@ -79,13 +79,34 @@ class Character extends ent.Entity {
 		targetRotation = hxd.Math.atan2(dy, dx);
 		x += dx;
 		y += dy;
-		//trace(x, y);
+		if(game.world.collides(x, y)) repel(x - dx, y - dy);
 	}
 
 	function updateAngle(dt : Float) {
 		if( rotation == targetRotation ) return false;
 		rotation = hxd.Math.angleMove(rotation, targetRotation, (0.05 + Math.abs(hxd.Math.angle(rotation - targetRotation))) * speedRot * dt);
 		return true;
+	}
+
+	function repel(oldx : Float, oldy : Float) {
+		var da = 0.;
+		var sign = 1;
+		var d = hxd.Math.distance(x - oldx, y - oldy);
+
+		var loop = 1000;
+		while(loop-- > 0) {
+			var a = targetRotation + da * sign;
+			var px = oldx + d * Math.cos(a);
+			var py = oldy + d * Math.sin(a);
+			if(!game.world.collides(px, py)) {
+				x = px;
+				y = py;
+				targetRotation = a;
+				return;
+			}
+			sign = -sign;
+			da += 0.01;
+		}
 	}
 
 	override public function update(dt:Float) {
