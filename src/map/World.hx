@@ -529,6 +529,8 @@ class World
 		cam.locked = false;
 		var t = 0.;
 
+		game.audio.playMusic(hxd.Res.Music.run);
+
 		var speed = 0.1;
 		game.event.waitUntil(function(dt) {
 			game.hero.rotation = game.hero.targetRotation = 2.9;
@@ -656,7 +658,7 @@ class World
 				t = 3;
 			case Accident :
 				game.audio.playUIEvent(hxd.Res.Sfx.flower);
-				game.audio.playMusic(hxd.Res.Music.run, 4.0, 0.1);
+				game.audio.stopMusic(0.1);
 				game.renderer.flash(0xFFFFFF, 10.0);
 				clearMobs();
 				t = 3;
