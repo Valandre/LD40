@@ -73,7 +73,7 @@ class Foe extends Character
 		speedRot = 0.;
 		acc = 0;
 		targetPos = null;
-		play("shadows_spawn", {smooth : 0.2, loop : false, onEnd : stand});
+		play("shadows_spawn", {smooth : 0.2, speed : 1.2 + Math.random() * 0.25, loop : false, onEnd : stand});
 		setJob(Spawn, null);
 	}
 
@@ -121,7 +121,7 @@ class Foe extends Character
 			@:privateAccess pl.dead();
 			targetPos.x = pl.x;
 			targetPos.y = pl.y;
-			targetRotation = hxd.Math.atan2(pl.y - y, pl.x - x);
+			rotation = targetRotation = hxd.Math.atan2(pl.y - y, pl.x - x);
 
 			for(m in obj.getMeshes()) {
 				m.material.blendMode = Alpha;

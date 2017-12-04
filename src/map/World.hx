@@ -21,6 +21,7 @@ class World
 	var allSteps = StepKind.createAll();
 
 	var colliders : h2d.col.Polygons;
+	var traps : Array<h3d.col.Collider> = [];
 
 	public var step(default, set) : StepKind;
 
@@ -51,7 +52,10 @@ class World
 				initCollideShape(m);
 				m.visible = false;
 			}
-			if(m.name.substr(0, 4) == "Trap") m.visible = false;
+			if(m.name.substr(0, 4) == "Trap") {
+				m.visible = false;
+				traps.push(m.getCollider());
+			}
 			for (o in m) if (o.name.indexOf("Conelight") == 0) {
 				// spawn cone light
 				var l = new scene.SpotLight();
@@ -105,6 +109,25 @@ class World
 		root.addChild(o);
 	}
 
+
+	public function triggerTrap(x, y) {
+		if(!game.world.trapped(x, y)) return;
+		if(Math.random() < 0.7 && game.foes.length < 80) {
+			var da = hxd.Math.min(hxd.Math.random(Math.PI * 0.9), hxd.Math.random(Math.PI * 0.9)) * (hxd.Math.random() < 0.5 ? -1 : 1);
+			var a = game.hero.targetRotation + da;
+			var d = (0.2 + 0.8 * (1 - Math.abs(da) / Math.PI)) * 20;
+			var x = game.hero.x + d * Math.cos(a);
+			var y = game.hero.y + d * Math.sin(a);
+			if(!collides(x, y))	new ent.Foe(x, y, 0);
+		}
+	}
+
+	function trapped(x, y) {
+		for( t in traps)
+			if(t.contains(new h3d.col.Point(x, y, 0))) return true;
+		return false;
+	}
+
 	public function collides(x, y) {
 		return !colliders.contains(new h2d.col.Point(x, y));
 	}
@@ -112,8 +135,8 @@ class World
 	function initCollideShape(col : h3d.scene.Object) {
 		colliders = [];
 		var buffs = cast(col.toMesh().primitive, h3d.prim.HMDModel).getDataBuffers([new hxd.fmt.hmd.Data.GeometryFormat("position", DVec3)]);
-		var dx = 8.5;
-		var dy = -12;
+		var dx = 0;// 8.5;
+		var dy = 0;// -12;
 		for(i in 0...Std.int(buffs.indexes.length / 3)) {
 			var t = new h2d.col.Polygon();
 			inline function addPoint(x:Float, y:Float) {
@@ -127,7 +150,7 @@ class World
 		}
 		colliders = colliders.toIPolygons(100).union(false).toPolygons(1 / 100);
 
-		/*
+/*
 		var g = new h3d.scene.Graphics(game.s3d);
 		g.lineStyle(3, 0xFF00FF);
 		for(c in colliders) {
@@ -171,11 +194,12 @@ class World
 		if(!Game.PREFS.mobSpawn) return;
 
 		inline function setFrontSpawn(dmax) {
-			var da = hxd.Math.min(hxd.Math.random(Math.PI), hxd.Math.random(Math.PI)) * (hxd.Math.random() < 0.5 ? -1 : 1);
+			var da = hxd.Math.min(hxd.Math.random(Math.PI * 0.9), hxd.Math.random(Math.PI * 0.9)) * (hxd.Math.random() < 0.5 ? -1 : 1);
 			var a = game.hero.targetRotation + da;
 			var d = (0.2 + 0.8 * (1 - Math.abs(da) / Math.PI)) * dmax;
-			var p = cam.target.localToGlobal();
-			new ent.Foe(p.x + d * Math.cos(a), p.y + d * Math.sin(a), 0);
+			var x = game.hero.x + d * Math.cos(a);
+			var y = game.hero.y + d * Math.sin(a);
+			if(!collides(x, y))	new ent.Foe(x, y, 0);
 		}
 
 		switch (step) {

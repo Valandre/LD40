@@ -146,7 +146,7 @@ class Player extends Character
 
 	var g : h3d.scene.Graphics;
 	function checkLamp(dt : Float) {
-		if(!lampActive) return;
+		if(!lampActive || job == LampReload) return;
 		var da = lampArc * 0.5;
 
 		for(e in game.foes) {
@@ -256,21 +256,24 @@ class Player extends Character
 
 			if(Math.random() < 0.1)
 				lightCoef = Math.max(lampBattery / min, lightCoef - 0.25);
-			else lightCoef += 0.015 * dt;
+			else lightCoef = Math.min(1, lightCoef + 0.015 * dt);
 		}
 	}
 
 	function lampReload() {
 		if(job == LampReload) return;
 		if(lampBattery > 10) return;
-		play("reload", {loop : true});
+		lampBattery = 0;
+
+		play("reload", {loop : true, speed : 1.8});
 		setJob(LampReload, function(dt) {
-			lampBattery += dt * 2 / 60;
-			if(lampBattery > 3) {
+			lampBattery += dt * 5 / 60;
+			if(lampBattery > 10) {
 				lampBattery = 45;
 				matLight.color.w = 1;
 				lampLight.color.set(spotColor.x, spotColor.y, spotColor.z);
 				spotLight.color.set(spotColor.x, spotColor.y, spotColor.z);
+				lightCoef = 1;
 				stand();
 			}
 		});
@@ -279,10 +282,13 @@ class Player extends Character
 	override public function update(dt:Float) {
 		updateBattery(dt);
 		checkHurt();
+		game.world.triggerTrap(x, y);
+
 		if(!game.world.cam.locked && job != Dead) {
 			updateKeys(dt);
 			checkLamp(dt);
 		}
+
 		super.update(dt);
 	}
 
