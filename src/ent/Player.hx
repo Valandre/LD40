@@ -32,6 +32,7 @@ class Player extends Character
 		walkRef = 0.04;
 		runRef = 0.14;
 		ray = 0.4;
+		runAt = 0.085;
 		stand();
 		hxd.Pad.wait(function(pad) {
 			this.pad = pad;
@@ -78,15 +79,8 @@ class Player extends Character
 	}
 
 	override function get_moveSpeed() {
-		return 0.05 + 0.1 * game.world.getFrameCoef();
-		/*
-		return switch(game.world.step) {
-			case Start, Phone : 0.05;
-			case Park, River : 0.095;
-			case Shop: 0.12;
-			case Accident, Forest, Tombstone : 0.15;
-			default : 0.15;
-		}*/
+		var v = game.world.getFrameCoef();
+		return 0.05 + 0.15 * v * v;
 	}
 
 	function stand() {
@@ -100,7 +94,6 @@ class Player extends Character
 	function move() {
 		if(job == Move) return;
 
-		var runAt = 0.08;
 		setJob(Move, function(dt) {
 			if(targetPos == null) {
 				stand();

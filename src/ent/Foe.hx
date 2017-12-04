@@ -18,7 +18,7 @@ class Foe extends Character
 		this.isStatic = isStatic;
 		this.canMove = canMove;
 		this.pl = game.hero;
-		walkRef = 0.05;
+		walkRef = 0.04;
 		runRef = 0.14;
 		ray = 0.4;
 
@@ -34,13 +34,16 @@ class Foe extends Character
 	}
 
 	override function get_moveSpeed() {
+		var v = game.world.getFrameCoef();
+		return 0.02 + 0.15 * v * v;
+		/*
 		return switch(game.world.step) {
 			case Phone, Park : 0.02;
 			case River: 0.04;
 			case Shop : 0.06;
 			case Accident, Forest, Tombstone : 0.1;
 			default : 0.;
-		}
+		}*/
 	}
 
 
@@ -94,10 +97,10 @@ class Foe extends Character
 		if(!canMove || job == Move) return;
 		speedRot = 0.15;
 		acc = 0;
-		var accPower = 0.005 + hxd.Math.random(0.005);
-		var spCoeff = 1 - hxd.Math.random() * 0.8;
+		var accPower = 0.01 + hxd.Math.random(0.005);
+		var spCoeff = 1 - hxd.Math.random() * 0.5;
 		targetPos = new h2d.col.Point(pl.x, pl.y);
-		play(moveSpeed > 0.1 ? "shadows_run" : "shadows_walk", {smooth : 0.2, speed : 0});
+		play(moveSpeed * spCoeff > runAt ? "shadows_run" : "shadows_walk", {smooth : 0.2, speed : 0});
 
 		setJob(Move, function(dt) {
 			targetPos.x = pl.x;
@@ -107,7 +110,7 @@ class Foe extends Character
 			acc = hxd.Math.min(1, acc + accPower * dt);
 			var sp = moveSpeed * spCoeff * acc * dt;
 			moveTo(a.x * sp, a.y * sp);
-			obj.currentAnimation.speed = acc * moveSpeed / (moveSpeed > 0.1 ? runRef : walkRef);
+			obj.currentAnimation.speed = (acc * moveSpeed * spCoeff) / ((moveSpeed * spCoeff) > runAt ? runRef : walkRef);
 		});
 	}
 

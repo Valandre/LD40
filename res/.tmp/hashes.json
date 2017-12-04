@@ -1,6 +1,6 @@
 {
 	"Map": {
-		"Map01.FBX": "632cc578138ff69c43426c691b31fa20773a590c"
+		"Map01.FBX": "c879087a1bf980d7dbfda45b6ebb9d97afd765e3"
 	},
 	"chars": {
 		"main_character": {
@@ -12,6 +12,7 @@
 			"Anim_idle01.FBX": "6cd209eb72416e86c84f8d1355d387b32666f68e"
 		},
 		"shadows": {
+			"Anim_shadows_run.FBX": "d6cf39757eff39021ebe8595a981c88c2e89a59c",
 			"Anim_shadows_spawn.FBX": "18f0c65dfc2600d13ca25987322c6432dd33a9ae",
 			"model00.FBX": "6fd48a2cc20380c0ac08ce4c7290b50b8133b24e",
 			"model02.FBX": "9f07a13b6fc4746fcda1faa3c44ee531a3e9766d",

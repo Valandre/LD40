@@ -28,6 +28,7 @@ class Character extends ent.Entity {
 	var ray = 1.;
 	var walkRef : Float;
 	var runRef : Float;
+	var runAt = 0.08;
 
 	public function new(kind, x, y, z) {
 		this.kind = kind;

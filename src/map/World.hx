@@ -213,37 +213,39 @@ class World
 			var d = (0.2 + 0.8 * (1 - Math.abs(da) / Math.PI)) * dmax;
 			var x = game.hero.x + d * Math.cos(a);
 			var y = game.hero.y + d * Math.sin(a);
-			if(!collides(x, y))	new ent.Foe(x, y, 0);
+			if(!collides(x, y) && !isSafe(x, y)) new ent.Foe(x, y, 0);
 		}
 
 		switch (step) {
 			case Phone:
-				if(Math.random() < 0.01) {
-					var p = cam.target.localToGlobal();
+				if(Math.random() < 0.015) {
 					var d = 12 + hxd.Math.random(8);
 					var a = hxd.Math.srand(Math.PI);
-					new ent.Foe(p.x + d * Math.cos(a), p.y + d * Math.sin(a), 0, true, false, false);
+					var x = game.hero.x + d * Math.cos(a);
+					var y = game.hero.y + d * Math.sin(a);
+					if(!collides(x, y) && !isSafe(x, y)) new ent.Foe(x + d * Math.cos(a), y + d * Math.sin(a), 0, true, false, false);
 				}
 
 			case Park:
-				if(Math.random() < 0.015) {
-					var p = cam.target.localToGlobal();
+				if(Math.random() < 0.025) {
 					var d = 10 + hxd.Math.random(8);
 					var a = hxd.Math.srand(Math.PI);
-					new ent.Foe(p.x + d * Math.cos(a), p.y + d * Math.sin(a), 0);
+					var x = game.hero.x + d * Math.cos(a);
+					var y = game.hero.y + d * Math.sin(a);
+					if(!collides(x, y) && !isSafe(x, y)) new ent.Foe(x + d * Math.cos(a), y + d * Math.sin(a), 0);
 				}
 
 			case River:
-				if(Math.random() < 0.025) setFrontSpawn(16);
+				if(Math.random() < 0.05) setFrontSpawn(16);
 
 			case Shop:
-				if(Math.random() < 0.05) setFrontSpawn(20);
+				if(Math.random() < 0.1) setFrontSpawn(20);
 
 			case Accident:
-				if(Math.random() < 0.1) setFrontSpawn(24);
+				if(Math.random() < 0.15) setFrontSpawn(24);
 
 			case Forest:
-				if(Math.random() < 0.2) setFrontSpawn(30);
+				if(Math.random() < 0.25) setFrontSpawn(30);
 			default:
 		}
 	}
