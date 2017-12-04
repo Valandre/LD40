@@ -19,6 +19,12 @@ class World
 	var flowers : Array<h3d.scene.Object> = [];
 	var flowerGlow : Array<h3d.scene.Object> = [];
 
+	var endPos : h3d.Vector;
+	var cameraEndPos : h3d.Vector;
+	var cameraEndTarget : h3d.Vector;
+	var cameraCreditsPos : h3d.Vector;
+	var cameraCreditsTarget : h3d.Vector;
+
 	public var step(default, set) : Data.SpeechKind;
 	public var sceneLock = false;
 
@@ -105,6 +111,14 @@ class World
 				glow.playAnimation(a);
 				flowerGlow.push(glow);
 			}
+
+			endPos = obj.getObjectByName("PlayerPos").localToGlobal();
+
+			cameraEndPos = obj.getObjectByName("Camera002").localToGlobal();
+			cameraEndTarget = obj.getObjectByName("Camera002.Target").localToGlobal();
+
+			cameraCreditsPos = obj.getObjectByName("Cameraend").localToGlobal();
+			cameraCreditsTarget = obj.getObjectByName("Cameraend.Target").localToGlobal();
 
 			for (o in m) if (o.name.indexOf("Conelight") == 0) {
 				// spawn cone light
@@ -304,9 +318,39 @@ class World
 
 	public function gotoStep(v : Int) {
 		step = allSteps[v].id;
-		if(v > 0) {
-			cam.locked = false;
 
+		if(step == Tombstone) {
+			sceneLock = true;
+			cam.locked = true;
+
+			var speed = @:privateAccess game.hero.moveSpeed;
+			var camera = game.s3d.camera;
+			var camSpeed = 0.005;
+			game.event.waitUntil(function(dt) {
+				camera.target.x += (cameraEndTarget.x - camera.target.x ) * camSpeed * dt;
+				camera.target.y += (cameraEndTarget.y - camera.target.y) * camSpeed * dt;
+				camera.target.z += (cameraEndTarget.z - camera.target.z) * camSpeed * dt;
+
+				camera.pos.x += (cameraEndPos.x - camera.pos.x) * camSpeed * dt;
+				camera.pos.y += (cameraEndPos.y - camera.pos.y) * camSpeed * dt;
+				camera.pos.z += (cameraEndPos.z - camera.pos.z) * camSpeed * dt;
+				camSpeed *= Math.pow(1.01, dt);
+
+				game.hero.targetRotation = hxd.Math.atan2(endPos.y - game.hero.y, endPos.x - game.hero.x);
+				game.hero.endMove(speed);
+				//speed *= Math.pow(0.9, dt);
+
+				if(Math.abs(cameraEndPos.z - camera.pos.z) < 0.1) {
+					//this.cam.locked = false;
+					//playScene(Start, null);
+					//return true;
+				}
+				return false;
+			});
+
+		}
+		else if(v > 0) {
+			cam.locked = false;
 			var frame = stepFrames[v];
 			var anim = cam.obj.currentAnimation;
 			anim.setFrame(frame);
@@ -615,6 +659,10 @@ class World
 
 	public function update(dt: Float) {
 		if(!sceneLock) stepUpdate(dt);
+		if(step != Tombstone && cam.obj.currentAnimation.frame > 5950)
+			gotoStep(stepFrames.length - 1);
+		if(step == Tombstone) return;
+
 		bugPowerUpdate(dt);
 		triggerSpeech(game.hero.x, game.hero.y);
 		triggerTrap(game.hero.x, game.hero.y);
