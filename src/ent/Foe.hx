@@ -32,7 +32,7 @@ class Foe extends Character
 	}
 
 	function updateHitVolume(c : hxd.snd.Channel) {
-		c.volume = Math.min(hitTime, 1.0);
+		c.volume = obj.culled ? 0.0 : Math.min(hitTime, 1.0);
 	}
 
 	function isAlive() {
@@ -146,7 +146,8 @@ class Foe extends Character
 
 	function dead() {
 		if(job == Dead) return;
-		game.audio.playEventAt(hxd.Res.Sfx.shadow_die, x, y, z, 0.9 + Math.random() * 0.2);
+		if (!obj.culled)
+			game.audio.playEventAt(hxd.Res.Sfx.shadow_die, x, y, z, 0.9 + Math.random() * 0.2);
 		setJob(Dead, function(dt) {
 			remove();
 		});

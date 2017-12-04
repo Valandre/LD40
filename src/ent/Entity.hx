@@ -55,8 +55,8 @@ class Entity {
 		game.world.addChild(obj);
 	}
 
-	public function getBounds() {
-		return obj == null ? null : obj.getBounds();
+	public function getBounds(?tmp : h3d.col.Bounds) {
+		return obj == null ? null : obj.getBounds(tmp);
 	}
 
 	public function play( anim : String, ?opts : PlayOptions ) {

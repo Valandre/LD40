@@ -285,6 +285,16 @@ class Game extends hxd.App {
 		event.update(dt);
 		for(e in entities)
 			e.update(dt);
+
+		// cull
+		var bounds = new h3d.col.Bounds();
+		var frustum = s3d.camera.getFrustum();
+		for (e in entities) {
+			bounds.empty();
+			bounds = e.getBounds(bounds);
+			if (bounds == null) continue;
+			@:privateAccess e.obj.culled = !frustum.hasBounds(bounds);
+		}
 	}
 
 	function loadRenderConfig(renderer : CustomRenderer) {
