@@ -5,7 +5,7 @@ class Game extends hxd.App {
 
 	static public var PREFS = initPrefs();
 	static function initPrefs() {
-		var prefs = { fullScreen : false, mobSpawn : true , disableStart : true };
+		var prefs = { fullScreen : false, mobSpawn : true };
 		prefs = hxd.Save.load(prefs, "prefs");
 		return prefs;
 	}
@@ -98,6 +98,7 @@ class Game extends hxd.App {
 
 	public var camSpeed = 0.05;
 	function cameraUpdate(dt : Float) {
+		if(world.step == Title) return;
 		if(world.cam.locked || hero == null) return;
 		var cam = s3d.camera;
 		cam.target.x += (hero.x - cam.target.x) * camSpeed * dt;
@@ -147,15 +148,12 @@ class Game extends hxd.App {
 				renderer.post.shader.bugPower = 0.0;
 		}
 
-		if(K.isPressed(K.F2)) {
-			PREFS.disableStart = !PREFS.disableStart;
-			hxd.Save.save(PREFS, "prefs");
-		}
-
 		inline function setStep(v : Int) {
-			@:privateAccess world.stepId = -1;
-			world.respawn();
-			world.gotoStep(v);
+			@:privateAccess if(world.stepId != v) {
+				world.stepId = -1;
+				world.respawn();
+				world.gotoStep(v);
+			}
 		}
 		if(K.isPressed(K.NUMBER_1)) setStep(0);
 		if(K.isPressed(K.NUMBER_2)) setStep(1);
@@ -165,6 +163,8 @@ class Game extends hxd.App {
 		if(K.isPressed(K.NUMBER_6)) setStep(5);
 		if(K.isPressed(K.NUMBER_7)) setStep(6);
 		if(K.isPressed(K.NUMBER_8)) setStep(7);
+		if(K.isPressed(K.NUMBER_9)) setStep(8);
+		if(K.isPressed(K.NUMBER_0)) setStep(9);
 		/*
 		if(hero != null) {
 			@:privateAccess {
@@ -189,8 +189,7 @@ class Game extends hxd.App {
 		infos.text =
 		"[1-8] Change Place (" + world.step + ")\n" +
 		"[BackSpace] Restart Game\n" +
-		"[F1] Toggle mob spawn (" + PREFS.mobSpawn + ")\n" +
-		"[F2] Toggle Start menu (" + PREFS.disableStart + ")\n";
+		"[F1] Toggle mob spawn (" + PREFS.mobSpawn + ")\n";
 		infos.y = s2d.height - infos.textHeight - 10;
 	}
 

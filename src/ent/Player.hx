@@ -43,6 +43,11 @@ class Player extends Character
 		return hxd.Res.chars.main_character.model;
 	}
 
+	public function reset() {
+		x = y = z = 0;
+		lampBattery = 5;
+	}
+
 	override function init() {
 		model = getModel();
 		if(model == null) return;
@@ -240,6 +245,7 @@ class Player extends Character
 
 	var lightCoef = 1.;
 	function updateBattery(dt : Float) {
+		if(game.world.cam.locked) return;
 		lampBattery = Math.max(0, lampBattery - dt / 60);
 		lampActive = lampBattery > 0;
 

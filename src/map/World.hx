@@ -1,11 +1,13 @@
 package map;
 
 enum StepKind {
+	Title;
 	Start;
 	Phone;
 	Park;
 	River;
 	Shop;
+	Avenue;
 	Accident;
 	Forest;
 	Tombstone;
@@ -111,11 +113,11 @@ class World
 		}*/
 
 
-		//start, phone, park, river, shop, accident, graveyard, tombstone
-		stepFrames = [0, 1100, 1950, 2850, 3800, 4990, 5100, obj.currentAnimation.frameCount - 1];
+		//Title, start, phone, park, river, shop, Avenue, accident, graveyard, tombstone
+		stepFrames = [0, 1, 1100, 1950, 2850, 3800, 4500, 4990, 5100, obj.currentAnimation.frameCount - 1];
 
+		step = Title;
 		game.event.wait(0, function() {
-			step = Start;
 			gotoStep(0);
 		});
 	}
@@ -198,24 +200,17 @@ class World
 	function set_step(k : StepKind) {
 		if(step == k) return step;
 
-		var curId = StepKind.createAll().indexOf(k);
+		var curId = allSteps.indexOf(k);
 		if(stepId >= curId) return step;
 		stepId = curId;
-
+/*
 		switch(k) {
-			case Start:
+			case Title:
 				new ent.Foe(-75, 90, 6, false, false, true);
 				new ent.Foe(-78, 90, 6, false, false, true);
 				new ent.Foe(-77, 70, 5, false, false, true);
-			case Phone:
-			case Park:
-			case River:
-			case Shop:
-			case Accident:
-			case Forest:
-			case Tombstone:
 			default:
-		}
+		}*/
 		return step = k;
 	}
 
@@ -253,13 +248,12 @@ class World
 
 			case River:
 				if(Math.random() < 0.05) setFrontSpawn(20);
-
 			case Shop:
-				if(Math.random() < 0.1) setFrontSpawn(26);
-
+				if(Math.random() < 0.1) setFrontSpawn(35);
+			case Avenue :
+				if(Math.random() < 0.2) setFrontSpawn(35);
 			case Accident:
 				if(Math.random() < 0.15) setFrontSpawn(30);
-
 			case Forest:
 				if(Math.random() < 0.25) setFrontSpawn(30);
 			default:
@@ -268,11 +262,10 @@ class World
 
 
 	public function gotoStep(v : Int) {
-		if(v == -1) return;
-		if(Game.PREFS.disableStart || v > 0) {
+		step = allSteps[v];
+		if(v > 0) {
 			cam.locked = false;
 
-			step = allSteps[v];
 			var frame = stepFrames[v];
 			var anim = cam.obj.currentAnimation;
 			anim.setFrame(frame);
@@ -287,13 +280,7 @@ class World
 			}
 		}
 		else {
-			game.hero.x = game.hero.y = game.hero.z = 0;
-			stepId = 0;
-			var frame = stepFrames[0];
-			var anim = cam.obj.currentAnimation;
-			anim.setFrame(frame);
-			anim.sync();
-
+			game.hero.reset();
 			cam.locked = true;
 
 			game.s3d.camera.target = cam.obj.getObjectByName("Cameratitle.Target").localToGlobal();
@@ -319,27 +306,26 @@ class World
 	function startGame() {
 		game.ui.resetTitle();
 
-		//var camera = game.s3d.camera;
-		//var v = 1.;
-		//var dTarget = new h3d.col.Point(game.hero.x - camera.target.x, game.hero.y - camera.target.y, (game.hero.z + 1.5) - camera.target.z);
-		//getCameraFramePos(game.hero.x, game.hero.y);
-		//var p = cam.pos.localToGlobal();
-		//var dPos = new h3d.col.Point(p.x - camera.pos.x, p.y - camera.pos.y, p.z - camera.pos.z);
-		//game.event.waitUntil(function(dt) {
-			//v = Math.max(0, v - 0.005 * dt);
-			//camera.target.x = game.hero.x - dTarget.x * v;
-			//camera.target.y = game.hero.y - dTarget.y * v;
-			//camera.target.z = (game.hero.z + 1.5) - dTarget.z * v;
-			//camera.pos.x = cam.pos.x - dPos.x * v;
-			//camera.pos.y = cam.pos.y - dPos.y * v;
-			//camera.pos.z = cam.pos.z - dPos.z * v;
-			//if(v == 0) {
-				@:privateAccess game.infos.visible = true;
-				cam.locked = false;
-				//return true;
-			//}
-			//return false;
-		//});
+		var cam = game.s3d.camera;
+		var hero = game.hero;
+		var camSpeed = 0.0005;
+		game.event.waitUntil(function(dt) {
+			cam.target.x += (hero.x - cam.target.x) * camSpeed * dt;
+			cam.target.y += (hero.y - cam.target.y) * camSpeed * dt;
+			cam.target.z += (hero.z + 1.5 - cam.target.z) * camSpeed * dt;
+
+			var p = @:privateAccess game.getClampedFramePos();
+			cam.pos.x += (p.x - cam.pos.x) * camSpeed * dt;
+			cam.pos.y += (p.y - cam.pos.y) * camSpeed * dt;
+			cam.pos.z += (p.z - cam.pos.z) * camSpeed * dt;
+			camSpeed *= Math.pow(1.02, dt);
+
+			if(Math.abs(cam.pos.z - p.z) < 0.1) {
+				this.cam.locked = false;
+				return true;
+			}
+			return false;
+		});
 	}
 
 	function getStepFromFrame(f : Float) {
@@ -374,8 +360,6 @@ class World
 		anim.setFrame(frame);
 		anim.sync();
 		step = getStepFromFrame(frame);
-		//trace(frame, step);
-
 		return cam.pos.localToGlobal();
 	}
 
@@ -393,7 +377,7 @@ class World
 
 		game.renderer.post.shader.bugPower = 0;
 		@:privateAccess game.hero.stand();
-		gotoStep(stepId);
+		if(stepId != -1) gotoStep(stepId);
 	}
 
 	function bugPowerUpdate(dt : Float) {
