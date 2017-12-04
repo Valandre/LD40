@@ -1,51 +1,51 @@
 {
-	"chars": {
-		"main_character": {
-			"Anim_catch.FBX": "703c58fda9d19a7b7bb6f0d0636641fe66a0e355",
-			"Anim_reload.FBX": "2de3bb219274601d2d0c0132550d329bac0eb4c7",
-			"Anim_sprint.FBX": "cb0b1580aa543033fc3581092f9b8b5a8459ffb7",
-			"Anim_fall.FBX": "c81235aeb004424f8b4717dafdb3351ab95be9ac",
-			"model.FBX": "8d5917df4f5f091fa84c934f5e42f59047bb0d11",
-			"Anim_death.FBX": "cb663251a04d5577e785ed340b5dd8d15e154576",
-			"Anim_walk.FBX": "d9a71090c9bdf80602d4809a00dc611759d8622a",
-			"Anim_run.FBX": "50e70efe8744629867cf46ad816acf8bf0afb3a9",
-			"Anim_idle01.FBX": "6cd209eb72416e86c84f8d1355d387b32666f68e"
-		},
-		"shadows": {
-			"model01.FBX": "43dd411128f26fa1eb2368b5a76f5a0e484c2931",
-			"Anim_shadows_idle.FBX": "3312a4434c6d4ba0ef674dab32fea331b69354a3",
-			"model02.FBX": "9f07a13b6fc4746fcda1faa3c44ee531a3e9766d",
-			"Anim_shadows_walk.FBX": "11f69e67371912e2c78ab1d242e84460667d1353",
-			"Anim_shadows_run.FBX": "d6cf39757eff39021ebe8595a981c88c2e89a59c",
-			"Anim_shadows_spawn.FBX": "18f0c65dfc2600d13ca25987322c6432dd33a9ae",
-			"Anim_shadows_grab.FBX": "fd0ad1a4527e2b18ae88d27c9a52da4a06786b0e",
-			"model00.FBX": "6fd48a2cc20380c0ac08ce4c7290b50b8133b24e",
-			"Anim_run.FBX": "c9ec0d9d5d21019c7aca26244d966354936f2619",
-			"Anim_idle01.FBX": "82dda85ff78f484027b37280b2ea4dc3efa04e08"
-		}
-	},
 	"Ambient": {
-		"wind_loop.wav": "d6d0f525d7edf9cffc787a009f7bf2e2c477308e",
 		"shadow_loop.wav": "6d1b5701312b95dc37173963910ac7216a4ccb17",
 		"playground_loop.wav": "e94eef39660f9e27b98a9f5c32cd8fba7ffb2ca4",
-		"water_loop.wav": "1020d0bd6d3d1a61bb94399725a9ea1e97f7e89d"
+		"water_loop.wav": "1020d0bd6d3d1a61bb94399725a9ea1e97f7e89d",
+		"wind_loop.wav": "d6d0f525d7edf9cffc787a009f7bf2e2c477308e"
 	},
 	"Map": {
-		"Map01.FBX": "fa2f2bd9ce680f0ce835f4aaca123bfd5ce97b25",
+		"Map01.FBX": "971d87399bea98132358980f048ff154a776c6a4",
 		"flower_glow.FBX": "1199de6c02bd51708142896fdc2673eb5e031c6b"
 	},
 	"Sfx": {
-		"typewriterKey2.wav": "786abc895d5fce723077931dac95f09e645a801a",
-		"hero_die.wav": "3dcbf955c0c274226b65cf3cee74885b224e5443",
 		"flower.wav": "32af29c162a215e4e6766c0ac51d4b9adc38475e",
-		"lamp_reload.wav": "166f4a2be606c534b40602b251615f6ecfde4475",
-		"end_sequence2.wav": "c68954da2bfdeadb4102a8d2eb403447237758f1",
-		"end_sequence.wav": "32af29c162a215e4e6766c0ac51d4b9adc38475e",
-		"step.wav": "7e497ae71b53cc0caf0b95cd608f4d131816f482",
 		"shadow_fry.wav": "3f5ced06156a0368afdb9db127d1d74aebc0259d",
-		"shadow_die.wav": "b32209be1a4f8bc6c398ed3d2724a78a5d29b7d3",
+		"step.wav": "7e497ae71b53cc0caf0b95cd608f4d131816f482",
+		"end_sequence2.wav": "c68954da2bfdeadb4102a8d2eb403447237758f1",
 		"typewriterRoll.wav": "9a13f9b39af24dbdb0b2d7843d7fa1bfd4a71a2d",
+		"typewriterKey1.wav": "d2473c66f5b4c72edfcde95cae179e1102dee70a",
+		"lamp_reload.wav": "166f4a2be606c534b40602b251615f6ecfde4475",
+		"typewriterKey2.wav": "786abc895d5fce723077931dac95f09e645a801a",
+		"shadow_die.wav": "b32209be1a4f8bc6c398ed3d2724a78a5d29b7d3",
 		"pick_phone.wav": "5312b7b09c6d70331cd3f2f55b51887894ad038f",
-		"typewriterKey1.wav": "d2473c66f5b4c72edfcde95cae179e1102dee70a"
+		"end_sequence.wav": "32af29c162a215e4e6766c0ac51d4b9adc38475e",
+		"hero_die.wav": "3dcbf955c0c274226b65cf3cee74885b224e5443"
+	},
+	"chars": {
+		"main_character": {
+			"model.FBX": "8d5917df4f5f091fa84c934f5e42f59047bb0d11",
+			"Anim_death.FBX": "cb663251a04d5577e785ed340b5dd8d15e154576",
+			"Anim_run.FBX": "50e70efe8744629867cf46ad816acf8bf0afb3a9",
+			"Anim_sprint.FBX": "cb0b1580aa543033fc3581092f9b8b5a8459ffb7",
+			"Anim_fall.FBX": "c81235aeb004424f8b4717dafdb3351ab95be9ac",
+			"Anim_catch.FBX": "703c58fda9d19a7b7bb6f0d0636641fe66a0e355",
+			"Anim_reload.FBX": "2de3bb219274601d2d0c0132550d329bac0eb4c7",
+			"Anim_walk.FBX": "d9a71090c9bdf80602d4809a00dc611759d8622a",
+			"Anim_idle01.FBX": "6cd209eb72416e86c84f8d1355d387b32666f68e"
+		},
+		"shadows": {
+			"Anim_shadows_run.FBX": "d6cf39757eff39021ebe8595a981c88c2e89a59c",
+			"Anim_shadows_spawn.FBX": "18f0c65dfc2600d13ca25987322c6432dd33a9ae",
+			"model00.FBX": "6fd48a2cc20380c0ac08ce4c7290b50b8133b24e",
+			"model02.FBX": "9f07a13b6fc4746fcda1faa3c44ee531a3e9766d",
+			"Anim_run.FBX": "c9ec0d9d5d21019c7aca26244d966354936f2619",
+			"model01.FBX": "43dd411128f26fa1eb2368b5a76f5a0e484c2931",
+			"Anim_shadows_grab.FBX": "fd0ad1a4527e2b18ae88d27c9a52da4a06786b0e",
+			"Anim_shadows_walk.FBX": "11f69e67371912e2c78ab1d242e84460667d1353",
+			"Anim_shadows_idle.FBX": "3312a4434c6d4ba0ef674dab32fea331b69354a3",
+			"Anim_idle01.FBX": "82dda85ff78f484027b37280b2ea4dc3efa04e08"
+		}
 	}
 }

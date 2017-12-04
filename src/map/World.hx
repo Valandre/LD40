@@ -54,10 +54,23 @@ class World
 		obj.getObjectByName("Landscape").lightCameraCenter = true;
 		root.addChild(obj);
 
+		endPos = obj.getObjectByName("PlayerPos").localToGlobal();
+
+		cameraEndPos = obj.getObjectByName("Camera002").localToGlobal();
+		cameraEndTarget = obj.getObjectByName("Camera002.Target").localToGlobal();
+
+		cameraCreditsPos = obj.getObjectByName("Cameraend").localToGlobal();
+		cameraCreditsTarget = obj.getObjectByName("Cameraend.Target").localToGlobal();
+
 		for (m in obj.getMeshes()) {
 			if(m.name == "Road") {
 				initCollideShape(m);
 				m.visible = false;
+			}
+			if(m.name.substr(0, 9) == "ShadowPos") {
+				trace("shadow");
+				var p = m.localToGlobal();
+				new ent.Foe(p.x, p.y,p.z, false, false, true);
 			}
 			if(m.name.substr(0, 4) == "Trap") {
 				m.visible = false;
@@ -111,14 +124,6 @@ class World
 				glow.playAnimation(a);
 				flowerGlow.push(glow);
 			}
-
-			endPos = obj.getObjectByName("PlayerPos").localToGlobal();
-
-			cameraEndPos = obj.getObjectByName("Camera002").localToGlobal();
-			cameraEndTarget = obj.getObjectByName("Camera002.Target").localToGlobal();
-
-			cameraCreditsPos = obj.getObjectByName("Cameraend").localToGlobal();
-			cameraCreditsTarget = obj.getObjectByName("Cameraend.Target").localToGlobal();
 
 			for (o in m) if (o.name.indexOf("Conelight") == 0) {
 				// spawn cone light
@@ -217,7 +222,7 @@ class World
 
 	public function triggerTrap(x, y) {
 		if(!game.world.trapped(x, y)) return;
-		if(Math.random() < 0.7 && game.foes.length < 80) {
+		if(Math.random() < 0.7 && game.foes.length < 200) {
 			var da = hxd.Math.min(hxd.Math.random(Math.PI * 0.9), hxd.Math.random(Math.PI * 0.9)) * (hxd.Math.random() < 0.5 ? -1 : 1);
 			var a = game.hero.targetRotation + da;
 			var d = (0.2 + 0.8 * (1 - Math.abs(da) / Math.PI)) * 20;
@@ -546,6 +551,7 @@ class World
 			var i = game.foes.length - 1;
 			while(i >= 0) {
 				var f = game.foes[i--];
+				if(f.isStatic) continue;
 				if(hxd.Math.distanceSq(f.x - game.hero.x, f.y - game.hero.y) < dist * dist)
 					f.remove();
 			}
