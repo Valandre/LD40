@@ -99,7 +99,7 @@ class World
 				glow.x = p.x;
 				glow.y = p.y;
 				glow.z = p.z;
-				glow.setScale(0.5);
+				//glow.setScale(0.5);
 				addChild(glow);
 				var a = game.modelCache.loadAnimation(glowRes);
 				glow.playAnimation(a);

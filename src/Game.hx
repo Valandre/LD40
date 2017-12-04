@@ -169,6 +169,10 @@ class Game extends hxd.App {
 			}
 		}
 
+		if(K.isPressed(K.TAB)) {
+			pause = !pause;
+		}
+
 		if (K.isDown(K.RIGHT)) {
 			renderer.post.shader.bugPower += 0.01;
 			if (renderer.post.shader.bugPower > 1.0)
