@@ -5,7 +5,7 @@ class Game extends hxd.App {
 
 	static public var PREFS = initPrefs();
 	static function initPrefs() {
-		var prefs = { fullScreen : false, mobSpawn : true };
+		var prefs = { fullScreen : true, mobSpawn : true };
 		prefs = hxd.Save.load(prefs, "prefs");
 		return prefs;
 	}
@@ -154,7 +154,7 @@ class Game extends hxd.App {
 			onResize();
 		}
 
-
+/*
 		 //DEBUG
 		if(K.isPressed(K.F1)) {
 			PREFS.mobSpawn = !PREFS.mobSpawn;
@@ -194,6 +194,9 @@ class Game extends hxd.App {
 
 		if(K.isPressed(K.BACKSPACE))
 			restart();
+
+		*/
+
 		/*
 		if(infos == null) {
 			infos = new h2d.Text(hxd.res.DefaultFont.get(), s2d);
@@ -253,12 +256,14 @@ class Game extends hxd.App {
 	override function update(dt:Float) {
 		/////
 		//DEBUG ONLY
+		/*
 		var speed = pause ? 0 : 1.;
 		if( K.isDown(K.SHIFT) || (pad != null && pad.isDown(hxd.Pad.DEFAULT_CONFIG.RB)))
 			speed *= K.isDown(K.CTRL) ? 0.1 : 5;
 		hxd.Timer.deltaT *= speed;
 		hxd.Timer.tmod *= speed;
 		dt *= speed;
+		*/
 		/////////
 
 		ui.update(dt);
@@ -318,9 +323,9 @@ class Game extends hxd.App {
 				inst.onCdbReload();
 			});
 		#end
-		
+
 		Data.load(hxd.Res.data.entry.getBytes().toString());
 		inst = new Game();
-		
+
 	}
 }
