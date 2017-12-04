@@ -537,6 +537,7 @@ class World
 		}
 		v = Math.min(1, v);
 		game.renderer.post.shader.bugPower += (v - game.renderer.post.shader.bugPower) * 0.1 * dt;
+		game.audio.bugPower = game.renderer.post.shader.bugPower;
 	}
 
 	public function update(dt: Float) {

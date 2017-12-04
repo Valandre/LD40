@@ -55,15 +55,21 @@ class Audio {
 	public var uiChanGroup      : ChannelGroup;
 	public var sfxChanGroup     : ChannelGroup;
 
-	public var localEventSoundGroup : SoundGroup;
+	public var bugPower : Float;
 
-	var music : Channel;
+	var localEventSoundGroup : SoundGroup;
+
+	var music       : Channel;
 	var mainAmbient : Channel;
+	var bugAmbient  : Channel;
 
-	var newEvents       : Event;
-	var onHoldEvents    : Event;
+	var newEvents    : Event;
+	var onHoldEvents : Event;
 
 	var time : Float;
+
+	static var BASE_AMBIENT_VOLUME = 0.1;
+	static var BUG_AMBIENT_VOLUME = 1.0;
 
 	public function new() {
 		musicChanGroup   = new ChannelGroup("music");
@@ -79,12 +85,14 @@ class Audio {
 		localEventSoundGroup = new SoundGroup("spatializedEvent");
 		localEventSoundGroup.mono = true;
 
-		mainAmbient = hxd.Res.Ambient.wind_loop.play(true, ambientChanGroup);
+		mainAmbient = hxd.Res.Ambient.wind_loop.play(true, BASE_AMBIENT_VOLUME, ambientChanGroup);
+		bugAmbient  = hxd.Res.Ambient.shadow_loop.play(true, BUG_AMBIENT_VOLUME, ambientChanGroup);
 
-		ambientChanGroup.volume = 0.10;
+		ambientChanGroup.volume = 1.0;
 		musicChanGroup.volume   = 0.25;
 
 		time = 0.0;
+		bugPower = 0.0;
 	}
 
 	public function playMusic(snd : hxd.res.Sound, ?fadeIn = 0.0) {
@@ -109,6 +117,16 @@ class Audio {
 	}
 
 	public function update(dt : Float) {
+		updateEvents(dt);
+		updateAmbients(dt);
+	}
+
+	public function updateAmbients(dt) {
+		bugAmbient.volume = BUG_AMBIENT_VOLUME * bugPower;
+		mainAmbient.volume = BASE_AMBIENT_VOLUME * (1 - bugPower);
+	}
+
+	public function updateEvents(dt : Float) {
 		time += dt;
 
 		var listenerPos = hxd.snd.Driver.get().listener.position;
