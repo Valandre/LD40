@@ -256,14 +256,14 @@ class Game extends hxd.App {
 	override function update(dt:Float) {
 		/////
 		//DEBUG ONLY
-		/*
+/*
 		var speed = pause ? 0 : 1.;
 		if( K.isDown(K.SHIFT) || (pad != null && pad.isDown(hxd.Pad.DEFAULT_CONFIG.RB)))
 			speed *= K.isDown(K.CTRL) ? 0.1 : 5;
 		hxd.Timer.deltaT *= speed;
 		hxd.Timer.tmod *= speed;
 		dt *= speed;
-		*/
+*/
 		/////////
 
 		ui.update(dt);

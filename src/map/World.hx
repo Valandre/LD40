@@ -337,9 +337,11 @@ class World
 			sceneLock = true;
 			cam.locked = true;
 
-			var speed = @:privateAccess game.hero.moveSpeed;
 			var camera = game.s3d.camera;
 			var camSpeed = 0.0025;
+
+			var speed = @:privateAccess game.hero.moveSpeed;
+			var dist = hxd.Math.distance(endPos.y - game.hero.y, endPos.x - game.hero.x);
 			game.event.waitUntil(function(dt) {
 				for(e in game.foes)	e.hit(0.2 + Math.random());
 
@@ -352,10 +354,12 @@ class World
 				camera.pos.z += (cameraEndPos.z - camera.pos.z) * camSpeed * dt;
 				camSpeed *= Math.pow(1.01, dt);
 
+				var d = hxd.Math.distance(endPos.y - game.hero.y, endPos.x - game.hero.x);
+				var sp = 0.025 + speed * d / dist;
 				game.hero.rotation = game.hero.targetRotation = hxd.Math.atan2(endPos.y - game.hero.y, endPos.x - game.hero.x);
-				game.hero.endMove(speed);
-				speed -= 0.0005 * dt;
-				speed = hxd.Math.max(0.02, speed);
+				game.hero.endMove(sp);
+				//speed -= 0.0005 * dt;
+				//speed = hxd.Math.max(0.02, speed);
 
 				if(hxd.Math.distance(game.hero.x - endPos.x, game.hero.y - endPos.y) < 0.1) {
 					game.hero.play("idle01");
