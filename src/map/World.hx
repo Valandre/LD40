@@ -527,6 +527,7 @@ class World
 
 	var pressed = false;
 	inline function actionPressed() {
+		if (Game.pad == null) return false;
 		if(!Game.pad.isDown(Game.PAD.A)) pressed = false;
 		if(!pressed && Game.pad.isDown(Game.PAD.A)) {
 			pressed = true;

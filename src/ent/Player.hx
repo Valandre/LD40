@@ -249,7 +249,7 @@ class Player extends Character
 			canMove = K.isDown(K.MOUSE_LEFT);// !K.isDown(K.SPACE);
 		}
 
-		if(pad.isDown(Game.PAD.A) || K.isDown(K.MOUSE_RIGHT))
+		if((pad != null && pad.isDown(Game.PAD.A)) || K.isDown(K.MOUSE_RIGHT))
 			lampReload();
 		else if(targetPos != null )
 			move();
