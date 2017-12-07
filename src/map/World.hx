@@ -151,7 +151,7 @@ class World
 		}
 
 		//Title, start, phone, park, river, shop, Avenue, accident, graveyard, tombstone
-		stepFrames = [0, 1, 890, 1600, 2300, 3050, 4100, 4400, 5200, obj.currentAnimation.frameCount - 1];
+		stepFrames = [0, 1, 890, 1600, 2300, 3050, 4150, 4400, 5200, obj.currentAnimation.frameCount - 1];
 
 		step = Title;
 		game.event.wait(0, function() {
@@ -355,14 +355,16 @@ class World
 				camSpeed *= Math.pow(1.01, dt);
 
 				var d = hxd.Math.distance(endPos.y - game.hero.y, endPos.x - game.hero.x);
-				var sp = 0.025 + speed * d / dist;
-				game.hero.rotation = game.hero.targetRotation = hxd.Math.atan2(endPos.y - game.hero.y, endPos.x - game.hero.x);
-				game.hero.endMove(sp);
-				//speed -= 0.0005 * dt;
-				//speed = hxd.Math.max(0.02, speed);
-
-				if(hxd.Math.distance(game.hero.x - endPos.x, game.hero.y - endPos.y) < 0.1) {
+				if(d < 0.1)	{
 					game.hero.play("idle01");
+				}
+				else{
+					var sp = 0.025 + speed * d / dist;
+					game.hero.rotation = game.hero.targetRotation = hxd.Math.atan2(endPos.y - game.hero.y, endPos.x - game.hero.x);
+					game.hero.endMove(sp);
+				}
+
+				if(d < 0.1 && Math.abs(cameraEndPos.x - camera.pos.x) < 0.1 && Math.abs(cameraEndPos.y - camera.pos.y) < 0.1) {
 					game.event.wait(0.5, function() {
 						game.hero.stand();
 
@@ -646,6 +648,7 @@ class World
 
 		sceneLock = true;
 		var t = 0.;
+
 		switch(k) {
 			case Phone :
 				game.audio.playUIEvent(hxd.Res.Sfx.pick_phone, 0.5);
@@ -725,8 +728,11 @@ class World
 	}
 
 	public function triggerSpeech(x, y) {
-		if(isSpeech(x, y))
+		if(isSpeech(x, y)) {
+			stepId = -1;
+			getCameraFramePos(x, y);
 			playScene(step);
+		}
 	}
 
 	function bugPowerUpdate(dt : Float) {

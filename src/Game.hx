@@ -172,8 +172,9 @@ class Game extends hxd.App {
 		if(K.isPressed(K.TAB)) {
 			pause = !pause;
 		}
+*/
 
-
+/*
 		inline function setStep(v : Int) {
 			@:privateAccess if(world.stepId != v) {
 				world.stepId = -1;
@@ -194,8 +195,8 @@ class Game extends hxd.App {
 
 		if(K.isPressed(K.BACKSPACE))
 			restart();
+*/
 
-		*/
 
 		/*
 		if(infos == null) {
